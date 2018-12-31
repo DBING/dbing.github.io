@@ -17,8 +17,12 @@
 
 
 
+  <meta name="description" content="配置双 SSH KEY 完成对 gitee 和 github 的使用">
 
 
+
+
+  <meta name="keywords" content="配置公钥, Bing's blog">
 
 
 
@@ -38,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://dbing.github.io/archives/">
+<link rel="canonical" href="https://dbing.github.io/2018/12/31/配置双-SSH-KEY-完成对-gitee-和-github-的使用/">
 
 
 
@@ -86,11 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title>
-  
-    归档 - Bing's blog
-  
-</title>
+    <title> 配置双 SSH KEY 完成对 gitee 和 github 的使用 - Bing's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -148,79 +148,102 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          配置双 SSH KEY 完成对 gitee 和 github 的使用
+        
+      </h1>
 
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            目前共计 2 篇日志
-          </span>
-        </div>
-      
-    
-
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2018-12-31
+        </span>
         
         
+      </div>
+    </header>
 
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#生成公钥"><span class="toc-text">生成公钥</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成-gitee-公钥"><span class="toc-text">生成 gitee 公钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成-github-公钥"><span class="toc-text">生成 github 公钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-config-解决公钥冲突"><span class="toc-text">创建 config 解决公钥冲突</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试公钥"><span class="toc-text">测试公钥</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p>问题起因是在本机开发时，使用 git 管理项目时，开源项目使用的是 github 托管，企业私有项目使用的是企业版码云管理，之前一直使用 git 的面板工具（mac 平台中的 Sourcetree ），不存在这样的问题，现在想改为命令的习惯使用 git 发现，本机为 gitee 项目生成了公钥，再为 github 生成公钥时，gitee 的公钥就会被覆盖，这就不能愉快的玩耍了。那么如果做到要这两个公钥并存的呢，往下走。</p>
+<h2 id="生成公钥"><a href="#生成公钥" class="headerlink" title="生成公钥"></a>生成公钥</h2><h3 id="生成-gitee-公钥"><a href="#生成-gitee-公钥" class="headerlink" title="生成 gitee 公钥"></a>生成 gitee 公钥</h3><h3 id="生成-github-公钥"><a href="#生成-github-公钥" class="headerlink" title="生成 github 公钥"></a>生成 github 公钥</h3><h3 id="创建-config-解决公钥冲突"><a href="#创建-config-解决公钥冲突" class="headerlink" title="创建 config 解决公钥冲突"></a>创建 config 解决公钥冲突</h3><h3 id="测试公钥"><a href="#测试公钥" class="headerlink" title="测试公钥"></a>测试公钥</h3>
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://dbing.github.io">bing</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://dbing.github.io/2018/12/31/配置双-SSH-KEY-完成对-gitee-和-github-的使用/">https://dbing.github.io/2018/12/31/配置双-SSH-KEY-完成对-gitee-和-github-的使用/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2018</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/配置公钥/">配置公钥</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            12-31
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2018/12/31/配置双-SSH-KEY-完成对-gitee-和-github-的使用/" class="archive-post-link">
-            配置双 SSH KEY 完成对 gitee 和 github 的使用
-          </a>
-        </span>
-      </div>
-    
-      
         
         
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            12-28
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2018/12/28/hello-world/" class="archive-post-link">
-            Hello World
-          </a>
-        </span>
-      </div>
+  <nav class="post-nav">
     
-  </section>
-
-  
-  <nav class="pagination">
     
+      <a class="next" href="/2018/12/28/hello-world/">
+        <span class="next-text nav-default">Hello World</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -305,6 +328,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
