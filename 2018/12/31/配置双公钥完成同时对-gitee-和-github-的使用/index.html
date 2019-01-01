@@ -17,8 +17,12 @@
 
 
 
+  <meta name="description" content="配置双公钥完成同时对 gitee 和 github 的使用">
 
 
+
+
+  <meta name="keywords" content="配置公钥, Bing's blog">
 
 
 
@@ -38,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://dbing.github.io/">
+<link rel="canonical" href="https://dbing.github.io/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/">
 
 
 
@@ -86,7 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title> Bing's blog </title>
+    <title> 配置双公钥完成同时对 gitee 和 github 的使用 - Bing's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -144,15 +148,11 @@
           <div id="content" class="content">
             
   
-  <section id="posts" class="posts">
-    
-      
-        
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/">配置双公钥完成同时对 gitee 和 github 的使用</a>
+          配置双公钥完成同时对 gitee 和 github 的使用
         
       </h1>
 
@@ -167,15 +167,18 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#生成-gitee-公钥"><span class="toc-text">生成 gitee 公钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成-github-公钥"><span class="toc-text">生成 github 公钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-config-解决公钥冲突"><span class="toc-text">创建 config 解决公钥冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试公钥"><span class="toc-text">测试公钥</span></a></li></ol>
+    </div>
+  </div>
+
 
 
     <div class="post-content">
       
-        
-        
-
-        
-          <p>问题起因背景是在本机开发时，使用 git 管理项目时，开源项目使用的是 github 托管，企业私有项目使用的是企业版码云管理，之前一直使用 git 的面板工具（mac 平台中的 Sourcetree ），不存在这样的问题，现在想改为命令的习惯使用 git 发现，本机为 gitee 项目生成了公钥，再为 github 生成公钥时，gitee 的公钥就会被覆盖，这就不能愉快的玩耍了。那么如果做到要这两个公钥并存的呢，往下走。</p>
+        <p>问题起因背景是在本机开发时，使用 git 管理项目时，开源项目使用的是 github 托管，企业私有项目使用的是企业版码云管理，之前一直使用 git 的面板工具（mac 平台中的 Sourcetree ），不存在这样的问题，现在想改为命令的习惯使用 git 发现，本机为 gitee 项目生成了公钥，再为 github 生成公钥时，gitee 的公钥就会被覆盖，这就不能愉快的玩耍了。那么如果做到要这两个公钥并存的呢，往下走。</p>
 <h2 id="生成-gitee-公钥"><a href="#生成-gitee-公钥" class="headerlink" title="生成 gitee 公钥"></a>生成 gitee 公钥</h2><p>生成 gitee 用的 SSH-Key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">'xxxxx@xxx.com'</span> -f ~/.ssh/gitee_id_rsa</span><br></pre></td></tr></table></figure></p>
 <p>tip:「<a href="mailto:xxxxx@xxx.com" target="_blank" rel="noopener">xxxxx@xxx.com</a>」替换为自己 gitee 邮箱</p>
 <p>按照提示完成三次回车，即可生成 ssh key。通过查看 <code>~/.ssh/gitee_id_rsa.pub</code> 文件内容，获取到你的 public key</p>
@@ -194,78 +197,70 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">Hi dbing! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
 <p>如果提示以上信息，恭喜又可以愉快的玩耍了 :)</p>
 
-        
       
     </div>
 
     
-
-    
-
-  </article>
-
       
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/12/28/hello-world/">Hello World</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-12-28
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
       
-        
-        
 
-        
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://dbing.github.io">bing</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://dbing.github.io/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/">https://dbing.github.io/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
       
-    </div>
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
 
-    
 
-    
-
-  </article>
 
       
       
-  <nav class="pagination">
     
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/配置公钥/">配置公钥</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/12/28/hello-world/">
+        <span class="next-text nav-default">Hello World</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+      </footer>
     
-  </section>
+
+  </article>
+
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -350,6 +345,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
