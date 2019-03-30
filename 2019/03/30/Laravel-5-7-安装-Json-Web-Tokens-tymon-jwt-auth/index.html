@@ -17,8 +17,12 @@
 
 
 
+  <meta name="description" content="Laravel 5.7 安装 Json Web Tokens (tymon/jwt-auth)">
 
 
+
+
+  <meta name="keywords" content="jwt laravel5.7, Bing's blog">
 
 
 
@@ -38,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://dbing.github.io/">
+<link rel="canonical" href="https://dbing.github.io/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/">
 
 
 
@@ -86,7 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title> Bing's blog </title>
+    <title> Laravel 5.7 安装 Json Web Tokens (tymon/jwt-auth) - Bing's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -144,15 +148,11 @@
           <div id="content" class="content">
             
   
-  <section id="posts" class="posts">
-    
-      
-        
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/">Laravel 5.7 安装 Json Web Tokens (tymon/jwt-auth)</a>
+          Laravel 5.7 安装 Json Web Tokens (tymon/jwt-auth)
         
       </h1>
 
@@ -167,15 +167,18 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装扩展包-jwt-auth"><span class="toc-text">安装扩展包 jwt-auth</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置配置"><span class="toc-text">设置配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加到服务提供者"><span class="toc-text">添加到服务提供者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加到中间件"><span class="toc-text">添加到中间件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新用户模型"><span class="toc-text">更新用户模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新配置文件-auth-php"><span class="toc-text">更新配置文件 auth.php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#登录获取授权-Token"><span class="toc-text">登录获取授权 Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建路由"><span class="toc-text">创建路由</span></a></li></ol>
+    </div>
+  </div>
+
 
 
     <div class="post-content">
       
-        
-        
-
-        
-          <p>本文介绍 Laravel 5.7 框架集成 jwt 操作指南，在官方的 <a href="[https://github.com/tymondesigns/jwt-auth/wiki/Installation]" title="[wiki]">text url</a>中也有介绍，是使用的<code>0.5.*</code>版本，本文使用的<code>jwt-auth</code>是<code>1.0.0-rc.3</code>版本，切记使用此扩展包的版本不同，集成也会稍有不同，否则你会得到意想不到的问题。</p>
+        <p>本文介绍 Laravel 5.7 框架集成 jwt 操作指南，在官方的 <a href="[https://github.com/tymondesigns/jwt-auth/wiki/Installation]" title="[wiki]">text url</a>中也有介绍，是使用的<code>0.5.*</code>版本，本文使用的<code>jwt-auth</code>是<code>1.0.0-rc.3</code>版本，切记使用此扩展包的版本不同，集成也会稍有不同，否则你会得到意想不到的问题。</p>
 <h2 id="安装扩展包-jwt-auth"><a href="#安装扩展包-jwt-auth" class="headerlink" title="安装扩展包 jwt-auth"></a>安装扩展包 jwt-auth</h2><p>将扩展包添加到<code>composer.json</code>，添加如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">“require”: &#123;</span><br><span class="line">    ...</span><br><span class="line">    “tymon/jwt-auth”: “1.0.0-rc.3”</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>然后我通过命令更新<code>Composer</code>命令如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer update</span><br></pre></td></tr></table></figure></p>
 <h2 id="设置配置"><a href="#设置配置" class="headerlink" title="设置配置"></a>设置配置</h2><p>创建<code>jwt secret</code>秘钥<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan jwt:secret</span><br></pre></td></tr></table></figure></p>
@@ -196,136 +199,70 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    $credentials = request([<span class="string">'email'</span>, <span class="string">'password'</span>]);</span><br><span class="line">    <span class="keyword">if</span> (!$token = auth(<span class="string">'api'</span>)-&gt;attempt($credentials)) &#123;</span><br><span class="line">        <span class="keyword">return</span> response()-&gt;json([<span class="string">'error'</span> =&gt; <span class="string">'Unauthorized'</span>], <span class="number">401</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> response()-&gt;json([</span><br><span class="line">        <span class="string">'token'</span> =&gt; $token,</span><br><span class="line">        <span class="string">'expires'</span> =&gt; auth(<span class="string">'api'</span>)-&gt;factory()-&gt;getTTL() * <span class="number">60</span>,</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="创建路由"><a href="#创建路由" class="headerlink" title="创建路由"></a>创建路由</h2><p>打开路由文件<code>routes/api.php</code>，添加如下路由代码<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Route::post(<span class="string">'login'</span>, <span class="string">'AuthController@login'</span>);</span><br></pre></td></tr></table></figure></p>
 
-        
       
     </div>
 
     
-
-    
-
-  </article>
-
       
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/">配置双公钥完成同时对 gitee 和 github 的使用</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-12-31
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
       
-        
-        
 
-        
-          <p>问题起因背景是在本机开发时，使用 git 管理项目时，开源项目使用的是 github 托管，企业私有项目使用的是企业版码云管理，之前一直使用 git 的面板工具（mac 平台中的 Sourcetree ），不存在这样的问题，现在想改为命令的习惯使用 git 发现，本机为 gitee 项目生成了公钥，再为 github 生成公钥时，gitee 的公钥就会被覆盖，这就不能愉快的玩耍了。那么如果做到要这两个公钥并存的呢，往下走。</p>
-<h2 id="生成-gitee-公钥"><a href="#生成-gitee-公钥" class="headerlink" title="生成 gitee 公钥"></a>生成 gitee 公钥</h2><p>生成 gitee 用的 SSH-Key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">'xxxxx@xxx.com'</span> -f ~/.ssh/gitee_id_rsa</span><br></pre></td></tr></table></figure></p>
-<p>tip:「<a href="mailto:xxxxx@xxx.com" target="_blank" rel="noopener">xxxxx@xxx.com</a>」替换为自己 gitee 邮箱</p>
-<p>按照提示完成三次回车，即可生成 ssh key。通过查看 <code>~/.ssh/gitee_id_rsa.pub</code> 文件内容，获取到你的 public key</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/gitee_id_rsa.pub</span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwLn0yWMfx6lNOdu58M0JYot......</span><br></pre></td></tr></table></figure>
-<p>复制生成后的 public key，<br>添加为项目公钥：通过仓库主页 「管理」-&gt;「部署公钥管理」-&gt;「添加部署公钥」，如果需要可写权限那么需要添加到个人公钥。<br>添加为个人公钥：<a href="https://gitee.com/profile/sshkeys" target="_blank" rel="noopener">传送门</a></p>
-<p>详细步骤可参见：</p>
-<ul>
-<li>gitee 生成/添加SSH公钥 <a href="https://gitee.com/help/articles/4181" target="_blank" rel="noopener">码云帮助中心</a>，</li>
-<li>个人公钥和项目公钥区别可见：<a href="https://gitee.com/help/articles/4191#article-header1" target="_blank" rel="noopener">码云帮助中心</a></li>
-</ul>
-<h2 id="生成-github-公钥"><a href="#生成-github-公钥" class="headerlink" title="生成 github 公钥"></a>生成 github 公钥</h2><p>生成一个github 用的 SSH-Key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">'xxxxx@xxx.com'</span> -f ~/.ssh/github_id_rsa</span><br></pre></td></tr></table></figure></p>
-<p>tip:「<a href="mailto:xxxxx@xxx.com" target="_blank" rel="noopener">xxxxx@xxx.com</a>」替换为自己 github 邮箱</p>
-<p>github 添加为个人公钥：<a href="https://github.com/settings/keys" target="_blank" rel="noopener">传送门</a></p>
-<h2 id="创建-config-解决公钥冲突"><a href="#创建-config-解决公钥冲突" class="headerlink" title="创建 config 解决公钥冲突"></a>创建 config 解决公钥冲突</h2><p>在 ~/.ssh 目录下新建一个config文件，添加如下内容（其中Host和HostName填写git服务器的域名，IdentityFile指定私钥的路径）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># gitee</span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/gitee_id_rsa</span><br><span class="line"># github</span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/github_id_rsa</span><br></pre></td></tr></table></figure></p>
-<h2 id="测试公钥"><a href="#测试公钥" class="headerlink" title="测试公钥"></a>测试公钥</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@gitee.com</span><br><span class="line">Hi braem! You<span class="string">'ve successfully authenticated, but GITEE.COM does not provide shell access.</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">Hi dbing! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
-<p>如果提示以上信息，恭喜又可以愉快的玩耍了 :)</p>
-
-        
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://dbing.github.io">bing</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://dbing.github.io/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/">https://dbing.github.io/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
       
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/12/28/hello-world/">Hello World</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-12-28
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
 
 
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
 
       
       
-  <nav class="pagination">
     
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/jwt-laravel5-7/">jwt laravel5.7</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/">
+        <span class="next-text nav-default">配置双公钥完成同时对 gitee 和 github 的使用</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+      </footer>
     
-  </section>
+
+  </article>
+
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -410,6 +347,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
