@@ -182,21 +182,21 @@
 <table>
 <thead>
 <tr>
-<th>Laravel version</th>
+<th style="text-align:left">Laravel version</th>
 <th>jwt-auth version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>4.*</code></td>
+<td style="text-align:left"><code>4.*</code></td>
 <td><code>0.3.*</code> <code>0.4.*</code></td>
 </tr>
 <tr>
-<td><code>5.*</code> &amp;&amp; <code>&lt;5.5</code></td>
+<td style="text-align:left"><code>5.*</code> &amp;&amp; <code>&lt;5.5</code></td>
 <td><code>0.5.*</code></td>
 </tr>
 <tr>
-<td><code>5.*</code></td>
+<td style="text-align:left"><code>5.*</code></td>
 <td><code>1.0.*</code></td>
 </tr>
 </tbody>
@@ -211,8 +211,8 @@
 <blockquote>
 <p>tip：会在项目的<code>config</code>目录中新增一个<code>jwt.php</code>的配置文件</p>
 </blockquote>
-<h2 id="添加到服务提供者"><a href="#添加到服务提供者" class="headerlink" title="添加到服务提供者"></a>添加到服务提供者</h2><p>打开<code>app.php</code>并在<code>aliases</code>数组中添加以下行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'JWTAuth'</span> =&gt; Tymon\JWTAuth\Facades\JWTAuth::class,</span><br><span class="line"><span class="string">'JWTFactory'</span> =&gt; Tymon\JWTAuth\Facades\JWTFactory::class,</span><br></pre></td></tr></table></figure></p>
-<h2 id="添加到中间件"><a href="#添加到中间件" class="headerlink" title="添加到中间件"></a>添加到中间件</h2><p>打开<code>Kernel.php</code>，然后在<code>$routeMiddleware</code>中添加以下行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'jwt.auth'</span> =&gt; \Tymon\JWTAuth\Http\Middleware\Authenticate::class,</span><br><span class="line"><span class="string">'jwt.refresh'</span> =&gt; \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加到服务提供者"><a href="#添加到服务提供者" class="headerlink" title="添加到服务提供者"></a>添加到服务提供者</h2><p>打开<code>config/app.php</code>并在<code>aliases</code>数组中添加以下行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'JWTAuth'</span> =&gt; Tymon\JWTAuth\Facades\JWTAuth::class,</span><br><span class="line"><span class="string">'JWTFactory'</span> =&gt; Tymon\JWTAuth\Facades\JWTFactory::class,</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加到中间件"><a href="#添加到中间件" class="headerlink" title="添加到中间件"></a>添加到中间件</h2><p>打开<code>app/Console/Kernel.php</code>，然后在<code>$routeMiddleware</code>中添加以下行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'jwt.auth'</span> =&gt; \Tymon\JWTAuth\Http\Middleware\Authenticate::class,</span><br><span class="line"><span class="string">'jwt.refresh'</span> =&gt; \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,</span><br></pre></td></tr></table></figure></p>
 <h2 id="更新用户模型"><a href="#更新用户模型" class="headerlink" title="更新用户模型"></a>更新用户模型</h2><p>打开<code>User.php</code>并为模型实现<code>JWTSubject</code>，代码如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Tymon</span>\<span class="title">JWTAuth</span>\<span class="title">Contracts</span>\<span class="title">JWTSubject</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span> <span class="keyword">implements</span> <span class="title">JWTSubject</span></span></span><br></pre></td></tr></table></figure></p>
 <p>并在模型中添加2个方法，添加如下代码<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getJWTIdentifier</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;getKey();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getJWTCustomClaims</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="更新配置文件-auth-php"><a href="#更新配置文件-auth-php" class="headerlink" title="更新配置文件 auth.php"></a>更新配置文件 auth.php</h2><p>打开<code>config/auth.php</code>并将 <code>guards</code> 中键为<code>api</code>的驱动(driver)改为<code>jwt</code>（默认为：token）代码如下：</p>
