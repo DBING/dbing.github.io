@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="配置双公钥完成同时对 gitee 和 github 的使用">
+  <meta name="description" content="通过配置 .ssh/config 文件完成对 gitee、gitlab、github...等多域下分别使用不同公钥的，达到可以在命令行中愉快的玩耍各个 git 远程仓库">
 
 
 
@@ -184,6 +184,7 @@
 <p>按照提示完成三次回车，即可生成 ssh key。通过查看 <code>~/.ssh/gitee_id_rsa.pub</code> 文件内容，获取到你的 public key</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/gitee_id_rsa.pub</span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwLn0yWMfx6lNOdu58M0JYot......</span><br></pre></td></tr></table></figure>
 <p>复制生成后的 public key，<br>添加为项目公钥：通过仓库主页 「管理」-&gt;「部署公钥管理」-&gt;「添加部署公钥」，如果需要可写权限那么需要添加到个人公钥。<br>添加为个人公钥：<a href="https://gitee.com/profile/sshkeys" target="_blank" rel="noopener">传送门</a></p>
+<a id="more"></a>
 <p>详细步骤可参见：</p>
 <ul>
 <li>gitee 生成/添加SSH公钥 <a href="https://gitee.com/help/articles/4181" target="_blank" rel="noopener">码云帮助中心</a>，</li>
@@ -239,18 +240,12 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/">
+      <a class="prev" href="/2019/03/19/PhpStorm配置Xdebug远程调试/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Laravel 5.7 安装 Json Web Tokens (tymon/jwt-auth)</span>
+        <span class="prev-text nav-default">PhpStorm配置Xdebug远程调试</span>
         <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
-    
-      <a class="next" href="/2018/12/28/hello-world/">
-        <span class="next-text nav-default">Hello World</span>
-        <span class="prev-text nav-mobile">下一篇</span>
-        <i class="iconfont icon-right"></i>
-      </a>
     
   </nav>
 

@@ -179,21 +179,17 @@
       
         
         
+          
+        
 
         
           <p>许多PHP开发人员已经知道Laravel编写优雅、可工作和可调试的代码。它还支持很多很多特性，这些特性有时没有列在文档中，或者曾经列在文档中，但是由于各种原因被删除了。</p>
 <p>我在工作中使用<code>Laravel</code>开发产品已经2年了，我一直学习从编写糟糕的代码到优雅的代码，自从第一次使用<code>Laravel</code>编写代码以来，我就一直在从中受益，我将向您展示在使用<code>Laravel</code>编写代码时可能会帮助您的神秘技巧。</p>
 <h2 id="当您需要查询内容时，请使用local-scopes"><a href="#当您需要查询内容时，请使用local-scopes" class="headerlink" title="当您需要查询内容时，请使用local scopes"></a>当您需要查询内容时，请使用<code>local scopes</code></h2><p><code>Laravel</code>有一种很好的方法，可以使用<code>Query Builder</code>为数据库驱动程序编写查询，像这样：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$orders = Order::where(<span class="string">'status'</span>, <span class="string">'delivered'</span>)-&gt;where(<span class="string">'paid'</span>, <span class="keyword">true</span>)-&gt;get();</span><br></pre></td></tr></table></figure></p>
 <p>这段代码看起来很好。这让我放弃了SQL，专注于编写对我来说更容易理解的代码。但是如果我们使用局部作用域（local scopes），这段代码可以写得更好。</p>
-<p>局部作用域(local scopes)允许我们创建自己的查询生成器(Query Builder)方法，当我们试图检索数据时，我们可以使用这些方法来进行链接。例如，我们可以使用<code>-&gt;delivered()</code>和<code>-&gt;paid()</code>方法以更简洁的方式替换掉<code>-&gt;where()</code>语句。</p>
-<p>首先，在我们的<code>Order</code>模型，我们应该添加如下方法：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">   ...</span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">scopeDelivered</span><span class="params">($query)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> $query-&gt;where(<span class="string">'status'</span>, <span class="string">'delivered'</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">scopePaid</span><span class="params">($query)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> $query-&gt;where(<span class="string">'paid'</span>, <span class="keyword">true</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在使用<code>local scopes</code>时，应该使用<code>scope[Something]</code>为前缀命名方法名。通过这种方式，<code>Laravel</code>将知道这是一个<code>scope</code>修饰的方法，并将在查询生成器（<code>Query Builder</code>）中使用它。确保包含的第一个参数是被<code>Laravel</code>自动注入并且是<code>Query Builder</code>的实例。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$orders = Order::delivered()-&gt;paid()-&gt;get();</span><br></pre></td></tr></table></figure></p>
-<p>对于更多动态的检索，可以使用动态局部作用域（dynamic local scopes）。每个作用域（scope ）允许您提供参数。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">   ...</span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">scopeStatus</span><span class="params">($query, string $status)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> $query-&gt;where(<span class="string">'status'</span>, $status);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">$orders = Order::status(<span class="string">'delivered'</span>)-&gt;paid()-&gt;get();</span><br></pre></td></tr></table></figure>
-<p>在后面的文章，您将了解为什么应该对数据库字段使用<code>snake_case</code>，这是第一个原因:<code>Laravel</code>默认使用<code>where[Something]</code>来替换前面的作用域。所以你可以做的是:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Order::whereStatus(<span class="string">'delivered'</span>)-&gt;paid()-&gt;get();</span><br></pre></td></tr></table></figure></p>
-<p><code>Laravel</code>将要从<code>where[Something]</code>中搜索<code>snake_case</code>版本。如果您的数据表中有状态，您可以使用前面的示例。如果你有<code>shipping_status</code>字段，你也可以使用如下方式:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Order::whereShippingStatus(<span class="string">'delivered'</span>)-&gt;paid()-&gt;get();</span><br></pre></td></tr></table></figure></p>
-<p>这是你的选择!</p>
-
+          <div class="read-more">
+            <a href="/2019/04/01/Laravel-5-7-的最佳技巧和良好实践/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>
@@ -237,6 +233,8 @@
       
         
         
+          
+        
 
         
           <p>本文介绍 Laravel 5.7 框架集成 jwt 操作指南，在官方的 <a href="https://github.com/tymondesigns/jwt-auth/wiki/Installation[external]" title="[wiki]" target="_blank" rel="noopener">wiki</a> 中也有介绍，是使用的<code>0.5.*</code>版本，本文使用的<code>jwt-auth</code>是<code>1.0.0-rc.3</code>版本，切记使用此扩展包的版本不同，集成也会稍有不同，否则你会得到意想不到的问题，根据自己 <code>laravel</code>版本不同使用<code>jwt-auth</code>版本建议如下：</p>
@@ -263,40 +261,50 @@
 </tbody>
 </table>
 <h2 id="安装扩展包-jwt-auth"><a href="#安装扩展包-jwt-auth" class="headerlink" title="安装扩展包 jwt-auth"></a>安装扩展包 jwt-auth</h2><p>将扩展包添加到<code>composer.json</code>，添加如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">“require”: &#123;</span><br><span class="line">    ...</span><br><span class="line">    “tymon/jwt-auth”: “1.0.0-rc.3”</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后我通过命令更新<code>Composer</code>命令如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer update</span><br></pre></td></tr></table></figure></p>
-<h2 id="设置配置"><a href="#设置配置" class="headerlink" title="设置配置"></a>设置配置</h2><p>创建<code>jwt secret</code>秘钥<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan jwt:secret</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>tip：会在 <code>.env</code> 末尾行追加一行配置记录<code>JWT_SECRET=xxxxxx</code></p>
-</blockquote>
-<p>发布 jwt 配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan vendor:publish --provider=<span class="string">"Tymon\JWTAuth\Providers\LaravelServiceProvider"</span></span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>tip：会在项目的<code>config</code>目录中新增一个<code>jwt.php</code>的配置文件</p>
-</blockquote>
-<h2 id="添加到服务提供者"><a href="#添加到服务提供者" class="headerlink" title="添加到服务提供者"></a>添加到服务提供者</h2><p>打开<code>config/app.php</code>并在<code>aliases</code>数组中添加以下行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'JWTAuth'</span> =&gt; Tymon\JWTAuth\Facades\JWTAuth::class,</span><br><span class="line"><span class="string">'JWTFactory'</span> =&gt; Tymon\JWTAuth\Facades\JWTFactory::class,</span><br></pre></td></tr></table></figure></p>
-<h2 id="添加到中间件"><a href="#添加到中间件" class="headerlink" title="添加到中间件"></a>添加到中间件</h2><p>打开<code>app/Console/Kernel.php</code>，然后在<code>$routeMiddleware</code>中添加以下行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'jwt.auth'</span> =&gt; \Tymon\JWTAuth\Http\Middleware\Authenticate::class,</span><br><span class="line"><span class="string">'jwt.refresh'</span> =&gt; \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,</span><br></pre></td></tr></table></figure></p>
-<h2 id="更新用户模型"><a href="#更新用户模型" class="headerlink" title="更新用户模型"></a>更新用户模型</h2><p>打开<code>User.php</code>并为模型实现<code>JWTSubject</code>，代码如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Tymon</span>\<span class="title">JWTAuth</span>\<span class="title">Contracts</span>\<span class="title">JWTSubject</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span> <span class="keyword">implements</span> <span class="title">JWTSubject</span></span></span><br></pre></td></tr></table></figure></p>
-<p>并在模型中添加2个方法，添加如下代码<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getJWTIdentifier</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;getKey();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getJWTCustomClaims</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="更新配置文件-auth-php"><a href="#更新配置文件-auth-php" class="headerlink" title="更新配置文件 auth.php"></a>更新配置文件 auth.php</h2><p>打开<code>config/auth.php</code>并将 <code>guards</code> 中键为<code>api</code>的驱动(driver)改为<code>jwt</code>（默认为：token）代码如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'guards'</span> =&gt; [</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'api'</span> =&gt; [</span><br><span class="line">        <span class="string">'driver'</span> =&gt; <span class="string">'jwt'</span>,</span><br><span class="line">        <span class="string">'provider'</span> =&gt; <span class="string">'users'</span>,</span><br><span class="line">    ],</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
-<h2 id="登录获取授权-Token"><a href="#登录获取授权-Token" class="headerlink" title="登录获取授权 Token"></a>登录获取授权 Token</h2><p>通过<code>artisan</code>创建<code>AuthController</code>控制器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller AuthController</span><br></pre></td></tr></table></figure>
-<p>在控制器中<code>AuthController</code>添加如下登录获取<code>Token</code>的代码，</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    $credentials = request([<span class="string">'email'</span>, <span class="string">'password'</span>]);</span><br><span class="line">    <span class="keyword">if</span> (!$token = auth(<span class="string">'api'</span>)-&gt;attempt($credentials)) &#123;</span><br><span class="line">        <span class="keyword">return</span> response()-&gt;json([<span class="string">'error'</span> =&gt; <span class="string">'Unauthorized'</span>], <span class="number">401</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> response()-&gt;json([</span><br><span class="line">        <span class="string">'token'</span> =&gt; $token,</span><br><span class="line">        <span class="string">'expires'</span> =&gt; auth(<span class="string">'api'</span>)-&gt;factory()-&gt;getTTL() * <span class="number">60</span>,</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="创建路由"><a href="#创建路由" class="headerlink" title="创建路由"></a>创建路由</h2><p>打开路由文件<code>routes/api.php</code>，添加如下路由代码<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Route::post(<span class="string">'login'</span>, <span class="string">'AuthController@login'</span>);</span><br></pre></td></tr></table></figure></p>
-<p>添加一行测试数据<code>email:test@test.com</code>、<code>password:secret</code>，PostMan 测试截图如下：</p>
-<img src="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/2019-03-30-11.38.png" title="登录授权获取Token">
-<p>添加<code>jwt.auth</code>中间件，保护你的路由，事例代码如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Route::middleware(<span class="string">'jwt.auth'</span>)-&gt;get(<span class="string">'users'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> auth(<span class="string">'api'</span>)-&gt;user();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>添加<code>Authorization: Bearer {token}</code>到请求(header)头，PostMan 测试截图如下：</p>
-<img src="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/2019-03-30-11.45.png" title="通过Token获取用户信息">
-<h2 id="如果您想捕获异常"><a href="#如果您想捕获异常" class="headerlink" title="如果您想捕获异常"></a>如果您想捕获异常</h2><p>打开文件<code>app/Exceptions/Handler.php</code>在<code>render</code>方法开头使用如下代码<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Symfony</span>\<span class="title">Component</span>\<span class="title">HttpKernel</span>\<span class="title">Exception</span>\<span class="title">UnauthorizedHttpException</span>;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ($exception <span class="keyword">instanceof</span> UnauthorizedHttpException) &#123;</span><br><span class="line">    $preException = $exception-&gt;getPrevious();</span><br><span class="line">    <span class="keyword">if</span> ($preException <span class="keyword">instanceof</span></span><br><span class="line">                  \Tymon\JWTAuth\Exceptions\TokenExpiredException) &#123;</span><br><span class="line">        <span class="keyword">return</span> response()-&gt;json([<span class="string">'error'</span> =&gt; <span class="string">'TOKEN_EXPIRED'</span>]);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ($preException <span class="keyword">instanceof</span></span><br><span class="line">                  \Tymon\JWTAuth\Exceptions\TokenInvalidException) &#123;</span><br><span class="line">        <span class="keyword">return</span> response()-&gt;json([<span class="string">'error'</span> =&gt; <span class="string">'TOKEN_INVALID'</span>]);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ($preException <span class="keyword">instanceof</span></span><br><span class="line">             \Tymon\JWTAuth\Exceptions\TokenBlacklistedException) &#123;</span><br><span class="line">         <span class="keyword">return</span> response()-&gt;json([<span class="string">'error'</span> =&gt; <span class="string">'TOKEN_BLACKLISTED'</span>]);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> ($exception-&gt;getMessage() === <span class="string">'Token not provided'</span>) &#123;</span><br><span class="line">       <span class="keyword">return</span> response()-&gt;json([<span class="string">'error'</span> =&gt; <span class="string">'Token not provided'</span>]);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://jwt-auth.readthedocs.io/en/develop/laravel-installation/" title="[external] [官方文档]" target="_blank" rel="noopener">官方Wiki</a></li>
-<li><a href="https://github.com/tymondesigns/jwt-auth" title="[external] [github]" target="_blank" rel="noopener">github</a>
-</li>
-</ul>
-<p>End :)</p>
+<p>然后通过命令更新<code>Composer</code>命令如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer update</span><br></pre></td></tr></table></figure></p>
+          <div class="read-more">
+            <a href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
 
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/03/19/PhpStorm配置Xdebug远程调试/">PhpStorm配置Xdebug远程调试</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-03-19
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          
         
       
     </div>
@@ -334,76 +342,14 @@
       
         
         
-
-        
-          <p>问题起因背景是在本机开发时，使用 git 管理项目时，开源项目使用的是 github 托管，企业私有项目使用的是企业版码云管理，之前一直使用 git 的面板工具（mac 平台中的 Sourcetree ），不存在这样的问题，现在想改为命令的习惯使用 git 发现，本机为 gitee 项目生成了公钥，再为 github 生成公钥时，gitee 的公钥就会被覆盖，这就不能愉快的玩耍了。那么如果做到要这两个公钥并存的呢，往下走。</p>
-<h2 id="生成-gitee-公钥"><a href="#生成-gitee-公钥" class="headerlink" title="生成 gitee 公钥"></a>生成 gitee 公钥</h2><p>生成 gitee 用的 SSH-Key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">'xxxxx@xxx.com'</span> -f ~/.ssh/gitee_id_rsa</span><br></pre></td></tr></table></figure></p>
-<p>tip:「<a href="mailto:xxxxx@xxx.com" target="_blank" rel="noopener">xxxxx@xxx.com</a>」替换为自己 gitee 邮箱</p>
-<p>按照提示完成三次回车，即可生成 ssh key。通过查看 <code>~/.ssh/gitee_id_rsa.pub</code> 文件内容，获取到你的 public key</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/gitee_id_rsa.pub</span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwLn0yWMfx6lNOdu58M0JYot......</span><br></pre></td></tr></table></figure>
-<p>复制生成后的 public key，<br>添加为项目公钥：通过仓库主页 「管理」-&gt;「部署公钥管理」-&gt;「添加部署公钥」，如果需要可写权限那么需要添加到个人公钥。<br>添加为个人公钥：<a href="https://gitee.com/profile/sshkeys" target="_blank" rel="noopener">传送门</a></p>
-<p>详细步骤可参见：</p>
-<ul>
-<li>gitee 生成/添加SSH公钥 <a href="https://gitee.com/help/articles/4181" target="_blank" rel="noopener">码云帮助中心</a>，</li>
-<li>个人公钥和项目公钥区别可见：<a href="https://gitee.com/help/articles/4191#article-header1" target="_blank" rel="noopener">码云帮助中心</a></li>
-</ul>
-<h2 id="生成-github-公钥"><a href="#生成-github-公钥" class="headerlink" title="生成 github 公钥"></a>生成 github 公钥</h2><p>生成一个github 用的 SSH-Key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">'xxxxx@xxx.com'</span> -f ~/.ssh/github_id_rsa</span><br></pre></td></tr></table></figure></p>
-<p>tip:「<a href="mailto:xxxxx@xxx.com" target="_blank" rel="noopener">xxxxx@xxx.com</a>」替换为自己 github 邮箱</p>
-<p>github 添加为个人公钥：<a href="https://github.com/settings/keys" target="_blank" rel="noopener">传送门</a></p>
-<h2 id="创建-config-解决公钥冲突"><a href="#创建-config-解决公钥冲突" class="headerlink" title="创建 config 解决公钥冲突"></a>创建 config 解决公钥冲突</h2><p>在 ~/.ssh 目录下新建一个config文件，添加如下内容（其中Host和HostName填写git服务器的域名，IdentityFile指定私钥的路径）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># gitee</span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/gitee_id_rsa</span><br><span class="line"># github</span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/github_id_rsa</span><br></pre></td></tr></table></figure></p>
-<h2 id="测试公钥"><a href="#测试公钥" class="headerlink" title="测试公钥"></a>测试公钥</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@gitee.com</span><br><span class="line">Hi braem! You<span class="string">'ve successfully authenticated, but GITEE.COM does not provide shell access.</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">Hi dbing! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
-<p>如果提示以上信息，恭喜又可以愉快的玩耍了 :)</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/12/28/hello-world/">Hello World</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-12-28
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
+          
         
 
         
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+          <p>通过配置 .ssh/config 文件完成对 gitee、gitlab、github...等多域下分别使用不同公钥的，达到可以在命令行中愉快的玩耍各个 git 远程仓库</p>
+          <div class="read-more">
+            <a href="/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>
