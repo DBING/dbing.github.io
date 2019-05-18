@@ -17,12 +17,12 @@
 
 
 
-  <meta name="description" content="Git 实用指南">
+  <meta name="description" content="Window10 子系统极速搭建LNMP开发环境">
 
 
 
 
-  <meta name="keywords" content="Git, Bing's blog">
+  <meta name="keywords" content="Window10 LNMP 环境搭建, Bing's blog">
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://dbing.github.io/2019/04/26/Git-实用指南/">
+<link rel="canonical" href="https://dbing.github.io/2019/05/16/Window10-子系统极速搭建LNMP开发环境/">
 
 
 
@@ -90,7 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title> Git 实用指南 - Bing's blog </title>
+    <title> Window10 子系统极速搭建LNMP开发环境 - Bing's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -188,20 +188,14 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Git 实用指南
+          Window10 子系统极速搭建LNMP开发环境
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2019-04-26
+          2019-05-16
         </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/工具/">工具</a>
-            
-          </span>
         
         
       </div>
@@ -212,7 +206,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-安装"><span class="toc-text">Git 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最简配置"><span class="toc-text">最简配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图形界面"><span class="toc-text">图形界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-基础命令"><span class="toc-text">Git 基础命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-log"><span class="toc-text">Git log</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开启子系统"><span class="toc-text">开启子系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速安装-LNMP-环境"><span class="toc-text">快速安装 LNMP 环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装扩展"><span class="toc-text">安装扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题"><span class="toc-text">常见问题</span></a></li></ol>
     </div>
   </div>
 
@@ -220,12 +214,20 @@
 
     <div class="post-content">
       
-        <h2 id="Git-安装"><a href="#Git-安装" class="headerlink" title="Git 安装"></a>Git 安装</h2><p>Git 官网地址：<a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a></p>
-<h2 id="最简配置"><a href="#最简配置" class="headerlink" title="最简配置"></a>最简配置</h2><p>config 的三个作用域<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="built_in">local</span></span><br><span class="line">git config --global</span><br><span class="line">git config --system</span><br></pre></td></tr></table></figure></p>
-<p>配置 <code>user.name</code>和<code>user.email</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">'your name'</span></span><br><span class="line">git config --global user.email <span class="string">'your_email@domain.com'</span></span><br></pre></td></tr></table></figure></p>
-<p>显示<code>config</code>配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list --<span class="built_in">local</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="图形界面"><a href="#图形界面" class="headerlink" title="图形界面"></a>图形界面</h2><h2 id="Git-基础命令"><a href="#Git-基础命令" class="headerlink" title="Git 基础命令"></a>Git 基础命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git -u</span><br><span class="line">git mv <span class="built_in">test</span>  demo</span><br></pre></td></tr></table></figure>
-<h2 id="Git-log"><a href="#Git-log" class="headerlink" title="Git log"></a>Git log</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br><span class="line">git <span class="built_in">log</span> --onelie</span><br><span class="line">git <span class="built_in">log</span> -n4</span><br><span class="line">git <span class="built_in">log</span> --all --graph</span><br><span class="line">git <span class="built_in">log</span> --all --oneline --graph -n4</span><br><span class="line">git <span class="built_in">log</span> <span class="built_in">help</span> --web <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+        <h2 id="开启子系统"><a href="#开启子系统" class="headerlink" title="开启子系统"></a>开启子系统</h2><p>window10 开启子系统方法：</p>
+<p>参考地址：<a href="https://jingyan.baidu.com/article/546ae185de58961149f28cac.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/546ae185de58961149f28cac.html</a></p>
+<h2 id="快速安装-LNMP-环境"><a href="#快速安装-LNMP-环境" class="headerlink" title="快速安装 LNMP 环境"></a>快速安装 LNMP 环境</h2><p>Linux 下 <code>CentOS</code> 可以通过<code>yum</code>,<code>Ubuntu</code> 可以通过 <code>apt-get</code>，可以通过这种方式安装<code>LNMP</code>所需要每一个软件，也可以使用<code>LNMP</code>集成包的方法，既然是快速搭建开发环境，这里推荐使用<code>BT</code></p>
+<p>安装手册：<a href="http://www.bt.cn/btcode.html#install" target="_blank" rel="noopener">http://www.bt.cn/btcode.html#install</a></p>
+<h2 id="安装扩展"><a href="#安装扩展" class="headerlink" title="安装扩展"></a>安装扩展</h2><p>方法一：</p>
+<p>通过<code>BT</code>管理面板，进行安装。</p>
+<p>方法二：</p>
+<p>切换<code>PHP</code>可执行目录，<code>cd /www/server/php/71/bin/</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pecl install mongodb</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Build process completed successfully</span><br><span class="line">Installing <span class="string">'/www/server/php/71/lib/php/extensions/no-debug-non-zts-20160303/mongodb.so'</span></span><br><span class="line">install ok: channel:<span class="comment">//pecl.php.net/mongodb-1.5.3</span></span><br><span class="line">Extension mongodb enabled in php.ini</span><br></pre></td></tr></table></figure>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q：访问PHP项目，特别慢或者（Time out）超时。<br>A：在 Ubuntu WSL的<code>Nginx</code>配置 <code>fastcgi_buffering off;</code> # This must be here for WSL as of 11/28/2018</p>
+<p>具体配置参考如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        fastcgi_split_path_info ^(.+\.php)(/.+)$;</span><br><span class="line">        fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">        fastcgi_buffering off; # This must be here for WSL as of 11/28/2018</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        fastcgi_param PHP_VALUE &quot;upload_max_filesize = 20M \n post_max_size=21M&quot;;</span><br><span class="line">        include /etc/nginx/fastcgi.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此问题 Issues：<a href="https://github.com/Microsoft/WSL/issues/393#issuecomment-442498519" target="_blank" rel="noopener">https://github.com/Microsoft/WSL/issues/393#issuecomment-442498519</a></p>
+
       
     </div>
 
@@ -240,7 +242,7 @@
     </p>
     <p class="copyright-item">
       <span>原文链接: </span>
-      <a href="https://dbing.github.io/2019/04/26/Git-实用指南/">https://dbing.github.io/2019/04/26/Git-实用指南/</a>
+      <a href="https://dbing.github.io/2019/05/16/Window10-子系统极速搭建LNMP开发环境/">https://dbing.github.io/2019/05/16/Window10-子系统极速搭建LNMP开发环境/</a>
     </p>
     <p class="copyright-item">
       <span>许可协议: </span>
@@ -260,7 +262,7 @@
         
           <div class="post-tags">
             
-              <a href="/tags/Git/">Git</a>
+              <a href="/tags/Window10-LNMP-环境搭建/">Window10 LNMP 环境搭建</a>
             
           </div>
         
@@ -268,15 +270,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/05/16/Window10-子系统极速搭建LNMP开发环境/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Window10 子系统极速搭建LNMP开发环境</span>
-        <span class="prev-text nav-mobile">上一篇</span>
-      </a>
     
-    
-      <a class="next" href="/2019/04/19/PhpStorm-Material-主题配置与字体选择/">
-        <span class="next-text nav-default">PhpStorm Material 主题配置与字体选择</span>
+      <a class="next" href="/2019/04/26/Git-实用指南/">
+        <span class="next-text nav-default">Git 实用指南</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
