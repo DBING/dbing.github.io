@@ -197,6 +197,12 @@
           2019-05-16
         </span>
         
+          <span class="post-category">
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </span>
+        
         
       </div>
     </header>
@@ -224,9 +230,20 @@
 <p>切换<code>PHP</code>可执行目录，<code>cd /www/server/php/71/bin/</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pecl install mongodb</span><br></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Build process completed successfully</span><br><span class="line">Installing <span class="string">'/www/server/php/71/lib/php/extensions/no-debug-non-zts-20160303/mongodb.so'</span></span><br><span class="line">install ok: channel:<span class="comment">//pecl.php.net/mongodb-1.5.3</span></span><br><span class="line">Extension mongodb enabled in php.ini</span><br></pre></td></tr></table></figure>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q：访问PHP项目，特别慢或者（Time out）超时。<br>A：在 Ubuntu WSL的<code>Nginx</code>配置 <code>fastcgi_buffering off;</code> # This must be here for WSL as of 11/28/2018</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q：Ubuntu apt-get源为国内镜像源的方法<br>A：见以下操作步骤：</p>
+<ol>
+<li><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</code></li>
+<li><code>sudo vim /etc/apt/sources.list</code></li>
+<li>清空原来的列表（命令行模式下，按<code>ggdG</code>），添加以下内容（中科大镜像源）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>4.保存后，运行 <code>sudo apt-get update</code></p>
+<p>补：Vim 清空文件内容方法<br>方法一：命令行模式下，按键盘<code>ggdG</code><br>方法二：先在命令模式下输入 G 再输入<code>:1,.d</code></p>
+<hr>
+<p>Q：访问PHP项目，特别慢或者（Time out）超时。<br>A：在 Ubuntu WSL的<code>Nginx</code>配置 <code>fastcgi_buffering off;</code> # This must be here for WSL as of 11/28/2018</p>
 <p>具体配置参考如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        fastcgi_split_path_info ^(.+\.php)(/.+)$;</span><br><span class="line">        fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">        fastcgi_buffering off; # This must be here for WSL as of 11/28/2018</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        fastcgi_param PHP_VALUE &quot;upload_max_filesize = 20M \n post_max_size=21M&quot;;</span><br><span class="line">        include /etc/nginx/fastcgi.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>此问题 Issues：<a href="https://github.com/Microsoft/WSL/issues/393#issuecomment-442498519" target="_blank" rel="noopener">https://github.com/Microsoft/WSL/issues/393#issuecomment-442498519</a></p>
+<hr>
 
       
     </div>
@@ -269,6 +286,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2019/05/21/酷代码-第一篇/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">酷代码-第一篇</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
     
       <a class="next" href="/2019/04/26/Git-实用指南/">

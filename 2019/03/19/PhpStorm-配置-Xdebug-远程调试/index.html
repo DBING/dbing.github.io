@@ -242,7 +242,7 @@
 <h2 id="Xdebug-原理介绍"><a href="#Xdebug-原理介绍" class="headerlink" title="Xdebug 原理介绍"></a>Xdebug 原理介绍</h2><h3 id="工作方式"><a href="#工作方式" class="headerlink" title="工作方式"></a>工作方式</h3><img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/xdebug_1.png" class="[class names]" title="[width] [height] [title text [alt text]]">
 <p>客户端（浏览器）发起请求，服务器Apache（或Nginx等），接收请求根据服务端配置规则如果是<code>.php</code>转交<code>PHP</code>，如果携带调试信息<code>?XDEBUG_SESSION_START=10003</code>参数，并且<code>PHP</code>引擎安装且开启了<code>Xdebug</code>，<code>Xdebug</code>把信息转发给<code>IDE</code>，从而完成断点调试。</p>
 <h3 id="通信设置"><a href="#通信设置" class="headerlink" title="通信设置"></a>通信设置</h3><p>使用静态IP/单个开发人员</p>
-
+<img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/dbgp-setup.gif" class="[class names]" title="[width] [height] [title text [alt text]]">
 <ol>
 <li>服务器的IP是10.0.1.2，端口是HTTP</li>
 <li>IDE在IP 10.0.1.42上，因此xdebug。remote_host被设置为10.0.1.42</li>
@@ -257,20 +257,20 @@
 <p>配置项解释：<a href="https://xdebug.org/docs/remote" target="_blank" rel="noopener">https://xdebug.org/docs/remote</a></p>
 <h3 id="配置-Debug"><a href="#配置-Debug" class="headerlink" title="配置 Debug"></a>配置 Debug</h3><p>步骤 File-&gt;Setting-&gt;Languages &amp; Frameworks-&gt;PHP-&gt;Debug</p>
 <p>注意<code>IDE Xdebug port</code>端口要和<code>php.ini</code>配置保持一致。</p>
-
+<img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/xdebug_set_1.png" class="[class names]" title="[width] [height] [title text [alt text]]">
 <h3 id="配置-Servers"><a href="#配置-Servers" class="headerlink" title="配置 Servers"></a>配置 Servers</h3><p>步骤 File-&gt;Setting-&gt;Languages &amp; Frameworks-&gt;PHP-&gt;Servers</p>
-
+<img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/xdebug_set_2.png" class="[class names]" title="[width] [height] [title text [alt text]]">
 <h3 id="配置-Debug-Configuer"><a href="#配置-Debug-Configuer" class="headerlink" title="配置 Debug Configuer"></a>配置 Debug Configuer</h3><p>步骤 Run-&gt;Edit Configurations-&gt;Add New Configuration</p>
-
+<img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/xdebug_set_3.png" class="[class names]" title="[width] [height] [title text [alt text]]">
 <h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><ol>
 <li>打断点</li>
 <li>点击右上角小虫子图标，开启调试</li>
 </ol>
-
+<img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/xdebug_set_4.png" class="[class names]" title="[width] [height] [title text [alt text]]">
 <ol start="3">
 <li>如果看到如下图，那么恭喜你，已经成功开启了断点调试</li>
 </ol>
-
+<img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/xdebug_set_5.png" class="[class names]" title="[width] [height] [title text [alt text]]">
 <h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>Q：开启<code>Debug</code>后，1分钟后调试自动终止了。<br>A：是因为<code>PHP</code>脚本默认超时时间是 1分钟，设置<code>PHP</code> 超时时间为1小时、或2小时，</p>
 <p>设置方式：</p>
 <ol>

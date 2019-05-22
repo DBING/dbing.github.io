@@ -17,12 +17,12 @@
 
 
 
-  <meta name="description" content="PhpStorm Material 主题配置与字体选择">
+  <meta name="description" content="Linxu 压缩与解压常用命令">
 
 
 
 
-  <meta name="keywords" content="PhpStorm, Bing's blog">
+  <meta name="keywords" content="tar, Bing's blog">
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://dbing.github.io/2019/04/19/PhpStorm-Material-主题配置与字体选择/">
+<link rel="canonical" href="https://dbing.github.io/2019/05/22/Linxu-压缩与解压常用命令/">
 
 
 
@@ -90,7 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title> PhpStorm Material 主题配置与字体选择 - Bing's blog </title>
+    <title> Linxu 压缩与解压常用命令 - Bing's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -188,18 +188,18 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          PhpStorm Material 主题配置与字体选择
+          Linxu 压缩与解压常用命令
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2019-04-19
+          2019-05-22
         </span>
         
           <span class="post-category">
             
-              <a href="/categories/PhpStorm/">PhpStorm</a>
+              <a href="/categories/Linux/">Linux</a>
             
           </span>
         
@@ -212,7 +212,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#效果预览"><span class="toc-text">效果预览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-Material"><span class="toc-text">安装 Material</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择主题"><span class="toc-text">选择主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置字体"><span class="toc-text">设置字体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#个人配置文件"><span class="toc-text">个人配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#官网地址"><span class="toc-text">官网地址</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tar"><span class="toc-text">*.tar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gz"><span class="toc-text">*.gz</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tar-gz-amp-tgz"><span class="toc-text">.tar.gz &amp; .tgz</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tar-bz2"><span class="toc-text">*.tar.bz2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tar-xz"><span class="toc-text">*.tar.xz</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bz2"><span class="toc-text">*.bz2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tar-Z"><span class="toc-text">*.tar.Z</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rar"><span class="toc-text">*.rar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zip"><span class="toc-text">*.zip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充"><span class="toc-text">补充</span></a></li></ol>
     </div>
   </div>
 
@@ -220,26 +220,21 @@
 
     <div class="post-content">
       
-        <blockquote>
-<p>古人云: “工欲善其事必先利其器”，分享一下自己在<code>PhpStorm</code>中的自己喜欢的<code>Material</code>主题以及开发字体。</p>
-</blockquote>
-<h2 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h2><p>预览官网效果，<a href="https://plugins.jetbrains.com/plugin/8006-material-theme-ui" target="_blank" rel="noopener">去预览</a></p>
-<p>我的主题效果<img src="/2019/04/19/PhpStorm-Material-主题配置与字体选择/install-view.png" title="预览效果"></p>
+        <p>以下均已<code>demo.tar.xz</code>文件为例演示</p>
+<h2 id="tar"><a href="#tar" class="headerlink" title="*.tar"></a>*.tar</h2><p>解压：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf demo.tar</span><br></pre></td></tr></table></figure></p>
+<h2 id="gz"><a href="#gz" class="headerlink" title="*.gz"></a>*.gz</h2><p>解压：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gzip -d demo.gz</span><br><span class="line">gunzip demo.gz</span><br></pre></td></tr></table></figure></p>
+<h2 id="tar-gz-amp-tgz"><a href="#tar-gz-amp-tgz" class="headerlink" title=".tar.gz &amp; .tgz"></a><em>.tar.gz &amp; </em>.tgz</h2><p>解压：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf demo.tar.gz</span><br><span class="line">tar -xzvf demo.tgz</span><br></pre></td></tr></table></figure></p>
+<h2 id="tar-bz2"><a href="#tar-bz2" class="headerlink" title="*.tar.bz2"></a>*.tar.bz2</h2><p>解压：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xjvf demo.tar.bz2</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<h2 id="安装-Material"><a href="#安装-Material" class="headerlink" title="安装 Material"></a>安装 Material</h2><p>步骤 File-&gt;Setting-&gt;Plugins-&gt;Marketplace</p>
-<p>已安装后截图<br><img src="/2019/04/19/PhpStorm-Material-主题配置与字体选择/install-material.png" title="安装 Material"></p>
-<h2 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a>选择主题</h2><p>步骤 File-&gt;Setting-&gt;Material Theme-&gt;Selected Theme</p>
-<img src="/2019/04/19/PhpStorm-Material-主题配置与字体选择/theme-material.png" title="选择主题">
-<h2 id="设置字体"><a href="#设置字体" class="headerlink" title="设置字体"></a>设置字体</h2><p>步骤 File-&gt;Setting-&gt;Editor-&gt;Color Scheme-&gt;Color Scheme Font</p>
-<img src="/2019/04/19/PhpStorm-Material-主题配置与字体选择/theme-material-font.png" title="设置字体">
-<p>个人喜好字体：<code>Fira Code Medium</code></p>
-<h2 id="个人配置文件"><a href="#个人配置文件" class="headerlink" title="个人配置文件"></a>个人配置文件</h2><a href="/2019/04/19/PhpStorm-Material-主题配置与字体选择/settings.zip" title="[下载我的配置]">[下载我的配置]</a>
-<p>导入步骤 File-&gt;Import Settings</p>
-<h2 id="官网地址"><a href="#官网地址" class="headerlink" title="官网地址"></a>官网地址</h2><ul>
-<li><a href="https://github.com/equinusocio/material-theme" title="[material-theme github]" target="_blank" rel="noopener">跳转至 material Github</a>
-</li>
-</ul>
-<p>End :-)</p>
+<h2 id="tar-xz"><a href="#tar-xz" class="headerlink" title="*.tar.xz"></a>*.tar.xz</h2><p>解压方法一：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xz -d demo.tar.xz</span><br><span class="line">tar -xvf demo.tar</span><br></pre></td></tr></table></figure></p>
+<p>解压方法二：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvJf demo.tar.xz</span><br></pre></td></tr></table></figure>
+<h2 id="bz2"><a href="#bz2" class="headerlink" title="*.bz2"></a>*.bz2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bzip2 -d</span><br><span class="line">bunzip2</span><br></pre></td></tr></table></figure>
+<h2 id="tar-Z"><a href="#tar-Z" class="headerlink" title="*.tar.Z"></a>*.tar.Z</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xZvf</span><br></pre></td></tr></table></figure>
+<h2 id="rar"><a href="#rar" class="headerlink" title="*.rar"></a>*.rar</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unrar e demo.rar</span><br></pre></td></tr></table></figure>
+<h2 id="zip"><a href="#zip" class="headerlink" title="*.zip"></a>*.zip</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip demo.zip</span><br></pre></td></tr></table></figure>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar</span><br><span class="line">-c: 建立压缩档案</span><br><span class="line">-x：解压</span><br><span class="line">-t：查看内容</span><br><span class="line">-r：向压缩归档文件末尾追加文件</span><br><span class="line">-u：更新原压缩包中的文件</span><br></pre></td></tr></table></figure>
+<p>独立参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-z：有gzip属性的</span><br><span class="line">-j：有bz2属性的</span><br><span class="line">-Z：有compress属性的</span><br><span class="line">-v：显示所有过程</span><br><span class="line">-O：将文件解开到标准输出</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -255,7 +250,7 @@
     </p>
     <p class="copyright-item">
       <span>原文链接: </span>
-      <a href="https://dbing.github.io/2019/04/19/PhpStorm-Material-主题配置与字体选择/">https://dbing.github.io/2019/04/19/PhpStorm-Material-主题配置与字体选择/</a>
+      <a href="https://dbing.github.io/2019/05/22/Linxu-压缩与解压常用命令/">https://dbing.github.io/2019/05/22/Linxu-压缩与解压常用命令/</a>
     </p>
     <p class="copyright-item">
       <span>许可协议: </span>
@@ -275,7 +270,7 @@
         
           <div class="post-tags">
             
-              <a href="/tags/PhpStorm/">PhpStorm</a>
+              <a href="/tags/tar/">tar</a>
             
           </div>
         
@@ -283,15 +278,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/04/26/Git-实用指南/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Git 实用指南</span>
-        <span class="prev-text nav-mobile">上一篇</span>
-      </a>
     
-    
-      <a class="next" href="/2019/04/01/Laravel-5-7-的最佳技巧和良好实践/">
-        <span class="next-text nav-default">Laravel 5.7 的最佳技巧和良好实践</span>
+      <a class="next" href="/2019/05/22/Linux-PATH-环境变量配置/">
+        <span class="next-text nav-default">Linux PATH 环境变量配置</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>

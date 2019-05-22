@@ -188,6 +188,237 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2019/05/22/Linxu-压缩与解压常用命令/">Linxu 压缩与解压常用命令</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-05-22
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>以下均已<code>demo.tar.xz</code>文件为例演示</p>
+<h2 id="tar"><a href="#tar" class="headerlink" title="*.tar"></a>*.tar</h2><p>解压：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf demo.tar</span><br></pre></td></tr></table></figure></p>
+<h2 id="gz"><a href="#gz" class="headerlink" title="*.gz"></a>*.gz</h2><p>解压：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gzip -d demo.gz</span><br><span class="line">gunzip demo.gz</span><br></pre></td></tr></table></figure></p>
+<h2 id="tar-gz-amp-tgz"><a href="#tar-gz-amp-tgz" class="headerlink" title=".tar.gz &amp; .tgz"></a><em>.tar.gz &amp; </em>.tgz</h2><p>解压：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf demo.tar.gz</span><br><span class="line">tar -xzvf demo.tgz</span><br></pre></td></tr></table></figure></p>
+<h2 id="tar-bz2"><a href="#tar-bz2" class="headerlink" title="*.tar.bz2"></a>*.tar.bz2</h2><p>解压：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xjvf demo.tar.bz2</span><br></pre></td></tr></table></figure></p>
+          <div class="read-more">
+            <a href="/2019/05/22/Linxu-压缩与解压常用命令/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/05/22/Linux-PATH-环境变量配置/">Linux PATH 环境变量配置</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-05-22
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>以添加<code>go</code>为例，修改<code>PATH</code>的几种方法</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">pwd</span><br><span class="line">/home/bing</span><br><span class="line">wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz</span><br><span class="line">tar -xzvf go1.12.5.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="查看-PATH"><a href="#查看-PATH" class="headerlink" title="查看 PATH"></a>查看 PATH</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br></pre></td></tr></table></figure>
+<p>以<code>:</code>符号分割，每一段都是一个环境变量</p>
+<h2 id="修改-PATH"><a href="#修改-PATH" class="headerlink" title="修改 PATH"></a>修改 PATH</h2><h3 id="方法一-export"><a href="#方法一-export" class="headerlink" title="方法一 export"></a>方法一 export</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/home/bing/go/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>测试：<code>go version</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输出`go version go1.12.5 linux/amd64`</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">生效时间</th>
+<th>有效期</th>
+<th>局限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">立即生效</td>
+<td>临时有效，当前会话（当前终端）</td>
+<td>当前用户</td>
+</tr>
+</tbody>
+</table>
+<h3 id="方法二-bashrc"><a href="#方法二-bashrc" class="headerlink" title="方法二 bashrc"></a>方法二 bashrc</h3><p>通过修改<code>.bashrc</code>文件<br><code>vim ~/.bashrc</code> 添加一行<code>export PATH=/home/bing/go/bin:$PATH</code></p>
+<ol>
+<li>新开一个终端窗口才能生效。</li>
+<li>或者执行 <code>source ~/.bashrc</code> 立即生效</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">生效时间</th>
+<th>有效期</th>
+<th>局限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">新开启终端有效或立即生效</td>
+<td>永久有效</td>
+<td>当前用户</td>
+</tr>
+</tbody>
+</table>
+<h3 id="方式三-profile"><a href="#方式三-profile" class="headerlink" title="方式三 profile"></a>方式三 profile</h3><p>通过修复<code>profile</code>文件<br><code>vim /etc/profile</code>找到<code>PATH</code>的行(有可能没有)，添加<code>export PATH=/home/bing/go/bin:$PATH</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">生效时间</th>
+<th>有效期</th>
+<th>局限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">系统重启</td>
+<td>永久有效</td>
+<td>所有用户</td>
+</tr>
+</tbody>
+</table>
+<h3 id="方法四-environment"><a href="#方法四-environment" class="headerlink" title="方法四 environment"></a>方法四 environment</h3><p>通过修改<code>environment</code>文件<br><code>vim environment</code>在<code>PATH=&quot;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games&quot;</code>中追加<code>:/home/bing/go/bin</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">生效时间</th>
+<th>有效期</th>
+<th>局限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">系统重启</td>
+<td>永久有效</td>
+<td>所有用户</td>
+</tr>
+</tbody>
+</table>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>通过创建软连接的方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /home/bing/go/bin/go /usr/local/bin/go</span><br></pre></td></tr></table></figure></p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/05/21/酷代码-第一篇/">酷代码-第一篇</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-05-21
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Cool-code/">Cool code</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>分享一下，工作中遇见值得分享的<code>Code</code>，这些代码往往比较有趣、有意义、或者少见（有意义），在此我统称为：酷代码。</p>
+<h2 id="IP-白名单检测"><a href="#IP-白名单检测" class="headerlink" title="IP 白名单检测"></a>IP 白名单检测</h2><p>场景描述：我司的一个子项目，用来处理全部的支付业务，为了安全，所有的内部请求必须经过 IP 检测（这只是其中一环），分享一下我老大写的一个IP白名单检测方法：</p>
+          <div class="read-more">
+            <a href="/2019/05/21/酷代码-第一篇/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2019/05/16/Window10-子系统极速搭建LNMP开发环境/">Window10 子系统极速搭建LNMP开发环境</a>
         
       </h1>
@@ -196,6 +427,12 @@
         <span class="post-time">
           2019-05-16
         </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </span>
         
         
       </div>
@@ -221,9 +458,20 @@
 <p>切换<code>PHP</code>可执行目录，<code>cd /www/server/php/71/bin/</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pecl install mongodb</span><br></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Build process completed successfully</span><br><span class="line">Installing <span class="string">'/www/server/php/71/lib/php/extensions/no-debug-non-zts-20160303/mongodb.so'</span></span><br><span class="line">install ok: channel:<span class="comment">//pecl.php.net/mongodb-1.5.3</span></span><br><span class="line">Extension mongodb enabled in php.ini</span><br></pre></td></tr></table></figure>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q：访问PHP项目，特别慢或者（Time out）超时。<br>A：在 Ubuntu WSL的<code>Nginx</code>配置 <code>fastcgi_buffering off;</code> # This must be here for WSL as of 11/28/2018</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q：Ubuntu apt-get源为国内镜像源的方法<br>A：见以下操作步骤：</p>
+<ol>
+<li><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</code></li>
+<li><code>sudo vim /etc/apt/sources.list</code></li>
+<li>清空原来的列表（命令行模式下，按<code>ggdG</code>），添加以下内容（中科大镜像源）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>4.保存后，运行 <code>sudo apt-get update</code></p>
+<p>补：Vim 清空文件内容方法<br>方法一：命令行模式下，按键盘<code>ggdG</code><br>方法二：先在命令模式下输入 G 再输入<code>:1,.d</code></p>
+<hr>
+<p>Q：访问PHP项目，特别慢或者（Time out）超时。<br>A：在 Ubuntu WSL的<code>Nginx</code>配置 <code>fastcgi_buffering off;</code> # This must be here for WSL as of 11/28/2018</p>
 <p>具体配置参考如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        fastcgi_split_path_info ^(.+\.php)(/.+)$;</span><br><span class="line">        fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">        fastcgi_buffering off; # This must be here for WSL as of 11/28/2018</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        fastcgi_param PHP_VALUE &quot;upload_max_filesize = 20M \n post_max_size=21M&quot;;</span><br><span class="line">        include /etc/nginx/fastcgi.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>此问题 Issues：<a href="https://github.com/Microsoft/WSL/issues/393#issuecomment-442498519" target="_blank" rel="noopener">https://github.com/Microsoft/WSL/issues/393#issuecomment-442498519</a></p>
+<hr>
 
         
       
@@ -303,7 +551,7 @@
         
           <span class="post-category">
             
-              <a href="/categories/工具/">工具</a>
+              <a href="/categories/PhpStorm/">PhpStorm</a>
             
           </span>
         
