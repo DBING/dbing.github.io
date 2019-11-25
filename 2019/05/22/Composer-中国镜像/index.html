@@ -203,17 +203,28 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Composer-manager"><span class="toc-text">Composer manager</span></a></li></ol>
+    </div>
+  </div>
+
 
 
     <div class="post-content">
       
-        <p>Composer 中国镜像，没有梯子的同学这个必备，之前一直用<code>pkg.phpcomposer.com</code>提供的，但是某些时候很不友好（半天没有反应），于是乎我发现了这个</p>
-<p>原文地址：<a href="https://learnku.com/laravel/t/4484/composer-mirror-use-help" target="_blank" rel="noopener">https://learnku.com/laravel/t/4484/composer-mirror-use-help</a></p>
+        <p>Composer 中国镜像-阿里云镜像</p>
+<p>原文地址：<a href="https://developer.aliyun.com/composer" target="_blank" rel="noopener">https://developer.aliyun.com/composer</a></p>
 <p>选项一、全局配置（推荐）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g repo.packagist composer https://packagist.laravel-china.org</span><br></pre></td></tr></table></figure>
-<p>选项二、单独使用</p>
-<p>如果仅限当前工程使用镜像，去掉 -g 即可，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config repo.packagist composer https://packagist.laravel-china.org</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
 <p>取消镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g --unset repos.packagist</span><br></pre></td></tr></table></figure></p>
+<p>选项二、项目配置</p>
+<p>仅修改当前工程配置，仅当前工程可使用该镜像地址：：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure></p>
+<p>取消镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config --unset repos.packagist</span><br></pre></td></tr></table></figure></p>
+<p>调试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer -vvv install</span><br></pre></td></tr></table></figure></p>
+<h2 id="Composer-manager"><a href="#Composer-manager" class="headerlink" title="Composer manager"></a>Composer manager</h2><p>鲜有日子，阿里云镜像也会抽风，那么这是镜像管理工具推荐给你，很方便切换到你想要使用的源</p>
+<p>原文地址：<a href="https://github.com/slince/composer-registry-manager" target="_blank" rel="noopener">https://github.com/slince/composer-registry-manager</a></p>
 
       
     </div>
