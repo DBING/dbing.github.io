@@ -17,8 +17,12 @@
 
 
 
+  <meta name="description" content="Laravel 采坑记录">
 
 
+
+
+  <meta name="keywords" content="Laravel, Bing's blog">
 
 
 
@@ -38,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://dbing.github.io/tags/Composer/">
+<link rel="canonical" href="https://dbing.github.io/2019/11/27/Laravel-采坑记录/">
 
 
 
@@ -86,11 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title>
-  
-    Composer · Bing's blog
-  
-</title>
+    <title> Laravel 采坑记录 - Bing's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -184,47 +184,104 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Laravel 采坑记录
+        
+      </h1>
 
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title tag">
-          <h2 class="archive-name">Composer</h2>
-        </div>
-      
-    
-
-    
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            2019-05-22
-          
+      <div class="post-meta">
+        <span class="post-time">
+          2019-11-27
         </span>
-        <span class="archive-post-title">
-          <a href="/2019/05/22/Composer-中国镜像/" class="archive-post-link">
-            Composer 中国镜像
-          </a>
-        </span>
+        
+        
       </div>
-    
-  </section>
+    </header>
 
-  
-  <nav class="pagination">
     
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Laravel-采坑记录"><span class="toc-text">Laravel 采坑记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Laravel-Middleware-里-Cookie-设置不成功问题"><span class="toc-text">Laravel Middleware 里 Cookie 设置不成功问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Laravel-Jobs-不消费和消费失败问题-DB-是-mongodb"><span class="toc-text">Laravel Jobs 不消费和消费失败问题(DB 是 mongodb)</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h1 id="Laravel-采坑记录"><a href="#Laravel-采坑记录" class="headerlink" title="Laravel 采坑记录"></a>Laravel 采坑记录</h1><h2 id="Laravel-Middleware-里-Cookie-设置不成功问题"><a href="#Laravel-Middleware-里-Cookie-设置不成功问题" class="headerlink" title="Laravel Middleware 里 Cookie 设置不成功问题"></a>Laravel Middleware 里 Cookie 设置不成功问题</h2><p>我在laravel中间件里写了下面一行代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$response = $next($request)-&gt;cookie($clientKey, $client-&gt;id, 100 * 60 * 24 * 365);</span><br><span class="line"></span><br><span class="line">#或者</span><br><span class="line">\Cookie::queue($clientKey, $client-&gt;id, $ttl);</span><br></pre></td></tr></table></figure></p>
+<p>中间件里不能有输出，比如：<code>echo</code>,<code>dump</code>,<code>var_dump</code>,<code>print_r</code> 否则都会导致</p>
+<h2 id="Laravel-Jobs-不消费和消费失败问题-DB-是-mongodb"><a href="#Laravel-Jobs-不消费和消费失败问题-DB-是-mongodb" class="headerlink" title="Laravel Jobs 不消费和消费失败问题(DB 是 mongodb)"></a>Laravel Jobs 不消费和消费失败问题(DB 是 mongodb)</h2><p>## </p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://dbing.github.io">bing</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://dbing.github.io/2019/11/27/Laravel-采坑记录/">https://dbing.github.io/2019/11/27/Laravel-采坑记录/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Laravel/">Laravel</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2019/07/31/边锋的一次面试经历/">
+        <span class="next-text nav-default">边锋的一次面试经历</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
