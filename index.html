@@ -188,6 +188,117 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/01/10/使用-supervisor-监控Laravel-queue-消费队列/">使用 supervisor 监控Laravel queue 消费队列</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-01-10
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><ul>
+<li>Ubuntu 5.4.0-6ubuntu1~16.04.9</li>
+</ul>
+<h2 id="安装-Supervisor"><a href="#安装-Supervisor" class="headerlink" title="安装 Supervisor"></a>安装 Supervisor</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install supervisor</span><br></pre></td></tr></table></figure>
+<p>安装后可以查看到 supervisor 已经启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ps aux|grep supervisor</span><br><span class="line">root     14314  0.9  0.2  58936 18572 ?        Ss   16:13   0:00 /usr/bin/python /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf</span><br><span class="line">root     14358  0.0  0.0  14228   908 pts/2    S+   16:13   0:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn supervisor</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置-Supervisor"><a href="#配置-Supervisor" class="headerlink" title="配置 Supervisor"></a>配置 Supervisor</h2><p>这里我以为<code>mooncake-queue-worker.conf</code>为例，命令：<code>vim /etc/supervisor/conf.d/mooncake-queue-worker.conf</code></p>
+<p>配置清单如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[program:mooncake-worker]</span><br><span class="line">process_name=%(program_name)s_%(process_num)02d</span><br><span class="line">command=php /project/artisan queue:work redis --queue=access</span><br><span class="line">autostart=true                                                                                                                                                       </span><br><span class="line">autorestart=true</span><br><span class="line">user=www-data</span><br><span class="line">numprocs=4</span><br><span class="line">redirect_stderr=true</span><br><span class="line">stdout_logfile=/run/log/moonkcake-queue-worker.log</span><br></pre></td></tr></table></figure></p>
+<p>注意：</p>
+<ol>
+<li><code>project</code> 换成自己的项目路径</li>
+<li><code>user=www-data</code> 配置成自己的<code>php</code>进程用户</li>
+<li><code>numprocs</code> 是启动进程数</li>
+</ol>
+<h2 id="启动-Supervisor"><a href="#启动-Supervisor" class="headerlink" title="启动 Supervisor"></a>启动 Supervisor</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl reread</span><br><span class="line">mooncake-worker: available</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl update</span><br><span class="line">mooncake-worker: added process group</span><br></pre></td></tr></table></figure>
+<p>此时再查看一下<code>php</code>进程，可以成功看到4个Queue启动了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ps aux|grep php          </span><br><span class="line">www-data  9933  0.0  0.8 466168 68760 ?        S    11:55   0:03 php-fpm: pool www</span><br><span class="line">www-data 14383  0.3  0.8 558056 71696 ?        S    16:15   0:01 php-fpm: pool www</span><br><span class="line">www-data 14508  1.2  0.6 335088 49780 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14509  1.3  0.6 335088 49648 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14510  1.5  0.6 337136 52176 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14511  1.7  0.6 337136 52228 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br></pre></td></tr></table></figure></p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1. Invalid user name<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl reread                            </span><br><span class="line">ERROR: CANT_REREAD: Invalid user name www <span class="keyword">in</span> section <span class="string">'program:mooncake-worker'</span> (file: <span class="string">'/etc/supervisor/conf.d/mooncake-queue-worker.conf'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>A1:查看当前<code>PHP</code>进程用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  nginx ps aux|grep php  </span><br><span class="line">www-data  1736  0.0  0.9 540960 79144 ?        S    Jan09   0:30 php-fpm: pool www</span><br><span class="line">www-data  2114  0.0  0.8 537876 73172 ?        S    Jan09   0:30 php-fpm: pool www</span><br></pre></td></tr></table></figure>
+<p>修改<code>mooncake-queue-worker.conf</code>中<code>user</code>项为<code>user=www-data</code>。</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/01/08/使用阿里云-Redis-服务内存用完导致的网站停摆/">使用阿里云 Redis 服务内存用完导致的网站停摆</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-01-08
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>虽然事件过去一周多了，但是记忆还尚尤新，理论上我们都晓得 Redis 是基于内存存储的，一般也是用于存储一些有价值的热数据，而我死中就有傻孩纸把图片这种二进制文件<code>bese64_encode</code>后使用<code>chunk_split</code>函数分成小块，给存进了 <code>redis</code>。以下是情景重放。</p>
+<h2 id="情景描述"><a href="#情景描述" class="headerlink" title="情景描述"></a>情景描述</h2><img src="/2020/01/08/使用阿里云-Redis-服务内存用完导致的网站停摆/redis.png" class="[class names]" title="[width] [height] [title text [alt text]]">
+<p>再发现使用率是<code>108%</code>时，此时服务是正常的，达到<code>110%</code>时，云Redis服务就拒绝连接了，此时<code>sentry</code>里收到大量错误，收到打开网站500错误页，服务瘫痪。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
+<li><p>云 redis 存储空间</p>
+</li>
+<li><p>释放现有 redis 空间</p>
+</li>
+</ol>
+<p>操作面板无法得知，方案1中耗时问题，果断选择了方案2</p>
+<h2 id="问题代码"><a href="#问题代码" class="headerlink" title="问题代码"></a>问题代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 获取该页面对应的二维码</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> string $scene</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> string WXACodeBase64</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getWXACode</span><span class="params">($scene)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    $sceneMd5 = md5($scene);</span><br><span class="line">    $getWXACodeImgBase64 = Redis::get(<span class="string">'wechat:js:api:WXACodeImg:'</span> . $sceneMd5);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">isset</span>($getWXACodeImgBase64)) &#123;</span><br><span class="line">        $result = [</span><br><span class="line">            <span class="string">'code'</span> =&gt; <span class="number">200</span>,</span><br><span class="line">            <span class="string">'msg'</span> =&gt; <span class="string">'success'</span>,</span><br><span class="line">            <span class="string">'data'</span> =&gt; $getWXACodeImgBase64</span><br><span class="line">        ];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $accessToken = <span class="keyword">$this</span>-&gt;getAccessToken(<span class="keyword">self</span>::GET_WXACODE);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>($accessToken)) &#123;</span><br><span class="line">            $param = [</span><br><span class="line">                <span class="string">'scene'</span> =&gt; $scene</span><br><span class="line">            ];</span><br><span class="line">            $apiResult = HttpToolLib::curl(<span class="keyword">self</span>::WXACODE_API_URL . $accessToken, json_encode($param), <span class="keyword">true</span>);</span><br><span class="line">            $resJson = json_decode($apiResult, <span class="keyword">true</span>);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">isset</span>($resJson) &amp;&amp; array_key_exists(<span class="string">'errcode'</span>, $resJson)) &#123;</span><br><span class="line">                $result = [</span><br><span class="line">                    <span class="string">'code'</span> =&gt; $resJson[<span class="string">'errcode'</span>],</span><br><span class="line">                    <span class="string">'msg'</span> =&gt; $resJson[<span class="string">'errmsg'</span>],</span><br><span class="line">                    <span class="string">'data'</span> =&gt; <span class="keyword">null</span></span><br><span class="line">                ];</span><br><span class="line">                \Log::error(<span class="string">'getWXACodeError[code:'</span> . $resJson[<span class="string">'errcode'</span>] . <span class="string">';msg:'</span> . $resJson[<span class="string">'errmsg'</span>] . <span class="string">'.]'</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                $getWXACodeImgBase64 = chunk_split(base64_encode($apiResult));</span><br><span class="line">                Redis::setnx(<span class="string">'wechat:js:api:WXACodeImg:'</span> . $sceneMd5, $getWXACodeImgBase64);</span><br><span class="line">                $result = [</span><br><span class="line">                    <span class="string">'code'</span> =&gt; <span class="number">200</span>,</span><br><span class="line">                    <span class="string">'msg'</span> =&gt; <span class="string">'success'</span>,</span><br><span class="line">                    <span class="string">'data'</span> =&gt; $getWXACodeImgBase64</span><br><span class="line">                ];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2019/11/27/Laravel-采坑记录/">Laravel 采坑记录</a>
         
       </h1>
@@ -211,9 +322,10 @@
         
 
         
-          <h1 id="Laravel-采坑记录"><a href="#Laravel-采坑记录" class="headerlink" title="Laravel 采坑记录"></a>Laravel 采坑记录</h1><h2 id="Laravel-Middleware-里-Cookie-设置不成功问题"><a href="#Laravel-Middleware-里-Cookie-设置不成功问题" class="headerlink" title="Laravel Middleware 里 Cookie 设置不成功问题"></a>Laravel Middleware 里 Cookie 设置不成功问题</h2><p>我在laravel中间件里写了下面一行代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$response = $next($request)-&gt;cookie($clientKey, $client-&gt;id, 100 * 60 * 24 * 365);</span><br><span class="line"></span><br><span class="line">#或者</span><br><span class="line">\Cookie::queue($clientKey, $client-&gt;id, $ttl);</span><br></pre></td></tr></table></figure></p>
-<p>中间件里不能有输出，比如：<code>echo</code>,<code>dump</code>,<code>var_dump</code>,<code>print_r</code> 否则都会导致</p>
-<h2 id="Laravel-Jobs-不消费和消费失败问题-DB-是-mongodb"><a href="#Laravel-Jobs-不消费和消费失败问题-DB-是-mongodb" class="headerlink" title="Laravel Jobs 不消费和消费失败问题(DB 是 mongodb)"></a>Laravel Jobs 不消费和消费失败问题(DB 是 mongodb)</h2><p>## </p>
+          <h2 id="Laravel-Middleware-里-Cookie-设置不成功问题"><a href="#Laravel-Middleware-里-Cookie-设置不成功问题" class="headerlink" title="Laravel Middleware 里 Cookie 设置不成功问题"></a>Laravel Middleware 里 Cookie 设置不成功问题</h2><p>我在laravel中间件里写了下面一行代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$response = $next($request)-&gt;cookie($clientKey, $client-&gt;id, 100 * 60 * 24 * 365);</span><br><span class="line"></span><br><span class="line">#或者</span><br><span class="line">\Cookie::queue($clientKey, $client-&gt;id, $ttl);</span><br><span class="line"></span><br><span class="line">dump($client-&gt;id);</span><br></pre></td></tr></table></figure></p>
+<p>然后再中间件里，dump 一个变量，导致<code>cookie</code>不能设置上去，事后发现中间件里不能有任何输出，比如：<code>echo</code>,<code>dump</code>,<code>var_dump</code>,<code>print_r</code> 否则都会导致不成功</p>
+<h2 id="Laravel-Jobs-不消费和消费失败问题-DB-是-mongodb"><a href="#Laravel-Jobs-不消费和消费失败问题-DB-是-mongodb" class="headerlink" title="Laravel Jobs 不消费和消费失败问题(DB 是 mongodb)"></a>Laravel Jobs 不消费和消费失败问题(DB 是 mongodb)</h2><p>创建了一个<code>AccessLogJob</code>死活不会执行，终端也不抛异常，经过排查最终发现是，在<code>DB</code>为<code>mongodb</code>库的情况下 <code>SerializesModels</code> 压根不会触发，也就是会导致<code>model</code>实例不会被序列化，临时解决方案注入时手动序列化<code>serialize</code>，使用时反序列化<code>unserialize</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AccessLogJob</span> <span class="keyword">implements</span> <span class="title">ShouldQueue</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">InteractsWithQueue</span>, <span class="title">Queueable</span>, <span class="title">SerializesModels</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> AccessLog</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> $accessLog;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Create a new job instance.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(AccessLog $log)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;accessLog = serialize($log);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Execute the job.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        (unserialize(<span class="keyword">$this</span>-&gt;accessLog))-&gt;save();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         
       
@@ -586,129 +698,6 @@
           <div class="read-more">
             <a href="/2019/05/22/Linux-PATH-环境变量配置/" class="read-more-link">阅读更多</a>
           </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/05/21/酷代码-第一篇/">酷代码-第一篇</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-05-21
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Cool-code/">Cool code</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>分享一下，工作中遇见值得分享的<code>Code</code>，这些代码往往比较有趣、有意义、或者少见（有意义），在此我统称为：酷代码。</p>
-<h2 id="IP-白名单检测"><a href="#IP-白名单检测" class="headerlink" title="IP 白名单检测"></a>IP 白名单检测</h2><p>场景描述：我司的一个子项目，用来处理全部的支付业务，为了安全，所有的内部请求必须经过 IP 检测（这只是其中一环），分享一下基于我老大（涛哥）思想，利用位运算完成，<code>IP</code>白名单检测方法，以下是核心代码</p>
-<p>定义检测函数<code>checkRemoteAddr()</code><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 验证 IP 白名单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $ip   string              待验证IP地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $AllowRemoteIps array     允许的IP白名单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> bool</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkRemoteAddr</span><span class="params">($ip,$AllowRemoteIps)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $ipNum = ip2long($ip);</span><br><span class="line">    <span class="keyword">foreach</span> ($AllowRemoteIps <span class="keyword">as</span> $mask)</span><br><span class="line">    &#123;</span><br><span class="line">        @<span class="keyword">list</span>($maskIp, $maskStep) = explode(<span class="string">"/"</span>, $mask);</span><br><span class="line">        $maskIpNum = ip2long($maskIp);</span><br><span class="line">        $maskStep = !<span class="keyword">isset</span>($maskStep) ? <span class="number">0</span> : <span class="number">32</span> - intval($maskStep);</span><br><span class="line">        <span class="keyword">if</span>( ($ipNum &gt;&gt; $maskStep) === ($maskIpNum &gt;&gt; $maskStep) )  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-          <div class="read-more">
-            <a href="/2019/05/21/酷代码-第一篇/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/05/16/Window10-子系统极速搭建LNMP开发环境/">Window10 子系统极速搭建LNMP开发环境</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-05-16
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Linux/">Linux</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="开启子系统"><a href="#开启子系统" class="headerlink" title="开启子系统"></a>开启子系统</h2><p>window10 开启子系统方法：</p>
-<p>参考地址：<a href="https://jingyan.baidu.com/article/546ae185de58961149f28cac.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/546ae185de58961149f28cac.html</a></p>
-<h2 id="快速安装-LNMP-环境"><a href="#快速安装-LNMP-环境" class="headerlink" title="快速安装 LNMP 环境"></a>快速安装 LNMP 环境</h2><p>Linux 下 <code>CentOS</code> 可以通过<code>yum</code>,<code>Ubuntu</code> 可以通过 <code>apt-get</code>，可以通过这种方式安装<code>LNMP</code>所需要每一个软件，也可以使用<code>LNMP</code>集成包的方法，既然是快速搭建开发环境，这里推荐使用<code>BT</code></p>
-<p>安装手册：<a href="http://www.bt.cn/btcode.html#install" target="_blank" rel="noopener">http://www.bt.cn/btcode.html#install</a></p>
-<h2 id="安装扩展"><a href="#安装扩展" class="headerlink" title="安装扩展"></a>安装扩展</h2><p>方法一：</p>
-<p>通过<code>BT</code>管理面板，进行安装。</p>
-<p>方法二：</p>
-<p>切换<code>PHP</code>可执行目录，<code>cd /www/server/php/71/bin/</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pecl install mongodb</span><br></pre></td></tr></table></figure>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Build process completed successfully</span><br><span class="line">Installing <span class="string">'/www/server/php/71/lib/php/extensions/no-debug-non-zts-20160303/mongodb.so'</span></span><br><span class="line">install ok: channel:<span class="comment">//pecl.php.net/mongodb-1.5.3</span></span><br><span class="line">Extension mongodb enabled in php.ini</span><br></pre></td></tr></table></figure>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q：Ubuntu apt-get源为国内镜像源的方法<br>A：见以下操作步骤：</p>
-<ol>
-<li><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</code></li>
-<li><code>sudo vim /etc/apt/sources.list</code></li>
-<li>清空原来的列表（命令行模式下，按<code>ggdG</code>），添加以下内容（中科大镜像源）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>4.保存后，运行 <code>sudo apt-get update</code></p>
-<p>补：Vim 清空文件内容方法<br>方法一：命令行模式下，按键盘<code>ggdG</code><br>方法二：先在命令模式下输入 G 再输入<code>:1,.d</code></p>
-<hr>
-<p>Q：访问PHP项目，特别慢或者（Time out）超时。<br>A：在 Ubuntu WSL的<code>Nginx</code>配置 <code>fastcgi_buffering off;</code> # This must be here for WSL as of 11/28/2018</p>
-<p>具体配置参考如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        fastcgi_split_path_info ^(.+\.php)(/.+)$;</span><br><span class="line">        fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">        fastcgi_buffering off; # This must be here for WSL as of 11/28/2018</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        fastcgi_param PHP_VALUE &quot;upload_max_filesize = 20M \n post_max_size=21M&quot;;</span><br><span class="line">        include /etc/nginx/fastcgi.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>此问题 Issues：<a href="https://github.com/Microsoft/WSL/issues/393#issuecomment-442498519" target="_blank" rel="noopener">https://github.com/Microsoft/WSL/issues/393#issuecomment-442498519</a></p>
-<hr>
-
         
       
     </div>
