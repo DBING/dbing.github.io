@@ -206,7 +206,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境介绍"><span class="toc-text">环境介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-Supervisor"><span class="toc-text">安装 Supervisor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-Supervisor"><span class="toc-text">配置 Supervisor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动-Supervisor"><span class="toc-text">启动 Supervisor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题"><span class="toc-text">常见问题</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境介绍"><span class="toc-text">环境介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-Supervisor"><span class="toc-text">安装 Supervisor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-Supervisor"><span class="toc-text">配置 Supervisor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动-Supervisor"><span class="toc-text">启动 Supervisor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题"><span class="toc-text">常见问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考地址"><span class="toc-text">参考地址</span></a></li></ol>
     </div>
   </div>
 
@@ -234,6 +234,10 @@
 <p>A1:查看当前<code>PHP</code>进程用户</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  nginx ps aux|grep php  </span><br><span class="line">www-data  1736  0.0  0.9 540960 79144 ?        S    Jan09   0:30 php-fpm: pool www</span><br><span class="line">www-data  2114  0.0  0.8 537876 73172 ?        S    Jan09   0:30 php-fpm: pool www</span><br></pre></td></tr></table></figure>
 <p>修改<code>mooncake-queue-worker.conf</code>中<code>user</code>项为<code>user=www-data</code>。</p>
+<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
+<li><a href="https://laravel.com/docs/5.7/queues#supervisor-configuration" target="_blank" rel="noopener">https://laravel.com/docs/5.7/queues#supervisor-configuration</a></li>
+<li><a href="https://ryanmckern.com/2013/01/daemon-ize-your-processes-on-the-cheap-part-two-supervisor/" target="_blank" rel="noopener">https://ryanmckern.com/2013/01/daemon-ize-your-processes-on-the-cheap-part-two-supervisor/</a></li>
+</ul>
 
       
     </div>
