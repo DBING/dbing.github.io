@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="Bing's blog">
+  <meta name="description" content="Google cloud 搭建VPN">
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://dbing.github.io/archives/2019/11/">
+<link rel="canonical" href="https://dbing.github.io/2020/01/29/Google-cloud-搭建VPN/">
 
 
 
@@ -90,11 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title>
-  
-    归档 - Bing's blog
-  
-</title>
+    <title> Google cloud 搭建VPN - Bing's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -224,59 +220,116 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Google cloud 搭建VPN
+        
+      </h1>
 
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            目前共计 24 篇日志
-          </span>
-        </div>
-      
-    
-
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2020-01-29
+        </span>
         
         
+      </div>
+    </header>
 
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开通Google-Cloud"><span class="toc-text">开通Google Cloud</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建Compute-Engine"><span class="toc-text">创建Compute Engine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置VPC网络"><span class="toc-text">配置VPC网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考地址"><span class="toc-text">参考地址</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p>安装步骤来源网络文章，这里仅用来做Mark记录，具体步骤见参考地址。</p>
+<h2 id="开通Google-Cloud"><a href="#开通Google-Cloud" class="headerlink" title="开通Google Cloud"></a>开通Google Cloud</h2><p>国内已关闭信用卡可申请开通300$体验金渠道。</p>
+<h2 id="创建Compute-Engine"><a href="#创建Compute-Engine" class="headerlink" title="创建Compute Engine"></a>创建Compute Engine</h2><ol>
+<li>区域（台湾）</li>
+<li>机器类型 g1-small 即可</li>
+</ol>
+<h2 id="配置VPC网络"><a href="#配置VPC网络" class="headerlink" title="配置VPC网络"></a>配置VPC网络</h2><ol>
+<li>防火墙规则，【入站】和【出站】所有协议允许</li>
+<li>外部 IP 地址，类型设置为【静态】</li>
+</ol>
+<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
+<li><a href="https://vschk.wordpress.com/2019/07/05/%E8%B0%B7%E6%AD%8C%E4%BA%91%EF%BC%88google-cloud%EF%BC%89%E6%90%AD%E5%BB%BAssr%E6%95%99%E7%A8%8B%EF%BC%8C%E5%85%8D%E5%AE%89%E8%A3%9Dbbr/" target="_blank" rel="noopener">https://vschk.wordpress.com/2019/07/05/%E8%B0%B7%E6%AD%8C%E4%BA%91%EF%BC%88google-cloud%EF%BC%89%E6%90%AD%E5%BB%BAssr%E6%95%99%E7%A8%8B%EF%BC%8C%E5%85%8D%E5%AE%89%E8%A3%9Dbbr/</a></li>
+<li><a href="https://www.veryopen.org/?p=3580" target="_blank" rel="noopener">https://www.veryopen.org/?p=3580</a></li>
+<li><a href="https://fengooge.blogspot.com/2019/06/how-to-build-shadowsocks-with-google-cloud-platform.html" target="_blank" rel="noopener">https://fengooge.blogspot.com/2019/06/how-to-build-shadowsocks-with-google-cloud-platform.html</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://dbing.github.io">bing</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://dbing.github.io/2020/01/29/Google-cloud-搭建VPN/">https://dbing.github.io/2020/01/29/Google-cloud-搭建VPN/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2019</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/vpn/">vpn</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            11-27
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/11/27/Laravel-采坑记录/" class="archive-post-link">
-            Laravel 采坑记录
-          </a>
-        </span>
-      </div>
+        
+        
+  <nav class="post-nav">
     
-  </section>
-
-  
-  <nav class="pagination">
     
+      <a class="next" href="/2020/01/21/快速搭建Jenkins/">
+        <span class="next-text nav-default">快速搭建Jenkins</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -360,6 +413,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
