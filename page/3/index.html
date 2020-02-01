@@ -228,6 +228,123 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2019/04/26/Git-实用指南/">Git 实用指南</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-04-26
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/工具/">工具</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="Git-安装"><a href="#Git-安装" class="headerlink" title="Git 安装"></a>Git 安装</h2><p>Git 官网地址：<a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a></p>
+<h2 id="最简配置"><a href="#最简配置" class="headerlink" title="最简配置"></a>最简配置</h2><p>config 的三个作用域<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="built_in">local</span></span><br><span class="line">git config --global</span><br><span class="line">git config --system</span><br></pre></td></tr></table></figure></p>
+<p>配置 <code>user.name</code>和<code>user.email</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">'your name'</span></span><br><span class="line">git config --global user.email <span class="string">'your_email@domain.com'</span></span><br></pre></td></tr></table></figure></p>
+<p>显示<code>config</code>配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list --<span class="built_in">local</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="图形界面"><a href="#图形界面" class="headerlink" title="图形界面"></a>图形界面</h2><h2 id="Git-基础命令"><a href="#Git-基础命令" class="headerlink" title="Git 基础命令"></a>Git 基础命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git -u</span><br><span class="line">git mv <span class="built_in">test</span>  demo</span><br></pre></td></tr></table></figure>
+<h2 id="Git-tag"><a href="#Git-tag" class="headerlink" title="Git tag"></a>Git tag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打标签</span></span><br><span class="line">git tag -a v1.1.0 -m <span class="string">"tagging version 1.1.0"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除本地 Tag</span></span><br><span class="line">git tag -d v1.1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除远程 Tag</span></span><br><span class="line">git push origin :refs/tags/v1.1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Tag</span></span><br><span class="line">git tag</span><br></pre></td></tr></table></figure>
+<h2 id="Git-log"><a href="#Git-log" class="headerlink" title="Git log"></a>Git log</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br><span class="line">git <span class="built_in">log</span> --onelie</span><br><span class="line">git <span class="built_in">log</span> -n4</span><br><span class="line">git <span class="built_in">log</span> --all --graph</span><br><span class="line">git <span class="built_in">log</span> --all --oneline --graph -n4</span><br><span class="line">git <span class="built_in">log</span> <span class="built_in">help</span> --web <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><p>Q1：想撤回 <code>commit</code> 操作同时保留代码，怎么办？<br>A1：执行命令 <code>git reset --soft HEAD^</code></p>
+<p>解释：<code>HEAD^</code> 意思是上一个版本，也可以写成 <code>HEAD~1</code>，如果想撤销两次<code>commit</code>，命令：<code>HEAD~2</code></p>
+<p>参数：</p>
+<ul>
+<li><code>--soft</code>: 不删除工作空间改动代码，撤销<code>commit</code>，不撤销<code>git add .</code></li>
+<li><code>--mixed</code>: 不删除工作空间改动代码，撤销<code>commit</code>，并且撤销<code>git add .</code>，<code>git reset --mixed HEAD^</code>等同于<code>git reset HEAD^</code></li>
+<li><code>--hard</code>: 删除工作空间改动代码，撤销<code>commit</code>，撤销<code>git add .</code>（恢复到了上一次的commit状态）</li>
+</ul>
+<p>Q2: 只想修改注释；<br>A2: <code>git commit --amend</code>,进入默认vim编辑器,修改保存即可</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/04/19/PhpStorm-Material-主题配置与字体选择/">PhpStorm Material 主题配置与字体选择</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-04-19
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/PhpStorm/">PhpStorm</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <blockquote>
+<p>古人云: “工欲善其事必先利其器”，分享一下自己在<code>PhpStorm</code>中的自己喜欢的<code>Material</code>主题以及开发字体。</p>
+</blockquote>
+<h2 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h2><p>预览官网效果，<a href="https://plugins.jetbrains.com/plugin/8006-material-theme-ui" target="_blank" rel="noopener">去预览</a></p>
+<p>我的主题效果<img src="/2019/04/19/PhpStorm-Material-主题配置与字体选择/install-view.png" title="预览效果"></p>
+          <div class="read-more">
+            <a href="/2019/04/19/PhpStorm-Material-主题配置与字体选择/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2019/04/01/Laravel-5-7-的最佳技巧和良好实践/">Laravel 5.7 的最佳技巧和良好实践</a>
         
       </h1>
