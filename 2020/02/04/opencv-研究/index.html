@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="Bing's blog">
+  <meta name="description" content="opencv 研究">
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://dbing.github.io/archives/page/3/">
+<link rel="canonical" href="https://dbing.github.io/2020/02/04/opencv-研究/">
 
 
 
@@ -90,11 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title>
-  
-    归档 - Bing's blog
-  
-</title>
+    <title> opencv 研究 - Bing's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -242,181 +238,110 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          opencv 研究
+        
+      </h1>
 
-  <section id="archive" class="archive">
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-04
+        </span>
+        
+        
+      </div>
+    </header>
+
     
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目标"><span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案"><span class="toc-text">方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果"><span class="toc-text">结果</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>来自于公司<code>OCR</code>业务对图片中金额识别不精准（因分割金额的每个小格子存在竖虚线有时会被利用有道Api有时会误识别成金额1），现调研<code>OpenCV</code>如何处理此问题。</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><blockquote>
+<p>OpenCV是一个基于BSD许可（开源）发行的跨平台计算机视觉库，可以运行在Linux、Windows、Android和Mac OS操作系统上。它轻量级而且高效——由一系列 C 函数和少量 C++ 类构成，同时提供了Python、Ruby、MATLAB等语言的接口，实现了图像处理和计算机视觉方面的很多通用算法。</p>
+</blockquote>
+<p>以上是百度百科对<code>OpenCV</code>介绍，用<code>C++</code>去调用很显然不够现实，同时我查到了有开源作者贡献了<code>PHP</code>扩展，<a href="https://phpopencv.org/zh-cn/docs/install.html" target="_blank" rel="noopener">phpopencv</a>，只因这个扩展着实难编译出来（半个下午时间都采到这坑里了），没结果，最后无奈放弃（最后在<code>github</code>仓库看到可以<code>docker</code>安装，-_-||，只能说文档太旧没更新了）。</p>
+<p>方案二：<a href="http://www.1zlab.com/wiki/python-opencv-tutorial/image-statistic-draw-curves/" target="_blank" rel="noopener">python-opencv</a> <code>docker</code>启动一个<code>ubuntu</code>容器，然后容器内安装<code>Anaconda</code>，<a href="https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubuntu-18-04-quickstart" target="_blank" rel="noopener">参考自</a>，通过<code>conda</code>快速安装<code>opencv</code>，在利用文档说提供的现成<code>python</code>代码，马上<code>run</code>起<code>Demo</code>，爽的一批批，</p>
+<p>用到的<code>conda</code>几个命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conda search opencv</span><br><span class="line">conda install opencv=3.3.1</span><br><span class="line">conda env</span><br><span class="line">conda info --envs</span><br></pre></td></tr></table></figure>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>虽然还没解决自个的问题，用下午1个多小时，已经快速完成数学形态学中（腐蚀、膨胀、开运算、闭运算）<code>Demo</code>实例。</p>
+
+      
+    </div>
 
     
       
-        
-        
+      
 
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://dbing.github.io">bing</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://dbing.github.io/2020/02/04/opencv-研究/">https://dbing.github.io/2020/02/04/opencv-研究/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2019</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/opencv/">opencv</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-16
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/05/16/Window10-子系统极速搭建LNMP开发环境/" class="archive-post-link">
-            Window10 子系统极速搭建LNMP开发环境
-          </a>
-        </span>
-      </div>
+        
+        
+  <nav class="post-nav">
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            04-26
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/04/26/Git-实用指南/" class="archive-post-link">
-            Git 实用指南
-          </a>
-        </span>
-      </div>
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            04-19
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/04/19/PhpStorm-Material-主题配置与字体选择/" class="archive-post-link">
-            PhpStorm Material 主题配置与字体选择
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            04-01
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/04/01/Laravel-5-7-的最佳技巧和良好实践/" class="archive-post-link">
-            Laravel 5.7 的最佳技巧和良好实践
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            03-30
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/" class="archive-post-link">
-            Laravel 5.7 安装 Json Web Tokens (tymon/jwt-auth)
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            03-19
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/" class="archive-post-link">
-            PhpStorm配置Xdebug远程调试
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2018</h2>
-          </div>
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            12-31
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/" class="archive-post-link">
-            配置双公钥完成同时对 gitee 和 github 的使用
-          </a>
-        </span>
-      </div>
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
-      <a class="prev" href="/archives/page/2/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text">上一页</span>
+      <a class="next" href="/2020/02/01/史记/">
+        <span class="next-text nav-default">史记</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
       </a>
-    
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -500,6 +425,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
