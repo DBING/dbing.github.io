@@ -246,6 +246,56 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/02/06/opencv-对比度亮度调整/">opencv 对比度亮度调整</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-06
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>来源需要对一张图片，弱化背景效果的需求。与其说弱化不如说是把暗度调亮。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>图片对比度和亮度的调整一般通过下面公式计算：g(x,y)=a∗f(x,y)+b</p>
+<p>f(x,y) 代表源图像 x行，y列的像素点的c通道的数值<br>g(x,y) 代表目标图像x行，y列的像素点的c通道的数值<br>a 参数（a&gt;0）表示放大的倍数（一般在0.0~3.0之间）<br>b 参数一般称为偏置，用来调节亮度</p>
+<p>方案一代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  cv2</span><br><span class="line"></span><br><span class="line">img=cv2.imread(<span class="string">'test.jpg'</span>)</span><br><span class="line">cv2.imshow(<span class="string">'original_img'</span>,img)</span><br><span class="line">rows,cols,channels=img.shape</span><br><span class="line">dst=img.copy()</span><br><span class="line"></span><br><span class="line">a=<span class="number">0.5</span></span><br><span class="line">b=<span class="number">80</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(rows):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(cols):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">            color=img[i,j][c]*a+b</span><br><span class="line">            <span class="keyword">if</span> color&gt;<span class="number">255</span>:           <span class="comment"># 防止像素值越界（0~255）</span></span><br><span class="line">                dst[i,j][c]=<span class="number">255</span></span><br><span class="line">            <span class="keyword">elif</span> color&lt;<span class="number">0</span>:           <span class="comment"># 防止像素值越界（0~255）</span></span><br><span class="line">                dst[i,j][c]=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'dst'</span>,dst)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p>方案二：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">contrast_img</span><span class="params">(img1, c, b)</span>:</span>  <span class="comment"># 亮度就是每个像素所有通道都加上b</span></span><br><span class="line">    rows, cols, channels = img1.shape</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 新建全零(黑色)图片数组:np.zeros(img1.shape, dtype=uint8)</span></span><br><span class="line">    blank = np.zeros([rows, cols, channels], img1.dtype)</span><br><span class="line">    dst = cv2.addWeighted(img1, c, blank, <span class="number">1</span>-c, b)</span><br><span class="line">    cv2.imshow(<span class="string">'original_img'</span>, img)</span><br><span class="line">    cv2.imshow(<span class="string">"contrast_img"</span>, dst)</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">"./test.png"</span>, cv2.IMREAD_COLOR)</span><br><span class="line">contrast_img(img, <span class="number">1.3</span>, <span class="number">3</span>)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li>原文来自 <a href="https://blog.csdn.net/wsp_1138886114/article/details/82624534" target="_blank" rel="noopener">csdn</a></li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/02/04/opencv-研究/">opencv 研究</a>
         
       </h1>
@@ -717,72 +767,6 @@
         
           <p>⌃ + u：清空当前行<br>⌃ + a：移动到行首<br>⌃ + e：移动到行尾<br>⌃ + f：向前移动<br>⌃ + b：向后移动<br>⌃ + p：上一条命令<br>⌃ + n：下一条命令<br>⌃ + r：搜索历史命令<br>⌃ + y：召回最近用命令删除的文字<br>⌃ + h：删除光标之前的字符<br>⌃ + d：删除光标所指的字符<br>⌃ + w：删除光标之前的单词<br>⌃ + k：删除从光标到行尾的内容<br>⌃ + t：交换光标和之前的字符</p>
 <p>⌘ + Click：可以打开文件，文件夹和链接<br>⌘ + n：新建窗口<br>⌘ + t：新建标签页<br>⌘ + w：关闭当前页<br>⌘ + 数字 &amp; ⌘ + 方向键：切换标签页<br>⌥⌘ + 数字：切换窗口<br>⌘ + enter：切换全屏<br>⌘ + d：左右分屏<br>⇧⌘ + d：上下分屏<br>⌘ + ;：自动补全历史记录<br>⇧⌘ + h：自动补全剪贴板历史<br>⌥⌘ + e：查找所有来定位某个标签页<br>⌘ + r &amp; ⌃ + l：清屏<br>⌘ + /：显示光标位置<br>⌥⌘ + b：历史回放<br>⌘ + f：查找，然后用 tab 和 ⇧ + tab 可以向右和向左补全，补全之后的内容会被自动复制， 还可以用 ⌥ + enter 将查找结果输入终端<br>选中即复制，鼠标中键粘贴</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/01/10/使用-supervisor-监控Laravel-queue-消费队列/">使用 supervisor 监控Laravel queue 消费队列</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-10
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><ul>
-<li>Ubuntu 5.4.0-6ubuntu1~16.04.9</li>
-</ul>
-<h2 id="安装-Supervisor"><a href="#安装-Supervisor" class="headerlink" title="安装 Supervisor"></a>安装 Supervisor</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install supervisor</span><br></pre></td></tr></table></figure>
-<p>安装后可以查看到 supervisor 已经启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ps aux|grep supervisor</span><br><span class="line">root     14314  0.9  0.2  58936 18572 ?        Ss   16:13   0:00 /usr/bin/python /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf</span><br><span class="line">root     14358  0.0  0.0  14228   908 pts/2    S+   16:13   0:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn supervisor</span><br></pre></td></tr></table></figure></p>
-<h2 id="配置-Supervisor"><a href="#配置-Supervisor" class="headerlink" title="配置 Supervisor"></a>配置 Supervisor</h2><p>这里我以为<code>mooncake-queue-worker.conf</code>为例，命令：<code>vim /etc/supervisor/conf.d/mooncake-queue-worker.conf</code></p>
-<p>配置清单如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[program:mooncake-worker]</span><br><span class="line">process_name=%(program_name)s_%(process_num)02d</span><br><span class="line">command=php /project/artisan queue:work redis --queue=access</span><br><span class="line">autostart=true                                                                                                                                                       </span><br><span class="line">autorestart=true</span><br><span class="line">user=www-data</span><br><span class="line">numprocs=4</span><br><span class="line">redirect_stderr=true</span><br><span class="line">stdout_logfile=/run/log/moonkcake-queue-worker.log</span><br></pre></td></tr></table></figure></p>
-<p>注意：</p>
-<ol>
-<li><code>project</code> 换成自己的项目路径</li>
-<li><code>user=www-data</code> 配置成自己的<code>php</code>进程用户</li>
-<li><code>numprocs</code> 是启动进程数</li>
-</ol>
-<h2 id="启动-Supervisor"><a href="#启动-Supervisor" class="headerlink" title="启动 Supervisor"></a>启动 Supervisor</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl reread</span><br><span class="line">mooncake-worker: available</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl update</span><br><span class="line">mooncake-worker: added process group</span><br></pre></td></tr></table></figure>
-<p>此时再查看一下<code>php</code>进程，可以成功看到4个Queue启动了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ps aux|grep php          </span><br><span class="line">www-data  9933  0.0  0.8 466168 68760 ?        S    11:55   0:03 php-fpm: pool www</span><br><span class="line">www-data 14383  0.3  0.8 558056 71696 ?        S    16:15   0:01 php-fpm: pool www</span><br><span class="line">www-data 14508  1.2  0.6 335088 49780 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14509  1.3  0.6 335088 49648 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14510  1.5  0.6 337136 52176 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14511  1.7  0.6 337136 52228 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br></pre></td></tr></table></figure></p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 停止某个进程</span><br><span class="line">supervisorctl stop program_name	</span><br><span class="line"></span><br><span class="line"># 启动某个进程</span><br><span class="line">supervisorctl start program_name</span><br><span class="line"></span><br><span class="line"># 重启某个进程</span><br><span class="line">supervisorctl restart program_name</span><br><span class="line"></span><br><span class="line"># 停止全部进程</span><br><span class="line">supervisorctl stop all</span><br><span class="line"></span><br><span class="line"># 载入最新的配置文件，停止原有进程并按新的配置启动、管理所有进程</span><br><span class="line">supervisorctl reload</span><br><span class="line"></span><br><span class="line"># 根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启</span><br><span class="line">supervisorctl update</span><br></pre></td></tr></table></figure>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1. Invalid user name<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl reread                            </span><br><span class="line">ERROR: CANT_REREAD: Invalid user name www <span class="keyword">in</span> section <span class="string">'program:mooncake-worker'</span> (file: <span class="string">'/etc/supervisor/conf.d/mooncake-queue-worker.conf'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>A1:查看当前<code>PHP</code>进程用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  nginx ps aux|grep php  </span><br><span class="line">www-data  1736  0.0  0.9 540960 79144 ?        S    Jan09   0:30 php-fpm: pool www</span><br><span class="line">www-data  2114  0.0  0.8 537876 73172 ?        S    Jan09   0:30 php-fpm: pool www</span><br></pre></td></tr></table></figure>
-<p>修改<code>mooncake-queue-worker.conf</code>中<code>user</code>项为<code>user=www-data</code>。</p>
-<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
-<li><a href="http://www.supervisord.org/running.html" target="_blank" rel="noopener">supervisord 官网</a></li>
-<li><a href="https://laravel.com/docs/5.7/queues#supervisor-configuration" target="_blank" rel="noopener">Laravel 官方地址</a></li>
-<li><a href="https://ryanmckern.com/2013/01/daemon-ize-your-processes-on-the-cheap-part-two-supervisor/" target="_blank" rel="noopener">ryanmckern.com</a></li>
-</ul>
 
         
       

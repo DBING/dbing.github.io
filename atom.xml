@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dbing.github.io/"/>
-  <updated>2020-02-04T14:59:58.770Z</updated>
+  <updated>2020-02-05T16:43:07.405Z</updated>
   <id>https://dbing.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>opencv 对比度亮度调整</title>
+    <link href="https://dbing.github.io/2020/02/06/opencv-%E5%AF%B9%E6%AF%94%E5%BA%A6%E4%BA%AE%E5%BA%A6%E8%B0%83%E6%95%B4/"/>
+    <id>https://dbing.github.io/2020/02/06/opencv-对比度亮度调整/</id>
+    <published>2020-02-05T16:34:07.000Z</published>
+    <updated>2020-02-05T16:43:07.405Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>来源需要对一张图片，弱化背景效果的需求。与其说弱化不如说是把暗度调亮。</p><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>图片对比度和亮度的调整一般通过下面公式计算：g(x,y)=a∗f(x,y)+b</p><p>f(x,y) 代表源图像 x行，y列的像素点的c通道的数值<br>g(x,y) 代表目标图像x行，y列的像素点的c通道的数值<br>a 参数（a&gt;0）表示放大的倍数（一般在0.0~3.0之间）<br>b 参数一般称为偏置，用来调节亮度</p><p>方案一代码：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  cv2</span><br><span class="line"></span><br><span class="line">img=cv2.imread(<span class="string">'test.jpg'</span>)</span><br><span class="line">cv2.imshow(<span class="string">'original_img'</span>,img)</span><br><span class="line">rows,cols,channels=img.shape</span><br><span class="line">dst=img.copy()</span><br><span class="line"></span><br><span class="line">a=<span class="number">0.5</span></span><br><span class="line">b=<span class="number">80</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(rows):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(cols):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">            color=img[i,j][c]*a+b</span><br><span class="line">            <span class="keyword">if</span> color&gt;<span class="number">255</span>:           <span class="comment"># 防止像素值越界（0~255）</span></span><br><span class="line">                dst[i,j][c]=<span class="number">255</span></span><br><span class="line">            <span class="keyword">elif</span> color&lt;<span class="number">0</span>:           <span class="comment"># 防止像素值越界（0~255）</span></span><br><span class="line">                dst[i,j][c]=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'dst'</span>,dst)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure><p>方案二：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">contrast_img</span><span class="params">(img1, c, b)</span>:</span>  <span class="comment"># 亮度就是每个像素所有通道都加上b</span></span><br><span class="line">    rows, cols, channels = img1.shape</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 新建全零(黑色)图片数组:np.zeros(img1.shape, dtype=uint8)</span></span><br><span class="line">    blank = np.zeros([rows, cols, channels], img1.dtype)</span><br><span class="line">    dst = cv2.addWeighted(img1, c, blank, <span class="number">1</span>-c, b)</span><br><span class="line">    cv2.imshow(<span class="string">'original_img'</span>, img)</span><br><span class="line">    cv2.imshow(<span class="string">"contrast_img"</span>, dst)</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">"./test.png"</span>, cv2.IMREAD_COLOR)</span><br><span class="line">contrast_img(img, <span class="number">1.3</span>, <span class="number">3</span>)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul><li>原文来自 <a href="https://blog.csdn.net/wsp_1138886114/article/details/82624534" target="_blank" rel="noopener">csdn</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;场景&quot;&gt;&lt;/a&gt;场景&lt;/h2&gt;&lt;p&gt;来源需要对一张图片，弱化背景效果的需求。与其说弱化不如说是把暗度调亮。&lt;/p&gt;
+&lt;h2 id=&quot;解决&quot;&gt;&lt;a href=&quot;#解决&quot; clas
+      
+    
+    </summary>
+    
+    
+      <category term="opencv" scheme="https://dbing.github.io/tags/opencv/"/>
+    
+  </entry>
   
   <entry>
     <title>opencv 研究</title>

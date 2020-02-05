@@ -246,6 +246,72 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/01/10/使用-supervisor-监控Laravel-queue-消费队列/">使用 supervisor 监控Laravel queue 消费队列</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-01-10
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><ul>
+<li>Ubuntu 5.4.0-6ubuntu1~16.04.9</li>
+</ul>
+<h2 id="安装-Supervisor"><a href="#安装-Supervisor" class="headerlink" title="安装 Supervisor"></a>安装 Supervisor</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install supervisor</span><br></pre></td></tr></table></figure>
+<p>安装后可以查看到 supervisor 已经启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ps aux|grep supervisor</span><br><span class="line">root     14314  0.9  0.2  58936 18572 ?        Ss   16:13   0:00 /usr/bin/python /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf</span><br><span class="line">root     14358  0.0  0.0  14228   908 pts/2    S+   16:13   0:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn supervisor</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置-Supervisor"><a href="#配置-Supervisor" class="headerlink" title="配置 Supervisor"></a>配置 Supervisor</h2><p>这里我以为<code>mooncake-queue-worker.conf</code>为例，命令：<code>vim /etc/supervisor/conf.d/mooncake-queue-worker.conf</code></p>
+<p>配置清单如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[program:mooncake-worker]</span><br><span class="line">process_name=%(program_name)s_%(process_num)02d</span><br><span class="line">command=php /project/artisan queue:work redis --queue=access</span><br><span class="line">autostart=true                                                                                                                                                       </span><br><span class="line">autorestart=true</span><br><span class="line">user=www-data</span><br><span class="line">numprocs=4</span><br><span class="line">redirect_stderr=true</span><br><span class="line">stdout_logfile=/run/log/moonkcake-queue-worker.log</span><br></pre></td></tr></table></figure></p>
+<p>注意：</p>
+<ol>
+<li><code>project</code> 换成自己的项目路径</li>
+<li><code>user=www-data</code> 配置成自己的<code>php</code>进程用户</li>
+<li><code>numprocs</code> 是启动进程数</li>
+</ol>
+<h2 id="启动-Supervisor"><a href="#启动-Supervisor" class="headerlink" title="启动 Supervisor"></a>启动 Supervisor</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl reread</span><br><span class="line">mooncake-worker: available</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl update</span><br><span class="line">mooncake-worker: added process group</span><br></pre></td></tr></table></figure>
+<p>此时再查看一下<code>php</code>进程，可以成功看到4个Queue启动了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ps aux|grep php          </span><br><span class="line">www-data  9933  0.0  0.8 466168 68760 ?        S    11:55   0:03 php-fpm: pool www</span><br><span class="line">www-data 14383  0.3  0.8 558056 71696 ?        S    16:15   0:01 php-fpm: pool www</span><br><span class="line">www-data 14508  1.2  0.6 335088 49780 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14509  1.3  0.6 335088 49648 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14510  1.5  0.6 337136 52176 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14511  1.7  0.6 337136 52228 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br></pre></td></tr></table></figure></p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 停止某个进程</span><br><span class="line">supervisorctl stop program_name	</span><br><span class="line"></span><br><span class="line"># 启动某个进程</span><br><span class="line">supervisorctl start program_name</span><br><span class="line"></span><br><span class="line"># 重启某个进程</span><br><span class="line">supervisorctl restart program_name</span><br><span class="line"></span><br><span class="line"># 停止全部进程</span><br><span class="line">supervisorctl stop all</span><br><span class="line"></span><br><span class="line"># 载入最新的配置文件，停止原有进程并按新的配置启动、管理所有进程</span><br><span class="line">supervisorctl reload</span><br><span class="line"></span><br><span class="line"># 根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启</span><br><span class="line">supervisorctl update</span><br></pre></td></tr></table></figure>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1. Invalid user name<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl reread                            </span><br><span class="line">ERROR: CANT_REREAD: Invalid user name www <span class="keyword">in</span> section <span class="string">'program:mooncake-worker'</span> (file: <span class="string">'/etc/supervisor/conf.d/mooncake-queue-worker.conf'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>A1:查看当前<code>PHP</code>进程用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  nginx ps aux|grep php  </span><br><span class="line">www-data  1736  0.0  0.9 540960 79144 ?        S    Jan09   0:30 php-fpm: pool www</span><br><span class="line">www-data  2114  0.0  0.8 537876 73172 ?        S    Jan09   0:30 php-fpm: pool www</span><br></pre></td></tr></table></figure>
+<p>修改<code>mooncake-queue-worker.conf</code>中<code>user</code>项为<code>user=www-data</code>。</p>
+<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
+<li><a href="http://www.supervisord.org/running.html" target="_blank" rel="noopener">supervisord 官网</a></li>
+<li><a href="https://laravel.com/docs/5.7/queues#supervisor-configuration" target="_blank" rel="noopener">Laravel 官方地址</a></li>
+<li><a href="https://ryanmckern.com/2013/01/daemon-ize-your-processes-on-the-cheap-part-two-supervisor/" target="_blank" rel="noopener">ryanmckern.com</a></li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/01/08/使用阿里云-Redis-服务内存用完导致的网站停摆/">使用阿里云 Redis 服务内存用完导致的网站停摆</a>
         
       </h1>
@@ -696,59 +762,6 @@
 <h2 id="修改-PATH"><a href="#修改-PATH" class="headerlink" title="修改 PATH"></a>修改 PATH</h2>
           <div class="read-more">
             <a href="/2019/05/22/Linux-PATH-环境变量配置/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/05/21/酷代码-第一篇/">酷代码-第一篇</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-05-21
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Cool-code/">Cool code</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>分享一下，工作中遇见值得分享的<code>Code</code>，这些代码往往比较有趣、有意义、或者少见（有意义），在此我统称为：酷代码。</p>
-<h2 id="IP-白名单检测"><a href="#IP-白名单检测" class="headerlink" title="IP 白名单检测"></a>IP 白名单检测</h2><p>场景描述：我司的一个子项目，用来处理全部的支付业务，为了安全，所有的内部请求必须经过 IP 检测（这只是其中一环），分享一下基于我老大（涛哥）思想，利用位运算完成，<code>IP</code>白名单检测方法，以下是核心代码</p>
-<p>定义检测函数<code>checkRemoteAddr()</code><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 验证 IP 白名单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $ip   string              待验证IP地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $AllowRemoteIps array     允许的IP白名单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> bool</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkRemoteAddr</span><span class="params">($ip,$AllowRemoteIps)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $ipNum = ip2long($ip);</span><br><span class="line">    <span class="keyword">foreach</span> ($AllowRemoteIps <span class="keyword">as</span> $mask)</span><br><span class="line">    &#123;</span><br><span class="line">        @<span class="keyword">list</span>($maskIp, $maskStep) = explode(<span class="string">"/"</span>, $mask);</span><br><span class="line">        $maskIpNum = ip2long($maskIp);</span><br><span class="line">        $maskStep = !<span class="keyword">isset</span>($maskStep) ? <span class="number">0</span> : <span class="number">32</span> - intval($maskStep);</span><br><span class="line">        <span class="keyword">if</span>( ($ipNum &gt;&gt; $maskStep) === ($maskIpNum &gt;&gt; $maskStep) )  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-          <div class="read-more">
-            <a href="/2019/05/21/酷代码-第一篇/" class="read-more-link">阅读更多</a>
           </div>
         
       
