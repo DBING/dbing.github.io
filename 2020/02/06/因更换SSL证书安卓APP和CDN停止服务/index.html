@@ -260,7 +260,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#现场"><span class="toc-text">现场</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决办法"><span class="toc-text">解决办法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内部-Wiki"><span class="toc-text">内部 Wiki</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#现场"><span class="toc-text">现场</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决办法"><span class="toc-text">解决办法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#证书续期"><span class="toc-text">证书续期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成证书"><span class="toc-text">生成证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传证书"><span class="toc-text">上传证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
     </div>
   </div>
 
@@ -281,11 +281,20 @@
 <li>SSL证书紧急切换为之前旧证书</li>
 <li>重新下载新证书，并拼接上中间证书，重新上传</li>
 </ol>
-<p>阿里云lbs：<br>证书管理 &gt;&gt; 创建证书（上传非阿里云签发证书） &gt;&gt; 替换证书</p>
+<h2 id="证书续期"><a href="#证书续期" class="headerlink" title="证书续期"></a>证书续期</h2><p>因我们的域名是在爱名网，故以下有在爱名网操作步骤：</p>
+<p>1、 缴费续期后通过openssl生成新的CSR。参考文档<a href="https://ssl.22.cn/Helper/Details/347（也可使用相关在线工具https://myssl.com/csr_create.html）。" target="_blank" rel="noopener">https://ssl.22.cn/Helper/Details/347（也可使用相关在线工具https://myssl.com/csr_create.html）。</a></p>
+<p>2、得到private.key和csr.pem后，将csr提交到爱名网，并将文件存档。</p>
+<p>3、域名续期进入审核状态，需要联系客服进行认证。认证流程中需要将对方给到的字符串解进行dns解析（@ TXT记录），等待审核通过后可以通过爱名网下载域名的crt签名。</p>
+<h2 id="生成证书"><a href="#生成证书" class="headerlink" title="生成证书"></a>生成证书</h2><p>将中间人证书补充到签发的证书中</p>
+<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/ssl.png">
+<p>因涉及公司隐私，暂不提供参考图。</p>
+<p>1、查找邮箱链接找到链接，进入后填写邮件标题中的订单号和邮箱进入后，点击request access</p>
+<p>2、通过邮件链接下载证书颁发机构的附加证书</p>
+<p>私钥部分：private.key<br>公钥部分：<br>拼装爱名网下载的crt+中间人crt，格式如下（检查空格回车）：</p>
+<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/crt.png">
+<h2 id="上传证书"><a href="#上传证书" class="headerlink" title="上传证书"></a>上传证书</h2><p>阿里云lbs：<br>证书管理 &gt;&gt; 创建证书（上传非阿里云签发证书） &gt;&gt; 替换证书</p>
 <p>七牛云：<br>证书服务 &gt;&gt; 上传自有证书<br>CDN &gt;&gt; 域名管理 &gt;&gt; 配置 &gt;&gt; 更换证书</p>
-<h2 id="内部-Wiki"><a href="#内部-Wiki" class="headerlink" title="内部 Wiki"></a>内部 Wiki</h2><ul>
-<li><a href="http://wiki.neox-inc.com:20200/pages/viewpage.action?pageId=22643625" target="_blank" rel="noopener">http://wiki.neox-inc.com:20200/pages/viewpage.action?pageId=22643625</a></li>
-</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>内部 wiki</p>
 
       
     </div>
