@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="Bing's blog">
+  <meta name="description" content="因更换SSL证书安卓APP和CDN停止服务">
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://dbing.github.io/archives/2020/">
+<link rel="canonical" href="https://dbing.github.io/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/">
 
 
 
@@ -90,11 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title>
-  
-    归档 - Bing's blog
-  
-</title>
+    <title> 因更换SSL证书安卓APP和CDN停止服务 - Bing's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -242,244 +238,125 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          因更换SSL证书安卓APP和CDN停止服务
+        
+      </h1>
 
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            目前共计 32 篇日志
-          </span>
-        </div>
-      
-    
-
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-06
+        </span>
         
         
+      </div>
+    </header>
 
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#现场"><span class="toc-text">现场</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决办法"><span class="toc-text">解决办法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内部-Wiki"><span class="toc-text">内部 Wiki</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h2 id="现场"><a href="#现场" class="headerlink" title="现场"></a>现场</h2><ol>
+<li>网站样式图片全丢，通过<code>network</code>看到所有<code>css</code>、<code>js</code>、<code>image</code>，都指向到<code>static.shenjumiaosuan.com</code>，响应状态<code>502</code>，我们的静态资源使用的是七牛<code>CDN</code>服务，当日因我们的<code>ssl</code>年证书到期，已经更换为新证书。</li>
+</ol>
+<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/cdn.png" title="七牛CDN">
+<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/502.png" width="502">
+<ol start="2">
+<li>安卓开发者反馈，安卓客户端无法打开，所有<code>api</code>均无法正常请求，同时<code>ios</code>确是好的（是不是很惊喜、很意外）。后了解到安卓是需要中间证书。</li>
+</ol>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
+<li>静态CDN域<code>static.shenjumiaosuan.com</code>，通过项目<code>.env</code>配置切换到本站<code>www.shenjumiaosuan.com</code></li>
+<li>SSL证书紧急切换为之前旧证书</li>
+<li>重新下载新证书，并拼接上中间证书，重新上传</li>
+</ol>
+<p>阿里云lbs：<br>证书管理 &gt;&gt; 创建证书（上传非阿里云签发证书） &gt;&gt; 替换证书</p>
+<p>七牛云：<br>证书服务 &gt;&gt; 上传自有证书<br>CDN &gt;&gt; 域名管理 &gt;&gt; 配置 &gt;&gt; 更换证书</p>
+<h2 id="内部-Wiki"><a href="#内部-Wiki" class="headerlink" title="内部 Wiki"></a>内部 Wiki</h2><ul>
+<li><a href="http://wiki.neox-inc.com:20200/pages/viewpage.action?pageId=22643625" target="_blank" rel="noopener">http://wiki.neox-inc.com:20200/pages/viewpage.action?pageId=22643625</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://dbing.github.io">bing</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://dbing.github.io/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/">https://dbing.github.io/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2020</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/ssl证书/">ssl证书</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-06
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/06/因PHP内存超出限制导致首页500/" class="archive-post-link">
-            因PHP内存超出限制导致首页500
-          </a>
-        </span>
-      </div>
+        
+        
+  <nav class="post-nav">
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-06
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/" class="archive-post-link">
-            因更换SSL证书安卓APP和CDN停止服务
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-06
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/06/Python-入门指南/" class="archive-post-link">
-            Python 入门指南
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-06
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/06/anaconda-和-zsh-不兼容问题/" class="archive-post-link">
-            anaconda 和 zsh 不兼容问题
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-06
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/06/opencv-对比度亮度调整/" class="archive-post-link">
-            opencv 对比度亮度调整
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-04
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/04/opencv-研究/" class="archive-post-link">
-            opencv 研究
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-01
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/01/史记/" class="archive-post-link">
-            史记
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            01-29
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/01/29/Docker-基础命令/" class="archive-post-link">
-            Docker 基础命令
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            01-29
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/01/29/Google-cloud-搭建VPN/" class="archive-post-link">
-            Google cloud 搭建VPN
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            01-21
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/01/21/快速搭建Jenkins/" class="archive-post-link">
-            快速搭建Jenkins
-          </a>
-        </span>
-      </div>
-    
-  </section>
-
-  
-  <nav class="pagination">
+      <a class="prev" href="/2020/02/06/因PHP内存超出限制导致首页500/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">因PHP内存超出限制导致首页500</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
     
-      <a class="next" href="/archives/2020/page/2/">
-        <span class="next-text">下一页</span>
+      <a class="next" href="/2020/02/06/Python-入门指南/">
+        <span class="next-text nav-default">Python 入门指南</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -563,6 +440,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     

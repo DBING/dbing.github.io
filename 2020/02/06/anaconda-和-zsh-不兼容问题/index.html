@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="Bing's blog">
+  <meta name="description" content="anaconda 和 zsh 不兼容问题">
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://dbing.github.io/archives/2020/">
+<link rel="canonical" href="https://dbing.github.io/2020/02/06/anaconda-和-zsh-不兼容问题/">
 
 
 
@@ -90,11 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title>
-  
-    归档 - Bing's blog
-  
-</title>
+    <title> anaconda 和 zsh 不兼容问题 - Bing's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -242,244 +238,119 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          anaconda 和 zsh 不兼容问题
+        
+      </h1>
 
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            目前共计 32 篇日志
-          </span>
-        </div>
-      
-    
-
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-06
+        </span>
         
         
+      </div>
+    </header>
 
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#临时解决方法"><span class="toc-text">临时解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>错误场景：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ /Users/bing/.anaconda/navigator/a.tool ; <span class="built_in">exit</span>;</span><br><span class="line">/Users/bing/.anaconda/navigator/a.tool: line 1: syntax error near unexpected token `(<span class="string">'</span></span><br><span class="line"><span class="string">/Users/bing/.anaconda/navigator/a.tool: line 1: `bash --init-file &lt;(echo "source activate /Users/bing/opt/anaconda3/envs/my-opencv;")'</span></span><br></pre></td></tr></table></figure>
+<img src="/2020/02/06/anaconda-和-zsh-不兼容问题/error.png">
+<h2 id="临时解决方法"><a href="#临时解决方法" class="headerlink" title="临时解决方法"></a>临时解决方法</h2><p>切换到<code>bash</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
+<p>通过<code>conda</code>GUI，打开命令行后，再切换到<code>zsh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://iaside.com/archives/455" target="_blank" rel="noopener">https://iaside.com/archives/455</a></li>
+<li><a href="https://github.com/ContinuumIO/anaconda-issues/issues/1831" target="_blank" rel="noopener">github issue</a></li>
+<li><a href="https://stackoverflow.com/questions/54502718/cant-run-anaconda-in-macos-terminal" target="_blank" rel="noopener">stackoverflow</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://dbing.github.io">bing</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://dbing.github.io/2020/02/06/anaconda-和-zsh-不兼容问题/">https://dbing.github.io/2020/02/06/anaconda-和-zsh-不兼容问题/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2020</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/anaconda/">anaconda</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-06
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/06/因PHP内存超出限制导致首页500/" class="archive-post-link">
-            因PHP内存超出限制导致首页500
-          </a>
-        </span>
-      </div>
+        
+        
+  <nav class="post-nav">
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-06
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/" class="archive-post-link">
-            因更换SSL证书安卓APP和CDN停止服务
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-06
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/06/Python-入门指南/" class="archive-post-link">
-            Python 入门指南
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-06
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/06/anaconda-和-zsh-不兼容问题/" class="archive-post-link">
-            anaconda 和 zsh 不兼容问题
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-06
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/06/opencv-对比度亮度调整/" class="archive-post-link">
-            opencv 对比度亮度调整
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-04
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/04/opencv-研究/" class="archive-post-link">
-            opencv 研究
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            02-01
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/02/01/史记/" class="archive-post-link">
-            史记
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            01-29
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/01/29/Docker-基础命令/" class="archive-post-link">
-            Docker 基础命令
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            01-29
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/01/29/Google-cloud-搭建VPN/" class="archive-post-link">
-            Google cloud 搭建VPN
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            01-21
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/01/21/快速搭建Jenkins/" class="archive-post-link">
-            快速搭建Jenkins
-          </a>
-        </span>
-      </div>
-    
-  </section>
-
-  
-  <nav class="pagination">
+      <a class="prev" href="/2020/02/06/Python-入门指南/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Python 入门指南</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
     
-      <a class="next" href="/archives/2020/page/2/">
-        <span class="next-text">下一页</span>
+      <a class="next" href="/2020/02/06/opencv-对比度亮度调整/">
+        <span class="next-text nav-default">opencv 对比度亮度调整</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -563,6 +434,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
