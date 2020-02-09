@@ -444,20 +444,24 @@
 
 
   
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-   <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: '',
-          clientSecret: '',
-          repo: 'dbing.github.io',
-          owner: '',
-          admin: [''],
-          id: location.pathname,
-          distractionFreeMode: ''
-        })
-        gitalk.render('gitalk-container')           
-       </script>
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script type="text/javascript">
+      const gitalk = new Gitalk({
+        clientID: 'a8a6a1c69edff5835251',
+        clientSecret: 'b778a217dc3c41e380564e3875041f06d23707f7',
+        repo: 'dbing.github.io',
+        owner: 'dbing',
+        admin: 'dbing'.split(','),
+        id: '1580965019000', #这个是基于文章时间创建 Issues ，默认是以文章标题作为标签创建 Issues 会导致长标题初始化失败。
+        pagerDirection: 'first',
+        // facebook-like distraction free mode
+        distractionFreeMode: false
+      })
+      gitalk.render('gitalk-container')
+    </script>
+  
 
 
 
