@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Docker 搭建 Gitlab 服务">
+
+
+
+
+  <meta name="keywords" content="Bing's blog">
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Bing's blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1">
+
+
+
+<link rel="canonical" href="https://dbing.github.io/2020/01/15/Docker-搭建-Gitlab-服务/">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1">
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
+</script>
+
+    <title> Docker 搭建 Gitlab 服务 - Bing's blog </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Bing's blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            关于
+          
+        </li>
+      </a>
+    
+      <a href="/links">
+        <li class="mobile-menu-item">
+          
+          
+            友链
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Bing's blog</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              关于
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/links">
+            
+            
+              友链
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Docker 搭建 Gitlab 服务
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-01-15
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-Docker"><span class="toc-text">安装 Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-下快速部署-Gitlab-服务"><span class="toc-text">Docker 下快速部署 Gitlab 服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊场景"><span class="toc-text">特殊场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#批量导入用户"><span class="toc-text">批量导入用户</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>公司使用的<code>bitbucket</code>提供的<code>git</code>远程仓库，为什么选择他历史原因喽，回想第一天克隆一个<code>1G+</code>的<code>repo</code>等待了一天，这个痛苦啊。最近的每次发版都着实的感觉到<code>bitbucket</code>慢的给蜗牛一样（应该是墙的问题每次都得开VPN才能正常玩啥），鉴于此情况下，决定使用自建<code>Gitlab</code>服务，选择华东(上海)地区机房，日本团队的小伙伴测试的速度<code>400M+</code>大小的<code>repo</code>，克隆下来30分钟左右。</p>
+<h2 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h2><p>Ubuntu 安装 Docker，官方文档：<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a></p>
+<ol>
+<li><p>更新 apt 包索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装最新版本的 Docker Engine-Community和containerd</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看安装成功的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">root@jira:~# docker version</span><br><span class="line">Client: Docker Engine - Community</span><br><span class="line"> Version:           19.03.5</span><br><span class="line"> API version:       1.40</span><br><span class="line"> Go version:        go1.12.12</span><br><span class="line"> Git commit:        633a0ea838</span><br><span class="line"> Built:             Wed Nov 13 07:50:12 2019</span><br><span class="line"> OS/Arch:           linux/amd64</span><br><span class="line"> Experimental:      false</span><br><span class="line"> ...</span><br><span class="line"> ...</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Docker-下快速部署-Gitlab-服务"><a href="#Docker-下快速部署-Gitlab-服务" class="headerlink" title="Docker 下快速部署 Gitlab 服务"></a>Docker 下快速部署 Gitlab 服务</h2><p>使用开源的<a href="https://github.com/sameersbn/docker-gitlab" target="_blank" rel="noopener">Gitlab</a> <code>docker-compose.yml</code>快速搭建，</p>
+<p>我计划将<code>gitlab</code>服务放在<code>/usr/local/gitlab</code>目录，故创建了此目录</p>
+<ol>
+<li><p>下载<code>docker-compose.yml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/local/gitlab &amp;&amp; cd /usr/local/gitlab</span><br><span class="line">wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改<code>docker-compose.yml</code>配置项，这里仅贴出修改过的配置项</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 时区</span><br><span class="line">- TZ=Asia/Shanghai</span><br><span class="line">- GITLAB_TIMEZONE=PRC</span><br><span class="line"></span><br><span class="line"># 开启SSL</span><br><span class="line">- GITLAB_HTTPS=true</span><br><span class="line"></span><br><span class="line"># Gitlab 域和端口，域名不要带协议如（http://或https://）</span><br><span class="line">- GITLAB_HOST=git.neox-inc.com</span><br><span class="line">- GITLAB_PORT=443</span><br><span class="line">- GITLAB_SSH_PORT=22</span><br></pre></td></tr></table></figure>
+<p>这里我对外暴露的是<code>9180</code>和<code>9122</code>端口，然后在负载均衡器中配置<code>SSL</code>证书，完成对<code>https</code>的访问，如需<code>ssh</code>方式访问，负载均衡器中还需配置<code>22=&gt;9122</code>的转发，负载均衡器配置图见下图。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">gitlab:</span><br><span class="line">   restart: always</span><br><span class="line">   image: sameersbn/gitlab:12.5.5</span><br><span class="line">   depends_on:</span><br><span class="line">   - redis</span><br><span class="line">   - postgresql</span><br><span class="line">   ports:</span><br><span class="line">   - &quot;9180:80&quot;</span><br><span class="line">   - &quot;9122:22&quot;</span><br><span class="line">   - &quot;443:443&quot;</span><br><span class="line">   volumes:</span><br><span class="line">   - ./gitlab-data:/home/git/data:Z</span><br></pre></td></tr></table></figure>
+<p>为更日后更方便迁移gitlab服务，<code>redis-data</code>、<code>postgresql-data</code>、<code>gitlab-data</code>volumes，这里我分别配置成相对’./‘目录</p>
+<ol start="3">
+<li><p>安装 docker-compose</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install docker-compose</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 gitlab 服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问 gitlab 服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ip:9180</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果你是域名直接解析到本地，那么可以通过域名访问。</p>
+<h2 id="特殊场景"><a href="#特殊场景" class="headerlink" title="特殊场景"></a>特殊场景</h2><p>我司<code>ssl</code>证书统一管理在阿里云负载均衡器上，为了日后方便统一更换过期证书，<code>gitlab</code>服务也使用负载均衡器。通过研究阿里云负载均衡器发现,不支持前端协议<code>http</code>转后端协议<code>tcp</code>。</p>
+<p>那么问题来了，<code>docker-compose</code>启的服务全部都是<code>tcp</code>协议，那么如何完成<code>ssl</code>即<code>http</code>前端协议转后端某个端口的<code>http</code>协议呢？</p>
+<p>经过思考，只得借用<code>nginx</code>转发实现，配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">upstream git.neox-inc.com &#123;</span><br><span class="line">        server ip:9180;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 80 default_server;</span><br><span class="line">        listen [::]:80 default_server;</span><br><span class="line"></span><br><span class="line">        server_name git.neox-inc.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://git.neox-inc.com;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>均衡器中监听配置图</p>
+<img src="/2020/01/15/Docker-搭建-Gitlab-服务/gitlab.png" class="[class names]" title="[width] [height] [阿里云负载均衡器截图 [均衡器配置]]">
+<h2 id="批量导入用户"><a href="#批量导入用户" class="headerlink" title="批量导入用户"></a>批量导入用户</h2><p>参考地址：<a href="https://www.jianshu.com/p/83b06525c946" target="_blank" rel="noopener">https://www.jianshu.com/p/83b06525c946</a></p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://dbing.github.io">bing</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://dbing.github.io/2020/01/15/Docker-搭建-Gitlab-服务/">https://dbing.github.io/2020/01/15/Docker-搭建-Gitlab-服务/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/持续交付/">持续交付</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/01/20/nohup-screen-tmux-远程会话保持/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">nohup screen tmux 远程会话保持</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/01/14/ZSH快捷键/">
+        <span class="next-text nav-default">ZSH快捷键</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="gitalk-container"></div>  
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:itbing@sina.cn" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/dbing" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2018 - 
+    
+    2020
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">bing</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '',
+          clientSecret: '',
+          repo: 'dbing.github.io',
+          owner: '',
+          admin: [''],
+          id: location.pathname,
+          distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
+
+  </body>
+</html>
