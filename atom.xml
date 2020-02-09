@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dbing.github.io/"/>
-  <updated>2020-02-09T12:50:45.178Z</updated>
+  <updated>2020-02-09T12:54:30.263Z</updated>
   <id>https://dbing.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://dbing.github.io/2020/02/09/Hexo-docsify-%E6%B7%BB%E5%8A%A0-Gitalk/"/>
     <id>https://dbing.github.io/2020/02/09/Hexo-docsify-添加-Gitalk/</id>
     <published>2020-02-09T11:48:07.000Z</published>
-    <updated>2020-02-09T12:50:45.178Z</updated>
+    <updated>2020-02-09T12:54:30.263Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Gitalk"><a href="#Gitalk" class="headerlink" title="Gitalk"></a>Gitalk</h2><p><a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md" target="_blank" rel="noopener">官方地址</a></p><blockquote><p>待写….</p></blockquote><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1.Error: Validation Failed.</p><p>解决方法：<a href="https://github.com/gitalk/gitalk/issues/102" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/issues/102</a></p><p>Q2.Error: Issues are disabled for this repo</p><p>解决方法：<a href="https://github.com/imsun/gitment/issues/125" target="_blank" rel="noopener">https://github.com/imsun/gitment/issues/125</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Gitalk"><a href="#Gitalk" class="headerlink" title="Gitalk"></a>Gitalk</h2><p><a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md" target="_blank" rel="noopener">官方地址</a></p><blockquote><p>待写….</p></blockquote><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1.Error: Validation Failed.</p><p>解决方法：<a href="https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482</a></p><p>Q2.Error: Issues are disabled for this repo</p><p>解决方法：<a href="https://github.com/imsun/gitment/issues/125" target="_blank" rel="noopener">https://github.com/imsun/gitment/issues/125</a></p>]]></content>
     
     <summary type="html">
     

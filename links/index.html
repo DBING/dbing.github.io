@@ -355,7 +355,7 @@
           repo: 'dbing.github.io',
           owner: 'dbing',
           admin: ['dbing'],
-          id: location.pathname,
+          id: md5(location.pathname),
           distractionFreeMode: 'true'
         })
         gitalk.render('gitalk-container')           
