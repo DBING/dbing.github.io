@@ -246,6 +246,81 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/">Laravel 5.7 安装 Json Web Tokens (tymon/jwt-auth)</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-03-30
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Laravel/">Laravel</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>本文介绍 Laravel 5.7 框架集成 jwt 操作指南，在官方的 <a href="https://github.com/tymondesigns/jwt-auth/wiki/Installation[external]" title="[wiki]" target="_blank" rel="noopener">wiki</a> 中也有介绍，是使用的<code>0.5.*</code>版本，本文使用的<code>jwt-auth</code>是<code>1.0.0-rc.3</code>版本，切记使用此扩展包的版本不同，集成也会稍有不同，否则你会得到意想不到的问题，根据自己 <code>laravel</code>版本不同使用<code>jwt-auth</code>版本建议如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Laravel version</th>
+<th>jwt-auth version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>4.*</code></td>
+<td><code>0.3.*</code> <code>0.4.*</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>5.*</code> &amp;&amp; <code>&lt;5.5</code></td>
+<td><code>0.5.*</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>5.*</code></td>
+<td><code>1.0.*</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="安装扩展包-jwt-auth"><a href="#安装扩展包-jwt-auth" class="headerlink" title="安装扩展包 jwt-auth"></a>安装扩展包 jwt-auth</h2><p>将扩展包添加到<code>composer.json</code>，添加如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">“require”: &#123;</span><br><span class="line">    ...</span><br><span class="line">    “tymon/jwt-auth”: “1.0.0-rc.3”</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后通过命令更新<code>Composer</code>命令如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer update</span><br></pre></td></tr></table></figure></p>
+          <div class="read-more">
+            <a href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/">PhpStorm配置Xdebug远程调试</a>
         
       </h1>
@@ -451,6 +526,9 @@
     </div>
 
     
+
+      <div id="gitalk-container"></div>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
 
     

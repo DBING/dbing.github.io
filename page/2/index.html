@@ -246,6 +246,66 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/01/21/快速搭建Jenkins/">快速搭建Jenkins</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-01-21
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>研究 Jenkins 一日，简结下结果</p>
+<ol>
+<li><p>利用 gitlab webhooks 配合 jenkins 完成测试服代码自动集成</p>
+</li>
+<li><p>通过 jenkins 发布指定分支或tag代码到生产服务器</p>
+</li>
+</ol>
+<p>对于<code>jenkins</code>的安装，因为环境不同，网络上也有一大把文章，对此先不做介绍。</p>
+<p>对于不会写<code>Jenkinsfile</code>以及不想花费过多时间就想把<code>jenkins</code>玩转，还是有难度的，研究时间有限也不愿意在这上面投入时间了，玩过了才方知感受。</p>
+<h2 id="采坑"><a href="#采坑" class="headerlink" title="采坑"></a>采坑</h2><ol>
+<li><code>jenkins</code>过滤空目录问题</li>
+</ol>
+<p>Send files or execute commands over SSH after the build runs 过滤空目录问题</p>
+<p>解决方式：-&gt;高级-&gt;Make empty dirs【打钩】此项<br>参考地址：<a href="http://ant.apache.org/manual/dirtasks.html#patterns" target="_blank" rel="noopener">http://ant.apache.org/manual/dirtasks.html#patterns</a></p>
+<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
+<li><a href="https://juejin.im/post/5dce6b3a5188254eed5b23a2#heading-4" target="_blank" rel="noopener">https://juejin.im/post/5dce6b3a5188254eed5b23a2#heading-4</a> </li>
+<li><a href="https://www.cnblogs.com/saysmy/p/8806975.html" target="_blank" rel="noopener">https://www.cnblogs.com/saysmy/p/8806975.html</a></li>
+<li><a href="https://yq.aliyun.com/articles/485296?spm=a2c4e.11153940.0.0.69de5f54y6etf3" target="_blank" rel="noopener">https://yq.aliyun.com/articles/485296?spm=a2c4e.11153940.0.0.69de5f54y6etf3</a></li>
+<li><a href="https://www.cloudcared.cn/2792.html" target="_blank" rel="noopener">https://www.cloudcared.cn/2792.html</a></li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/01/20/Nginx-proxy-pass-upstream-resolver/">Nginx proxy_pass upstream resolver</a>
         
       </h1>
@@ -727,47 +787,6 @@
   </article>
 
       
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/06/05/MySQL-中的事务/">MySQL 中的事务</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-06-05
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>编码中事务的使用，不能跨库，不能夸会话</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
       
   <nav class="pagination">
     
@@ -873,6 +892,9 @@
     </div>
 
     
+
+      <div id="gitalk-container"></div>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
 
     
