@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dbing.github.io/"/>
-  <updated>2020-02-10T15:57:50.243Z</updated>
+  <updated>2020-02-14T12:34:29.229Z</updated>
   <id>https://dbing.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac与Linux 使用 scp 文件互相传输</title>
+    <link href="https://dbing.github.io/2020/02/14/Mac%E4%B8%8ELinux-%E4%BD%BF%E7%94%A8-scp-%E6%96%87%E4%BB%B6%E4%BA%92%E7%9B%B8%E4%BC%A0%E8%BE%93/"/>
+    <id>https://dbing.github.io/2020/02/14/Mac与Linux-使用-scp-文件互相传输/</id>
+    <published>2020-02-14T10:22:08.000Z</published>
+    <updated>2020-02-14T12:34:29.229Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="由远端-Linux-传输到本机-Mac"><a href="#由远端-Linux-传输到本机-Mac" class="headerlink" title="由远端 Linux 传输到本机 Mac"></a>由远端 Linux 传输到本机 Mac</h2><p>命令格式 <code>scp username@remote_ip:remote_folder local_folder</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i ~/.ssh/company/neox/demo-key.pem root@ip:/usr/share/demo.csv ./</span><br></pre></td></tr></table></figure><h2 id="由到本机-Mac-传输到远端-Linux"><a href="#由到本机-Mac-传输到远端-Linux" class="headerlink" title="由到本机 Mac 传输到远端 Linux"></a>由到本机 Mac 传输到远端 Linux</h2><p>命令格式 <code>scp local_file remote_username@remote_ip:remote_folder</code></p><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1: permissions are too open</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added <span class="string">'host'</span> (ECDSA) to the list of known hosts.</span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @</span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">Permissions 0644 <span class="keyword">for</span> <span class="string">'/Users/bing/.ssh/company/neox/prod-neox-aliyun-key.pem'</span> are too open.</span><br><span class="line">It is required that your private key files are NOT accessible by others.</span><br><span class="line">This private key will be ignored.</span><br><span class="line">Load key <span class="string">"/Users/bing/.ssh/company/neox/prod-neox-aliyun-key.pem"</span>: bad permissions</span><br></pre></td></tr></table></figure><p>解决办法</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 ~/.ssh/company/neox/prod-neox-aliyun-key.pem</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">chmod 600 ~/.ssh/company/neox/prod-neox-aliyun-key.pem</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;由远端-Linux-传输到本机-Mac&quot;&gt;&lt;a href=&quot;#由远端-Linux-传输到本机-Mac&quot; class=&quot;headerlink&quot; title=&quot;由远端 Linux 传输到本机 Mac&quot;&gt;&lt;/a&gt;由远端 Linux 传输到本机 Mac&lt;/h2&gt;&lt;p&gt;命令
+      
+    
+    </summary>
+    
+    
+      <category term="scp" scheme="https://dbing.github.io/tags/scp/"/>
+    
+  </entry>
   
   <entry>
     <title>李超致兄弟连全体学员、员工、股东的一封信</title>
