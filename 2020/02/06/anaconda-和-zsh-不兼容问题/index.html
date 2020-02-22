@@ -260,7 +260,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#临时解决方法"><span class="toc-text">临时解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#临时解决方法"><span class="toc-text">临时解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我使用了这个方法"><span class="toc-text">我使用了这个方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
     </div>
   </div>
 
@@ -275,6 +275,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
 <p>通过<code>conda</code>GUI，打开命令行后，再切换到<code>zsh</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<h2 id="我使用了这个方法"><a href="#我使用了这个方法" class="headerlink" title="我使用了这个方法"></a>我使用了这个方法</h2><p>This problem is a problem with the zsh environment variable, the solution<br>echo ‘source ~/.bash_profile’ &gt;&gt; ~/.zshrc<br>Append the bash environment variable to zsh</p>
+<p>链接：<a href="https://github.com/ContinuumIO/anaconda-issues/issues/1831#issuecomment-425714638" target="_blank" rel="noopener">https://github.com/ContinuumIO/anaconda-issues/issues/1831#issuecomment-425714638</a></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://iaside.com/archives/455" target="_blank" rel="noopener">https://iaside.com/archives/455</a></li>
 <li><a href="https://github.com/ContinuumIO/anaconda-issues/issues/1831" target="_blank" rel="noopener">github issue</a></li>
