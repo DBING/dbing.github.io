@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dbing.github.io/"/>
-  <updated>2020-02-24T14:58:23.664Z</updated>
+  <updated>2020-02-26T12:14:05.086Z</updated>
   <id>https://dbing.github.io/</id>
   
   <author>
@@ -17,21 +17,80 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Carbon 使用方法一览表</title>
+    <link href="https://dbing.github.io/2020/02/26/Carbon-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E4%B8%80%E8%A7%88%E8%A1%A8/"/>
+    <id>https://dbing.github.io/2020/02/26/Carbon-使用方法一览表/</id>
+    <published>2020-02-26T12:14:05.000Z</published>
+    <updated>2020-02-26T12:14:05.086Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Laravel 下如何设置允许前端跨域请求</title>
+    <link href="https://dbing.github.io/2020/02/26/Laravel-%E4%B8%8B%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/"/>
+    <id>https://dbing.github.io/2020/02/26/Laravel-下如何设置允许前端跨域请求/</id>
+    <published>2020-02-26T12:12:35.000Z</published>
+    <updated>2020-02-29T02:27:38.377Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="问题场景"><a href="#问题场景" class="headerlink" title="问题场景"></a>问题场景</h2><p>我司今日针对B端管理后台做<code>Dashboard</code>升级，采用新分离式开发方式，<code>Laravel</code>提供 API、<code>Vue</code>做视图，自然也遇到了老生常谈跨域问题。</p><h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>出于安全原因，浏览器限制从脚本内发起的跨源HTTP请求。 例如，XMLHttpRequest和Fetch API遵循同源策略。 这意味着使用这些API的Web应用程序只能从加载应用程序的同一个域请求HTTP资源，除非响应报文包含了正确CORS响应头。</p><blockquote><p>CORS：跨域资源共享(CORS) 是一种机制，他使用额外的HTTP头来告诉浏览器，让运行在一个origin(domain)上的WEB应用被准许访问来自不同源服务器上指定的资源。</p></blockquote><p>当一个资源从与该资源本身所在的服务器<em>不同的域</em>、<em>协议或端口</em>请求一个资源时，资源会发起一个跨域 HTTP 请求。</p><p>比如，站点 <a href="http://domain-a.com" target="_blank" rel="noopener">http://domain-a.com</a> 的某 HTML 页面通过 <code>&lt;img&gt;</code> 的 src 请求 <a href="http://domain-b.com/image.jpg。" target="_blank" rel="noopener">http://domain-b.com/image.jpg。</a></p><div style="width:440px;height:306px;"><img src="/2020/02/26/Laravel-下如何设置允许前端跨域请求/CORS_principle.png"></div><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol><li><p>针对<code>Laravel</code>框架下有现成扩展包可用，如：<a href="https://packagist.org/packages/barryvdh/laravel-cors" target="_blank" rel="noopener">barryvdh/laravel-cors</a>，使用方法自行阅读文档（亲测过）。</p></li><li><p>奈何自个公司<code>Laravel</code>框架版本是<code>5.3</code>，上面方法行不通，升级框架不是目前所要做的事情，弄明白原理后自行编写中间件也可以搞定，一句话总结：即需要在响应Header头<code>Access-Control-Allow-Origin:*</code>设置允许的域，这里的<code>*</code>表示允许所有域。</p></li></ol><p>需要注意的是：如果客户端（浏览器）需要携带身份请求，那么也需要服务端在响应中将Header头<code>Access-Control-Allow-Credentials</code>字段设置为<code>true</code>，完整写法<code>Access-Control-Allow-Credentials: true</code>，重点来了（敲黑板划重点）此时的<code>Access-Control-Allow-Origin</code>就不能再设置为<code>*</code>了，必须指定具体的域，比如：<code>http://foo.example</code>，这个域一般是前端开发者本地的<code>http://localhost:9527</code></p><a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><ol><li><p>创建中间件<code>php artisan make:middleware EnableCrosMiddleware</code></p></li><li><p>核心代码：</p></li></ol><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Handle an incoming request.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>  \Illuminate\Http\Request $request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>  \Closure $next</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> mixed</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">($request, Closure $next)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $response = $next($request);</span><br><span class="line">    $origin = $request-&gt;server(<span class="string">'HTTP_ORIGIN'</span>) ? $request-&gt;server(<span class="string">'HTTP_ORIGIN'</span>) : <span class="string">''</span>;</span><br><span class="line">    $allowOrigin = [</span><br><span class="line">        <span class="string">'http://localhost:9527'</span>,</span><br><span class="line">        <span class="string">'http://localhost:9690'</span>,</span><br><span class="line">        <span class="string">'http://10.0.1.38:9527'</span>,</span><br><span class="line">        <span class="string">'http://10.0.1.38:9690'</span></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (in_array($origin, $allowOrigin)) &#123;</span><br><span class="line">        $response-&gt;header(<span class="string">'Access-Control-Allow-Origin'</span>, $origin);</span><br><span class="line">        $response-&gt;header(<span class="string">'Access-Control-Allow-Headers'</span>, <span class="string">'Origin, Content-Type, Cookie, Accept, X-XSRF-TOKEN'</span>);</span><br><span class="line">        $response-&gt;header(<span class="string">'Access-Control-Allow-Methods'</span>, <span class="string">'GET, POST, PATCH, PUT, OPTIONS'</span>);</span><br><span class="line">        $response-&gt;header(<span class="string">'Access-Control-Allow-Credentials'</span>, <span class="string">'true'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $response;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="3"><li>添加到全局路由组，打开<code>app/Http/Kernel.php</code>，在<code>protected $middleware</code>属性中添加上刚刚创建中间件类，我的添加行是<code>\Fujitaro\Http\Middleware\EnableCrosMiddleware::class</code>，（不要照抄咱们的命名空间肯定不同）当然你也可以只添加到<code>api</code>分组下</li></ol><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1：跨域错误提示</p><img src="/2020/02/26/Laravel-下如何设置允许前端跨域请求/cors.png"><p>A1：检查服务端响应头Header<code>Access-Control-Allow-Origin</code>的设置,应该是没有成功</p><p>Q2：非跨域错误提示<br><img src="/2020/02/26/Laravel-下如何设置允许前端跨域请求/x-xsrf-token.png"><br>A2：检查服务端<code>Access-Control-Allow-Headers</code>中是否允许<code>x-xsrf-token</code>，设置允许即可。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;问题场景&quot;&gt;&lt;a href=&quot;#问题场景&quot; class=&quot;headerlink&quot; title=&quot;问题场景&quot;&gt;&lt;/a&gt;问题场景&lt;/h2&gt;&lt;p&gt;我司今日针对B端管理后台做&lt;code&gt;Dashboard&lt;/code&gt;升级，采用新分离式开发方式，&lt;code&gt;Laravel&lt;/code&gt;提供 API、&lt;code&gt;Vue&lt;/code&gt;做视图，自然也遇到了老生常谈跨域问题。&lt;/p&gt;
+&lt;h2 id=&quot;问题原因&quot;&gt;&lt;a href=&quot;#问题原因&quot; class=&quot;headerlink&quot; title=&quot;问题原因&quot;&gt;&lt;/a&gt;问题原因&lt;/h2&gt;&lt;p&gt;出于安全原因，浏览器限制从脚本内发起的跨源HTTP请求。 例如，XMLHttpRequest和Fetch API遵循同源策略。 这意味着使用这些API的Web应用程序只能从加载应用程序的同一个域请求HTTP资源，除非响应报文包含了正确CORS响应头。&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;CORS：跨域资源共享(CORS) 是一种机制，他使用额外的HTTP头来告诉浏览器，让运行在一个origin(domain)上的WEB应用被准许访问来自不同源服务器上指定的资源。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;当一个资源从与该资源本身所在的服务器&lt;em&gt;不同的域&lt;/em&gt;、&lt;em&gt;协议或端口&lt;/em&gt;请求一个资源时，资源会发起一个跨域 HTTP 请求。&lt;/p&gt;
+&lt;p&gt;比如，站点 &lt;a href=&quot;http://domain-a.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://domain-a.com&lt;/a&gt; 的某 HTML 页面通过 &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; 的 src 请求 &lt;a href=&quot;http://domain-b.com/image.jpg。&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://domain-b.com/image.jpg。&lt;/a&gt;&lt;/p&gt;
+&lt;div style=&quot;width:440px;height:306px;&quot;&gt;&lt;img src=&quot;/2020/02/26/Laravel-下如何设置允许前端跨域请求/CORS_principle.png&quot;&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;解决方案&quot;&gt;&lt;a href=&quot;#解决方案&quot; class=&quot;headerlink&quot; title=&quot;解决方案&quot;&gt;&lt;/a&gt;解决方案&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;针对&lt;code&gt;Laravel&lt;/code&gt;框架下有现成扩展包可用，如：&lt;a href=&quot;https://packagist.org/packages/barryvdh/laravel-cors&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;barryvdh/laravel-cors&lt;/a&gt;，使用方法自行阅读文档（亲测过）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;奈何自个公司&lt;code&gt;Laravel&lt;/code&gt;框架版本是&lt;code&gt;5.3&lt;/code&gt;，上面方法行不通，升级框架不是目前所要做的事情，弄明白原理后自行编写中间件也可以搞定，一句话总结：即需要在响应Header头&lt;code&gt;Access-Control-Allow-Origin:*&lt;/code&gt;设置允许的域，这里的&lt;code&gt;*&lt;/code&gt;表示允许所有域。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;需要注意的是：如果客户端（浏览器）需要携带身份请求，那么也需要服务端在响应中将Header头&lt;code&gt;Access-Control-Allow-Credentials&lt;/code&gt;字段设置为&lt;code&gt;true&lt;/code&gt;，完整写法&lt;code&gt;Access-Control-Allow-Credentials: true&lt;/code&gt;，重点来了（敲黑板划重点）此时的&lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt;就不能再设置为&lt;code&gt;*&lt;/code&gt;了，必须指定具体的域，比如：&lt;code&gt;http://foo.example&lt;/code&gt;，这个域一般是前端开发者本地的&lt;code&gt;http://localhost:9527&lt;/code&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="CORS" scheme="https://dbing.github.io/tags/CORS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>每日英语-2020-02-24</title>
     <link href="https://dbing.github.io/2020/02/24/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-2020-02-24/"/>
     <id>https://dbing.github.io/2020/02/24/每日英语-2020-02-24/</id>
     <published>2020-02-24T05:15:46.000Z</published>
-    <updated>2020-02-24T14:58:23.664Z</updated>
+    <updated>2020-02-29T01:10:39.227Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="今日语句"><a href="#今日语句" class="headerlink" title="今日语句"></a>今日语句</h2><ol><li><p>I’m scard of the bear; don’t let it get near me!<br>我怕熊，别让他靠近我！</p></li><li><p>I bought a red chair.<br>我买了一把红色椅子</p></li><li><p>He always wears a shirt and tie to work.<br>他去工作时总是穿衬衫打领带</p></li><li><p>I drink the water because I’m thirsty.<br>我口渴所以喝水</p></li><li><p>My sister and I water the plants.<br>姐姐和我在给植物浇水</p></li><li><p>Milk is a tasty and healthy drink.<br>牛奶是一种可口又健康的饮品</p></li><li><p>Would you like a cup of tea?<br>你要来杯茶么？</p></li><li><p>I want to drink orange juice!<br>我好想喝橘子汁啊！</p></li><li><p>I want to find a job from the newspaper.<br>我想要从报纸上找一份工作</p></li><li><p>I’m very hungry,so i can eat a lot.<br>我很饿，因此我可以吃很多.</p></li><li><p>Fish have very simple lives.<br>鱼过着简单的生活</p></li><li><p>These chickens look so different.<br>这些鸡长得很不一样</p></li><li><p>I’ll have some eggs for breakfast.<br>我早餐会吃一些鸡蛋</p></li><li><p>I’ll cook rice for dinner.<br>晚餐我做米饭</p></li><li><p>The boy is saying sorry to his girlfriend.<br>男孩在给他女朋友道歉</p></li><li><p>She says,”Sure! It’s OK!”<br>她说：“当然了！没问题！”</p></li><li><p>I like the green doll.<br>我喜欢这个绿色的玩偶</p></li><li><p>My bed is so comfortable.<br>我的床相当舒服</p></li><li><p>The box of books is really heavy.<br>这一箱书可真沉啊</p></li><li><p>She will write down her menu on the blackboard.<br>她会把她的菜单写在这块黑板上</p></li><li><p>The black car looks cool and expensive.<br>那辆黑色的车看起来气派豪华</p></li><li><p>The train is about to travel through the building.<br>列车即将穿楼而过</p></li><li><p>Kick the ball into the net.<br>把球踢进网</p></li><li><p>I like to travel by plane.<br>我喜欢乘坐飞机旅行</p></li><li><p>Who is the girl standing behind the boy?<br>站在那个男孩后面的女孩是谁？</p></li><li><p>Where does the door lead to?<br>这个门通向哪里？</p></li><li><p>There is a ball near the hole.<br>那个球在洞口附近</p></li><li><p>On holidays,fireworks light up the sky.<br>在节日，烟火照亮填空</p></li><li><p>The cat is hiding under the sofa.<br>那只猫躲在沙发下面</p></li><li><p>All of my textbooks are on my desk.<br>我所有的课本都在我的书桌上</p></li><li><p>There is an empty desk right here.<br>这里有一张空桌子</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="今日语句"><a href="#今日语句" class="headerlink" title="今日语句"></a>今日语句</h2><ol><li><p>I’m scard of the bear; don’t let it get near me!<br>我怕熊，别让他靠近我！</p></li><li><p>I bought a red chair.<br>我买了一把红色椅子</p></li><li><p>He always wears a shirt and tie to work.<br>他去工作时总是穿衬衫打领带</p></li><li><p>I drink the water because I’m thirsty.<br>我口渴所以喝水</p></li><li><p>My sister and I water the plants.<br>姐姐和我在给植物浇水</p></li><li><p>Milk is a tasty and healthy drink.<br>牛奶是一种可口又健康的饮品</p></li><li><p>Would you like a cup of tea?<br>你要来杯茶么？</p></li></ol><a id="more"></a><ol start="8"><li><p>I want to drink orange juice!<br>我好想喝橘子汁啊！</p></li><li><p>I want to find a job from the newspaper.<br>我想要从报纸上找一份工作</p></li><li><p>I’m very hungry,so i can eat a lot.<br>我很饿，因此我可以吃很多.</p></li><li><p>Fish have very simple lives.<br>鱼过着简单的生活</p></li><li><p>These chickens look so different.<br>这些鸡长得很不一样</p></li><li><p>I’ll have some eggs for breakfast.<br>我早餐会吃一些鸡蛋</p></li><li><p>I’ll cook rice for dinner.<br>晚餐我做米饭</p></li><li><p>The boy is saying sorry to his girlfriend.<br>男孩在给他女朋友道歉</p></li><li><p>She says,”Sure! It’s OK!”<br>她说：“当然了！没问题！”</p></li><li><p>I like the green doll.<br>我喜欢这个绿色的玩偶</p></li><li><p>My bed is so comfortable.<br>我的床相当舒服</p></li><li><p>The box of books is really heavy.<br>这一箱书可真沉啊</p></li><li><p>She will write down her menu on the blackboard.<br>她会把她的菜单写在这块黑板上</p></li><li><p>The black car looks cool and expensive.<br>那辆黑色的车看起来气派豪华</p></li><li><p>The train is about to travel through the building.<br>列车即将穿楼而过</p></li><li><p>Kick the ball into the net.<br>把球踢进网</p></li><li><p>I like to travel by plane.<br>我喜欢乘坐飞机旅行</p></li><li><p>Who is the girl standing behind the boy?<br>站在那个男孩后面的女孩是谁？</p></li><li><p>Where does the door lead to?<br>这个门通向哪里？</p></li><li><p>There is a ball near the hole.<br>那个球在洞口附近</p></li><li><p>On holidays,fireworks light up the sky.<br>在节日，烟火照亮填空</p></li><li><p>The cat is hiding under the sofa.<br>那只猫躲在沙发下面</p></li><li><p>All of my textbooks are on my desk.<br>我所有的课本都在我的书桌上</p></li><li><p>There is an empty desk right here.<br>这里有一张空桌子</p></li></ol>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;今日语句&quot;&gt;&lt;a href=&quot;#今日语句&quot; class=&quot;headerlink&quot; title=&quot;今日语句&quot;&gt;&lt;/a&gt;今日语句&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;I’m scard of the bear; don’t let it get near me!&lt;br&gt;我
-      
+      &lt;h2 id=&quot;今日语句&quot;&gt;&lt;a href=&quot;#今日语句&quot; class=&quot;headerlink&quot; title=&quot;今日语句&quot;&gt;&lt;/a&gt;今日语句&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;I’m scard of the bear; don’t let it get near me!&lt;br&gt;我怕熊，别让他靠近我！&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I bought a red chair.&lt;br&gt;我买了一把红色椅子&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;He always wears a shirt and tie to work.&lt;br&gt;他去工作时总是穿衬衫打领带&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I drink the water because I’m thirsty.&lt;br&gt;我口渴所以喝水&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;My sister and I water the plants.&lt;br&gt;姐姐和我在给植物浇水&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Milk is a tasty and healthy drink.&lt;br&gt;牛奶是一种可口又健康的饮品&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Would you like a cup of tea?&lt;br&gt;你要来杯茶么？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
     
     </summary>
     
@@ -47,7 +106,7 @@
     <link href="https://dbing.github.io/2020/02/22/opencv-%E8%83%8C%E6%99%AF%E5%8E%BB%E9%99%A4%E5%92%8C%E6%9B%B4%E6%8D%A2/"/>
     <id>https://dbing.github.io/2020/02/22/opencv-背景去除和更换/</id>
     <published>2020-02-22T04:32:15.000Z</published>
-    <updated>2020-02-22T10:03:39.901Z</updated>
+    <updated>2020-02-29T01:23:32.243Z</updated>
     
     <content type="html"><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>上一个课题，已经实现手动标注后，已经可以在视频流中追踪到物体，<br>继续的研究，如何做到踢出背景干扰完成自动标注物体，这是目前想去实现的目标。终极目标是将摄像头捕捉到的视频流（单一背景色），剔除背景后自动画上标注框（最小矩形）</p><h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><img src="/2020/02/22/opencv-背景去除和更换/remove-background-example-two.jpg"><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><a href="https://www.learnopencv.com/applications-of-foreground-background-separation-with-semantic-segmentation/" target="_blank" rel="noopener">文章</a></p><p><a href="https://github.com/spmallick/learnopencv/tree/master/app-seperation-semseg" target="_blank" rel="noopener">代码</a></p><p>相关推荐文章:<br><a href="https://www.learnopencv.com/simple-background-estimation-in-videos-using-opencv-c-python/" target="_blank" rel="noopener">simple-background-estimation-in-videos-using-opencv-c-python</a><br><a href="https://www.learnopencv.com/pytorch-for-beginners-semantic-segmentation-using-torchvision/" target="_blank" rel="noopener">pytorch-for-beginners-semantic-segmentation-using-torchvision</a></p><h2 id="采坑"><a href="#采坑" class="headerlink" title="采坑"></a>采坑</h2><p>Q1: from torchvision import models No module named ‘torchvision’</p><p>A1: 如果出现这个错误，不用怀疑人生、不用质疑自己，认真检查自己开发环境是否安装了<code>torchvision</code>，如果确定安装了也不用慌，检查版本<code>pytorch</code>版本至少<code>1.4.0</code>,<code>torchvision</code>版本<code>0.5.0</code>，我的环境是使用的<code>Anaconda</code>，通过面板安装只能看到<code>1.3.0</code>版本，下面是我的安装命令，指定安装到<code>-n</code>是指定安装到<code>my-opencv</code>环境下。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -n my-opencv pytorch=1.4.0 torchvision -c pytorch</span><br></pre></td></tr></table></figure><p>查看版本:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">import torchvision</span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="comment"># cuda 是否开启</span></span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure><p><a href="https://pytorch.org/get-started/locally/#mac-anaconda" target="_blank" rel="noopener">官方安装文档</a></p><p><a href="https://pytorch.org/get-started/locally/#anaconda" target="_blank" rel="noopener">https://pytorch.org/get-started/locally/#anaconda</a></p><hr><p>Q2: AssertionError: Torch not compiled with CUDA enabled</p><p>A2: Mac没有英伟达显卡，么有办法使用 <code>cuda</code>加速，可以使用<code>Cpu</code>，调整代码便可以继续愉快的玩耍，代码见<a href="https://github.com/spmallick/learnopencv/issues/346" target="_blank" rel="noopener">issue</a></p><p>查看<code>torch</code>是否开启了<code>cuda</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import torch</span><br><span class="line">&gt;&gt;&gt; torch.__version__</span><br><span class="line"><span class="string">'1.4.0'</span></span><br><span class="line">&gt;&gt;&gt; torch.cuda.is_available()</span><br><span class="line">False</span><br></pre></td></tr></table></figure>]]></content>
     

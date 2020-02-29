@@ -246,6 +246,120 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/02/10/李超致兄弟连全体学员、员工、股东的一封信/">李超致兄弟连全体学员、员工、股东的一封信</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-10
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/记事/">记事</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>平日里我是一个不刷「抖音」、不刷「微博」、不刷「头条」、偶尔刷刷「人民日报」、微信公众号技术文章，每天沉浸于自个的工作和所关注的那个点的领域，感觉自个不像个活在当下21世纪的。</p>
+<p>今天朋友分享过来一篇文章<a href="https://mp.weixin.qq.com/s/Tcew-SDseA7fzW_e4LivMA" target="_blank" rel="noopener">致兄弟连全体学员、员工、股东的一封信</a>，这是这次「新型冠状病毒疫情」期间更有感触的消息了，身边一位北京老朋友从里面学出来的，自己「北京八维研修学院」、「上海弘烨」干了3年教育，也晓得兄弟连在同行中的体量，他没能挺过这冬天还真是出乎意料。</p>
+<p>从这封信中我读出来了两种味道，一味是：因为疫情问题，如他所说恢复时间根据疫情防控工作情况另行通知，让一直亏损的兄弟连无疑是雪上加霜，导致最终没能挺过来。教育行业的利润怎样是行业中有目共睹的，生源决定命脉「入口」，结果系着生源「出口」。我的孙院长曾这么给我说过，把握住这两口也就把握住了学校。想想不无道理。他从零做到了1000多学员的规模用2年的时间。可谓速度之快。<code>PHP</code>的大环境在18、19年就开始出现下滑趋势，19年尤其不怎么好的情况。同样不好的处境还有我一个上海创业开培训的老同事，机构就先不说，说了你也不晓得。</p>
+<p>二味是：有这么一位义无反馈支持自己的妻子，我想这也应该是他成功的原因吧。</p>
+<p>最后道别兄弟连、保重李超。</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/02/09/Hexo-docsify-添加-Gitalk/">Hexo docsify 添加 Gitalk</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-09
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="Gitalk"><a href="#Gitalk" class="headerlink" title="Gitalk"></a>Gitalk</h2><p><a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md" target="_blank" rel="noopener">官方地址</a></p>
+<p><a href="https://gitalk.github.io/" target="_blank" rel="noopener">体验地址</a></p>
+<blockquote>
+<p>为 Hexo 的 <code>even</code>主题添加<code>gitalk</code>评论系统</p>
+</blockquote>
+<h2 id="创建-gitalk-文件"><a href="#创建-gitalk-文件" class="headerlink" title="创建 gitalk 文件"></a>创建 gitalk 文件</h2><p>在<code>themes/even/layout/_script/_comments</code>目录下新增<code>gitalk.swig</code>文件，代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.comments &amp;&amp; theme.gitalk.enable %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('js/src') &#125;&#125;/md5.min.js?v=&#123;&#123; theme.version &#125;&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        var gitalk = new Gitalk(&#123;</span></span><br><span class="line"><span class="undefined">          clientID: '&#123;&#123; theme.gitalk.clientID &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          clientSecret: '&#123;&#123; theme.gitalk.clientSecret &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          repo: '&#123;&#123; theme.gitalk.repo &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          owner: '&#123;&#123; theme.gitalk.owner &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          admin: ['&#123;&#123; theme.gitalk.admin &#125;&#125;'],</span></span><br><span class="line"><span class="undefined">          id: md5(location.pathname),</span></span><br><span class="line"><span class="undefined">          distractionFreeMode: '&#123;&#123; theme.gitalk.distractionFreeMode &#125;&#125;'</span></span><br><span class="line"><span class="undefined">        &#125;)</span></span><br><span class="line"><span class="undefined">        gitalk.render('gitalk-container')</span></span><br><span class="line"><span class="undefined">       </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>为了解决「常见问题」中1，这里引用<code>md5.min.js</code>文件，然后将<code>id</code>，通过<code>md5</code>函数加密后再请求<code>github issue</code>API，<code>md5.min.js</code>文件我放在<code>themes/even/source/js/src/md5.min.js</code>目录，当然你也可以引入远程地址，<a href="https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js" target="_blank" rel="noopener">md5库地址</a></p>
+<h2 id="添加-gitalk-判断逻辑"><a href="#添加-gitalk-判断逻辑" class="headerlink" title="添加 gitalk 判断逻辑"></a>添加 gitalk 判断逻辑</h2><p><code>themes/even/layout/_partial/comments.swig</code>添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% elseif theme.gitalk.enable %&#125;</span><br><span class="line">    &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;  </span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<code>if elseif endif</code> 语法。</p>
+</blockquote>
+<h2 id="引入-gitalk"><a href="#引入-gitalk" class="headerlink" title="引入 gitalk"></a>引入 gitalk</h2><p>在<code>themes/even/layout/_script/comments.swig</code>文件中引入<code>gitalk.swig</code>文件，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.gitalk.enable %&#125;</span><br><span class="line">  &#123;% include &apos;_comments/gitalk.swig&apos; %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="配置-gitalk"><a href="#配置-gitalk" class="headerlink" title="配置 gitalk"></a>配置 gitalk</h2><p>配置<code>themes/even/_config.yml</code>中关于<code>gitalk</code>的配置，新增代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># more info please open https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  clientID: xxxxxxx</span><br><span class="line">  clientSecret: yyyyyyyyyyy</span><br><span class="line">  repo: &apos;dbing.github.io&apos;</span><br><span class="line">  owner: &apos;dbing&apos;</span><br><span class="line">  admin: &apos;dbing&apos;</span><br><span class="line">  distractionFreeMode: true</span><br></pre></td></tr></table></figure>
+<p>没有<code>clientID</code>和<code>clientSecret</code>，<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">点击申请</a>，配置完以上恭喜你，重新生产部署一下你的博客文章命令：<code>hexo g -d</code>，打开文章详情页看看是否多出了评论框 :)</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1.Error: Validation Failed.</p>
+<p>解决方法：<a href="https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482</a></p>
+<p>打开<code>Network</code>看请求，多半是因为<code>github issues</code>接口错误，以上方案给出的很详细。</p>
+<p>Q2.Error: Issues are disabled for this repo</p>
+<p>解决方法：<a href="https://github.com/imsun/gitment/issues/125" target="_blank" rel="noopener">https://github.com/imsun/gitment/issues/125</a></p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/02/06/因PHP内存超出限制导致首页500/">因PHP内存超出限制导致首页500</a>
         
       </h1>
@@ -672,126 +786,6 @@
 <p>通过<code>inspect</code>查看，默认<code>Mounts</code>挂载位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect CONTAINER ID</span><br></pre></td></tr></table></figure></p>
 <p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&quot;Mounts&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;Type&quot;: &quot;volume&quot;,</span><br><span class="line">                &quot;Name&quot;: &quot;aaa&quot;,</span><br><span class="line">                &quot;Source&quot;: &quot;/var/lib/docker/volumes/aaa/_data&quot;,</span><br><span class="line">                &quot;Destination&quot;: &quot;/work&quot;,</span><br><span class="line">                &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">                &quot;Mode&quot;: &quot;z&quot;,</span><br><span class="line">                &quot;RW&quot;: true,</span><br><span class="line">                &quot;Propagation&quot;: &quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br></pre></td></tr></table></figure></p>
 <h2 id="退出容器自动销毁"><a href="#退出容器自动销毁" class="headerlink" title="退出容器自动销毁"></a>退出容器自动销毁</h2><p>通过<code>--rm</code>参数完成</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/01/29/Google-cloud-搭建VPN/">Google cloud 搭建VPN</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-29
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>安装步骤来源网络文章，这里仅用来做Mark记录，具体步骤见参考地址。</p>
-<h2 id="开通Google-Cloud"><a href="#开通Google-Cloud" class="headerlink" title="开通Google Cloud"></a>开通Google Cloud</h2><p>国内已关闭信用卡可申请开通300$体验金渠道。</p>
-<h2 id="创建Compute-Engine"><a href="#创建Compute-Engine" class="headerlink" title="创建Compute Engine"></a>创建Compute Engine</h2><ol>
-<li>区域（台湾）</li>
-<li>机器类型 g1-small 即可</li>
-</ol>
-<h2 id="配置VPC网络"><a href="#配置VPC网络" class="headerlink" title="配置VPC网络"></a>配置VPC网络</h2><ol>
-<li>防火墙规则，【入站】和【出站】所有协议允许</li>
-<li>外部 IP 地址，类型设置为【静态】</li>
-</ol>
-<h2 id="执行安装脚本"><a href="#执行安装脚本" class="headerlink" title="执行安装脚本"></a>执行安装脚本</h2><p>客户端 shadowsocks，选择 shadowsocksR: 输入: 2</p>
-<h2 id="朋友推荐的方法"><a href="#朋友推荐的方法" class="headerlink" title="朋友推荐的方法"></a>朋友推荐的方法</h2><p>用以上方式在谷歌云搞，老是被封，听同事分享了一下他自建的方式，自己一个人很是稳定</p>
-<p>服务买自：<a href="https://www.dogyun.com/" target="_blank" rel="noopener">https://www.dogyun.com/</a> 和 <a href="https://www.gigsgigscloud.com/" target="_blank" rel="noopener">https://www.gigsgigscloud.com/</a></p>
-<p>建议买在日本（cn2 gia）专线（据说），开源程序采用：(v2ray)[<a href="https://github.com/v2ray/v2ray-core]" target="_blank" rel="noopener">https://github.com/v2ray/v2ray-core]</a></p>
-<p>一篇文章：<a href="https://www.zrblog.net/22546.html" target="_blank" rel="noopener">https://www.zrblog.net/22546.html</a></p>
-<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
-<li><a href="https://vschk.wordpress.com/2019/07/05/%E8%B0%B7%E6%AD%8C%E4%BA%91%EF%BC%88google-cloud%EF%BC%89%E6%90%AD%E5%BB%BAssr%E6%95%99%E7%A8%8B%EF%BC%8C%E5%85%8D%E5%AE%89%E8%A3%9Dbbr/" target="_blank" rel="noopener">https://vschk.wordpress.com/2019/07/05/%E8%B0%B7%E6%AD%8C%E4%BA%91%EF%BC%88google-cloud%EF%BC%89%E6%90%AD%E5%BB%BAssr%E6%95%99%E7%A8%8B%EF%BC%8C%E5%85%8D%E5%AE%89%E8%A3%9Dbbr/</a></li>
-<li><a href="https://www.veryopen.org/?p=3580" target="_blank" rel="noopener">https://www.veryopen.org/?p=3580</a></li>
-<li><a href="https://fengooge.blogspot.com/2019/06/how-to-build-shadowsocks-with-google-cloud-platform.html" target="_blank" rel="noopener">https://fengooge.blogspot.com/2019/06/how-to-build-shadowsocks-with-google-cloud-platform.html</a></li>
-</ul>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/01/21/快速搭建Jenkins/">快速搭建Jenkins</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-21
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>研究 Jenkins 一日，简结下结果</p>
-<ol>
-<li><p>利用 gitlab webhooks 配合 jenkins 完成测试服代码自动集成</p>
-</li>
-<li><p>通过 jenkins 发布指定分支或tag代码到生产服务器</p>
-</li>
-</ol>
-<p>对于<code>jenkins</code>的安装，因为环境不同，网络上也有一大把文章，对此先不做介绍。</p>
-<p>对于不会写<code>Jenkinsfile</code>以及不想花费过多时间就想把<code>jenkins</code>玩转，还是有难度的，研究时间有限也不愿意在这上面投入时间了，玩过了才方知感受。</p>
-<h2 id="采坑"><a href="#采坑" class="headerlink" title="采坑"></a>采坑</h2><ol>
-<li><code>jenkins</code>过滤空目录问题</li>
-</ol>
-<p>Send files or execute commands over SSH after the build runs 过滤空目录问题</p>
-<p>解决方式：-&gt;高级-&gt;Make empty dirs【打钩】此项<br>参考地址：<a href="http://ant.apache.org/manual/dirtasks.html#patterns" target="_blank" rel="noopener">http://ant.apache.org/manual/dirtasks.html#patterns</a></p>
-<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
-<li><a href="https://juejin.im/post/5dce6b3a5188254eed5b23a2#heading-4" target="_blank" rel="noopener">https://juejin.im/post/5dce6b3a5188254eed5b23a2#heading-4</a> </li>
-<li><a href="https://www.cnblogs.com/saysmy/p/8806975.html" target="_blank" rel="noopener">https://www.cnblogs.com/saysmy/p/8806975.html</a></li>
-<li><a href="https://yq.aliyun.com/articles/485296?spm=a2c4e.11153940.0.0.69de5f54y6etf3" target="_blank" rel="noopener">https://yq.aliyun.com/articles/485296?spm=a2c4e.11153940.0.0.69de5f54y6etf3</a></li>
-<li><a href="https://www.cloudcared.cn/2792.html" target="_blank" rel="noopener">https://www.cloudcared.cn/2792.html</a></li>
-</ul>
 
         
       

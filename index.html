@@ -246,6 +246,105 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/02/26/Carbon-使用方法一览表/">Carbon 使用方法一览表</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-26
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/02/26/Laravel-下如何设置允许前端跨域请求/">Laravel 下如何设置允许前端跨域请求</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-26
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="问题场景"><a href="#问题场景" class="headerlink" title="问题场景"></a>问题场景</h2><p>我司今日针对B端管理后台做<code>Dashboard</code>升级，采用新分离式开发方式，<code>Laravel</code>提供 API、<code>Vue</code>做视图，自然也遇到了老生常谈跨域问题。</p>
+<h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>出于安全原因，浏览器限制从脚本内发起的跨源HTTP请求。 例如，XMLHttpRequest和Fetch API遵循同源策略。 这意味着使用这些API的Web应用程序只能从加载应用程序的同一个域请求HTTP资源，除非响应报文包含了正确CORS响应头。</p>
+<blockquote><p>CORS：跨域资源共享(CORS) 是一种机制，他使用额外的HTTP头来告诉浏览器，让运行在一个origin(domain)上的WEB应用被准许访问来自不同源服务器上指定的资源。</p>
+</blockquote>
+<p>当一个资源从与该资源本身所在的服务器<em>不同的域</em>、<em>协议或端口</em>请求一个资源时，资源会发起一个跨域 HTTP 请求。</p>
+<p>比如，站点 <a href="http://domain-a.com" target="_blank" rel="noopener">http://domain-a.com</a> 的某 HTML 页面通过 <code>&lt;img&gt;</code> 的 src 请求 <a href="http://domain-b.com/image.jpg。" target="_blank" rel="noopener">http://domain-b.com/image.jpg。</a></p>
+<div style="width:440px;height:306px;"><img src="/2020/02/26/Laravel-下如何设置允许前端跨域请求/CORS_principle.png"></div>
+
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
+<li><p>针对<code>Laravel</code>框架下有现成扩展包可用，如：<a href="https://packagist.org/packages/barryvdh/laravel-cors" target="_blank" rel="noopener">barryvdh/laravel-cors</a>，使用方法自行阅读文档（亲测过）。</p>
+</li>
+<li><p>奈何自个公司<code>Laravel</code>框架版本是<code>5.3</code>，上面方法行不通，升级框架不是目前所要做的事情，弄明白原理后自行编写中间件也可以搞定，一句话总结：即需要在响应Header头<code>Access-Control-Allow-Origin:*</code>设置允许的域，这里的<code>*</code>表示允许所有域。</p>
+</li>
+</ol>
+<p>需要注意的是：如果客户端（浏览器）需要携带身份请求，那么也需要服务端在响应中将Header头<code>Access-Control-Allow-Credentials</code>字段设置为<code>true</code>，完整写法<code>Access-Control-Allow-Credentials: true</code>，重点来了（敲黑板划重点）此时的<code>Access-Control-Allow-Origin</code>就不能再设置为<code>*</code>了，必须指定具体的域，比如：<code>http://foo.example</code>，这个域一般是前端开发者本地的<code>http://localhost:9527</code></p>
+          <div class="read-more">
+            <a href="/2020/02/26/Laravel-下如何设置允许前端跨域请求/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/02/24/每日英语-2020-02-24/">每日英语-2020-02-24</a>
         
       </h1>
@@ -273,6 +372,8 @@
       
         
         
+          
+        
 
         
           <h2 id="今日语句"><a href="#今日语句" class="headerlink" title="今日语句"></a>今日语句</h2><ol>
@@ -290,56 +391,10 @@
 </li>
 <li><p>Would you like a cup of tea?<br>你要来杯茶么？</p>
 </li>
-<li><p>I want to drink orange juice!<br>我好想喝橘子汁啊！</p>
-</li>
-<li><p>I want to find a job from the newspaper.<br>我想要从报纸上找一份工作</p>
-</li>
-<li><p>I’m very hungry,so i can eat a lot.<br>我很饿，因此我可以吃很多.</p>
-</li>
-<li><p>Fish have very simple lives.<br>鱼过着简单的生活</p>
-</li>
-<li><p>These chickens look so different.<br>这些鸡长得很不一样</p>
-</li>
-<li><p>I’ll have some eggs for breakfast.<br>我早餐会吃一些鸡蛋</p>
-</li>
-<li><p>I’ll cook rice for dinner.<br>晚餐我做米饭</p>
-</li>
-<li><p>The boy is saying sorry to his girlfriend.<br>男孩在给他女朋友道歉</p>
-</li>
-<li><p>She says,”Sure! It’s OK!”<br>她说：“当然了！没问题！”</p>
-</li>
-<li><p>I like the green doll.<br>我喜欢这个绿色的玩偶</p>
-</li>
-<li><p>My bed is so comfortable.<br>我的床相当舒服</p>
-</li>
-<li><p>The box of books is really heavy.<br>这一箱书可真沉啊</p>
-</li>
-<li><p>She will write down her menu on the blackboard.<br>她会把她的菜单写在这块黑板上</p>
-</li>
-<li><p>The black car looks cool and expensive.<br>那辆黑色的车看起来气派豪华</p>
-</li>
-<li><p>The train is about to travel through the building.<br>列车即将穿楼而过</p>
-</li>
-<li><p>Kick the ball into the net.<br>把球踢进网</p>
-</li>
-<li><p>I like to travel by plane.<br>我喜欢乘坐飞机旅行</p>
-</li>
-<li><p>Who is the girl standing behind the boy?<br>站在那个男孩后面的女孩是谁？</p>
-</li>
-<li><p>Where does the door lead to?<br>这个门通向哪里？</p>
-</li>
-<li><p>There is a ball near the hole.<br>那个球在洞口附近</p>
-</li>
-<li><p>On holidays,fireworks light up the sky.<br>在节日，烟火照亮填空</p>
-</li>
-<li><p>The cat is hiding under the sofa.<br>那只猫躲在沙发下面</p>
-</li>
-<li><p>All of my textbooks are on my desk.<br>我所有的课本都在我的书桌上</p>
-</li>
-<li><p>There is an empty desk right here.<br>这里有一张空桌子</p>
-</li>
 </ol>
-
+          <div class="read-more">
+            <a href="/2020/02/24/每日英语-2020-02-24/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>
@@ -692,120 +747,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added <span class="string">'host'</span> (ECDSA) to the list of known hosts.</span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @</span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">Permissions 0644 <span class="keyword">for</span> <span class="string">'/Users/bing/.ssh/company/neox/prod-neox-aliyun-key.pem'</span> are too open.</span><br><span class="line">It is required that your private key files are NOT accessible by others.</span><br><span class="line">This private key will be ignored.</span><br><span class="line">Load key <span class="string">"/Users/bing/.ssh/company/neox/prod-neox-aliyun-key.pem"</span>: bad permissions</span><br></pre></td></tr></table></figure>
 <p>解决办法</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 ~/.ssh/company/neox/prod-neox-aliyun-key.pem</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">chmod 600 ~/.ssh/company/neox/prod-neox-aliyun-key.pem</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/10/李超致兄弟连全体学员、员工、股东的一封信/">李超致兄弟连全体学员、员工、股东的一封信</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-10
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/记事/">记事</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>平日里我是一个不刷「抖音」、不刷「微博」、不刷「头条」、偶尔刷刷「人民日报」、微信公众号技术文章，每天沉浸于自个的工作和所关注的那个点的领域，感觉自个不像个活在当下21世纪的。</p>
-<p>今天朋友分享过来一篇文章<a href="https://mp.weixin.qq.com/s/Tcew-SDseA7fzW_e4LivMA" target="_blank" rel="noopener">致兄弟连全体学员、员工、股东的一封信</a>，这是这次「新型冠状病毒疫情」期间更有感触的消息了，身边一位北京老朋友从里面学出来的，自己「北京八维研修学院」、「上海弘烨」干了3年教育，也晓得兄弟连在同行中的体量，他没能挺过这冬天还真是出乎意料。</p>
-<p>从这封信中我读出来了两种味道，一味是：因为疫情问题，如他所说恢复时间根据疫情防控工作情况另行通知，让一直亏损的兄弟连无疑是雪上加霜，导致最终没能挺过来。教育行业的利润怎样是行业中有目共睹的，生源决定命脉「入口」，结果系着生源「出口」。我的孙院长曾这么给我说过，把握住这两口也就把握住了学校。想想不无道理。他从零做到了1000多学员的规模用2年的时间。可谓速度之快。<code>PHP</code>的大环境在18、19年就开始出现下滑趋势，19年尤其不怎么好的情况。同样不好的处境还有我一个上海创业开培训的老同事，机构就先不说，说了你也不晓得。</p>
-<p>二味是：有这么一位义无反馈支持自己的妻子，我想这也应该是他成功的原因吧。</p>
-<p>最后道别兄弟连、保重李超。</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/09/Hexo-docsify-添加-Gitalk/">Hexo docsify 添加 Gitalk</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-09
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="Gitalk"><a href="#Gitalk" class="headerlink" title="Gitalk"></a>Gitalk</h2><p><a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md" target="_blank" rel="noopener">官方地址</a></p>
-<p><a href="https://gitalk.github.io/" target="_blank" rel="noopener">体验地址</a></p>
-<blockquote>
-<p>为 Hexo 的 <code>even</code>主题添加<code>gitalk</code>评论系统</p>
-</blockquote>
-<h2 id="创建-gitalk-文件"><a href="#创建-gitalk-文件" class="headerlink" title="创建 gitalk 文件"></a>创建 gitalk 文件</h2><p>在<code>themes/even/layout/_script/_comments</code>目录下新增<code>gitalk.swig</code>文件，代码如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.comments &amp;&amp; theme.gitalk.enable %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('js/src') &#125;&#125;/md5.min.js?v=&#123;&#123; theme.version &#125;&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        var gitalk = new Gitalk(&#123;</span></span><br><span class="line"><span class="undefined">          clientID: '&#123;&#123; theme.gitalk.clientID &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          clientSecret: '&#123;&#123; theme.gitalk.clientSecret &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          repo: '&#123;&#123; theme.gitalk.repo &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          owner: '&#123;&#123; theme.gitalk.owner &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          admin: ['&#123;&#123; theme.gitalk.admin &#125;&#125;'],</span></span><br><span class="line"><span class="undefined">          id: md5(location.pathname),</span></span><br><span class="line"><span class="undefined">          distractionFreeMode: '&#123;&#123; theme.gitalk.distractionFreeMode &#125;&#125;'</span></span><br><span class="line"><span class="undefined">        &#125;)</span></span><br><span class="line"><span class="undefined">        gitalk.render('gitalk-container')</span></span><br><span class="line"><span class="undefined">       </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>为了解决「常见问题」中1，这里引用<code>md5.min.js</code>文件，然后将<code>id</code>，通过<code>md5</code>函数加密后再请求<code>github issue</code>API，<code>md5.min.js</code>文件我放在<code>themes/even/source/js/src/md5.min.js</code>目录，当然你也可以引入远程地址，<a href="https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js" target="_blank" rel="noopener">md5库地址</a></p>
-<h2 id="添加-gitalk-判断逻辑"><a href="#添加-gitalk-判断逻辑" class="headerlink" title="添加 gitalk 判断逻辑"></a>添加 gitalk 判断逻辑</h2><p><code>themes/even/layout/_partial/comments.swig</code>添加如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% elseif theme.gitalk.enable %&#125;</span><br><span class="line">    &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;  </span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：<code>if elseif endif</code> 语法。</p>
-</blockquote>
-<h2 id="引入-gitalk"><a href="#引入-gitalk" class="headerlink" title="引入 gitalk"></a>引入 gitalk</h2><p>在<code>themes/even/layout/_script/comments.swig</code>文件中引入<code>gitalk.swig</code>文件，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.gitalk.enable %&#125;</span><br><span class="line">  &#123;% include &apos;_comments/gitalk.swig&apos; %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="配置-gitalk"><a href="#配置-gitalk" class="headerlink" title="配置 gitalk"></a>配置 gitalk</h2><p>配置<code>themes/even/_config.yml</code>中关于<code>gitalk</code>的配置，新增代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># more info please open https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  clientID: xxxxxxx</span><br><span class="line">  clientSecret: yyyyyyyyyyy</span><br><span class="line">  repo: &apos;dbing.github.io&apos;</span><br><span class="line">  owner: &apos;dbing&apos;</span><br><span class="line">  admin: &apos;dbing&apos;</span><br><span class="line">  distractionFreeMode: true</span><br></pre></td></tr></table></figure>
-<p>没有<code>clientID</code>和<code>clientSecret</code>，<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">点击申请</a>，配置完以上恭喜你，重新生产部署一下你的博客文章命令：<code>hexo g -d</code>，打开文章详情页看看是否多出了评论框 :)</p>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1.Error: Validation Failed.</p>
-<p>解决方法：<a href="https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482</a></p>
-<p>打开<code>Network</code>看请求，多半是因为<code>github issues</code>接口错误，以上方案给出的很详细。</p>
-<p>Q2.Error: Issues are disabled for this repo</p>
-<p>解决方法：<a href="https://github.com/imsun/gitment/issues/125" target="_blank" rel="noopener">https://github.com/imsun/gitment/issues/125</a></p>
 
         
       

@@ -246,6 +246,135 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2019/04/01/Laravel-5-7-的最佳技巧和良好实践/">Laravel 5.7 的最佳技巧和良好实践</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-04-01
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Laravel/">Laravel</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>许多PHP开发人员已经知道Laravel编写优雅、可工作和可调试的代码。它还支持很多很多特性，这些特性有时没有列在文档中，或者曾经列在文档中，但是由于各种原因被删除了。</p>
+<p>我在工作中使用<code>Laravel</code>开发产品已经2年了，我一直学习从编写糟糕的代码到优雅的代码，自从第一次使用<code>Laravel</code>编写代码以来，我就一直在从中受益，我将向您展示在使用<code>Laravel</code>编写代码时可能会帮助您的神秘技巧。</p>
+<h2 id="当您需要查询内容时，请使用local-scopes"><a href="#当您需要查询内容时，请使用local-scopes" class="headerlink" title="当您需要查询内容时，请使用local scopes"></a>当您需要查询内容时，请使用<code>local scopes</code></h2><p><code>Laravel</code>有一种很好的方法，可以使用<code>Query Builder</code>为数据库驱动程序编写查询，像这样：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$orders = Order::where(<span class="string">'status'</span>, <span class="string">'delivered'</span>)-&gt;where(<span class="string">'paid'</span>, <span class="keyword">true</span>)-&gt;get();</span><br></pre></td></tr></table></figure></p>
+<p>这段代码看起来很好。这让我放弃了SQL，专注于编写对我来说更容易理解的代码。但是如果我们使用局部作用域（local scopes），这段代码可以写得更好。</p>
+          <div class="read-more">
+            <a href="/2019/04/01/Laravel-5-7-的最佳技巧和良好实践/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/">Laravel 5.7 安装 Json Web Tokens (tymon/jwt-auth)</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-03-30
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Laravel/">Laravel</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>本文介绍 Laravel 5.7 框架集成 jwt 操作指南，在官方的 <a href="https://github.com/tymondesigns/jwt-auth/wiki/Installation[external]" title="[wiki]" target="_blank" rel="noopener">wiki</a> 中也有介绍，是使用的<code>0.5.*</code>版本，本文使用的<code>jwt-auth</code>是<code>1.0.0-rc.3</code>版本，切记使用此扩展包的版本不同，集成也会稍有不同，否则你会得到意想不到的问题，根据自己 <code>laravel</code>版本不同使用<code>jwt-auth</code>版本建议如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Laravel version</th>
+<th>jwt-auth version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>4.*</code></td>
+<td><code>0.3.*</code> <code>0.4.*</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>5.*</code> &amp;&amp; <code>&lt;5.5</code></td>
+<td><code>0.5.*</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>5.*</code></td>
+<td><code>1.0.*</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="安装扩展包-jwt-auth"><a href="#安装扩展包-jwt-auth" class="headerlink" title="安装扩展包 jwt-auth"></a>安装扩展包 jwt-auth</h2><p>将扩展包添加到<code>composer.json</code>，添加如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">“require”: &#123;</span><br><span class="line">    ...</span><br><span class="line">    “tymon/jwt-auth”: “1.0.0-rc.3”</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后通过命令更新<code>Composer</code>命令如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer update</span><br></pre></td></tr></table></figure></p>
+          <div class="read-more">
+            <a href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/">PhpStorm配置Xdebug远程调试</a>
         
       </h1>
