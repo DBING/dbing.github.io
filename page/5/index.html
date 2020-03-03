@@ -246,6 +246,167 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2019/05/22/Linxu-压缩与解压常用命令/">Linxu 压缩与解压常用命令</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-05-22
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>以下均已<code>demo.tar.xz</code>文件为例演示</p>
+<h2 id="tar"><a href="#tar" class="headerlink" title="*.tar"></a>*.tar</h2><p>解压：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf demo.tar</span><br></pre></td></tr></table></figure></p>
+<h2 id="gz"><a href="#gz" class="headerlink" title="*.gz"></a>*.gz</h2><p>解压：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gzip -d demo.gz</span><br><span class="line">gunzip demo.gz</span><br></pre></td></tr></table></figure></p>
+          <div class="read-more">
+            <a href="/2019/05/22/Linxu-压缩与解压常用命令/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/05/22/Linux-PATH-环境变量配置/">Linux PATH 环境变量配置</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-05-22
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>以添加<code>go</code>为例，修改<code>PATH</code>的几种方法</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">pwd</span><br><span class="line">/home/bing</span><br><span class="line">wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz</span><br><span class="line">tar -xzvf go1.12.5.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="查看-PATH"><a href="#查看-PATH" class="headerlink" title="查看 PATH"></a>查看 PATH</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br></pre></td></tr></table></figure>
+<p>以<code>:</code>符号分割，每一段都是一个环境变量</p>
+<h2 id="修改-PATH"><a href="#修改-PATH" class="headerlink" title="修改 PATH"></a>修改 PATH</h2>
+          <div class="read-more">
+            <a href="/2019/05/22/Linux-PATH-环境变量配置/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/05/21/酷代码-第一篇/">酷代码-第一篇</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-05-21
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Cool-code/">Cool code</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>分享一下，工作中遇见值得分享的<code>Code</code>，这些代码往往比较有趣、有意义、或者少见（有意义），在此我统称为：酷代码。</p>
+<h2 id="IP-白名单检测"><a href="#IP-白名单检测" class="headerlink" title="IP 白名单检测"></a>IP 白名单检测</h2><p>场景描述：我司的一个子项目，用来处理全部的支付业务，为了安全，所有的内部请求必须经过 IP 检测（这只是其中一环），分享一下基于我老大（涛哥）思想，利用位运算完成，<code>IP</code>白名单检测方法，以下是核心代码</p>
+<p>定义检测函数<code>checkRemoteAddr()</code><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 验证 IP 白名单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $ip   string              待验证IP地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $AllowRemoteIps array     允许的IP白名单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> bool</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkRemoteAddr</span><span class="params">($ip,$AllowRemoteIps)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $ipNum = ip2long($ip);</span><br><span class="line">    <span class="keyword">foreach</span> ($AllowRemoteIps <span class="keyword">as</span> $mask)</span><br><span class="line">    &#123;</span><br><span class="line">        @<span class="keyword">list</span>($maskIp, $maskStep) = explode(<span class="string">"/"</span>, $mask);</span><br><span class="line">        $maskIpNum = ip2long($maskIp);</span><br><span class="line">        $maskStep = !<span class="keyword">isset</span>($maskStep) ? <span class="number">0</span> : <span class="number">32</span> - intval($maskStep);</span><br><span class="line">        <span class="keyword">if</span>( ($ipNum &gt;&gt; $maskStep) === ($maskIpNum &gt;&gt; $maskStep) )  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+          <div class="read-more">
+            <a href="/2019/05/21/酷代码-第一篇/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2019/05/16/Window10-子系统极速搭建LNMP开发环境/">Window10 子系统极速搭建LNMP开发环境</a>
         
       </h1>
