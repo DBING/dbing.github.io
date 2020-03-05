@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://dbing.github.io/archives/page/5/">
+<link rel="canonical" href="https://dbing.github.io/page/6/">
 
 
 
@@ -90,11 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title>
-  
-    归档 - Bing's blog
-  
-</title>
+    <title> Bing's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -242,238 +238,133 @@
           <div id="content" class="content">
             
   
-  
-  
-
-  <section id="archive" class="archive">
-    
-
+  <section id="posts" class="posts">
     
       
         
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/">PhpStorm配置Xdebug远程调试</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-03-19
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/PhpStorm/">PhpStorm</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
         
 
         
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2019</h2>
+          <p>调试复杂些的项目代码，<code>Xdebug</code> 是一把利器，本文结合自己的开发环境简讲通过<code>PhpStorm</code>完成<code>Xdebug</code>调试,部分原理图借鉴<code>xxlegend</code>作者</p>
+<h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><blockquote class="pullquote [class]"><p>本机：Windows10 + PhpStorm 2018 + Ip 192.168.10.108</p>
+<p>开发机：CentOS 6.10 + PHP 7.1 + Nginx 1.14 + Ip 192.168.10.140</p>
+</blockquote>
+<h3 id="开发方式"><a href="#开发方式" class="headerlink" title="开发方式"></a>开发方式</h3><p>一般情况开发者都是在本地开发，使用的开发环境也是本地自己搭建的，无论是在<code>Win</code>、<code>Mac</code>、<code>Linux</code>三者哪一个平台开发，最终想达到的体验是尽可能和生产环境一致，如果是在<code>Win</code>下开发，带来的代码兼容性问题时长让人难受（如：大小写问题），以至于追求<code>Unix</code>开发是一种潮流，这可能便是<code>Mac</code>之所以时程序员所爱的原因吧，<code>Win</code>下要想到达此效果。</p>
+<ol>
+<li>通过在<code>Window</code>下安装虚拟机，虚拟机中安装<code>Linxu</code>系统；</li>
+<li>使用<code>Windows 10</code>已经支持开启子系统，<code>Ubuntu</code>子系统中安装<code>PHP</code>开发环境；</li>
+<li>使用公司提供的公共开发机，开发机环境和所需服务都是安装好的，通过<code>samba</code>共享目录方式，本机无环境，开发机创建一个自己的虚拟目录；</li>
+</ol>
+<ul>
+<li>方法一：没有配置上<code>SSD</code>，内存没到<code>4G</code> 慎用 </li>
+<li>方法二：<code>Windows 10</code> 开启子系统，在应用市场一键安装<code>Ubuntu</code>，还是很方便的，在子系统中可以直接访问宿主机(本机)目录，使用感很方便。</li>
+<li>方法三：我公司为了开发者方便，搭建了<code>IP</code>为<code>140</code>的开发机，通过<code>samba</code>创建虚拟目录，本地添加网络盘方式打开<code>140</code>自己<code>Home</code>开发目录；</li>
+</ul>
+          <div class="read-more">
+            <a href="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/" class="read-more-link">阅读更多</a>
           </div>
         
       
+    </div>
 
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            06-03
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/06/03/初识-Go-语言/" class="archive-post-link">
-            初识 Go 语言
-          </a>
-        </span>
-      </div>
     
-      
-        
-        
 
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-22
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/05/22/Composer-中国镜像/" class="archive-post-link">
-            Composer 中国镜像
-          </a>
-        </span>
-      </div>
     
+
+  </article>
+
       
         
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
         
-
+          <a class="post-link" href="/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/">配置双公钥完成同时对 gitee 和 github 的使用</a>
         
-      
+      </h1>
 
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-22
-          
+      <div class="post-meta">
+        <span class="post-time">
+          2018-12-31
         </span>
-        <span class="archive-post-title">
-          <a href="/2019/05/22/Linxu-压缩与解压常用命令/" class="archive-post-link">
-            Linxu 压缩与解压常用命令
-          </a>
-        </span>
+        
+        
       </div>
+    </header>
+
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-22
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/05/22/Linux-PATH-环境变量配置/" class="archive-post-link">
-            Linux PATH 环境变量配置
-          </a>
-        </span>
-      </div>
     
+
+
+    <div class="post-content">
       
         
         
+          
+        
 
         
+          <p>通过配置 .ssh/config 文件完成对 gitee、gitlab、github...等多域下分别使用不同公钥的，达到可以在命令行中愉快的玩耍各个 git 远程仓库</p>
+          <div class="read-more">
+            <a href="/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/" class="read-more-link">阅读更多</a>
+          </div>
+        
       
+    </div>
 
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-21
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/05/21/酷代码-第一篇/" class="archive-post-link">
-            酷代码-第一篇
-          </a>
-        </span>
-      </div>
     
-      
-        
-        
 
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-16
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/05/16/Window10-子系统极速搭建LNMP开发环境/" class="archive-post-link">
-            Window10 子系统极速搭建LNMP开发环境
-          </a>
-        </span>
-      </div>
     
+
+  </article>
+
       
-        
-        
-
-        
       
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            04-26
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/04/26/Git-实用指南/" class="archive-post-link">
-            Git 实用指南
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            04-19
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/04/19/PhpStorm-Material-主题配置与字体选择/" class="archive-post-link">
-            PhpStorm Material 主题配置与字体选择
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            04-01
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/04/01/Laravel-5-7-的最佳技巧和良好实践/" class="archive-post-link">
-            Laravel 5.7 的最佳技巧和良好实践
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            03-30
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/" class="archive-post-link">
-            Laravel 5.7 安装 Json Web Tokens (tymon/jwt-auth)
-          </a>
-        </span>
-      </div>
-    
-  </section>
-
-  
   <nav class="pagination">
     
-      <a class="prev" href="/archives/page/4/">
+      <a class="prev" href="/page/5/">
         <i class="iconfont icon-left"></i>
         <span class="prev-text">上一页</span>
       </a>
     
     
-      <a class="next" href="/archives/page/6/">
-        <span class="next-text">下一页</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-    
   </nav>
 
 
-
+    
+  </section>
 
           </div>
           
