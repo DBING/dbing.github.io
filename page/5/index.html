@@ -246,6 +246,72 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2019/07/31/边锋的一次面试经历/">边锋的一次面试经历</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-07-31
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/面试/">面试</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <blockquote>
+<p>前几天，去边锋网络上海分公司去面试，去了以后，说 PHP 负责人请假了，一个 Golang 后端面的，聊了2个非语言层面的问题，这里梳理总一下。</p>
+</blockquote>
+<h2 id="Q1：编写-API-接口，如果保证幂等性？"><a href="#Q1：编写-API-接口，如果保证幂等性？" class="headerlink" title="Q1：编写 API 接口，如果保证幂等性？"></a>Q1：编写 API 接口，如果保证幂等性？</h2><p>所谓幂等性设计，就是说，一次和多次请求某一个资源应该具有同样的副作用。用数学的语言来 表达就是:f(x) = f(f(x))。</p>
+<p>举几个例子:</p>
+<ul>
+<li>订单创建接口，第一次调用超时了，然后调用方重试了一次。是否会多创建一笔订单?</li>
+</ul>
+<p>因为系统超时，而调用户方重试一下，会给我们的系统带来不一致的副作用。</p>
+<p>为什么会产生这样的问题，就是在我们把系统解耦隔离后，服务间的调用可能会有三个状态，一个是成功(Success)，一个是失败(Failed)，还有一个是超时(Timeout)。前两者都是明确的状态，而超时则是完全不知道是什么状态。</p>
+<p>这种情况下，一般有两种处理方式：</p>
+<ul>
+<li>一种是下游服务提供查询接口，上游再请求超时后查询一下，如果查询到则表示成功，如果查询不到则表示失败。</li>
+<li>另一种是做接口幂等设计，也就是将查询动作放在下游服务，上游只管做重试，请求一次和请求多次结果是一样的。</li>
+</ul>
+<p>对于第一种方式，需要对方提供一个查询接口来做配合。而第二种方式则需要下游的系统提供支持幂等性的交易接口。</p>
+          <div class="read-more">
+            <a href="/2019/07/31/边锋的一次面试经历/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2019/06/10/Laravel-JWT-多用户端验证/">Laravel JWT 多用户端验证</a>
         
       </h1>
@@ -719,61 +785,6 @@
 </ul>
 <p>Q2: 只想修改注释；<br>A2: <code>git commit --amend</code>,进入默认vim编辑器,修改保存即可</p>
 
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/04/19/PhpStorm-Material-主题配置与字体选择/">PhpStorm Material 主题配置与字体选择</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-04-19
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/PhpStorm/">PhpStorm</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <blockquote>
-<p>古人云: “工欲善其事必先利其器”，分享一下自己在<code>PhpStorm</code>中的自己喜欢的<code>Material</code>主题以及开发字体。</p>
-</blockquote>
-<h2 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h2><p>预览官网效果，<a href="https://plugins.jetbrains.com/plugin/8006-material-theme-ui" target="_blank" rel="noopener">去预览</a></p>
-<p>我的主题效果<img src="/2019/04/19/PhpStorm-Material-主题配置与字体选择/install-view.png" title="预览效果"></p>
-          <div class="read-more">
-            <a href="/2019/04/19/PhpStorm-Material-主题配置与字体选择/" class="read-more-link">阅读更多</a>
-          </div>
         
       
     </div>
