@@ -246,6 +246,54 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/02/19/Laravel-Query-Builder-一个复杂查询/">Laravel Query Builder 一个复杂查询</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-19
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Laravel/">Laravel</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>Laravel 框架下，在文章列表中附带上前 10 条评论，如何优雅的处理此种场景。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p><a href="https://guojiang.club/cms/detail/3" target="_blank" rel="noopener">https://guojiang.club/cms/detail/3</a></p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/02/19/又一次被这错误坑了/">又一次被这错误坑了</a>
         
       </h1>
@@ -704,60 +752,6 @@
         
           <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>快速搞定<code>Python</code>语法</p>
 <h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><p><a href="http://ddrv.cn/docs/pythontutorial3/" target="_blank" rel="noopener">http://ddrv.cn/docs/pythontutorial3/</a></p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/06/anaconda-和-zsh-不兼容问题/">anaconda 和 zsh 不兼容问题</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-06
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>错误场景：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ /Users/bing/.anaconda/navigator/a.tool ; <span class="built_in">exit</span>;</span><br><span class="line">/Users/bing/.anaconda/navigator/a.tool: line 1: syntax error near unexpected token `(<span class="string">'</span></span><br><span class="line"><span class="string">/Users/bing/.anaconda/navigator/a.tool: line 1: `bash --init-file &lt;(echo "source activate /Users/bing/opt/anaconda3/envs/my-opencv;")'</span></span><br></pre></td></tr></table></figure>
-<img src="/2020/02/06/anaconda-和-zsh-不兼容问题/error.png">
-<h2 id="临时解决方法"><a href="#临时解决方法" class="headerlink" title="临时解决方法"></a>临时解决方法</h2><p>切换到<code>bash</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
-<p>通过<code>conda</code>GUI，打开命令行后，再切换到<code>zsh</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
-<h2 id="我使用了这个方法"><a href="#我使用了这个方法" class="headerlink" title="我使用了这个方法"></a>我使用了这个方法</h2><p>This problem is a problem with the zsh environment variable, the solution<br>echo ‘source ~/.bash_profile’ &gt;&gt; ~/.zshrc<br>Append the bash environment variable to zsh</p>
-<p>链接：<a href="https://github.com/ContinuumIO/anaconda-issues/issues/1831#issuecomment-425714638" target="_blank" rel="noopener">https://github.com/ContinuumIO/anaconda-issues/issues/1831#issuecomment-425714638</a></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://iaside.com/archives/455" target="_blank" rel="noopener">https://iaside.com/archives/455</a></li>
-<li><a href="https://github.com/ContinuumIO/anaconda-issues/issues/1831" target="_blank" rel="noopener">github issue</a></li>
-<li><a href="https://stackoverflow.com/questions/54502718/cant-run-anaconda-in-macos-terminal" target="_blank" rel="noopener">stackoverflow</a></li>
-</ul>
 
         
       
