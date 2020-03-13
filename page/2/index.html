@@ -246,6 +246,145 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/03/05/基础篇-怎么理解平均负载/">基础篇-怎么理解平均负载</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-05
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="uptime-查看平均负载"><a href="#uptime-查看平均负载" class="headerlink" title="uptime 查看平均负载"></a>uptime 查看平均负载</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ uptime</span><br><span class="line"> 12:37:58 up 67 days, 12:43,  2 users,  load average: 0.00, 0.02, 0.00</span><br></pre></td></tr></table></figure>
+<p>解释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">12:37:58            # 当前时间</span><br><span class="line">up 67 days, 12:43   # 系统运行时间</span><br><span class="line">2 users             # 正在登录用户数</span><br></pre></td></tr></table></figure>
+<p>最后三个数字呢，依次则是过去 1 分钟、5 分钟、15 分钟的平均负载(Load Average)</p>
+<blockquote>
+<p>平均负载是指单位时间内，系统处于「可运行状态」和「不可中断状态」的平均进程数，也就是平均活跃进程数</p>
+</blockquote>
+<p>可运行状态的进程：是指正在使用 CPU 或者正在等待 CPU 的进程，也就是我们常用 ps 命令看到的，处于 R 状态(Running 或 Runnable)的进程</p>
+<p>不可中断状态的进程：则是正处于内核态关键流程中的进程，并且这些流程是不可打断的， 比如最常见的是等待硬件设备的 I/O 响应，也就是我们在 ps 命令中看到的 D 状态 (Uninterruptible Sleep，也称为 Disk Sleep)的进程。</p>
+<p>比如，当一个进程向磁盘读写数据时，为了保证数据的一致性，在得到磁盘回复前，它是 不能被其他进程或者中断打断的，这个时候的进程就处于不可中断状态。如果此时的进程 被打断了，就容易出现磁盘数据与进程数据不一致的问题。</p>
+<p>所以，不可中断状态实际上是系统对进程和硬件设备的一种保护机制。</p>
+<p>既然平均的是活跃进程数，那么最理想的，就是每个 CPU 上都刚好运行着一个进程，这样 每个 CPU 都得到了充分利用。</p>
+<p>比如当平均负载为 2 时，意味着什么呢?</p>
+<ul>
+<li>在只有 2 个 CPU 的系统上，意味着所有的 CPU 都刚好被完全占用。</li>
+<li>在 4 个 CPU 的系统上，意味着 CPU 有 50% 的空闲。</li>
+<li>而在只有 1 个 CPU 的系统中，则意味着有一半的进程竞争不到 CPU。</li>
+</ul>
+<h2 id="平均负载为多少时合理"><a href="#平均负载为多少时合理" class="headerlink" title="平均负载为多少时合理"></a>平均负载为多少时合理</h2><p>查看系统有几个 CPU,从<code>/proc/cpuinfo</code>中读取，命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">'model name'</span> /proc/cpuinfo | wc -l</span><br></pre></td></tr></table></figure>
+<p>有了 CPU 个数，我们就可以判断出，当平均负载比 CPU 个数还大的时候，系统已经出现 了过载。</p>
+<h2 id="找出负载过大进程"><a href="#找出负载过大进程" class="headerlink" title="找出负载过大进程"></a>找出负载过大进程</h2><p>mpstat 查看 CPU 使用率的变化情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -P ALL 表示监控所有 CPU，后面数字 5 表示间隔 5 秒</span></span><br><span class="line">mpstat -P ALL 5</span><br><span class="line">12:59:39 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle</span><br><span class="line">12:59:44 PM  all   50.76    0.00    0.50    0.00    0.00    0.00    0.00    0.00    0.00   48.74</span><br><span class="line">12:59:44 PM    0    0.81    0.00    1.01    0.00    0.00    0.00    0.00    0.00    0.00   98.17</span><br><span class="line">12:59:44 PM    1  100.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00</span><br></pre></td></tr></table></figure>
+<p>pidstat 来查询是哪个进程导致了 CPU 使用率为 100% 呢</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 间隔 5 秒后输出一组数据</span></span><br><span class="line">pidstat -u 5 1</span><br><span class="line">12:59:02 PM   UID       PID    %usr %system  %guest    %CPU   CPU  Command</span><br><span class="line">12:59:07 PM   110      9706    0.40    0.00    0.00    0.40     0  mongod</span><br><span class="line">12:59:07 PM     0      9750    0.20    0.00    0.00    0.20     1  watch</span><br><span class="line">12:59:07 PM     0      9833  100.00    0.00    0.00  100.00     0  stress</span><br><span class="line">12:59:07 PM     0     10123    0.00    0.20    0.00    0.20     1  pidstat</span><br><span class="line">12:59:07 PM     0     14287    0.60    0.40    0.00    1.00     1  AliYunDun</span><br><span class="line">12:59:07 PM     0     19835    0.20    0.00    0.00    0.20     1  containerd-shim</span><br><span class="line">12:59:07 PM   111     22629    0.00    0.20    0.00    0.20     1  redis-server</span><br><span class="line">12:59:07 PM     0     27102    0.40    0.20    0.00    0.60     1  exe</span><br><span class="line">12:59:07 PM   999     29885    0.20    0.00    0.00    0.20     1  redis-server</span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>平均负载提供了一个快速查看系统整体性能的手段，反映了整体的负载情况。</p>
+<p>平均负载过高，有可能是CPU密集进程导致，还有可能是 I/O 更繁忙了。</p>
+<p>可以使用 mpstat、pidstat 等工具，辅助分析负载的来源。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>整理自「Linux 性能优化实战」</li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/03/每日英语-6/">每日英语-6</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-03
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/每日英语/">每日英语</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol>
+<li><p>I prefer the cold. snowy mountains over warm places.<br>比起温暖的地方，我更喜欢寒冷的、白雪皑皑的山区。</p>
+</li>
+<li><p>My favourite pet is my dog, Lucy.<br>我喜欢的宠物是我的狗狗，露西。</p>
+</li>
+<li><p>Today is the 15th of August.<br>今天是八月十五号。</p>
+</li>
+<li><p>It’s time for breakfast.<br>是该吃早饭的时间了。</p>
+</li>
+<li><p>There are four seasons in a year.<br>一年有四个季节。</p>
+</li>
+</ol>
+          <div class="read-more">
+            <a href="/2020/03/03/每日英语-6/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/03/02/每日英语-5/">每日英语-5</a>
         
       </h1>
@@ -694,111 +833,6 @@
           <div class="read-more">
             <a href="/2020/02/24/每日英语-1/" class="read-more-link">阅读更多</a>
           </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/22/opencv-背景去除和更换/">opencv 背景去除和更换</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-22
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/计算机视觉/">计算机视觉</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>上一个课题，已经实现手动标注后，已经可以在视频流中追踪到物体，<br>继续的研究，如何做到踢出背景干扰完成自动标注物体，这是目前想去实现的目标。终极目标是将摄像头捕捉到的视频流（单一背景色），剔除背景后自动画上标注框（最小矩形）</p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><img src="/2020/02/22/opencv-背景去除和更换/remove-background-example-two.jpg">
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><a href="https://www.learnopencv.com/applications-of-foreground-background-separation-with-semantic-segmentation/" target="_blank" rel="noopener">文章</a></p>
-<p><a href="https://github.com/spmallick/learnopencv/tree/master/app-seperation-semseg" target="_blank" rel="noopener">代码</a></p>
-<p>相关推荐文章:<br><a href="https://www.learnopencv.com/simple-background-estimation-in-videos-using-opencv-c-python/" target="_blank" rel="noopener">simple-background-estimation-in-videos-using-opencv-c-python</a><br><a href="https://www.learnopencv.com/pytorch-for-beginners-semantic-segmentation-using-torchvision/" target="_blank" rel="noopener">pytorch-for-beginners-semantic-segmentation-using-torchvision</a></p>
-<h2 id="采坑"><a href="#采坑" class="headerlink" title="采坑"></a>采坑</h2><p>Q1: from torchvision import models No module named ‘torchvision’</p>
-<p>A1: 如果出现这个错误，不用怀疑人生、不用质疑自己，认真检查自己开发环境是否安装了<code>torchvision</code>，如果确定安装了也不用慌，检查版本<code>pytorch</code>版本至少<code>1.4.0</code>,<code>torchvision</code>版本<code>0.5.0</code>，我的环境是使用的<code>Anaconda</code>，通过面板安装只能看到<code>1.3.0</code>版本，下面是我的安装命令，指定安装到<code>-n</code>是指定安装到<code>my-opencv</code>环境下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -n my-opencv pytorch=1.4.0 torchvision -c pytorch</span><br></pre></td></tr></table></figure>
-<p>查看版本:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">import torchvision</span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="comment"># cuda 是否开启</span></span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
-<p><a href="https://pytorch.org/get-started/locally/#mac-anaconda" target="_blank" rel="noopener">官方安装文档</a></p>
-<p><a href="https://pytorch.org/get-started/locally/#anaconda" target="_blank" rel="noopener">https://pytorch.org/get-started/locally/#anaconda</a></p>
-<hr>
-<p>Q2: AssertionError: Torch not compiled with CUDA enabled</p>
-<p>A2: Mac没有英伟达显卡，么有办法使用 <code>cuda</code>加速，可以使用<code>Cpu</code>，调整代码便可以继续愉快的玩耍，代码见<a href="https://github.com/spmallick/learnopencv/issues/346" target="_blank" rel="noopener">issue</a></p>
-<p>查看<code>torch</code>是否开启了<code>cuda</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import torch</span><br><span class="line">&gt;&gt;&gt; torch.__version__</span><br><span class="line"><span class="string">'1.4.0'</span></span><br><span class="line">&gt;&gt;&gt; torch.cuda.is_available()</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/20/Iterm-下管理-SSH-工具/">Iterm 下管理 SSH 工具</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-20
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>命令行下<code>ssh</code>登录远程服务器，当服务多起来后，如何管理就是以及快速登录就尤为重要，比如：我们有测试服：<code>tiger</code>、生产：<code>prod</code>，<code>prod</code>又不只一台等等，又是通过证书文件远程登录服务器，总不能将这些登录命令记录到“小本本”上，每次用到去<code>copy</code>吧，太不不科技了。</p>
-<h2 id="开源工具"><a href="#开源工具" class="headerlink" title="开源工具"></a>开源工具</h2><p>地址：<a href="https://github.com/islenbo/autossh" target="_blank" rel="noopener">https://github.com/islenbo/autossh</a></p>
-
         
       
     </div>
