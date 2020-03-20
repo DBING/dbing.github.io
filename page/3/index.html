@@ -246,6 +246,131 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/02/26/Laravel-下如何设置允许前端跨域请求/">Laravel 下如何设置允许前端跨域请求</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-26
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="问题场景"><a href="#问题场景" class="headerlink" title="问题场景"></a>问题场景</h2><p>我司今日针对B端管理后台做<code>Dashboard</code>升级，采用新分离式开发方式，<code>Laravel</code>提供 API、<code>Vue</code>做视图，自然也遇到了老生常谈跨域问题。</p>
+<h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>出于安全原因，浏览器限制从脚本内发起的跨源HTTP请求。 例如，XMLHttpRequest和Fetch API遵循同源策略。 这意味着使用这些API的Web应用程序只能从加载应用程序的同一个域请求HTTP资源，除非响应报文包含了正确CORS响应头。</p>
+<blockquote><p>CORS：跨域资源共享(CORS) 是一种机制，他使用额外的HTTP头来告诉浏览器，让运行在一个origin(domain)上的WEB应用被准许访问来自不同源服务器上指定的资源。</p>
+</blockquote>
+<p>当一个资源从与该资源本身所在的服务器<em>不同的域</em>、<em>协议或端口</em>请求一个资源时，资源会发起一个跨域 HTTP 请求。</p>
+<p>比如，站点 <a href="http://domain-a.com" target="_blank" rel="noopener">http://domain-a.com</a> 的某 HTML 页面通过 <code>&lt;img&gt;</code> 的 src 请求 <a href="http://domain-b.com/image.jpg。" target="_blank" rel="noopener">http://domain-b.com/image.jpg。</a></p>
+<div style="width:440px;height:306px;"><img src="/2020/02/26/Laravel-下如何设置允许前端跨域请求/CORS_principle.png"></div>
+
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
+<li><p>针对<code>Laravel</code>框架下有现成扩展包可用，如：<a href="https://packagist.org/packages/barryvdh/laravel-cors" target="_blank" rel="noopener">barryvdh/laravel-cors</a>，使用方法自行阅读文档（亲测过）。</p>
+</li>
+<li><p>奈何自个公司<code>Laravel</code>框架版本是<code>5.3</code>，上面方法行不通，升级框架不是目前所要做的事情，弄明白原理后自行编写中间件也可以搞定，一句话总结：即需要在响应Header头<code>Access-Control-Allow-Origin:*</code>设置允许的域，这里的<code>*</code>表示允许所有域。</p>
+</li>
+</ol>
+<p>需要注意的是：如果客户端（浏览器）需要携带身份请求，那么也需要服务端在响应中将Header头<code>Access-Control-Allow-Credentials</code>字段设置为<code>true</code>，完整写法<code>Access-Control-Allow-Credentials: true</code>，重点来了（敲黑板划重点）此时的<code>Access-Control-Allow-Origin</code>就不能再设置为<code>*</code>了，必须指定具体的域，比如：<code>http://foo.example</code>，这个域一般是前端开发者本地的<code>http://localhost:9527</code></p>
+          <div class="read-more">
+            <a href="/2020/02/26/Laravel-下如何设置允许前端跨域请求/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/02/24/每日英语-1/">每日英语-1</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-24
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/每日英语/">每日英语</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="今日语句"><a href="#今日语句" class="headerlink" title="今日语句"></a>今日语句</h2><ol>
+<li><p>I’m scard of the bear; don’t let it get near me!<br>我怕熊，别让他靠近我！</p>
+</li>
+<li><p>I bought a red chair.<br>我买了一把红色椅子</p>
+</li>
+<li><p>He always wears a shirt and tie to work.<br>他去工作时总是穿衬衫打领带</p>
+</li>
+<li><p>I drink the water because I’m thirsty.<br>我口渴所以喝水</p>
+</li>
+<li><p>My sister and I water the plants.<br>姐姐和我在给植物浇水</p>
+</li>
+<li><p>Milk is a tasty and healthy drink.<br>牛奶是一种可口又健康的饮品</p>
+</li>
+<li><p>Would you like a cup of tea?<br>你要来杯茶么？</p>
+</li>
+</ol>
+          <div class="read-more">
+            <a href="/2020/02/24/每日英语-1/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/02/22/opencv-背景去除和更换/">opencv 背景去除和更换</a>
         
       </h1>
@@ -633,121 +758,6 @@
 <p>从这封信中我读出来了两种味道，一味是：因为疫情问题，如他所说恢复时间根据疫情防控工作情况另行通知，让一直亏损的兄弟连无疑是雪上加霜，导致最终没能挺过来。教育行业的利润怎样是行业中有目共睹的，生源决定命脉「入口」，结果系着生源「出口」。我的孙院长曾这么给我说过，把握住这两口也就把握住了学校。想想不无道理。他从零做到了1000多学员的规模用2年的时间。可谓速度之快。<code>PHP</code>的大环境在18、19年就开始出现下滑趋势，19年尤其不怎么好的情况。同样不好的处境还有我一个上海创业开培训的老同事，机构就先不说，说了你也不晓得。</p>
 <p>二味是：有这么一位义无反馈支持自己的妻子，我想这也应该是他成功的原因吧。</p>
 <p>最后道别兄弟连、保重李超。</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/09/Hexo-docsify-添加-Gitalk/">Hexo docsify 添加 Gitalk</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-09
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="Gitalk"><a href="#Gitalk" class="headerlink" title="Gitalk"></a>Gitalk</h2><p><a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md" target="_blank" rel="noopener">官方地址</a></p>
-<p><a href="https://gitalk.github.io/" target="_blank" rel="noopener">体验地址</a></p>
-<blockquote>
-<p>为 Hexo 的 <code>even</code>主题添加<code>gitalk</code>评论系统</p>
-</blockquote>
-<h2 id="创建-gitalk-文件"><a href="#创建-gitalk-文件" class="headerlink" title="创建 gitalk 文件"></a>创建 gitalk 文件</h2><p>在<code>themes/even/layout/_script/_comments</code>目录下新增<code>gitalk.swig</code>文件，代码如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.comments &amp;&amp; theme.gitalk.enable %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('js/src') &#125;&#125;/md5.min.js?v=&#123;&#123; theme.version &#125;&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        var gitalk = new Gitalk(&#123;</span></span><br><span class="line"><span class="undefined">          clientID: '&#123;&#123; theme.gitalk.clientID &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          clientSecret: '&#123;&#123; theme.gitalk.clientSecret &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          repo: '&#123;&#123; theme.gitalk.repo &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          owner: '&#123;&#123; theme.gitalk.owner &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          admin: ['&#123;&#123; theme.gitalk.admin &#125;&#125;'],</span></span><br><span class="line"><span class="undefined">          id: md5(location.pathname),</span></span><br><span class="line"><span class="undefined">          distractionFreeMode: '&#123;&#123; theme.gitalk.distractionFreeMode &#125;&#125;'</span></span><br><span class="line"><span class="undefined">        &#125;)</span></span><br><span class="line"><span class="undefined">        gitalk.render('gitalk-container')</span></span><br><span class="line"><span class="undefined">       </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>为了解决「常见问题」中1，这里引用<code>md5.min.js</code>文件，然后将<code>id</code>，通过<code>md5</code>函数加密后再请求<code>github issue</code>API，<code>md5.min.js</code>文件我放在<code>themes/even/source/js/src/md5.min.js</code>目录，当然你也可以引入远程地址，<a href="https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js" target="_blank" rel="noopener">md5库地址</a></p>
-<h2 id="添加-gitalk-判断逻辑"><a href="#添加-gitalk-判断逻辑" class="headerlink" title="添加 gitalk 判断逻辑"></a>添加 gitalk 判断逻辑</h2><p><code>themes/even/layout/_partial/comments.swig</code>添加如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% elseif theme.gitalk.enable %&#125;</span><br><span class="line">    &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;  </span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：<code>if elseif endif</code> 语法。</p>
-</blockquote>
-<h2 id="引入-gitalk"><a href="#引入-gitalk" class="headerlink" title="引入 gitalk"></a>引入 gitalk</h2><p>在<code>themes/even/layout/_script/comments.swig</code>文件中引入<code>gitalk.swig</code>文件，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.gitalk.enable %&#125;</span><br><span class="line">  &#123;% include &apos;_comments/gitalk.swig&apos; %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="配置-gitalk"><a href="#配置-gitalk" class="headerlink" title="配置 gitalk"></a>配置 gitalk</h2><p>配置<code>themes/even/_config.yml</code>中关于<code>gitalk</code>的配置，新增代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># more info please open https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  clientID: xxxxxxx</span><br><span class="line">  clientSecret: yyyyyyyyyyy</span><br><span class="line">  repo: &apos;dbing.github.io&apos;</span><br><span class="line">  owner: &apos;dbing&apos;</span><br><span class="line">  admin: &apos;dbing&apos;</span><br><span class="line">  distractionFreeMode: true</span><br></pre></td></tr></table></figure>
-<p>没有<code>clientID</code>和<code>clientSecret</code>，<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">点击申请</a>，配置完以上恭喜你，重新生产部署一下你的博客文章命令：<code>hexo g -d</code>，打开文章详情页看看是否多出了评论框 :)</p>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1.Error: Validation Failed.</p>
-<p>解决方法：<a href="https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482</a></p>
-<p>打开<code>Network</code>看请求，多半是因为<code>github issues</code>接口错误，以上方案给出的很详细。</p>
-<p>Q2.Error: Issues are disabled for this repo</p>
-<p>解决方法：<a href="https://github.com/imsun/gitment/issues/125" target="_blank" rel="noopener">https://github.com/imsun/gitment/issues/125</a></p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/06/因PHP内存超出限制导致首页500/">因PHP内存超出限制导致首页500</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-06
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="现场"><a href="#现场" class="headerlink" title="现场"></a>现场</h2><p>事发后的某一段<code>log</code>日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[2020-02-06 14:09:20] production.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Allowed memory size of 134217728 bytes exhausted (tried to allocate 1191936 bytes) in /project-path/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Query/Builder.php:373</span><br><span class="line">Stack trace:</span><br><span class="line">#0 &#123;main&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2020/02/06/因PHP内存超出限制导致首页500/500.png" width="500">
-<h2 id="临时解决办法"><a href="#临时解决办法" class="headerlink" title="临时解决办法"></a>临时解决办法</h2><p>放开PHP内存限制，修改<code>php.ini</code>，中<code>memory_limit=-1</code>，然后重启，<code>php-fpm</code> 服务，<code>sudo service php7.1-fpm restart</code></p>
-<p>网站恢复访问后，排查首页代码，定位手改一处过大查询代码（前人遗留）。</p>
-<h2 id="问题代码"><a href="#问题代码" class="headerlink" title="问题代码"></a>问题代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据发布时间倒序获取新闻 首页用</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int $limit</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getNewsAtIndexPage</span><span class="params">($limit = <span class="number">5</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $newsList = [];</span><br><span class="line">    $rawNews = (<span class="keyword">new</span> Filter())-&gt;getEnableDisplay()-&gt;sortByPublishAt()-&gt;getNews();</span><br><span class="line">    <span class="keyword">foreach</span> ($rawNews <span class="keyword">as</span> $news) &#123;</span><br><span class="line">        $newsList[] = [</span><br><span class="line">            <span class="string">'url'</span>   =&gt; <span class="keyword">$this</span>-&gt;getNewsPublishURL($news[<span class="string">'type'</span>], $news[<span class="string">'_id'</span>],<span class="keyword">false</span>),</span><br><span class="line">            <span class="string">'title'</span> =&gt; $news[<span class="string">'title'</span>],</span><br><span class="line">            <span class="string">'cover'</span> =&gt; $news[<span class="string">'cover'</span>],</span><br><span class="line">            <span class="string">'publish_at'</span>=&gt; $news[<span class="string">'publish_at'</span>]</span><br><span class="line">        ];</span><br><span class="line">        <span class="keyword">if</span>(count($newsList) == $limit) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $newsList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getNews</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;model-&gt;get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="优化前后结果"><a href="#优化前后结果" class="headerlink" title="优化前后结果"></a>优化前后结果</h2><img src="/2020/02/06/因PHP内存超出限制导致首页500/1.png">
-<img src="/2020/02/06/因PHP内存超出限制导致首页500/2.png">
-<img src="/2020/02/06/因PHP内存超出限制导致首页500/code.png" title="code">
-<h2 id="好文推荐"><a href="#好文推荐" class="headerlink" title="好文推荐"></a>好文推荐</h2><ul>
-<li><a href="https://juejin.im/post/5aa7c5575188255589497de2" target="_blank" rel="noopener">PHP 内存泄漏分析定位</a></li>
-</ul>
 
         
       

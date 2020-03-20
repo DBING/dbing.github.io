@@ -246,6 +246,123 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/03/07/每日英语-7/">每日英语-7</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-07
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/每日英语/">每日英语</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol>
+<li><p>She helped the old man to walk.<br>她帮助老人走路。</p>
+</li>
+<li><p>Your tongue is longer than mine!<br>你的舌头比我的长！</p>
+</li>
+<li><p>Did you get a good grade on your last exam?<br>最后一门考试你取得好成绩了吗？</p>
+</li>
+<li><p>He wrote a summary of the terrible year he had.<br>这是他悲惨的2018年总结</p>
+</li>
+<li><p>Cola is a sweet,brown drink.<br>可乐是种甜味的棕色饮料。</p>
+</li>
+</ol>
+          <div class="read-more">
+            <a href="/2020/03/07/每日英语-7/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/05/将数组值从字符串转换为int/">将数组值从字符串转换为int</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-05
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/PHP/">PHP</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$string = <span class="string">"1,2,3"</span></span><br><span class="line">$ids = explode(<span class="string">','</span>, $string);</span><br><span class="line">var_dump($ids);</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">array</span>(<span class="number">3</span>) &#123;</span><br><span class="line">  [<span class="number">0</span>]=&gt;</span><br><span class="line">  string(<span class="number">1</span>) <span class="string">"1"</span></span><br><span class="line">  [<span class="number">1</span>]=&gt;</span><br><span class="line">  string(<span class="number">1</span>) <span class="string">"2"</span></span><br><span class="line">  [<span class="number">2</span>]=&gt;</span><br><span class="line">  string(<span class="number">1</span>) <span class="string">"3"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目标：</p>
+<p>每个值需要的是<code>int</code>类型，而不是<code>string</code></p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>1.代码一</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$integerIds = array_map(<span class="string">'intval'</span>, explode(<span class="string">','</span>, $string));</span><br></pre></td></tr></table></figure>
+<p>2.代码二</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$integerIds = json_decode(<span class="string">'['</span> . $string . <span class="string">']'</span>, <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/03/05/基础篇-怎么理解平均负载/">基础篇-怎么理解平均负载</a>
         
       </h1>
@@ -708,131 +825,6 @@
 <p>待编写</p>
 </blockquote>
 
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/26/Laravel-下如何设置允许前端跨域请求/">Laravel 下如何设置允许前端跨域请求</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-26
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="问题场景"><a href="#问题场景" class="headerlink" title="问题场景"></a>问题场景</h2><p>我司今日针对B端管理后台做<code>Dashboard</code>升级，采用新分离式开发方式，<code>Laravel</code>提供 API、<code>Vue</code>做视图，自然也遇到了老生常谈跨域问题。</p>
-<h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>出于安全原因，浏览器限制从脚本内发起的跨源HTTP请求。 例如，XMLHttpRequest和Fetch API遵循同源策略。 这意味着使用这些API的Web应用程序只能从加载应用程序的同一个域请求HTTP资源，除非响应报文包含了正确CORS响应头。</p>
-<blockquote><p>CORS：跨域资源共享(CORS) 是一种机制，他使用额外的HTTP头来告诉浏览器，让运行在一个origin(domain)上的WEB应用被准许访问来自不同源服务器上指定的资源。</p>
-</blockquote>
-<p>当一个资源从与该资源本身所在的服务器<em>不同的域</em>、<em>协议或端口</em>请求一个资源时，资源会发起一个跨域 HTTP 请求。</p>
-<p>比如，站点 <a href="http://domain-a.com" target="_blank" rel="noopener">http://domain-a.com</a> 的某 HTML 页面通过 <code>&lt;img&gt;</code> 的 src 请求 <a href="http://domain-b.com/image.jpg。" target="_blank" rel="noopener">http://domain-b.com/image.jpg。</a></p>
-<div style="width:440px;height:306px;"><img src="/2020/02/26/Laravel-下如何设置允许前端跨域请求/CORS_principle.png"></div>
-
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
-<li><p>针对<code>Laravel</code>框架下有现成扩展包可用，如：<a href="https://packagist.org/packages/barryvdh/laravel-cors" target="_blank" rel="noopener">barryvdh/laravel-cors</a>，使用方法自行阅读文档（亲测过）。</p>
-</li>
-<li><p>奈何自个公司<code>Laravel</code>框架版本是<code>5.3</code>，上面方法行不通，升级框架不是目前所要做的事情，弄明白原理后自行编写中间件也可以搞定，一句话总结：即需要在响应Header头<code>Access-Control-Allow-Origin:*</code>设置允许的域，这里的<code>*</code>表示允许所有域。</p>
-</li>
-</ol>
-<p>需要注意的是：如果客户端（浏览器）需要携带身份请求，那么也需要服务端在响应中将Header头<code>Access-Control-Allow-Credentials</code>字段设置为<code>true</code>，完整写法<code>Access-Control-Allow-Credentials: true</code>，重点来了（敲黑板划重点）此时的<code>Access-Control-Allow-Origin</code>就不能再设置为<code>*</code>了，必须指定具体的域，比如：<code>http://foo.example</code>，这个域一般是前端开发者本地的<code>http://localhost:9527</code></p>
-          <div class="read-more">
-            <a href="/2020/02/26/Laravel-下如何设置允许前端跨域请求/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/24/每日英语-1/">每日英语-1</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-24
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/每日英语/">每日英语</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="今日语句"><a href="#今日语句" class="headerlink" title="今日语句"></a>今日语句</h2><ol>
-<li><p>I’m scard of the bear; don’t let it get near me!<br>我怕熊，别让他靠近我！</p>
-</li>
-<li><p>I bought a red chair.<br>我买了一把红色椅子</p>
-</li>
-<li><p>He always wears a shirt and tie to work.<br>他去工作时总是穿衬衫打领带</p>
-</li>
-<li><p>I drink the water because I’m thirsty.<br>我口渴所以喝水</p>
-</li>
-<li><p>My sister and I water the plants.<br>姐姐和我在给植物浇水</p>
-</li>
-<li><p>Milk is a tasty and healthy drink.<br>牛奶是一种可口又健康的饮品</p>
-</li>
-<li><p>Would you like a cup of tea?<br>你要来杯茶么？</p>
-</li>
-</ol>
-          <div class="read-more">
-            <a href="/2020/02/24/每日英语-1/" class="read-more-link">阅读更多</a>
-          </div>
         
       
     </div>
