@@ -246,6 +246,129 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/03/09/Laravel-Task-Scheduling-Preventing-Task-Overlaps/">Laravel Task Scheduling Preventing Task Overlaps</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-09
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Laravel/">Laravel</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>一个<code>Task</code>没有允许结束，另一个<code>Task</code>又起了，这固然会造成程序执行的结果不是我们想要的，为了解决这个问题我发现<code>Laravel</code>有提供现成的方法。</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>方法一：可以在代码中使用原子锁，这样即使第二个<code>tash</code>进程启动了，也可以阻挡住。</p>
+<p>方法二：使用<code>Laravel</code>提供现成的<code>withoutOverlapping</code>方法，官方案例：<code>$schedule-&gt;command(&#39;emails:send&#39;)-&gt;withoutOverlapping();</code></p>
+<p>方法一中使用哪一种的锁机制，那就看自家自己的喜好了不分好坏，只分性能高低😼，个人使用<code>redis</code>原子锁，从<code>2.6.12</code>版本以后，使用锁的方式变得更为简单，如设置一个名为<code>lock</code>的5秒钟原子锁：<code>SET lock 1 EX 5 NX</code>，<a href="http://redisdoc.com/string/set.html" target="_blank" rel="noopener">SET 更多参数用法</a></p>
+<p>方法二我的测试结果如下：</p>
+<ol>
+<li><p>创建测试<code>command</code>文件,命令：<code>php artisan make:command Test</code></p>
+</li>
+<li><p>代码</p>
+</li>
+</ol>
+          <div class="read-more">
+            <a href="/2020/03/09/Laravel-Task-Scheduling-Preventing-Task-Overlaps/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/08/每日英语-8/">每日英语-8</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-08
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/每日英语/">每日英语</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol>
+<li><p>“Who is the little boy in the photo?”,”it’s me.”<br>“照片上的小男孩是谁？”, “是我.”</p>
+</li>
+<li><p>Look at the baby’s chubby legs! So cute!<br>看这个宝宝胖嘟嘟的腿，真可爱！</p>
+</li>
+<li><p>This hamburger looks samll but delicious.<br>这个汉堡虽小，但看起来十分美味。</p>
+</li>
+<li><p>This cat is my mom’s pet.<br>这只猫是我妈妈的宠物。</p>
+</li>
+<li><p>The fresh red tomato is a healthy food.<br>红色的番茄是一种健康的食物。</p>
+</li>
+</ol>
+          <div class="read-more">
+            <a href="/2020/03/08/每日英语-8/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/03/07/每日英语-7/">每日英语-7</a>
         
       </h1>
@@ -719,111 +842,6 @@
 <h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>配置<code>_config.yml</code>文件中<code>new_post_name</code>值为<code>:year/:month/:title.md</code>即可。然后使用<code>hexo new &#39;demo&#39;</code>创建一篇测试文章，就会发现自动归纳到相应<code>/年/月</code>目录下了。</p>
 <p>Q1：针对旧文章怎么办？<br>A1：手动创建对应年、月目录，将其移动到对应目录下即可。</p>
 <p>The end.</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/28/每日英语-2/">每日英语-2</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-28
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/每日英语/">每日英语</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol>
-<li><p>Her red skirt mathes well with her red sunglasses.<br>她的红色裙子和红色太阳镜很搭。</p>
-</li>
-<li><p>We have kinds of dresses in our store. Try one on!<br>本店女装款式多样，欢迎选购。</p>
-</li>
-<li><p>This is a pair of jean shorts.<br>这是一条牛仔短裤。</p>
-</li>
-<li><p>This kind of metal looks very hard.<br>这种金属看上去很硬。</p>
-</li>
-<li><p>This father has a daughter and a son.<br>这位父亲有一儿一女。</p>
-</li>
-</ol>
-          <div class="read-more">
-            <a href="/2020/02/28/每日英语-2/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/26/Carbon-使用方法一览表/">Carbon 使用方法一览表</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-26
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <blockquote>
-<p>待编写</p>
-</blockquote>
 
         
       
