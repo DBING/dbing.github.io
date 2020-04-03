@@ -266,7 +266,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-text">常用命令</span></a></li></ol>
     </div>
   </div>
 
@@ -274,8 +274,25 @@
 
     <div class="post-content">
       
-        <p>待写：</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.lowxp.com/g/article/detail/290" target="_blank" rel="noopener">http://www.lowxp.com/g/article/detail/290</a></p>
+        <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>以下执行命令，均在如下目录位置执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab <span class="built_in">pwd</span></span><br><span class="line">/usr/<span class="built_in">local</span>/gitlab</span><br></pre></td></tr></table></figure>
+<ul>
+<li>统计当前目录的大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du  -sh</span><br><span class="line">21G     .</span><br></pre></td></tr></table></figure>
+<ul>
+<li>统计当前目录所有下文件和文件夹大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du * -sh</span><br><span class="line">8.0K    docker-compose.yml</span><br><span class="line">20K     gitlab-certs-backup</span><br><span class="line">20G     gitlab-data</span><br><span class="line">16K     gitlab-sh</span><br><span class="line">633M    postgresql-data</span><br><span class="line">3.4M    redis-data</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查找当前目录下一级目录中大小单位在G的目录并排序</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du -h --max-depth=1 |grep G |sort</span><br><span class="line">20G     ./gitlab-data</span><br><span class="line">21G     .</span><br></pre></td></tr></table></figure>
+<p><code>--max-depth=1</code> 限制一级目录，如果单位是<code>T</code>或<code>M</code>，更改参数即可</p>
+<ul>
+<li>查找当前目录下一级目录中大小上M的目录并倒排序</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du -h --max-depth=1 |grep <span class="string">'M'</span> |sort -nr</span><br><span class="line">633M    ./postgresql-data</span><br><span class="line">3.4M    ./redis-data</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -318,6 +335,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2020/03/26/Vim-基础篇/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Vim 基础篇</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
     
       <a class="next" href="/2020/03/26/Composer-安装私有包/">

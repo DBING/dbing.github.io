@@ -246,6 +246,95 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/04/03/Electron-专注于桌面应用开发/">Electron 专注于桌面应用开发</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-04-03
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/新事物/">新事物</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="Electron"><a href="#Electron" class="headerlink" title="Electron"></a>Electron</h2><p>Electron 可以让你使用纯 JavaScript 调用丰富的原生(操作系统) APIs 来创造桌面应用。 你可以把它看作一个 Node. js 的变体，它专注于桌面应用而不是 Web 服务器端。</p>
+<p>这不意味着 Electron 是某个图形用户界面（GUI）库的 JavaScript 版本。 相反，Electron 使用 web 页面作为它的 GUI，所以你能把它看作成一个被 JavaScript 控制的，精简版的 Chromium 浏览器。</p>
+<p>以上是摘自<code>Electron</code>官方文档对其的描述，望以后有时间开发也给桌面应用小程序，这里<code>Mark</code>一下，感兴趣可以翻阅其<a href="https://www.electronjs.org/docs/tutorial/first-app" target="_blank" rel="noopener">官网文档</a></p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/26/Vim-基础篇/">Vim 基础篇</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-26
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/03/26/Linux-du-命令/">Linux du 命令</a>
         
       </h1>
@@ -275,8 +364,25 @@
         
 
         
-          <p>待写：</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.lowxp.com/g/article/detail/290" target="_blank" rel="noopener">http://www.lowxp.com/g/article/detail/290</a></p>
+          <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>以下执行命令，均在如下目录位置执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab <span class="built_in">pwd</span></span><br><span class="line">/usr/<span class="built_in">local</span>/gitlab</span><br></pre></td></tr></table></figure>
+<ul>
+<li>统计当前目录的大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du  -sh</span><br><span class="line">21G     .</span><br></pre></td></tr></table></figure>
+<ul>
+<li>统计当前目录所有下文件和文件夹大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du * -sh</span><br><span class="line">8.0K    docker-compose.yml</span><br><span class="line">20K     gitlab-certs-backup</span><br><span class="line">20G     gitlab-data</span><br><span class="line">16K     gitlab-sh</span><br><span class="line">633M    postgresql-data</span><br><span class="line">3.4M    redis-data</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查找当前目录下一级目录中大小单位在G的目录并排序</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du -h --max-depth=1 |grep G |sort</span><br><span class="line">20G     ./gitlab-data</span><br><span class="line">21G     .</span><br></pre></td></tr></table></figure>
+<p><code>--max-depth=1</code> 限制一级目录，如果单位是<code>T</code>或<code>M</code>，更改参数即可</p>
+<ul>
+<li>查找当前目录下一级目录中大小上M的目录并倒排序</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du -h --max-depth=1 |grep <span class="string">'M'</span> |sort -nr</span><br><span class="line">633M    ./postgresql-data</span><br><span class="line">3.4M    ./redis-data</span><br></pre></td></tr></table></figure>
 
         
       
@@ -752,134 +858,6 @@
 </li>
 </ul>
 
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/03/09/PHP写时复制/">PHP写时复制</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-03-09
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/PHP/">PHP</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="PHP-写时复制"><a href="#PHP-写时复制" class="headerlink" title="PHP 写时复制"></a>PHP 写时复制</h2><blockquote>
-<p>Copy On Write 简写 COW，中文意思即：写时复制</p>
-</blockquote>
-<ol>
-<li>当一个变量赋值给另外一个变量时，此时内存开销会是*2吗？</li>
-<li>当再调用一个函数传递一个很大实参数组时，你有没有考虑过，内存的开销是怎样的！</li>
-</ol>
-<p>如果针对这两个问题，你可以毫无疑问的准确回答出来，那么接下来你可以不用再看了。</p>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">'init memory: '</span> . memory_get_usage() . <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">$str = array_fill(<span class="number">0</span>, <span class="number">1024</span>, <span class="string">'hi'</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'fill after: '</span> . memory_get_usage() . <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">$newStr = $str;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'copy after: '</span> . memory_get_usage() . <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="keyword">die</span>;</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init memory: 354296</span><br><span class="line">fill after: 391216</span><br><span class="line">copy after: 391216</span><br></pre></td></tr></table></figure>
-<p>可以看到重新赋值给新的变量<code>$newStr</code>后内存并没有增长。</p>
-<h2 id="原理解释"><a href="#原理解释" class="headerlink" title="原理解释"></a>原理解释</h2><p>多个相同值的变量共用同一块内存的确节省了内存空间，但变量的值是会发生变化的，如果在上面的例子中， 指向同一内存的值发生了变化（或者可能发生变化），就需要将变化的值“分离”出去，这个“分离”的操作， 就是“复制”。</p>
-<p>在PHP中，Zend引擎为了区别同一个zval地址是否被多个变量共享，引入了ref_count和is_ref两个变量进行标识：</p>
-<ul>
-<li><p>ref_count和is_ref是定义于zval结构体中</p>
-</li>
-<li><p>is_ref标识是不是用户使用 &amp; 的强制引用；</p>
-</li>
-</ul>
-<p>ref_count是引用计数，用于标识此zval被多少个变量引用，即COW的自动引用，为0时会被销毁；</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/03/09/每日英语-9/">每日英语-9</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-03-09
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/每日英语/">每日英语</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol>
-<li><p>Let’s meet again on the sixteenth – a week from today.<br>让我们16号再见吧，也就是一周后的今天</p>
-</li>
-<li><p>Sea turtles swim so gracefully.<br>海龟再优雅地游水。</p>
-</li>
-<li><p>The old friends are walking in a park.<br>这些老朋友正在公园里散步。</p>
-</li>
-<li><p>After hearing the bad news,she cannot fall asleep.<br>听到这个坏消息之后他难以入睡</p>
-</li>
-</ol>
-          <div class="read-more">
-            <a href="/2020/03/09/每日英语-9/" class="read-more-link">阅读更多</a>
-          </div>
         
       
     </div>
