@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dbing.github.io/"/>
-  <updated>2020-04-03T10:53:32.545Z</updated>
+  <updated>2020-04-08T11:38:18.324Z</updated>
   <id>https://dbing.github.io/</id>
   
   <author>
@@ -15,6 +15,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每日英语-11</title>
+    <link href="https://dbing.github.io/2020/04/08/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-11/"/>
+    <id>https://dbing.github.io/2020/04/08/每日英语-11/</id>
+    <published>2020-04-08T11:12:01.000Z</published>
+    <updated>2020-04-08T11:38:18.324Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="每日英语"><a href="#每日英语" class="headerlink" title="每日英语"></a>每日英语</h2><p>一直在白斩词上记英语，在3月中旬左右突然更新了，体验了新版，发现句子不见了，截止到今日也就没有按日更新句子，昨日发现可以在列表里看到已学过的词的句子，这下又可以愉快的记句子了，发现没记句子的这几天学的词都是朦朦胧的。</p><p>贴一张3月份的打卡记录：</p><p><img src="3m.jpeg" alt="3月英语打卡"></p><p>接下来句子不能停，不能停，不能停</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;每日英语&quot;&gt;&lt;a href=&quot;#每日英语&quot; class=&quot;headerlink&quot; title=&quot;每日英语&quot;&gt;&lt;/a&gt;每日英语&lt;/h2&gt;&lt;p&gt;一直在白斩词上记英语，在3月中旬左右突然更新了，体验了新版，发现句子不见了，截止到今日也就没有按日更新句子，昨日发现可以在列
+      
+    
+    </summary>
+    
+      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HelloKefu 开源客服系统</title>
+    <link href="https://dbing.github.io/2020/04/08/HelloKefu-%E5%BC%80%E6%BA%90%E5%AE%A2%E6%9C%8D%E7%B3%BB%E7%BB%9F/"/>
+    <id>https://dbing.github.io/2020/04/08/HelloKefu-开源客服系统/</id>
+    <published>2020-04-08T11:02:33.000Z</published>
+    <updated>2020-04-08T11:31:27.378Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简短背景"><a href="#简短背景" class="headerlink" title="简短背景"></a>简短背景</h2><p>截止今日（2020年04月08日）写稿六个月前，偶然一个机会拿出了两周的时间，写出了一个客服系统（纯属情怀），技术栈：<code>Laravel+Vue+Swoole</code>，效果图如下：</p><p>客服端：</p><p><img src="./serve.png" alt="客服端"></p><p>访客端：</p><p><img src="./client.png" alt="访客端"></p><p>设计最让自己感觉满意的地方再于，<code>访客</code>(客户端)于<code>客服</code>(服务端)通过事件机制解耦了复杂的代码，两种消息机制(<code>Mutation</code>和<code>Action</code>)直接对应<code>Vux</code>中<code>Mutation</code>和<code>Action</code>相应方法，从而客户端一行代码直接触发<code>Server</code>端对应的<code>Event</code>，服务端打包相应的消息直接调用对应的<code>Mutation</code>或<code>Action</code>。</p><p>让通信方式更简单。<code>Vue</code>和<code>Laravel</code>之间通过<code>Api</code>的方式通信。</p><p>因时间安排原因，放弃此项目不再维护。</p><h2 id="Repo-地址"><a href="#Repo-地址" class="headerlink" title="Repo 地址"></a>Repo 地址</h2><p><a href="https://github.com/dbing/hellokefu/" target="_blank" rel="noopener">hellokefu</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;简短背景&quot;&gt;&lt;a href=&quot;#简短背景&quot; class=&quot;headerlink&quot; title=&quot;简短背景&quot;&gt;&lt;/a&gt;简短背景&lt;/h2&gt;&lt;p&gt;截止今日（2020年04月08日）写稿六个月前，偶然一个机会拿出了两周的时间，写出了一个客服系统（纯属情怀），技术栈：&lt;co
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://dbing.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="Hellokefu" scheme="https://dbing.github.io/tags/Hellokefu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 常用快捷键</title>
+    <link href="https://dbing.github.io/2020/04/06/Mac-%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>https://dbing.github.io/2020/04/06/Mac-快捷键/</id>
+    <published>2020-04-06T04:59:20.000Z</published>
+    <updated>2020-04-08T11:05:54.790Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="截屏"><a href="#截屏" class="headerlink" title="截屏"></a>截屏</h2><ul><li>command + shift + 3 ：全屏截屏</li><li>command + shift + 4 ：选定区域截屏</li></ul><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul><li>command + tab ：应用间切换</li><li>command + shift + u ：使用工具</li></ul><h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><ul><li>control + a : 移动至行首</li><li>control + e : 移动至行尾</li></ul><h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><ul><li>command + 0 : 打开文件</li><li>command + option + l : 打开下载</li><li>command + c : 复制</li><li>command + v : 粘贴</li><li>command + alt + v : 移动</li><li>command + alt + ← ：删除文件（Tab键确认、空格键确认删除）</li></ul><h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul><li>command + shift + { ：上个标签页</li><li>command + shift + } ：下个标签页</li><li>command + alt + ← ：上一个标签</li><li>command + n ：新开一个标签</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;截屏&quot;&gt;&lt;a href=&quot;#截屏&quot; class=&quot;headerlink&quot; title=&quot;截屏&quot;&gt;&lt;/a&gt;截屏&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;command + shift + 3 ：全屏截屏&lt;/li&gt;
+&lt;li&gt;command + shift + 4 ：选定区域截屏&lt;/
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://dbing.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="Mac" scheme="https://dbing.github.io/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>Electron 专注于桌面应用开发</title>
@@ -46,12 +123,16 @@
     <link href="https://dbing.github.io/2020/03/26/Vim-%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
     <id>https://dbing.github.io/2020/03/26/Vim-基础篇/</id>
     <published>2020-03-26T11:10:39.000Z</published>
-    <updated>2020-03-26T11:10:39.563Z</updated>
+    <updated>2020-04-07T10:11:34.999Z</updated>
     
     <summary type="html">
     
     </summary>
     
+      <category term="随笔" scheme="https://dbing.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="Vim" scheme="https://dbing.github.io/tags/Vim/"/>
     
   </entry>
   
