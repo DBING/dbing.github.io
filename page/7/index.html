@@ -246,6 +246,156 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2019/06/05/MySQL-中的事务/">MySQL 中的事务</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-06-05
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>编码中事务的使用，不能跨库，不能夸会话</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/06/03/初识-Go-语言/">初识 Go 语言</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-06-03
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Go/">Go</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>Go 语言主要特性</p>
+<ul>
+<li>自动垃圾回收 </li>
+<li>更丰富的内置类型 </li>
+<li>函数多返回值 </li>
+<li>错误处理 </li>
+<li>匿名函数和闭包 </li>
+<li>类型和接口 </li>
+<li>并发编程 </li>
+<li>反射 </li>
+<li>语言交互性 </li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/05/22/Composer-中国镜像/">Composer 中国镜像</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-05-22
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>Composer 中国镜像-阿里云镜像</p>
+<p>原文地址：<a href="https://developer.aliyun.com/composer" target="_blank" rel="noopener">https://developer.aliyun.com/composer</a></p>
+<p>选项一、全局配置（推荐）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
+<p>取消镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g --unset repos.packagist</span><br></pre></td></tr></table></figure></p>
+<p>选项二、项目配置</p>
+<p>仅修改当前工程配置，仅当前工程可使用该镜像地址：：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure></p>
+<p>取消镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config --unset repos.packagist</span><br></pre></td></tr></table></figure></p>
+<p>调试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer -vvv install</span><br></pre></td></tr></table></figure></p>
+<h2 id="Composer-manager"><a href="#Composer-manager" class="headerlink" title="Composer manager"></a>Composer manager</h2><p>鲜有日子，阿里云镜像也会抽风，那么这是镜像管理工具推荐给你，很方便切换到你想要使用的源</p>
+<p>原文地址：<a href="https://github.com/slince/composer-registry-manager" target="_blank" rel="noopener">https://github.com/slince/composer-registry-manager</a></p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2019/05/22/Linxu-压缩与解压常用命令/">Linxu 压缩与解压常用命令</a>
         
       </h1>
@@ -507,12 +657,38 @@
           <h2 id="Git-安装"><a href="#Git-安装" class="headerlink" title="Git 安装"></a>Git 安装</h2><p>Git 官网地址：<a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a></p>
 <h2 id="最简配置"><a href="#最简配置" class="headerlink" title="最简配置"></a>最简配置</h2><p>config 的三个作用域</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="built_in">local</span></span><br><span class="line">git config --global</span><br><span class="line">git config --system</span><br></pre></td></tr></table></figure>
-<p>配置 <code>user.name</code>和<code>user.email</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">'your name'</span></span><br><span class="line">git config --global user.email <span class="string">'your_email@domain.com'</span></span><br></pre></td></tr></table></figure></p>
-<p>显示<code>config</code>配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list --<span class="built_in">local</span></span><br></pre></td></tr></table></figure></p>
+<p>配置 <code>user.name</code>和<code>user.email</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">'your name'</span></span><br><span class="line">git config --global user.email <span class="string">'your_email@domain.com'</span></span><br></pre></td></tr></table></figure>
+<p>显示<code>config</code>配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list --<span class="built_in">local</span></span><br></pre></td></tr></table></figure>
 <h2 id="图形界面"><a href="#图形界面" class="headerlink" title="图形界面"></a>图形界面</h2><h2 id="Git-基础命令"><a href="#Git-基础命令" class="headerlink" title="Git 基础命令"></a>Git 基础命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git -u</span><br><span class="line">git mv <span class="built_in">test</span>  demo</span><br></pre></td></tr></table></figure>
 <h2 id="Git-tag"><a href="#Git-tag" class="headerlink" title="Git tag"></a>Git tag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打标签</span></span><br><span class="line">git tag -a v1.1.0 -m <span class="string">"tagging version 1.1.0"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除本地 Tag</span></span><br><span class="line">git tag -d v1.1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除远程 Tag</span></span><br><span class="line">git push origin :refs/tags/v1.1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Tag</span></span><br><span class="line">git tag</span><br></pre></td></tr></table></figure>
 <h2 id="Git-log"><a href="#Git-log" class="headerlink" title="Git log"></a>Git log</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br><span class="line">git <span class="built_in">log</span> --onelie</span><br><span class="line">git <span class="built_in">log</span> -n4</span><br><span class="line">git <span class="built_in">log</span> --all --graph</span><br><span class="line">git <span class="built_in">log</span> --all --oneline --graph -n4</span><br><span class="line">git <span class="built_in">log</span> <span class="built_in">help</span> --web <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><p>Q1：想撤回 <code>commit</code> 操作同时保留代码，怎么办？<br>A1：执行命令 <code>git reset --soft HEAD^</code></p>
+<h2 id="常见场景"><a href="#常见场景" class="headerlink" title="常见场景"></a>常见场景</h2><p>1.应该在新建分支上做更改的，发现忘记建新分支了，已经在当前分支做了更改，但是还没<code>commit</code>，怎么办？</p>
+<p>答：使用<code>git stash</code>，完整操作如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 暂存当前已经产生更改的代码</span></span><br><span class="line">git stash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到新（或新建）分支</span></span><br><span class="line">git checkout -b new_branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取出暂存的代码</span></span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure>
+<p>2.使用<code>git pull</code>会自动<code>merge</code>分支，产生冲突了，怎么办？</p>
+<p>常规流程都是，查看冲突文件并编辑，选择自己要的代码保留，删除不要的代码标记，然后再<code>git add 冲突文件</code>，再<code>git commit</code>，最后<code>git push</code> 齐活。</p>
+<p>有些时候你想快速解决，不想编辑冲突文件，直接以当前分支的<code>commit</code>为准并解决冲突，这时文件冲突着，直接使用<code>git checkout</code>取消本地的修改，尴尬的事情出现了，<code>checkout</code>失灵了，还会提示<code>error: path &#39;1.text&#39; is unmerged</code>，如果直接以当前<code>commit</code>为准并解决掉冲突，可做如下操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将「冲突文件」和指定的 commit （这里指 HEAD）同步</span></span><br><span class="line">git reset HEAD 冲突文件</span><br><span class="line"><span class="comment"># 然后放弃当前的更改，并回到 commit 后，冲突前的文件内容</span></span><br><span class="line">git checkout -- 冲突文件</span><br></pre></td></tr></table></figure>
+<p>场景重现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当前分支</span></span><br><span class="line">➜  <span class="built_in">test</span>-git git:(<span class="built_in">test</span>-b2) ✗ git <span class="built_in">log</span> --oneline</span><br><span class="line">2e75765 (HEAD -&gt; <span class="built_in">test</span>-b2, origin/<span class="built_in">test</span>-b2) add b2 <span class="built_in">test</span></span><br><span class="line">6cb49c7 (<span class="built_in">test</span>-b1) second commit</span><br><span class="line">2e35c90 first commit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 冲突文件状态</span></span><br><span class="line">(base) ➜  <span class="built_in">test</span>-git git:(<span class="built_in">test</span>-b2) ✗ git status</span><br><span class="line">On branch <span class="built_in">test</span>-b2</span><br><span class="line">You have unmerged paths.</span><br><span class="line">  (fix conflicts and run <span class="string">"git commit"</span>)</span><br><span class="line">  (use <span class="string">"git merge --abort"</span> to abort the merge)</span><br><span class="line"></span><br><span class="line">Unmerged paths:</span><br><span class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to mark resolution)</span><br><span class="line"></span><br><span class="line">	both modified:   1.text</span><br><span class="line"></span><br><span class="line">no changes added to commit (use <span class="string">"git add"</span> and/or <span class="string">"git commit -a"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 未解决冲突想切换到其他分支-失败</span></span><br><span class="line">(base) ➜  <span class="built_in">test</span>-git git:(<span class="built_in">test</span>-b2) ✗ git checkout master</span><br><span class="line">1.text: needs merge</span><br><span class="line">error: you need to resolve your current index first</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接 checkout 文件-失败</span></span><br><span class="line">(base) ➜  <span class="built_in">test</span>-git git:(<span class="built_in">test</span>-b2) ✗ git checkout 1.text</span><br><span class="line">error: path <span class="string">'1.text'</span> is unmerged</span><br></pre></td></tr></table></figure>
+<p>你可以这么做：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># reset</span></span><br><span class="line">(base) ➜  <span class="built_in">test</span>-git git:(<span class="built_in">test</span>-b2) ✗ git reset HEAD 1.text</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M	1.text</span><br><span class="line"></span><br><span class="line"><span class="comment"># checkout</span></span><br><span class="line">(base) ➜  <span class="built_in">test</span>-git git:(<span class="built_in">test</span>-b2) ✗ git checkout -- 1.text</span><br></pre></td></tr></table></figure>
+<p><code>git checkout</code> 后面跟<code>branch</code>、<code>tag</code>、<code>commitID</code>时分别切换到对应的<code>分支</code>、<code>标签</code>、和提交的<code>commitID</code>，如果后面跟文件名，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout HEAD~2 demo.py</span><br></pre></td></tr></table></figure>
+<p>意思是说：将工作目录中的<code>demo.py</code>变更为止倒数第二次提交的<code>demo.py</code>。</p>
+<p>接下来继续补充说一下<code>git reset</code>后面常跟的几个参数：</p>
+<p>说前，得有一个概念，暂存区<code>stage</code>，工作区<code>work</code>和本地仓库我们称为：<code>local repo</code></p>
+<ul>
+<li><code>--soft</code>：变动的是<code>local repo</code>的内容</li>
+<li><code>--mixed（缺省参数）</code>：变动的是<code>local repo</code>和<code>stage</code></li>
+<li><code>--hard</code>：变动的<code>local repo</code>和<code>stage</code>还有<code>work</code>三处位置</li>
+</ul>
+<p>3.如何把所有本地多次本地<code>commit</code>记录，变为一次<code>commit</code>记录并提交到远程仓库？</p>
+<p>答：如果你清楚的知道你进行过几次<code>commit</code>，那么你可以这么做<code>git reset --soft HEAD~3</code>（比如三次），然后再重新写一次<code>commit</code>提交。</p>
+<p>或者你可以，通过<code>git log</code>方式查看提交记录，然后通过<code>git reset --soft commitID</code>，将<code>HEAD</code>指向那次提交，后再重新写一次<code>commit</code>并提交。</p>
+<h2 id="常用问题"><a href="#常用问题" class="headerlink" title="常用问题"></a>常用问题</h2><p>Q1：想撤回 <code>commit</code> 操作同时保留代码，怎么办？<br>A1：执行命令 <code>git reset --soft HEAD^</code></p>
 <p>解释：<code>HEAD^</code> 意思是上一个版本，也可以写成 <code>HEAD~1</code>，如果想撤销两次<code>commit</code>，命令：<code>HEAD~2</code></p>
 <p>参数：</p>
 <ul>
@@ -520,7 +696,7 @@
 <li><code>--mixed</code>: 不删除工作空间改动代码，撤销<code>commit</code>，并且撤销<code>git add .</code>，<code>git reset --mixed HEAD^</code>等同于<code>git reset HEAD^</code></li>
 <li><code>--hard</code>: 删除工作空间改动代码，撤销<code>commit</code>，撤销<code>git add .</code>（恢复到了上一次的commit状态）</li>
 </ul>
-<p>Q2: 只想修改注释；<br>A2: <code>git commit --amend</code>,进入默认vim编辑器,修改保存即可</p>
+<p>Q2: 只想修改注释？<br>A2: <code>git commit --amend</code>,进入默认vim编辑器,修改保存即可</p>
 
         
       
@@ -642,191 +818,6 @@
   </article>
 
       
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/">Laravel 5.7 安装 Json Web Tokens (tymon/jwt-auth)</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-03-30
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Laravel/">Laravel</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>本文介绍 Laravel 5.7 框架集成 jwt 操作指南，在官方的 <a href="https://github.com/tymondesigns/jwt-auth/wiki/Installation[external]" title="[wiki]" target="_blank" rel="noopener">wiki</a> 中也有介绍，是使用的<code>0.5.*</code>版本，本文使用的<code>jwt-auth</code>是<code>1.0.0-rc.3</code>版本，切记使用此扩展包的版本不同，集成也会稍有不同，否则你会得到意想不到的问题，根据自己 <code>laravel</code>版本不同使用<code>jwt-auth</code>版本建议如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Laravel version</th>
-<th>jwt-auth version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>4.*</code></td>
-<td><code>0.3.*</code> <code>0.4.*</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>5.*</code> &amp;&amp; <code>&lt;5.5</code></td>
-<td><code>0.5.*</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>5.*</code></td>
-<td><code>1.0.*</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="安装扩展包-jwt-auth"><a href="#安装扩展包-jwt-auth" class="headerlink" title="安装扩展包 jwt-auth"></a>安装扩展包 jwt-auth</h2><p>将扩展包添加到<code>composer.json</code>，添加如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">“require”: &#123;</span><br><span class="line">    ...</span><br><span class="line">    “tymon/jwt-auth”: “1.0.0-rc.3”</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后通过命令更新<code>Composer</code>命令如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer update</span><br></pre></td></tr></table></figure></p>
-          <div class="read-more">
-            <a href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/">PhpStorm配置Xdebug远程调试</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-03-19
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/开发者工具/">开发者工具</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>调试复杂些的项目代码，<code>Xdebug</code> 是一把利器，本文结合自己的开发环境简讲通过<code>PhpStorm</code>完成<code>Xdebug</code>调试,部分原理图借鉴<code>xxlegend</code>作者</p>
-<h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><blockquote class="pullquote [class]"><p>本机：Windows10 + PhpStorm 2018 + Ip 192.168.10.108</p>
-<p>开发机：CentOS 6.10 + PHP 7.1 + Nginx 1.14 + Ip 192.168.10.140</p>
-</blockquote>
-<h3 id="开发方式"><a href="#开发方式" class="headerlink" title="开发方式"></a>开发方式</h3><p>一般情况开发者都是在本地开发，使用的开发环境也是本地自己搭建的，无论是在<code>Win</code>、<code>Mac</code>、<code>Linux</code>三者哪一个平台开发，最终想达到的体验是尽可能和生产环境一致，如果是在<code>Win</code>下开发，带来的代码兼容性问题时长让人难受（如：大小写问题），以至于追求<code>Unix</code>开发是一种潮流，这可能便是<code>Mac</code>之所以时程序员所爱的原因吧，<code>Win</code>下要想到达此效果。</p>
-<ol>
-<li>通过在<code>Window</code>下安装虚拟机，虚拟机中安装<code>Linxu</code>系统；</li>
-<li>使用<code>Windows 10</code>已经支持开启子系统，<code>Ubuntu</code>子系统中安装<code>PHP</code>开发环境；</li>
-<li>使用公司提供的公共开发机，开发机环境和所需服务都是安装好的，通过<code>samba</code>共享目录方式，本机无环境，开发机创建一个自己的虚拟目录；</li>
-</ol>
-<ul>
-<li>方法一：没有配置上<code>SSD</code>，内存没到<code>4G</code> 慎用 </li>
-<li>方法二：<code>Windows 10</code> 开启子系统，在应用市场一键安装<code>Ubuntu</code>，还是很方便的，在子系统中可以直接访问宿主机(本机)目录，使用感很方便。</li>
-<li>方法三：我公司为了开发者方便，搭建了<code>IP</code>为<code>140</code>的开发机，通过<code>samba</code>创建虚拟目录，本地添加网络盘方式打开<code>140</code>自己<code>Home</code>开发目录；</li>
-</ul>
-          <div class="read-more">
-            <a href="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/">配置双公钥完成同时对 gitee 和 github 的使用</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-12-31
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>通过配置 .ssh/config 文件完成对 gitee、gitlab、github...等多域下分别使用不同公钥的，达到可以在命令行中愉快的玩耍各个 git 远程仓库</p>
-          <div class="read-more">
-            <a href="/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
       
   <nav class="pagination">
     
@@ -835,6 +826,11 @@
         <span class="prev-text">上一页</span>
       </a>
     
+    
+      <a class="next" href="/page/8/">
+        <span class="next-text">下一页</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 

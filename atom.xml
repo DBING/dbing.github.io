@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dbing.github.io/"/>
-  <updated>2020-04-08T11:38:18.324Z</updated>
+  <updated>2020-04-15T05:52:09.926Z</updated>
   <id>https://dbing.github.io/</id>
   
   <author>
@@ -17,19 +17,94 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>每日英语-11</title>
-    <link href="https://dbing.github.io/2020/04/08/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-11/"/>
-    <id>https://dbing.github.io/2020/04/08/每日英语-11/</id>
-    <published>2020-04-08T11:12:01.000Z</published>
-    <updated>2020-04-08T11:38:18.324Z</updated>
+    <title>Laravel 下常用 Redis 类型写法应用</title>
+    <link href="https://dbing.github.io/2020/04/15/Laravel-%E4%B8%8B%E5%B8%B8%E7%94%A8-Redis-%E7%B1%BB%E5%9E%8B%E5%86%99%E6%B3%95%E5%BA%94%E7%94%A8/"/>
+    <id>https://dbing.github.io/2020/04/15/Laravel-下常用-Redis-类型写法应用/</id>
+    <published>2020-04-15T05:51:52.000Z</published>
+    <updated>2020-04-15T05:52:09.926Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="每日英语"><a href="#每日英语" class="headerlink" title="每日英语"></a>每日英语</h2><p>一直在白斩词上记英语，在3月中旬左右突然更新了，体验了新版，发现句子不见了，截止到今日也就没有按日更新句子，昨日发现可以在列表里看到已学过的词的句子，这下又可以愉快的记句子了，发现没记句子的这几天学的词都是朦朦胧的。</p><p>贴一张3月份的打卡记录：</p><p><img src="3m.jpeg" alt="3月英语打卡"></p><p>接下来句子不能停，不能停，不能停</p>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://redis.io/commands/hmset" target="_blank" rel="noopener">https://redis.io/commands/hmset</a></p><p><a href="https://segmentfault.com/a/1190000009695841#item-3-2" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009695841#item-3-2</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;每日英语&quot;&gt;&lt;a href=&quot;#每日英语&quot; class=&quot;headerlink&quot; title=&quot;每日英语&quot;&gt;&lt;/a&gt;每日英语&lt;/h2&gt;&lt;p&gt;一直在白斩词上记英语，在3月中旬左右突然更新了，体验了新版，发现句子不见了，截止到今日也就没有按日更新句子，昨日发现可以在列
+        &lt;p&gt;&lt;a href=&quot;https://redis.io/commands/hmset&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://redis.io/commands/hmset&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://segm
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB 常用SQL写法</title>
+    <link href="https://dbing.github.io/2020/04/14/MongoDB-%E5%B8%B8%E7%94%A8SQL%E5%86%99%E6%B3%95/"/>
+    <id>https://dbing.github.io/2020/04/14/MongoDB-常用SQL写法/</id>
+    <published>2020-04-14T03:10:00.000Z</published>
+    <updated>2020-04-14T03:20:32.193Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="增"><a href="#增" class="headerlink" title="增"></a>增</h2><h2 id="删"><a href="#删" class="headerlink" title="删"></a>删</h2><h2 id="改"><a href="#改" class="headerlink" title="改"></a>改</h2><h2 id="查"><a href="#查" class="headerlink" title="查"></a>查</h2><ul><li>查询某个字段是否存在</li></ul><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># </span></span><br><span class="line">db.getCollection('test').find(&#123;name:&#123;$exists:false&#125;&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;增&quot;&gt;&lt;a href=&quot;#增&quot; class=&quot;headerlink&quot; title=&quot;增&quot;&gt;&lt;/a&gt;增&lt;/h2&gt;&lt;h2 id=&quot;删&quot;&gt;&lt;a href=&quot;#删&quot; class=&quot;headerlink&quot; title=&quot;删&quot;&gt;&lt;/a&gt;删&lt;/h2&gt;&lt;h2 id=&quot;改&quot;&gt;&lt;a 
+      
+    
+    </summary>
+    
+      <category term="NeoX" scheme="https://dbing.github.io/categories/NeoX/"/>
+    
+    
+      <category term="MongoDB" scheme="https://dbing.github.io/tags/MongoDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每日英语-12</title>
+    <link href="https://dbing.github.io/2020/04/09/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-12/"/>
+    <id>https://dbing.github.io/2020/04/09/每日英语-12/</id>
+    <published>2020-04-09T14:23:18.000Z</published>
+    <updated>2020-04-09T14:31:42.980Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>Humans,whales,cats and cows are mammals.<br>人、鲸鱼、猫、牛都是哺乳动物。</p></li><li><p>The boy is worried about his homework.<br>这个男孩为功课感到担忧。</p></li><li><p>There are shelled peanuts in the bowl.<br>碗里装着去了壳的花生。</p></li><li><p>Every morning he brings me a package of things for my baby.<br>每天早晨他都给我带一包东西给我的宝宝。</p></li><li><p>The little baby girl is crying.<br>小女孩正在哭泣。</p></li><li><p>The American West was only settled by Europeans in the nineteenth century.<br>19世纪，在美国西部定居的只有欧洲人。</p></li><li><p>The elephant raised his trunk to say hello.<br>大象举起鼻子来打招呼。</p></li><li><p>The blind woman is crossing the street with her guide dog.<br>这位失明的女人正和她的导盲犬一起过街。</p></li><li><p>He invented the light bulb.<br>爱迪生发明了灯泡。</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;今日句子&quot;&gt;&lt;a href=&quot;#今日句子&quot; class=&quot;headerlink&quot; title=&quot;今日句子&quot;&gt;&lt;/a&gt;今日句子&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Humans,whales,cats and cows are mammals.&lt;br&gt;人、鲸鱼、猫、牛都
+      
+    
+    </summary>
+    
+      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
+    
+    
+      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每日英语-11</title>
+    <link href="https://dbing.github.io/2020/04/08/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-11/"/>
+    <id>https://dbing.github.io/2020/04/08/每日英语-11/</id>
+    <published>2020-04-08T11:12:01.000Z</published>
+    <updated>2020-04-08T14:28:42.774Z</updated>
+    
+    <content type="html"><![CDATA[<p>一直在白斩词上记英语，在3月中旬左右突然更新了，体验了新版，发现句子不见了，截止到今日也就没有按日更新句子，昨日发现可以在列表里看到已学过的词的句子，这下又可以愉快的记句子了，发现没记句子的这几天学的词都是朦朦胧的。</p><p>贴一张3月份的打卡记录：</p><p><img src="3m.jpeg" alt="3月英语打卡"></p><p>接下来句子不能停，不能停，不能停</p><h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>I think the shark wants to eat me!<br>我觉得这只鲨鱼想吃掉我！</p></li><li><p>She is ill and is taken care of by the doctor.<br>她生命了，医生在照看她。</p></li><li><p>We got lost in the foggy weather.<br>我们在大雾天气里迷路了。</p></li><li><p>I hear some sounds out there.<br>我听到外面有声音。</p></li><li><p>Tsinghua University is one of the most famous universities in china.<br>清华大学是国内最知名的大学之一。</p></li><li><p>I enjoy eating Chinese dumplings for lunch.<br>我喜欢午饭吃饺子。</p></li><li><p>I love hiking through mountains and deserts.<br>我爱徒步穿越山峰和沙漠。</p></li><li><p>The ice cream tastes good.<br>冰淇淋味道不错。</p></li><li><p>He is one of the most famous poets in Chinese history.<br>他是中国历史最著名的诗人之一。</p></li><li><p>The students are having a running competition.<br>学生们正在进行跑步比赛。</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一直在白斩词上记英语，在3月中旬左右突然更新了，体验了新版，发现句子不见了，截止到今日也就没有按日更新句子，昨日发现可以在列表里看到已学过的词的句子，这下又可以愉快的记句子了，发现没记句子的这几天学的词都是朦朦胧的。&lt;/p&gt;
+&lt;p&gt;贴一张3月份的打卡记录：&lt;/p&gt;
+&lt;p&gt;&lt;
       
     
     </summary>
@@ -1725,9 +1800,9 @@
     <link href="https://dbing.github.io/2019/04/26/Git-%E5%AE%9E%E7%94%A8%E6%8C%87%E5%8D%97/"/>
     <id>https://dbing.github.io/2019/04/26/Git-实用指南/</id>
     <published>2019-04-26T14:20:25.000Z</published>
-    <updated>2020-03-05T01:39:13.108Z</updated>
+    <updated>2020-04-18T10:51:25.130Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Git-安装"><a href="#Git-安装" class="headerlink" title="Git 安装"></a>Git 安装</h2><p>Git 官网地址：<a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a></p><h2 id="最简配置"><a href="#最简配置" class="headerlink" title="最简配置"></a>最简配置</h2><p>config 的三个作用域</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="built_in">local</span></span><br><span class="line">git config --global</span><br><span class="line">git config --system</span><br></pre></td></tr></table></figure><p>配置 <code>user.name</code>和<code>user.email</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">'your name'</span></span><br><span class="line">git config --global user.email <span class="string">'your_email@domain.com'</span></span><br></pre></td></tr></table></figure></p><p>显示<code>config</code>配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list --<span class="built_in">local</span></span><br></pre></td></tr></table></figure></p><h2 id="图形界面"><a href="#图形界面" class="headerlink" title="图形界面"></a>图形界面</h2><h2 id="Git-基础命令"><a href="#Git-基础命令" class="headerlink" title="Git 基础命令"></a>Git 基础命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git -u</span><br><span class="line">git mv <span class="built_in">test</span>  demo</span><br></pre></td></tr></table></figure><h2 id="Git-tag"><a href="#Git-tag" class="headerlink" title="Git tag"></a>Git tag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打标签</span></span><br><span class="line">git tag -a v1.1.0 -m <span class="string">"tagging version 1.1.0"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除本地 Tag</span></span><br><span class="line">git tag -d v1.1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除远程 Tag</span></span><br><span class="line">git push origin :refs/tags/v1.1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Tag</span></span><br><span class="line">git tag</span><br></pre></td></tr></table></figure><h2 id="Git-log"><a href="#Git-log" class="headerlink" title="Git log"></a>Git log</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br><span class="line">git <span class="built_in">log</span> --onelie</span><br><span class="line">git <span class="built_in">log</span> -n4</span><br><span class="line">git <span class="built_in">log</span> --all --graph</span><br><span class="line">git <span class="built_in">log</span> --all --oneline --graph -n4</span><br><span class="line">git <span class="built_in">log</span> <span class="built_in">help</span> --web <span class="built_in">log</span></span><br></pre></td></tr></table></figure><h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><p>Q1：想撤回 <code>commit</code> 操作同时保留代码，怎么办？<br>A1：执行命令 <code>git reset --soft HEAD^</code></p><p>解释：<code>HEAD^</code> 意思是上一个版本，也可以写成 <code>HEAD~1</code>，如果想撤销两次<code>commit</code>，命令：<code>HEAD~2</code></p><p>参数：</p><ul><li><code>--soft</code>: 不删除工作空间改动代码，撤销<code>commit</code>，不撤销<code>git add .</code></li><li><code>--mixed</code>: 不删除工作空间改动代码，撤销<code>commit</code>，并且撤销<code>git add .</code>，<code>git reset --mixed HEAD^</code>等同于<code>git reset HEAD^</code></li><li><code>--hard</code>: 删除工作空间改动代码，撤销<code>commit</code>，撤销<code>git add .</code>（恢复到了上一次的commit状态）</li></ul><p>Q2: 只想修改注释；<br>A2: <code>git commit --amend</code>,进入默认vim编辑器,修改保存即可</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Git-安装"><a href="#Git-安装" class="headerlink" title="Git 安装"></a>Git 安装</h2><p>Git 官网地址：<a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a></p><h2 id="最简配置"><a href="#最简配置" class="headerlink" title="最简配置"></a>最简配置</h2><p>config 的三个作用域</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="built_in">local</span></span><br><span class="line">git config --global</span><br><span class="line">git config --system</span><br></pre></td></tr></table></figure><p>配置 <code>user.name</code>和<code>user.email</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">'your name'</span></span><br><span class="line">git config --global user.email <span class="string">'your_email@domain.com'</span></span><br></pre></td></tr></table></figure><p>显示<code>config</code>配置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list --<span class="built_in">local</span></span><br></pre></td></tr></table></figure><h2 id="图形界面"><a href="#图形界面" class="headerlink" title="图形界面"></a>图形界面</h2><h2 id="Git-基础命令"><a href="#Git-基础命令" class="headerlink" title="Git 基础命令"></a>Git 基础命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git -u</span><br><span class="line">git mv <span class="built_in">test</span>  demo</span><br></pre></td></tr></table></figure><h2 id="Git-tag"><a href="#Git-tag" class="headerlink" title="Git tag"></a>Git tag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打标签</span></span><br><span class="line">git tag -a v1.1.0 -m <span class="string">"tagging version 1.1.0"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除本地 Tag</span></span><br><span class="line">git tag -d v1.1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除远程 Tag</span></span><br><span class="line">git push origin :refs/tags/v1.1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Tag</span></span><br><span class="line">git tag</span><br></pre></td></tr></table></figure><h2 id="Git-log"><a href="#Git-log" class="headerlink" title="Git log"></a>Git log</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br><span class="line">git <span class="built_in">log</span> --onelie</span><br><span class="line">git <span class="built_in">log</span> -n4</span><br><span class="line">git <span class="built_in">log</span> --all --graph</span><br><span class="line">git <span class="built_in">log</span> --all --oneline --graph -n4</span><br><span class="line">git <span class="built_in">log</span> <span class="built_in">help</span> --web <span class="built_in">log</span></span><br></pre></td></tr></table></figure><h2 id="常见场景"><a href="#常见场景" class="headerlink" title="常见场景"></a>常见场景</h2><p>1.应该在新建分支上做更改的，发现忘记建新分支了，已经在当前分支做了更改，但是还没<code>commit</code>，怎么办？</p><p>答：使用<code>git stash</code>，完整操作如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 暂存当前已经产生更改的代码</span></span><br><span class="line">git stash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到新（或新建）分支</span></span><br><span class="line">git checkout -b new_branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取出暂存的代码</span></span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure><p>2.使用<code>git pull</code>会自动<code>merge</code>分支，产生冲突了，怎么办？</p><p>常规流程都是，查看冲突文件并编辑，选择自己要的代码保留，删除不要的代码标记，然后再<code>git add 冲突文件</code>，再<code>git commit</code>，最后<code>git push</code> 齐活。</p><p>有些时候你想快速解决，不想编辑冲突文件，直接以当前分支的<code>commit</code>为准并解决冲突，这时文件冲突着，直接使用<code>git checkout</code>取消本地的修改，尴尬的事情出现了，<code>checkout</code>失灵了，还会提示<code>error: path &#39;1.text&#39; is unmerged</code>，如果直接以当前<code>commit</code>为准并解决掉冲突，可做如下操作：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将「冲突文件」和指定的 commit （这里指 HEAD）同步</span></span><br><span class="line">git reset HEAD 冲突文件</span><br><span class="line"><span class="comment"># 然后放弃当前的更改，并回到 commit 后，冲突前的文件内容</span></span><br><span class="line">git checkout -- 冲突文件</span><br></pre></td></tr></table></figure><p>场景重现：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当前分支</span></span><br><span class="line">➜  <span class="built_in">test</span>-git git:(<span class="built_in">test</span>-b2) ✗ git <span class="built_in">log</span> --oneline</span><br><span class="line">2e75765 (HEAD -&gt; <span class="built_in">test</span>-b2, origin/<span class="built_in">test</span>-b2) add b2 <span class="built_in">test</span></span><br><span class="line">6cb49c7 (<span class="built_in">test</span>-b1) second commit</span><br><span class="line">2e35c90 first commit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 冲突文件状态</span></span><br><span class="line">(base) ➜  <span class="built_in">test</span>-git git:(<span class="built_in">test</span>-b2) ✗ git status</span><br><span class="line">On branch <span class="built_in">test</span>-b2</span><br><span class="line">You have unmerged paths.</span><br><span class="line">  (fix conflicts and run <span class="string">"git commit"</span>)</span><br><span class="line">  (use <span class="string">"git merge --abort"</span> to abort the merge)</span><br><span class="line"></span><br><span class="line">Unmerged paths:</span><br><span class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to mark resolution)</span><br><span class="line"></span><br><span class="line">both modified:   1.text</span><br><span class="line"></span><br><span class="line">no changes added to commit (use <span class="string">"git add"</span> and/or <span class="string">"git commit -a"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 未解决冲突想切换到其他分支-失败</span></span><br><span class="line">(base) ➜  <span class="built_in">test</span>-git git:(<span class="built_in">test</span>-b2) ✗ git checkout master</span><br><span class="line">1.text: needs merge</span><br><span class="line">error: you need to resolve your current index first</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接 checkout 文件-失败</span></span><br><span class="line">(base) ➜  <span class="built_in">test</span>-git git:(<span class="built_in">test</span>-b2) ✗ git checkout 1.text</span><br><span class="line">error: path <span class="string">'1.text'</span> is unmerged</span><br></pre></td></tr></table></figure><p>你可以这么做：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># reset</span></span><br><span class="line">(base) ➜  <span class="built_in">test</span>-git git:(<span class="built_in">test</span>-b2) ✗ git reset HEAD 1.text</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M1.text</span><br><span class="line"></span><br><span class="line"><span class="comment"># checkout</span></span><br><span class="line">(base) ➜  <span class="built_in">test</span>-git git:(<span class="built_in">test</span>-b2) ✗ git checkout -- 1.text</span><br></pre></td></tr></table></figure><p><code>git checkout</code> 后面跟<code>branch</code>、<code>tag</code>、<code>commitID</code>时分别切换到对应的<code>分支</code>、<code>标签</code>、和提交的<code>commitID</code>，如果后面跟文件名，如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout HEAD~2 demo.py</span><br></pre></td></tr></table></figure><p>意思是说：将工作目录中的<code>demo.py</code>变更为止倒数第二次提交的<code>demo.py</code>。</p><p>接下来继续补充说一下<code>git reset</code>后面常跟的几个参数：</p><p>说前，得有一个概念，暂存区<code>stage</code>，工作区<code>work</code>和本地仓库我们称为：<code>local repo</code></p><ul><li><code>--soft</code>：变动的是<code>local repo</code>的内容</li><li><code>--mixed（缺省参数）</code>：变动的是<code>local repo</code>和<code>stage</code></li><li><code>--hard</code>：变动的<code>local repo</code>和<code>stage</code>还有<code>work</code>三处位置</li></ul><p>3.如何把所有本地多次本地<code>commit</code>记录，变为一次<code>commit</code>记录并提交到远程仓库？</p><p>答：如果你清楚的知道你进行过几次<code>commit</code>，那么你可以这么做<code>git reset --soft HEAD~3</code>（比如三次），然后再重新写一次<code>commit</code>提交。</p><p>或者你可以，通过<code>git log</code>方式查看提交记录，然后通过<code>git reset --soft commitID</code>，将<code>HEAD</code>指向那次提交，后再重新写一次<code>commit</code>并提交。</p><h2 id="常用问题"><a href="#常用问题" class="headerlink" title="常用问题"></a>常用问题</h2><p>Q1：想撤回 <code>commit</code> 操作同时保留代码，怎么办？<br>A1：执行命令 <code>git reset --soft HEAD^</code></p><p>解释：<code>HEAD^</code> 意思是上一个版本，也可以写成 <code>HEAD~1</code>，如果想撤销两次<code>commit</code>，命令：<code>HEAD~2</code></p><p>参数：</p><ul><li><code>--soft</code>: 不删除工作空间改动代码，撤销<code>commit</code>，不撤销<code>git add .</code></li><li><code>--mixed</code>: 不删除工作空间改动代码，撤销<code>commit</code>，并且撤销<code>git add .</code>，<code>git reset --mixed HEAD^</code>等同于<code>git reset HEAD^</code></li><li><code>--hard</code>: 删除工作空间改动代码，撤销<code>commit</code>，撤销<code>git add .</code>（恢复到了上一次的commit状态）</li></ul><p>Q2: 只想修改注释？<br>A2: <code>git commit --amend</code>,进入默认vim编辑器,修改保存即可</p>]]></content>
     
     <summary type="html">
     
