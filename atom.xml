@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dbing.github.io/"/>
-  <updated>2020-04-15T05:52:09.926Z</updated>
+  <updated>2020-04-21T08:35:32.046Z</updated>
   <id>https://dbing.github.io/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux中 2&gt;&amp;1 是什么</title>
+    <link href="https://dbing.github.io/2020/04/21/Linux%E4%B8%AD-2-1-%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    <id>https://dbing.github.io/2020/04/21/Linux中-2-1-是什么/</id>
+    <published>2020-04-21T08:35:13.000Z</published>
+    <updated>2020-04-21T08:35:32.046Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/yanzibuaa/p/7808437.html" target="_blank" rel="noopener">https://www.cnblogs.com/yanzibuaa/p/7808437.html</a></p><p><a href="https://blog.csdn.net/ithomer/article/details/9288353" target="_blank" rel="noopener">https://blog.csdn.net/ithomer/article/details/9288353</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/yanzibuaa/p/7808437.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/yanzibuaa/p/7808437.htm
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>OpenCV 擦除图片虚线与直线</title>
+    <link href="https://dbing.github.io/2020/04/21/OpenCV-%E6%93%A6%E9%99%A4%E5%9B%BE%E7%89%87%E8%99%9A%E7%BA%BF%E4%B8%8E%E7%9B%B4%E7%BA%BF/"/>
+    <id>https://dbing.github.io/2020/04/21/OpenCV-擦除图片虚线与直线/</id>
+    <published>2020-04-21T08:26:39.000Z</published>
+    <updated>2020-04-21T08:31:37.137Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul><li><a href="https://www.cnblogs.com/ssyfj/p/9277688.html?from=singlemessage&amp;isappinstalled=0" target="_blank" rel="noopener">https://www.cnblogs.com/ssyfj/p/9277688.html?from=singlemessage&amp;isappinstalled=0</a></li><li><a href="https://blog.csdn.net/yomo127/article/details/52045146" target="_blank" rel="noopener">https://blog.csdn.net/yomo127/article/details/52045146</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;参考文章&quot;&gt;&lt;a href=&quot;#参考文章&quot; class=&quot;headerlink&quot; title=&quot;参考文章&quot;&gt;&lt;/a&gt;参考文章&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/ssyfj/p/9277688.html?fr
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Laravel 下常用 Redis 类型写法应用</title>
@@ -64,59 +107,6 @@
   </entry>
   
   <entry>
-    <title>每日英语-12</title>
-    <link href="https://dbing.github.io/2020/04/09/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-12/"/>
-    <id>https://dbing.github.io/2020/04/09/每日英语-12/</id>
-    <published>2020-04-09T14:23:18.000Z</published>
-    <updated>2020-04-09T14:31:42.980Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>Humans,whales,cats and cows are mammals.<br>人、鲸鱼、猫、牛都是哺乳动物。</p></li><li><p>The boy is worried about his homework.<br>这个男孩为功课感到担忧。</p></li><li><p>There are shelled peanuts in the bowl.<br>碗里装着去了壳的花生。</p></li><li><p>Every morning he brings me a package of things for my baby.<br>每天早晨他都给我带一包东西给我的宝宝。</p></li><li><p>The little baby girl is crying.<br>小女孩正在哭泣。</p></li><li><p>The American West was only settled by Europeans in the nineteenth century.<br>19世纪，在美国西部定居的只有欧洲人。</p></li><li><p>The elephant raised his trunk to say hello.<br>大象举起鼻子来打招呼。</p></li><li><p>The blind woman is crossing the street with her guide dog.<br>这位失明的女人正和她的导盲犬一起过街。</p></li><li><p>He invented the light bulb.<br>爱迪生发明了灯泡。</p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;今日句子&quot;&gt;&lt;a href=&quot;#今日句子&quot; class=&quot;headerlink&quot; title=&quot;今日句子&quot;&gt;&lt;/a&gt;今日句子&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Humans,whales,cats and cows are mammals.&lt;br&gt;人、鲸鱼、猫、牛都
-      
-    
-    </summary>
-    
-      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每日英语-11</title>
-    <link href="https://dbing.github.io/2020/04/08/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-11/"/>
-    <id>https://dbing.github.io/2020/04/08/每日英语-11/</id>
-    <published>2020-04-08T11:12:01.000Z</published>
-    <updated>2020-04-08T14:28:42.774Z</updated>
-    
-    <content type="html"><![CDATA[<p>一直在白斩词上记英语，在3月中旬左右突然更新了，体验了新版，发现句子不见了，截止到今日也就没有按日更新句子，昨日发现可以在列表里看到已学过的词的句子，这下又可以愉快的记句子了，发现没记句子的这几天学的词都是朦朦胧的。</p><p>贴一张3月份的打卡记录：</p><p><img src="3m.jpeg" alt="3月英语打卡"></p><p>接下来句子不能停，不能停，不能停</p><h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>I think the shark wants to eat me!<br>我觉得这只鲨鱼想吃掉我！</p></li><li><p>She is ill and is taken care of by the doctor.<br>她生命了，医生在照看她。</p></li><li><p>We got lost in the foggy weather.<br>我们在大雾天气里迷路了。</p></li><li><p>I hear some sounds out there.<br>我听到外面有声音。</p></li><li><p>Tsinghua University is one of the most famous universities in china.<br>清华大学是国内最知名的大学之一。</p></li><li><p>I enjoy eating Chinese dumplings for lunch.<br>我喜欢午饭吃饺子。</p></li><li><p>I love hiking through mountains and deserts.<br>我爱徒步穿越山峰和沙漠。</p></li><li><p>The ice cream tastes good.<br>冰淇淋味道不错。</p></li><li><p>He is one of the most famous poets in Chinese history.<br>他是中国历史最著名的诗人之一。</p></li><li><p>The students are having a running competition.<br>学生们正在进行跑步比赛。</p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;一直在白斩词上记英语，在3月中旬左右突然更新了，体验了新版，发现句子不见了，截止到今日也就没有按日更新句子，昨日发现可以在列表里看到已学过的词的句子，这下又可以愉快的记句子了，发现没记句子的这几天学的词都是朦朦胧的。&lt;/p&gt;
-&lt;p&gt;贴一张3月份的打卡记录：&lt;/p&gt;
-&lt;p&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-  </entry>
-  
-  <entry>
     <title>HelloKefu 开源客服系统</title>
     <link href="https://dbing.github.io/2020/04/08/HelloKefu-%E5%BC%80%E6%BA%90%E5%AE%A2%E6%9C%8D%E7%B3%BB%E7%BB%9F/"/>
     <id>https://dbing.github.io/2020/04/08/HelloKefu-开源客服系统/</id>
@@ -146,9 +136,9 @@
     <link href="https://dbing.github.io/2020/04/06/Mac-%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     <id>https://dbing.github.io/2020/04/06/Mac-快捷键/</id>
     <published>2020-04-06T04:59:20.000Z</published>
-    <updated>2020-04-08T11:05:54.790Z</updated>
+    <updated>2020-04-22T03:49:03.155Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="截屏"><a href="#截屏" class="headerlink" title="截屏"></a>截屏</h2><ul><li>command + shift + 3 ：全屏截屏</li><li>command + shift + 4 ：选定区域截屏</li></ul><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul><li>command + tab ：应用间切换</li><li>command + shift + u ：使用工具</li></ul><h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><ul><li>control + a : 移动至行首</li><li>control + e : 移动至行尾</li></ul><h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><ul><li>command + 0 : 打开文件</li><li>command + option + l : 打开下载</li><li>command + c : 复制</li><li>command + v : 粘贴</li><li>command + alt + v : 移动</li><li>command + alt + ← ：删除文件（Tab键确认、空格键确认删除）</li></ul><h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul><li>command + shift + { ：上个标签页</li><li>command + shift + } ：下个标签页</li><li>command + alt + ← ：上一个标签</li><li>command + n ：新开一个标签</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="截屏"><a href="#截屏" class="headerlink" title="截屏"></a>截屏</h2><ul><li>command + shift + 3 ：全屏截屏</li><li>command + shift + 4 ：选定区域截屏</li></ul><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul><li>command + tab ：应用间切换</li><li>command + shift + u ：使用工具</li></ul><h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><ul><li>control + a : 移动至行首</li><li>control + e : 移动至行尾</li></ul><h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><ul><li>command + 0 : 打开文件</li><li>command + option + l : 打开下载</li><li>command + c : 复制</li><li>command + v : 粘贴</li><li>command + alt + v : 移动</li><li>command + alt + ← ：删除文件（Tab键确认、空格键确认删除）</li></ul><h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul><li>command + shift + { ：上个标签页</li><li>command + shift + } ：下个标签页</li><li>command + alt + ← ：上一个标签</li><li>command + n ：新开一个标签</li><li>command + w : 关闭当前标签</li></ul>]]></content>
     
     <summary type="html">
     
@@ -173,7 +163,7 @@
     <link href="https://dbing.github.io/2020/04/03/Electron-%E4%B8%93%E6%B3%A8%E4%BA%8E%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/"/>
     <id>https://dbing.github.io/2020/04/03/Electron-专注于桌面应用开发/</id>
     <published>2020-04-03T10:46:12.000Z</published>
-    <updated>2020-04-03T10:53:32.545Z</updated>
+    <updated>2020-04-24T09:34:35.050Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Electron"><a href="#Electron" class="headerlink" title="Electron"></a>Electron</h2><p>Electron 可以让你使用纯 JavaScript 调用丰富的原生(操作系统) APIs 来创造桌面应用。 你可以把它看作一个 Node. js 的变体，它专注于桌面应用而不是 Web 服务器端。</p><p>这不意味着 Electron 是某个图形用户界面（GUI）库的 JavaScript 版本。 相反，Electron 使用 web 页面作为它的 GUI，所以你能把它看作成一个被 JavaScript 控制的，精简版的 Chromium 浏览器。</p><p>以上是摘自<code>Electron</code>官方文档对其的描述，望以后有时间开发也给桌面应用小程序，这里<code>Mark</code>一下，感兴趣可以翻阅其<a href="https://www.electronjs.org/docs/tutorial/first-app" target="_blank" rel="noopener">官网文档</a></p>]]></content>
     
@@ -186,7 +176,7 @@
     
     </summary>
     
-      <category term="新事物" scheme="https://dbing.github.io/categories/%E6%96%B0%E4%BA%8B%E7%89%A9/"/>
+      <category term="随笔" scheme="https://dbing.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
       <category term="Electron" scheme="https://dbing.github.io/tags/Electron/"/>
@@ -198,9 +188,17 @@
     <link href="https://dbing.github.io/2020/03/26/Vim-%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
     <id>https://dbing.github.io/2020/03/26/Vim-基础篇/</id>
     <published>2020-03-26T11:10:39.000Z</published>
-    <updated>2020-04-07T10:11:34.999Z</updated>
+    <updated>2020-04-22T03:58:33.486Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h2><h3 id="开头"><a href="#开头" class="headerlink" title="开头"></a>开头</h3><ul><li><code>NORMAL</code>模式输入<code>:0</code>或<code>:1</code>，然后<code>Enter</code></li><li><code>NORMAL</code>模式小写<code>gg</code></li></ul><h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><ul><li><code>NORMAL</code>模式输入<code>:$</code>，然后<code>Enter</code></li><li><code>NORMAL</code>模式按大写<code>G</code></li><li><code>NORMAL</code>按键<code>shift</code>+<code>g</code></li></ul><p>自己还么有时间总结，分享一篇不错的资料：</p><p><a href="https://github.com/wsdjeg/vim-galore-zh_cn#linux-%E6%88%96%E8%80%85-mac-os" target="_blank" rel="noopener">https://github.com/wsdjeg/vim-galore-zh_cn#linux-%E6%88%96%E8%80%85-mac-os</a></p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;跳转&quot;&gt;&lt;a href=&quot;#跳转&quot; class=&quot;headerlink&quot; title=&quot;跳转&quot;&gt;&lt;/a&gt;跳转&lt;/h2&gt;&lt;h3 id=&quot;开头&quot;&gt;&lt;a href=&quot;#开头&quot; class=&quot;headerlink&quot; title=&quot;开头&quot;&gt;&lt;/a&gt;开头&lt;/h3&gt;&lt;ul&gt;
+&lt;
+      
     
     </summary>
     
@@ -346,9 +344,9 @@
     <link href="https://dbing.github.io/2020/03/13/Anaconda-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>https://dbing.github.io/2020/03/13/Anaconda-常用命令/</id>
     <published>2020-03-13T04:15:13.000Z</published>
-    <updated>2020-03-13T04:35:20.693Z</updated>
+    <updated>2020-04-22T06:06:53.716Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Anaconda-是什么"><a href="#Anaconda-是什么" class="headerlink" title="Anaconda 是什么"></a>Anaconda 是什么</h2><blockquote><p>Anaconda Enterprise supports your organization no matter the size, easily scaling from a single user on one laptop to thousands of machines. No headaches, no IT nightmares.</p></blockquote><h2 id="创建环境"><a href="#创建环境" class="headerlink" title="创建环境"></a>创建环境</h2><h3 id="查看全部环境"><a href="#查看全部环境" class="headerlink" title="查看全部环境"></a>查看全部环境</h3><p>conda env -h</p><p>conda create –name your_env_name</p><h3 id="创建制定python版本的环境"><a href="#创建制定python版本的环境" class="headerlink" title="创建制定python版本的环境"></a>创建制定python版本的环境</h3><p>conda create –name your_env_name python=2.7<br>conda create –name your_env_name python=3<br>conda create –name your_env_name python=3.5</p><h3 id="创建包含某些包的环境"><a href="#创建包含某些包的环境" class="headerlink" title="创建包含某些包的环境"></a>创建包含某些包的环境</h3><p>conda create –name your_env_name numpy scipy</p><h3 id="创建指定python版本下包含某些包的环境"><a href="#创建指定python版本下包含某些包的环境" class="headerlink" title="创建指定python版本下包含某些包的环境"></a>创建指定python版本下包含某些包的环境</h3><p>conda create –name your_env_name python=3.5 numpy scipy</p><h3 id="列举当前所有环境"><a href="#列举当前所有环境" class="headerlink" title="列举当前所有环境"></a>列举当前所有环境</h3><p>conda info –envs<br>conda env list</p><h3 id="进入某个环境"><a href="#进入某个环境" class="headerlink" title="进入某个环境"></a>进入某个环境</h3><p>activate  your_env_name</p><h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><p>deactivate your_env_name</p><h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><p>conda create –name new_env_name –clone old_env_name </p><h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>conda remove –name your_env_name –all</p><h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><h3 id="列举当前活跃环境下的所有包"><a href="#列举当前活跃环境下的所有包" class="headerlink" title="列举当前活跃环境下的所有包"></a>列举当前活跃环境下的所有包</h3><p>conda list</p><h3 id="列举一个非当前活跃环境下的所有包"><a href="#列举一个非当前活跃环境下的所有包" class="headerlink" title="列举一个非当前活跃环境下的所有包"></a>列举一个非当前活跃环境下的所有包</h3><p>conda list -n your_env_name</p><h3 id="为指定环境安装某个包"><a href="#为指定环境安装某个包" class="headerlink" title="为指定环境安装某个包"></a>为指定环境安装某个包</h3><p>conda install -n env_name package_name</p><p>例如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -n my-opencv pytorch=1.4.0 torchvision -c pytorch</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="Anaconda-是什么"><a href="#Anaconda-是什么" class="headerlink" title="Anaconda 是什么"></a>Anaconda 是什么</h2><blockquote><p>Anaconda Enterprise supports your organization no matter the size, easily scaling from a single user on one laptop to thousands of machines. No headaches, no IT nightmares.</p></blockquote><h2 id="Anaconda-安装"><a href="#Anaconda-安装" class="headerlink" title="Anaconda 安装"></a>Anaconda 安装</h2><p>官方地址（mac端）：<a href="https://www.anaconda.com/distribution/#macos" target="_blank" rel="noopener">https://www.anaconda.com/distribution/#macos</a></p><p>安装后，默认有一个<code>base</code>环境，如下图：</p><img src="/2020/03/13/Anaconda-常用命令/install-conda.png" title="conda安装"><p>接下来可以使用提供的GUI工具，创建环境、安装各种所需包，同样亦可通过命令行来完成，下面演示命令行的方式。</p><h2 id="案例操作记录"><a href="#案例操作记录" class="headerlink" title="案例操作记录"></a>案例操作记录</h2><p>这里我以为<code>mydemo</code>为例创建一个可运行python3+opencv的环境，下面以命令演示一下(GUI方式同样可以完成)。</p><p>查看当前env环境</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜ ~ conda env list</span><br><span class="line"><span class="comment"># conda environments:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">base /Users/bing/opt/anaconda3</span><br><span class="line">learn-python /Users/bing/opt/anaconda3/envs/learn-python</span><br><span class="line">my-opencv /Users/bing/opt/anaconda3/envs/my-opencv</span><br></pre></td></tr></table></figure><p>创建mydemo env环境</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜ ~ conda create --name mydemo</span><br><span class="line">Collecting package metadata (current_repodata.json): <span class="keyword">done</span></span><br><span class="line">Solving environment: <span class="keyword">done</span></span><br></pre></td></tr></table></figure><p>进入mydemo环境</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜ ~ conda activate mydemo</span><br><span class="line">(mydemo) ➜ ~</span><br></pre></td></tr></table></figure><!----><p>列出mydemo环境所有包</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(mydemo) ➜ ~ conda list -n mydemo</span><br><span class="line"><span class="comment"># packages in environment at /Users/bing/opt/anaconda3/envs/mydemo:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Name Version Build Channel</span></span><br></pre></td></tr></table></figure><p>搜索限制版本的python包</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(mydemo) ➜ ~ conda search <span class="string">'python&gt;=3'</span></span><br><span class="line">Loading channels: <span class="keyword">done</span></span><br><span class="line"><span class="comment"># Name Version Build Channel</span></span><br><span class="line">python 3.5.4 h4bd9b1b_18 pkgs/main</span><br><span class="line">python 3.5.4 h821eb87_14 pkgs/main</span><br><span class="line">python 3.5.4 h8f450c2_22 pkgs/main</span><br><span class="line">python 3.5.4 hb8880cc_19 pkgs/main</span><br><span class="line">python 3.5.4 hc167b69_27 pkgs/main</span><br><span class="line">python 3.5.4 hdd9bdb2_21 pkgs/main</span><br></pre></td></tr></table></figure><p>为mydemo 环境安装指定版本的python包</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(mydemo) ➜ ~ conda install -n mydemo python=3.7.6</span><br><span class="line">Collecting package metadata (current_repodata.json): <span class="keyword">done</span></span><br><span class="line">Solving environment: <span class="keyword">done</span></span><br></pre></td></tr></table></figure><p>注意：会询问提示是否安装相关依赖包，输入<code>y</code>，确认安装。</p><p>为mydemo环境安装指定版本的py-opencv包</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(mydemo) ➜ ~ conda install -n mydemo py-opencv=3.4.2</span><br><span class="line">Collecting package metadata (current_repodata.json): <span class="keyword">done</span></span><br><span class="line">Solving environment: <span class="keyword">done</span></span><br></pre></td></tr></table></figure><h2 id="创建环境"><a href="#创建环境" class="headerlink" title="创建环境"></a>创建环境</h2><h3 id="查看全部环境"><a href="#查看全部环境" class="headerlink" title="查看全部环境"></a>查看全部环境</h3><p>conda env -h</p><p>conda create –name your_env_name</p><h3 id="创建制定python版本的环境"><a href="#创建制定python版本的环境" class="headerlink" title="创建制定python版本的环境"></a>创建制定python版本的环境</h3><p>conda create –name your_env_name python=2.7<br>conda create –name your_env_name python=3<br>conda create –name your_env_name python=3.5</p><h3 id="创建包含某些包的环境"><a href="#创建包含某些包的环境" class="headerlink" title="创建包含某些包的环境"></a>创建包含某些包的环境</h3><p>conda create –name your_env_name numpy scipy</p><h3 id="创建指定python版本下包含某些包的环境"><a href="#创建指定python版本下包含某些包的环境" class="headerlink" title="创建指定python版本下包含某些包的环境"></a>创建指定python版本下包含某些包的环境</h3><p>conda create –name your_env_name python=3.5 numpy scipy</p><h3 id="列举当前所有环境"><a href="#列举当前所有环境" class="headerlink" title="列举当前所有环境"></a>列举当前所有环境</h3><p>conda info –envs<br>conda env list</p><h3 id="进入某个环境"><a href="#进入某个环境" class="headerlink" title="进入某个环境"></a>进入某个环境</h3><p>activate  your_env_name</p><h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><p>deactivate your_env_name</p><h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><p>conda create –name new_env_name –clone old_env_name </p><h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>conda remove –name your_env_name –all</p><h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><h3 id="列举当前活跃环境下的所有包"><a href="#列举当前活跃环境下的所有包" class="headerlink" title="列举当前活跃环境下的所有包"></a>列举当前活跃环境下的所有包</h3><p>conda list</p><h3 id="列举一个非当前活跃环境下的所有包"><a href="#列举一个非当前活跃环境下的所有包" class="headerlink" title="列举一个非当前活跃环境下的所有包"></a>列举一个非当前活跃环境下的所有包</h3><p>conda list -n your_env_name</p><h3 id="为指定环境安装某个包"><a href="#为指定环境安装某个包" class="headerlink" title="为指定环境安装某个包"></a>为指定环境安装某个包</h3><p>conda install -n env_name package_name</p><p>例如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -n my-opencv pytorch=1.4.0 torchvision -c pytorch</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -361,7 +359,7 @@
     </summary>
     
     
-      <category term="conda" scheme="https://dbing.github.io/tags/conda/"/>
+      <category term="anaconda" scheme="https://dbing.github.io/tags/anaconda/"/>
     
   </entry>
   
@@ -370,7 +368,7 @@
     <link href="https://dbing.github.io/2020/03/11/2018-2019%E5%B9%B4-%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86-%E4%B8%8A/"/>
     <id>https://dbing.github.io/2020/03/11/2018-2019年-面试经历-上/</id>
     <published>2020-03-11T10:10:33.000Z</published>
-    <updated>2020-03-11T10:32:00.860Z</updated>
+    <updated>2020-04-24T09:35:36.573Z</updated>
     
     <content type="html"><![CDATA[<h2 id="智众医疗"><a href="#智众医疗" class="headerlink" title="智众医疗"></a>智众医疗</h2><ol><li>自我介绍</li><li>MySQL 优化，常见的索引优化的方式</li><li>阿里云的 RDS 报 IOPS 过高（使用到索引了）</li><li>除了用 Redis 做缓存还用到了什么？（消息队列和锁，讲一下）</li><li>讲一下你的比较顺畅的一个工作流程</li><li>有一个接口，用户反馈很慢？</li><li>你们是怎么监控接口的？</li><li>docker 的原理？</li><li>如何优化镜像的打包速度和大小</li><li>讲一下个人是怎么成长的？</li><li>谈谈你对 MySQL 的优化</li><li>在创建 MySQL 索引时你是如何考虑的？</li><li>Btree 和 红黑树的区别</li><li>你在生产环境是如何部署任务队列的？</li><li>Laravel 中你认为哪些比较好的地方</li><li>ELK 有没有了解过？</li></ol><h2 id="韩创科技"><a href="#韩创科技" class="headerlink" title="韩创科技"></a>韩创科技</h2><h3 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h3><ol><li>最后一道笔试题</li><li>3千万的网站做个用户消息，用户读取后标记已读，请问你该如何设计。</li><li>Redis 的二进制存储，Redis 以及 Redis 存储结构以及 Redis 更高逼格的应用。</li><li>Elasticsearch 你再什么场景下使用的，怎么使用的。数据量级别是多少。</li><li>阿里云的开发搜索，出现延迟或空白现象有没有遇到过</li><li>当你下面的技术人员与产品发生了冲突，你会怎么做？</li><li>Kafka 有没有应用过，或是跑过 Demo</li><li>Redis 下 count 函数有没有了解</li></ol><h3 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h3><ol><li>Composer 自动加载原理</li><li>队列任务，单机消费处理不过来，多消费者如何做？</li><li>网站代码发布更新，如果做到不影响正常访问的用户</li><li>你是如何在三台或更多台生产服务器发布代码？</li><li>谈谈你对 MySQL 分区、分表的理解。</li><li>数据是如何在磁盘分布的。</li><li>使用主键查询与普通索引查询的区别。</li></ol><h2 id="乐贝"><a href="#乐贝" class="headerlink" title="乐贝"></a>乐贝</h2><h3 id="二面-1"><a href="#二面-1" class="headerlink" title="二面"></a>二面</h3><ol><li>Elasticsearch 下做查询或统计为什么这么快，谈谈你对它的理解。</li><li>谈谈你做过的最成熟的一个项目，你是怎么架构的。</li></ol><a id="more"></a><h3 id="一面-1"><a href="#一面-1" class="headerlink" title="一面"></a>一面</h3><ol><li>PHP 中有哪些常量？</li><li>PHP 的设计模式有了解吗？手写一个单例模式，这个代码在 swoole下运行有问题吗？如果有会有哪些问题？</li><li>__call  是什么？</li><li>Redis 如何防止高并发下，下单导致的问题</li><li>Laravel 中的 event 怎么用？</li><li>lua 有了解过吗？</li><li>Laravel 中懒加载是什么原理？Laravel 下加载扩展原理是什么？</li><li>Laravel 有一个扩展包，现在不满足我的业务，需要做修改你怎么做。</li><li>有了解 Http 协议吗？Http 协议分为哪个部分，Method 发生在哪个阶段，Post 传值在哪个层，Get传值在哪个层。</li></ol><h2 id="字节跳动"><a href="#字节跳动" class="headerlink" title="字节跳动"></a>字节跳动</h2><ol><li>504具体原因</li><li>最有代表性的一个项目，简述下使用的技术栈</li><li>PHP7的新特性</li><li>简述下 nginx 比 apache 优秀的原因</li><li>简述下 nginx 进程模型和 fastcgi 模型区别</li><li>mysql 事物4中隔离级别以及，默认隔离级别</li><li>死锁原因</li><li>索引应该注意哪些？</li><li>sql 优化具体有哪些</li><li>docker 下日志怎么管理</li><li>explain 优化sql 看什么指标参数</li><li>离职原因</li><li>gorouting 原理</li></ol><h3 id="算法题"><a href="#算法题" class="headerlink" title="算法题"></a>算法题</h3><ol><li>一共有10层楼梯，人每次可以走1-2步，一共有多少种走法</li></ol><h2 id="亦诊医疗"><a href="#亦诊医疗" class="headerlink" title="亦诊医疗"></a>亦诊医疗</h2><ol><li>Laravel 中 service Providers 你是怎么应用的？</li><li>说说 PHP 数组，在PHP底层怎么存储的（HashTable）</li><li>一个一维整数数组，如何快速取出前最大（或最小）的两个（SPL）</li><li>简述依赖注入的作用和实现方式</li><li>列举常见的 WEB 性能优化方法</li><li>git cherry-pick master</li></ol><h2 id="寻找母星"><a href="#寻找母星" class="headerlink" title="寻找母星"></a>寻找母星</h2><h3 id="电面"><a href="#电面" class="headerlink" title="电面"></a>电面</h3><ol><li>一台4核8G的服务器，只运行nginx 和 php，如何调优使其利用最大化。</li><li>TP5 或 Laravel 加载时经历了什么。</li></ol><h2 id="毒APP"><a href="#毒APP" class="headerlink" title="毒APP"></a>毒APP</h2><h3 id="一面-2"><a href="#一面-2" class="headerlink" title="一面"></a>一面</h3><ol><li>简单介绍一下自己</li><li>laravel yii2.0 tp5 优缺点</li><li>PHP 5与 PHP 7 哪些变化</li><li>PHP7 为什么会对这些 参数声明和返回值做强制类型声明？</li><li>对某一个类进行扩展，你应该怎么扩展？</li><li>有用过装饰器模式吗？</li><li>针对数据库的调优（为什么最左侧索引使用不上，索引就会失效）</li><li>yii 有哪些优势</li><li>PHP 跑脚本跑过没？</li><li>Crontab 如何实现每秒执行一次？</li><li>PHP 垃圾回收机制？</li><li>502、503、504 具体区别是什么？</li><li>Redis 哪些数据类型</li><li>elasticsearch 为什么快？</li><li>你们是如何管理代码的？</li><li>简述一下常用git 命令，git-rebase 应用场景是什么？</li><li>git reset 在本地回退代码后，如何提交到线上？</li><li>抢购如何处理库存和并发问题？</li></ol><h3 id="二面-2"><a href="#二面-2" class="headerlink" title="二面"></a>二面</h3><ol><li>可以详细描述一下一个 http 的请求过程嘛？</li><li>fpm 和 fastcgi 有什么关系</li><li>fastcgi 和 cgi 有什么关系？</li><li>数组在PHP底层是怎么存储的？（这里准确的说应该是HashTable）</li><li>假如 Hash 碰撞他会怎么处理？</li><li>innodb 有哪些索引？</li><li>复合索引哪些情况下会失效？</li><li>怎么查看 sql 有没有使用索引？</li><li>你再查看 explain 会看哪些参数？</li><li>B+tree 结构有没有了解？，B+tree 的层级是</li><li>redis 管道有用过吗？</li><li>订单表数据量比较大做拆分，需要从三个维度查询条件是订单号，商户id，用户id？</li><li>除了redis 还用过别的消息队列吗？</li><li>自己手写过框架吗？</li><li>微服务有了解过吗？</li><li>之前有用php做过一些服务化的东西吗？之前有做过一些模块拆分的东西吗？服务之间的依赖怎么处理？要怎么通信？</li><li>你现在参与研发的时间还多吗？</li><li>你的离职原因是什么？</li><li>你这么有什么问题要问的吗？</li></ol><h3 id="三面"><a href="#三面" class="headerlink" title="三面"></a>三面</h3><ol><li>redis 删除机制</li><li>缓存雪崩</li></ol><h2 id="连米科技"><a href="#连米科技" class="headerlink" title="连米科技"></a>连米科技</h2><h3 id="一面-3"><a href="#一面-3" class="headerlink" title="一面"></a>一面</h3><ol><li>你大概介绍一下你之前的项目和经历。</li><li>你做过的有代表性的项目介绍一下。</li><li>优惠券的活动，瞬时并发按5000算，你应该怎么处理。</li><li>在这个场景上，还有别的点上需要做优化的吗？</li><li>发送验证码的接口，被别人用大批量的手机号恶意利用，你应该怎么去处理。<br> 答：1.针对单个手机号在一日内做总次数发送限制。<br> 2.在 HTTP 请求头上做特殊标记<br> 3.传递的参数做加密，携带签名。</li><li>如果入职一家公司你的期待或预期是怎样的。</li><li>相对于别的开发，你有什么优势。</li><li>我这边了解的差不多了，你还有什么想了解的吗？</li></ol><h3 id="二面-3"><a href="#二面-3" class="headerlink" title="二面"></a>二面</h3><ol><li>你这个项目还在运行着吗？为什么不能访问了？介绍一下你这个项目的技术栈。</li><li>你这个项目的部署细节</li><li>你处理的电商项目中有哪些亮点呢。</li><li>第三方支付你积累的哪些经验呢。</li><li>说一个你项目的物理结构。</li><li>RDS 提供哪些服务让你选择 RDS</li><li>PHP 线上配置</li><li>PHP 和 Nginx 是怎么通信的</li><li>Docker 有多少了解呢</li><li>你怎么编排 Docker 的呢</li><li>Laravel 需要改哪些设置使其更快</li><li>PHP 垃圾回收机制</li><li>PHP 自动加载机制有了解过吗？</li></ol><h3 id="二三四五"><a href="#二三四五" class="headerlink" title="二三四五"></a>二三四五</h3><ol><li>简单做个自我介绍</li><li>你在开发过程中你有没有用过php的扩展，你是如何安装php扩展的</li><li>你是怎么判断一个字符串长度的，</li><li>strlen 和 mb_strlen 有什么区别，两个中文汉字，这个两个函数返回值分别是多少。</li><li>怎么用php读取一个10G的文件，</li><li>PHP 中两个等号和三个等号的区别是什么呢？</li><li>php 中常用的魔术方法举几个例子，tostring 是什么意思</li><li>array_map 有用过吗？他主要功能描述一下。</li><li>array_walk 呢？</li><li>怎么获取一个文件的类型？</li><li>你开发过程中有没有用redis，他有集中数据类型</li><li>redis 有几种持久化方式呢。</li><li>你是怎么优化mysql呢？</li><li>你是怎么判断一个sql 有无没使用索引呢，explain 看什么指标呢？</li><li>为什么使用索引就很快呢，索引的原理是什么呢？</li><li>索引覆盖是什么呢？什么时候会使用到呢？</li><li>如何控制mysql的一个连接数</li><li>你平时用的nginx多呢还是apache呢，你是如何创建一个虚拟主机的。</li><li>PHP 和 Nginx 是怎么通信的。</li><li>PHP 和 Nginx 有几种通信方式。</li></ol><h3 id="开发类"><a href="#开发类" class="headerlink" title="开发类"></a>开发类</h3><ol><li>有一个接口每天只能访问一万次，你应该怎么做。</li><li>让你设计一个抢购系统，你关注哪些点。</li><li>你维护一个网站，有一段时间也没有上传代码，突然有人告诉你这个网站今天打开特别慢，你该怎么排查一下，以及一下有哪些步骤。</li><li>正则表达式匹配出所有是4的倍数的二进制数</li></ol><h3 id="开发题"><a href="#开发题" class="headerlink" title="开发题"></a>开发题</h3><p>1.写一个函数，得出1等奖中奖概率是0.5%，2等奖中奖概率5%，3等奖中奖概率10%<br>2.一个二维数据，根据某个key值的大小按升序或降序排序</p><h2 id="边锋科技"><a href="#边锋科技" class="headerlink" title="边锋科技"></a>边锋科技</h2><p>php负责人请假，GoLang 技术面试</p><ol><li>插入数据表真实是成功的，但是获取db的写入状态确是不成功的，请问如何提示给客户端，如何解决？（他的回答：插入后再查一次）</li><li>更新缓存成功了，但是更新DB确失败了，怎么办？</li></ol>]]></content>
     
@@ -420,36 +418,10 @@
     
     </summary>
     
-      <category term="面试" scheme="https://dbing.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+      <category term="随笔" scheme="https://dbing.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-  </entry>
-  
-  <entry>
-    <title>每日英语-10</title>
-    <link href="https://dbing.github.io/2020/03/10/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-10/"/>
-    <id>https://dbing.github.io/2020/03/10/每日英语-10/</id>
-    <published>2020-03-10T09:14:18.000Z</published>
-    <updated>2020-03-10T09:18:41.167Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>Today is my birthday!<br>今天是我的生日</p></li><li><p>I like to wear my white coat.<br>我喜欢穿我的白色外套。</p></li><li><p>Vegetables are ok,but i prefer eating meat.<br>蔬菜是不错，但是我还是更喜欢吃肉。</p></li><li><p>There are different kinds of bread in the picture.<br>图片中有各式各样的面包。</p></li></ol><h2 id="陌生单词"><a href="#陌生单词" class="headerlink" title="陌生单词"></a>陌生单词</h2><ul><li><p>kinds:<br>n. 种类；特征；圣餐的圣体（指面包或葡萄酒）（kind 的复数）</p></li><li><p>prefer:<br>vt. 更喜欢；宁愿；提出；提升<br>vi. 喜欢；愿意</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;今日句子&quot;&gt;&lt;a href=&quot;#今日句子&quot; class=&quot;headerlink&quot; title=&quot;今日句子&quot;&gt;&lt;/a&gt;今日句子&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Today is my birthday!&lt;br&gt;今天是我的生日&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;I l
-      
-    
-    </summary>
-    
-      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
+      <category term="面试" scheme="https://dbing.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -480,37 +452,6 @@
   </entry>
   
   <entry>
-    <title>每日英语-9</title>
-    <link href="https://dbing.github.io/2020/03/09/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-9/"/>
-    <id>https://dbing.github.io/2020/03/09/每日英语-9/</id>
-    <published>2020-03-09T08:59:12.000Z</published>
-    <updated>2020-03-09T09:16:34.504Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>Let’s meet again on the sixteenth – a week from today.<br>让我们16号再见吧，也就是一周后的今天</p></li><li><p>Sea turtles swim so gracefully.<br>海龟再优雅地游水。</p></li><li><p>The old friends are walking in a park.<br>这些老朋友正在公园里散步。</p></li><li><p>After hearing the bad news,she cannot fall asleep.<br>听到这个坏消息之后他难以入睡</p></li></ol><a id="more"></a><ol start="5"><li><p>I love eating cakes!<br>我爱吃蛋糕！</p></li><li><p>Would you like a pet rabbit?<br>你想要一直宠物兔吗？</p></li><li><p>I took a big bite out of my sandwich.<br>我咬了一大口我的三明治</p></li><li><p>Ducks are swimming happily in the water.<br>鸭子们在水中愉快的游着。</p></li><li><p>How did you get your hair so straight?<br>你如何让你的头发这么直的？</p></li><li><p>Her hand looks so soft and clean.<br>她的手看起来又嫩又干净。</p></li><li><p>My head aches – maybe I think too much.<br>我的头好痛，估计是我用脑过度。</p></li><li><p>These students are having a music class.<br>这些学生正在上音乐课。</p></li><li><p>This is a blue police cap.<br>这是一顶蓝色的警察帽</p></li><li><p>My monther went to the supermarket with a shopping list.<br>我的妈妈带着购物清单去了超市。</p></li><li><p>2020 is the Year of the Rat.<br>2020年是鼠年。</p></li></ol><h2 id="陌生词："><a href="#陌生词：" class="headerlink" title="陌生词："></a>陌生词：</h2><ul><li><p>soft:<br>adj. 软的，柔软的；温柔的，温和的；软弱的；笨的<br>adv. 柔软地；温和地<br>n. 柔性；柔软的东西；柔软部分</p></li><li><p>straight:<br>adj. 直的；连续的；笔直的；正直的；整齐的；异性恋的<br>adv. 直接地；不断地；立即；坦率地<br>n. 直；直线；直男，直女，异性恋者</p></li><li><p>out of:<br>由于；缺乏；自…离开；用…（材料</p></li><li><p>bite:<br>vt. 咬；刺痛<br>n. 咬；一口；咬伤；刺痛<br>vi. 咬；刺痛</p></li><li><p>took:<br>v. 拿；取；接受（take的过去式）</p></li><li><p>fall:<br>v. 落下；跌倒；下垂；跪下；（地面）向下倾斜；（数量等的）减少； （雨或雪） 降落；沦陷； 阵亡；进入（某状态）；突然来到<br>n. 落下；跌倒；（雪、岩石等的）降落；（数量等的）减少；秋季；垮台、衰败<br>adj. 秋天的</p></li><li><p>asleep:<br>adj. 睡着的；麻木的；长眠的；不积极的；不专心的<br>adv. 熟睡地；进入睡眠状态（地）</p></li><li><p>gracefully:[ˈɡreɪsfəli]<br>adv. 优雅地；温文地</p></li><li><p>sea<br>n. 海；海洋；许多；大量</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;今日句子&quot;&gt;&lt;a href=&quot;#今日句子&quot; class=&quot;headerlink&quot; title=&quot;今日句子&quot;&gt;&lt;/a&gt;今日句子&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Let’s meet again on the sixteenth – a week from today.&lt;br&gt;让我们16号再见吧，也就是一周后的今天&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Sea turtles swim so gracefully.&lt;br&gt;海龟再优雅地游水。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The old friends are walking in a park.&lt;br&gt;这些老朋友正在公园里散步。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;After hearing the bad news,she cannot fall asleep.&lt;br&gt;听到这个坏消息之后他难以入睡&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Laravel Task Scheduling Preventing Task Overlaps</title>
     <link href="https://dbing.github.io/2020/03/09/Laravel-Task-Scheduling-Preventing-Task-Overlaps/"/>
     <id>https://dbing.github.io/2020/03/09/Laravel-Task-Scheduling-Preventing-Task-Overlaps/</id>
@@ -537,72 +478,6 @@
     
       <category term="Laravel" scheme="https://dbing.github.io/categories/Laravel/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>每日英语-8</title>
-    <link href="https://dbing.github.io/2020/03/08/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-8/"/>
-    <id>https://dbing.github.io/2020/03/08/每日英语-8/</id>
-    <published>2020-03-08T13:14:42.000Z</published>
-    <updated>2020-03-08T13:52:16.823Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>“Who is the little boy in the photo?”,”it’s me.”<br>“照片上的小男孩是谁？”, “是我.”</p></li><li><p>Look at the baby’s chubby legs! So cute!<br>看这个宝宝胖嘟嘟的腿，真可爱！</p></li><li><p>This hamburger looks samll but delicious.<br>这个汉堡虽小，但看起来十分美味。</p></li><li><p>This cat is my mom’s pet.<br>这只猫是我妈妈的宠物。</p></li><li><p>The fresh red tomato is a healthy food.<br>红色的番茄是一种健康的食物。</p></li></ol><a id="more"></a><ol start="6"><li><p>She is lying in the sun with bare feet.<br>她光着脚躺在阳光下。</p></li><li><p>There are several fresh potatoes in the field.<br>田里有几个新鲜的土豆。</p></li><li><p>I have four T-shirts.<br>我有四件T恤</p></li><li><p>A basket of fresh fruits is on the wooden table.<br>木桌上放了一篮新鲜水果</p></li><li><p>The horse’s long tail lifted up into the air as it ran.<br>马的尾巴随着其奔跑而甩向空中。</p></li><li><p>She hurt her leg this morning.<br>今天早上她伤到了腿</p></li><li><p>We need to kick every day.<br>每天我们都要踢腿</p></li><li><p>She wears a red sweater.<br>她穿了一件红色的针织套衫</p></li><li><p>Don’t be afraid of my pet snake; it’s very friendly.<br>不用害怕我的宠物蛇，它是很友好的。</p></li><li><p>The three trousers have the same color.<br>这三条裤子颜色都一样。</p></li></ol><h2 id="单词"><a href="#单词" class="headerlink" title="单词"></a>单词</h2><ul><li><p>wooden:[ˈwʊdn]<br>adj. 木制的；僵硬的，呆板的</p></li><li><p>several:[ˈsevrəl]<br>adj. 几个的；各自的<br>pron. 几个；数个</p></li><li><p>field:[fiːld]<br>n. 领域；牧场；旷野；战场；运动场;字段<br>vi. 担任场外队员<br>adj. 扫描场；田赛的；野生的<br>vt. 把暴晒于场上；使上场</p></li><li><p>fresh:[freʃ]<br>adj. 新鲜的；清新的；淡水的；无经验的<br>n. 开始；新生；泛滥<br>adv. 刚刚，才；最新地</p></li><li><p>basket:[ˈbɑːskɪt]<br>n. 篮子；（篮球比赛的）得分；一篮之量；篮筐<br>vt. 装入篮</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;今日句子&quot;&gt;&lt;a href=&quot;#今日句子&quot; class=&quot;headerlink&quot; title=&quot;今日句子&quot;&gt;&lt;/a&gt;今日句子&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;“Who is the little boy in the photo?”,”it’s me.”&lt;br&gt;“照片上的小男孩是谁？”, “是我.”&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Look at the baby’s chubby legs! So cute!&lt;br&gt;看这个宝宝胖嘟嘟的腿，真可爱！&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;This hamburger looks samll but delicious.&lt;br&gt;这个汉堡虽小，但看起来十分美味。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;This cat is my mom’s pet.&lt;br&gt;这只猫是我妈妈的宠物。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The fresh red tomato is a healthy food.&lt;br&gt;红色的番茄是一种健康的食物。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每日英语-7</title>
-    <link href="https://dbing.github.io/2020/03/07/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-7/"/>
-    <id>https://dbing.github.io/2020/03/07/每日英语-7/</id>
-    <published>2020-03-07T13:25:22.000Z</published>
-    <updated>2020-03-07T13:49:51.102Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>She helped the old man to walk.<br>她帮助老人走路。</p></li><li><p>Your tongue is longer than mine!<br>你的舌头比我的长！</p></li><li><p>Did you get a good grade on your last exam?<br>最后一门考试你取得好成绩了吗？</p></li><li><p>He wrote a summary of the terrible year he had.<br>这是他悲惨的2018年总结</p></li><li><p>Cola is a sweet,brown drink.<br>可乐是种甜味的棕色饮料。</p></li></ol><a id="more"></a><ol start="6"><li><p>We have a lot to learn about the human body.<br>关于人体我们有太多要学。</p></li><li><p>Is this the right place to look for science fiction novels?<br>这是找科幻小说的地方吗？</p></li><li><p>Her beautiful blonde hair is long and curly.<br>她的美丽金发又长又卷</p></li><li><p>“Looking forward to seeing you soon.” She wrote it on the letter.<br>她在信中写到：“我盼望与你尽快相见。”</p></li><li><p>Today is her birthday and she is 20 years of age？<br>今天是她20岁的生日</p></li><li><p>They often dance with music.<br>她们常随音乐起舞。</p></li><li><p>They were happy to buy this house.<br>他们高兴地买下了这座房子。</p></li><li><p>Everyone had a great time at my birthday party.<br>在我的生日聚会上每个人都玩得很开心。</p></li><li><p>He wore a thick coat to keep warm in the winter.<br>冬天他穿了一件厚外套来保暖。</p></li><li><p>The girl is touching her arm.<br>这个女孩正在摸她的手臂</p></li></ol><h2 id="单词"><a href="#单词" class="headerlink" title="单词"></a>单词</h2><p>terrible:[ˈterəbl]<br>adj. 可怕的；很糟的；令人讨厌的<br>adv. 很，非常</p><p>science:[ˈsaɪəns]<br>n. 科学；技术；学科；理科</p><p>fiction:[ˈfɪkʃn]<br>n. 小说；虚构，编造；谎言</p><p>novels:[‘nɔvəlz]<br>n. 小说（novel的复数）</p><p>thick:[θɪk]<br>adj. 厚的，有……厚；浓密的；粘稠的；浑浊的；迟钝的；明显的；粗壮的；（字体）粗体的；（气味）浓烈的；沙哑的；口音重的；思路不清的；大量的；（非正式）交情厚的<br>n. 最激烈处，最密集处，中心处<br>adv. 厚厚地；密集地</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;今日句子&quot;&gt;&lt;a href=&quot;#今日句子&quot; class=&quot;headerlink&quot; title=&quot;今日句子&quot;&gt;&lt;/a&gt;今日句子&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;She helped the old man to walk.&lt;br&gt;她帮助老人走路。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Your tongue is longer than mine!&lt;br&gt;你的舌头比我的长！&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Did you get a good grade on your last exam?&lt;br&gt;最后一门考试你取得好成绩了吗？&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;He wrote a summary of the terrible year he had.&lt;br&gt;这是他悲惨的2018年总结&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Cola is a sweet,brown drink.&lt;br&gt;可乐是种甜味的棕色饮料。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
     
   </entry>
   
@@ -657,132 +532,6 @@
   </entry>
   
   <entry>
-    <title>每日英语-6</title>
-    <link href="https://dbing.github.io/2020/03/03/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-6/"/>
-    <id>https://dbing.github.io/2020/03/03/每日英语-6/</id>
-    <published>2020-03-03T14:30:14.000Z</published>
-    <updated>2020-03-03T14:42:01.243Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>I prefer the cold. snowy mountains over warm places.<br>比起温暖的地方，我更喜欢寒冷的、白雪皑皑的山区。</p></li><li><p>My favourite pet is my dog, Lucy.<br>我喜欢的宠物是我的狗狗，露西。</p></li><li><p>Today is the 15th of August.<br>今天是八月十五号。</p></li><li><p>It’s time for breakfast.<br>是该吃早饭的时间了。</p></li><li><p>There are four seasons in a year.<br>一年有四个季节。</p></li></ol><a id="more"></a><ol start="6"><li>I usually get up around 7 o’clock in the morning.<br>我通常早上7点钟起床。</li></ol><h2 id="单词"><a href="#单词" class="headerlink" title="单词"></a>单词</h2><ul><li><p>perferred:<br>adj. 优先的；选择的</p></li><li><p>over:<br>adv. 倒下；翻转；穿过；完全覆盖；以上；大于；再；结束；改变；完毕；仔细地<br>prep. 在……上面；从……上方；穿越；在……的另一边；在……的远端；从……落下；遍及；多于；在……期间；渡过；由于；关于；利用；通过；声音大于；高于；级别在……之上；优先于；超过<br>n. （板球）一轮投球<br>adj. 倒下的；折起来的；结束的；剩下的<br>v. 越过</p></li><li><p>August:<br>n. 八月</p></li><li><p>usually:<br>adv. 通常，经常</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;今日句子&quot;&gt;&lt;a href=&quot;#今日句子&quot; class=&quot;headerlink&quot; title=&quot;今日句子&quot;&gt;&lt;/a&gt;今日句子&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;I prefer the cold. snowy mountains over warm places.&lt;br&gt;比起温暖的地方，我更喜欢寒冷的、白雪皑皑的山区。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;My favourite pet is my dog, Lucy.&lt;br&gt;我喜欢的宠物是我的狗狗，露西。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Today is the 15th of August.&lt;br&gt;今天是八月十五号。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;It’s time for breakfast.&lt;br&gt;是该吃早饭的时间了。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;There are four seasons in a year.&lt;br&gt;一年有四个季节。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每日英语-5</title>
-    <link href="https://dbing.github.io/2020/03/02/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-5/"/>
-    <id>https://dbing.github.io/2020/03/02/每日英语-5/</id>
-    <published>2020-03-02T14:30:20.000Z</published>
-    <updated>2020-03-03T15:00:44.437Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>She can swim like a finsh! Loook at her!<br>看看她，她像鱼一样游泳！</p></li><li><p>Bring your umbrella. It is rainy outside.<br>带上你的雨伞，外面再下雨</p></li><li><p>It’s cloudy today. so you can’t see the sun.<br>今天多云，所以你看不见太阳</p></li><li><p>There snowy mountains are very beautiful.<br>这些白雪皑皑的山，非常漂亮</p></li><li><p>The trees are swaying beacause of the windy weather.<br>树在大风天气中随风舞动。</p></li></ol><a id="more"></a><ol start="6"><li><p>The blue sky means that today is a sunny day.<br>蓝蓝的天空表明今天是个晴天</p></li><li><p>The doy can use an umbrella?<br>这只狗会撑伞？</p></li><li><p>The weather this week has been mostly cloudy.<br>这周天气以多云为主</p></li><li><p>In china, the flying swallows are a sign of spring.<br>在中国，飞燕是春天的讯号</p></li><li><p>My family always take a summer vacation at the beach.<br>我家总会在海边过暑假</p></li><li><p>Leaves turn yellow in the autumn.<br>秋天，叶子都变黄了。</p></li><li><p>I can go skiing in the winter.<br>我可以在冬天滑雪</p></li><li><p>I like eating bread with hot coffe.<br>我喜欢就着热咖啡吃面包</p></li><li><p>We feel warm with the fire.<br>火让我们感到温暖</p></li><li><p>Washing face with cold water is so cool.<br>用冷水洗脸特别凉爽。</p></li></ol><h2 id="陌生词"><a href="#陌生词" class="headerlink" title="陌生词"></a>陌生词</h2><ul><li><p>Bring:[brɪŋ]<br>vt. 带来；促使；引起；使某人处于某种情况或境地</p></li><li><p>swaying:<br>v. 使摇动；支配；偏向一边（sway的ing形式）</p></li><li><p>mostly:[ˈməʊstli]<br>adv. 主要地；通常；多半地</p></li><li><p>swallows:<br>n. 燕子；咽喉；吞咽（swallow 的复数）<br>v. 吞下；做吞咽动作；吞没；用尽；轻信；不流露；默默忍受；吞并（swallow 的第三人称单数）</p></li><li><p>vacation:[veɪˈkeɪʃn; vəˈkeɪʃn]<br>n. 假期；（房屋）搬出<br>vi. 休假，度假</p></li><li><p>beach:[biːtʃ]<br>n. 海滩；湖滨<br>vt. 将…拖上岸<br>vi. 搁浅；定居</p></li><li><p>turn:[tɜːn]<br>vt. 转动，使旋转；转弯；翻过来；兑换<br>vi. 转向；转变；转动<br>n. 转弯；变化；(损害或有益于别人的)行为，举动，举止</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;今日句子&quot;&gt;&lt;a href=&quot;#今日句子&quot; class=&quot;headerlink&quot; title=&quot;今日句子&quot;&gt;&lt;/a&gt;今日句子&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;She can swim like a finsh! Loook at her!&lt;br&gt;看看她，她像鱼一样游泳！&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Bring your umbrella. It is rainy outside.&lt;br&gt;带上你的雨伞，外面再下雨&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;It’s cloudy today. so you can’t see the sun.&lt;br&gt;今天多云，所以你看不见太阳&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;There snowy mountains are very beautiful.&lt;br&gt;这些白雪皑皑的山，非常漂亮&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The trees are swaying beacause of the windy weather.&lt;br&gt;树在大风天气中随风舞动。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每日英语-4</title>
-    <link href="https://dbing.github.io/2020/03/01/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-4/"/>
-    <id>https://dbing.github.io/2020/03/01/每日英语-4/</id>
-    <published>2020-03-01T02:56:18.000Z</published>
-    <updated>2020-03-01T03:05:33.321Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>The girl keeps a diary everyday.<br>女孩儿每天都在写日记</p></li><li><p>We can get some gifts in Christmas.<br>我们在圣诞节可以得到礼物。</p></li><li><p>The boy is making a Chrismas greeting card by himself.<br>这个小男孩亲自制作圣诞节贺卡。</p></li><li><p>She felt happy when her boyfriend gave her a persent.<br>男朋友送给她礼物时她感到很开心。</p></li><li><p>The girls felt merry and happy at the party.<br>在派对上这些女孩感到愉快和高兴</p></li><li><p>She is always happy to see her friend.<br>见到自己的朋友，她总是很开心。</p></li></ol><h2 id="词"><a href="#词" class="headerlink" title="词"></a>词</h2><ul><li><p>diary:[ˈdaɪəri]<br>n. 日志，日记；日记簿</p></li><li><p>felt:[felt]<br>n. 毡，毛毡；毡制品<br>v. 把……制成毡；毡合；用毡覆盖<br>v. 感觉，感觉是；感受到；认为；触摸（feel 的过去式和过去分词）</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;今日句子&quot;&gt;&lt;a href=&quot;#今日句子&quot; class=&quot;headerlink&quot; title=&quot;今日句子&quot;&gt;&lt;/a&gt;今日句子&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;The girl keeps a diary everyday.&lt;br&gt;女孩儿每天都在写日记&lt;/p&gt;
-&lt;/
-      
-    
-    </summary>
-    
-      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每日英语-3</title>
-    <link href="https://dbing.github.io/2020/02/29/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-3/"/>
-    <id>https://dbing.github.io/2020/02/29/每日英语-3/</id>
-    <published>2020-02-29T14:17:31.000Z</published>
-    <updated>2020-02-29T14:39:08.230Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>All of them have short hair.<br>他们都留着短发。</p></li><li><p>The handsome man posed for pictures.<br>这位英俊的男子摆好姿势准备照相</p></li><li><p>The man loves his new motorbike！<br>这个男人超爱他的新摩托车！</p></li><li><p>They like their bookshop very much.<br>他们喜欢他们的书店</p></li><li><p>There are so many animals in the zoo!<br>动物园里有好多动物啊！</p></li></ol><a id="more"></a><ol start="6"><li><p>You can buy a lot of things from the supermarke.<br>你可以在超市买到很多东西</p></li><li><p>There are some people relaxing by the lake in the park.<br>有些人再公园的湖边休息</p></li><li><p>The patient was taken to the hospital for treatment.<br>病人被带进医院进行治疗</p></li><li><p>Where do you want to go,child?<br>你要去哪里，孩子？</p></li><li><p>We enjoy talking one the grass under the blue sky.<br>我们很喜欢蓝天下躺在草坪上聊天。</p></li><li><p>People are resting under the big tree.<br>人们在这颗大树下休息。</p></li><li><p>There are colorful flowers in that place.<br>那里有五颜六色的花。</p></li><li><p>The little wooden boat floats on the water.<br>这艘小木船浮在水面上。</p></li><li><p>The beautiful lake lies at the foot of the mountain.<br>那个美丽的湖泊坐落在山脚下。</p></li></ol><h2 id="词"><a href="#词" class="headerlink" title="词"></a>词</h2><ul><li><p>posed：<br>v. 形成（pose的过去分词）；摆姿势；主张；装模作样</p></li><li><p>relaxing：<br>adj. 令人放松的<br>v. 放松，休息（relax 的现在分词）</p></li><li><p>taken：<br>v. 拿，带（take的过去分词）</p></li><li><p>treatment：<br>n. 治疗，疗法；处理；对待</p></li><li><p>patient：<br>adj. 有耐心的，能容忍的<br>n. 病人，患者；受动者，承受者</p></li><li><p>lies：<br>n. 谎言（lie的复数）<br>v. 躺卧（lie的第三人称单数形式）</p></li><li><p>foot：<br>n. 脚；英尺；步调；末尾<br>vi. 步行；跳舞；总计<br>vt. 支付；给……换底</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;今日句子&quot;&gt;&lt;a href=&quot;#今日句子&quot; class=&quot;headerlink&quot; title=&quot;今日句子&quot;&gt;&lt;/a&gt;今日句子&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;All of them have short hair.&lt;br&gt;他们都留着短发。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The handsome man posed for pictures.&lt;br&gt;这位英俊的男子摆好姿势准备照相&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The man loves his new motorbike！&lt;br&gt;这个男人超爱他的新摩托车！&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;They like their bookshop very much.&lt;br&gt;他们喜欢他们的书店&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;There are so many animals in the zoo!&lt;br&gt;动物园里有好多动物啊！&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hexo_posts目录归档</title>
     <link href="https://dbing.github.io/2020/02/29/Hexo-posts%E7%9B%AE%E5%BD%95%E5%BD%92%E6%A1%A3/"/>
     <id>https://dbing.github.io/2020/02/29/Hexo-posts目录归档/</id>
@@ -802,39 +551,6 @@
     
     
       <category term="hexo" scheme="https://dbing.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>每日英语-2</title>
-    <link href="https://dbing.github.io/2020/02/28/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-2/"/>
-    <id>https://dbing.github.io/2020/02/28/每日英语-2/</id>
-    <published>2020-02-28T13:21:27.000Z</published>
-    <updated>2020-02-29T15:04:05.841Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol><li><p>Her red skirt mathes well with her red sunglasses.<br>她的红色裙子和红色太阳镜很搭。</p></li><li><p>We have kinds of dresses in our store. Try one on!<br>本店女装款式多样，欢迎选购。</p></li><li><p>This is a pair of jean shorts.<br>这是一条牛仔短裤。</p></li><li><p>This kind of metal looks very hard.<br>这种金属看上去很硬。</p></li><li><p>This father has a daughter and a son.<br>这位父亲有一儿一女。</p></li></ol><a id="more"></a><ol start="6"><li><p>The mother wathes over her baby.<br>这位母亲照看她的宝宝。</p></li><li><p>The brother and sister play together.<br>两兄妹在一起玩。</p></li><li><p>My sister is also my best friend.<br>我的姐姐也是我最好的朋友。</p></li><li><p>My grandmother gave me a candy cane.<br>我祖母给了我一个拐杖糖。</p></li><li><p>My classmates and I can use this computer.<br>我和我的同学可以用这台电脑。</p></li><li><p>My grandmother is such an elegant woman.<br>我的奶奶是多么优雅的女人啊。</p></li><li><p>The girl with brown hair is so cute.<br>这个棕色头发的女孩太可爱了。</p></li><li><p>A man smiles happily.<br>这个男人笑起来很开心。</p></li><li><p>The little boy loves to read.<br>这个小男孩喜欢阅读。</p></li><li><p>I look at myself in the mirror before work.<br>上班前我照了照镜子。</p></li><li><p>I am going to eat this big sandwich.<br>我要吃了这个巨大的三明治。</p></li><li><p>How did you grow so tall?<br>你是怎么长到这么高的？</p></li><li><p>Wow, she’s pretty! Does she have a boyfriend?<br>哇哇，她真漂亮！她有男朋友吗？</p></li><li><p>The sun is slowly rising from the horizon.<br>太阳从地平线缓缓升起。</p></li></ol><h2 id="词"><a href="#词" class="headerlink" title="词"></a>词</h2><ul><li><p>kinds:<br>n. 种类；特征；圣餐的圣体（指面包或葡萄酒）（kind 的复数）</p></li><li><p>jean:<br>n. 牛仔裤；[纺] 斜纹棉布</p></li><li><p>pair:<br>n. 一对，一双，一副<br>vt. 把…组成一对</p></li><li><p>hard:<br>adj. 努力的；硬的；困难的；辛苦的；确实的；严厉的；猛烈的；冷酷无情的<br>adv. 努力地；困难地；辛苦地；接近地；猛烈地；牢固地</p></li><li><p>candy:[ˈkændi]<br>n. 糖果，巧克力；冰糖；（糖果包装的）毒品；中看不中用的东西<br>v. 把……制成蜜饯；用糖煮；使结晶</p></li><li><p>cane:[keɪn]<br>n. 手杖；藤条；细长的茎<br>vt. 以杖击；以藤编制</p></li><li><p>such:[sʌtʃ]<br>adj. 这样的，如此的</p></li><li><p>elegant:[ˈelɪɡənt]<br>adj. 高雅的，优雅的；讲究的；简炼的；简洁的</p></li><li><p>brown:[braʊn]<br>adj. 棕色的，褐色的；太阳晒黑的<br>vi. 变成褐色<br>n. 褐色，棕色<br>vt. 使变成褐色</p></li><li><p>cute:[kjuːt]<br>adj. 可爱的；漂亮的；聪明的，伶俐的</p></li><li><p>mirror:[ˈmɪrə(r)]<br>n. 镜子；真实的写照；榜样<br>vt. 反射；反映</p></li><li><p>rising:[ˈraɪzɪŋ]<br>n. 上升；起床；造反<br>adj. 上升的；上涨的；新兴的<br>adv. 接近<br>v. 上升（rise的ing形式）</p></li><li><p>horizon:[həˈraɪzn]<br>n. [天] 地平线；视野；眼界；范围</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;今日句子&quot;&gt;&lt;a href=&quot;#今日句子&quot; class=&quot;headerlink&quot; title=&quot;今日句子&quot;&gt;&lt;/a&gt;今日句子&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Her red skirt mathes well with her red sunglasses.&lt;br&gt;她的红色裙子和红色太阳镜很搭。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;We have kinds of dresses in our store. Try one on!&lt;br&gt;本店女装款式多样，欢迎选购。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;This is a pair of jean shorts.&lt;br&gt;这是一条牛仔短裤。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;This kind of metal looks very hard.&lt;br&gt;这种金属看上去很硬。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;This father has a daughter and a son.&lt;br&gt;这位父亲有一儿一女。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-      <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
     
   </entry>
   
@@ -899,36 +615,21 @@
   </entry>
   
   <entry>
-    <title>每日英语-1</title>
-    <link href="https://dbing.github.io/2020/02/24/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD-1/"/>
-    <id>https://dbing.github.io/2020/02/24/每日英语-1/</id>
+    <title>每日英语</title>
+    <link href="https://dbing.github.io/2020/02/24/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
+    <id>https://dbing.github.io/2020/02/24/每日英语/</id>
     <published>2020-02-24T05:15:46.000Z</published>
-    <updated>2020-02-29T14:08:56.588Z</updated>
+    <updated>2020-04-24T09:29:55.615Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="今日语句"><a href="#今日语句" class="headerlink" title="今日语句"></a>今日语句</h2><ol><li><p>I’m scard of the bear; don’t let it get near me!<br>我怕熊，别让他靠近我！</p></li><li><p>I bought a red chair.<br>我买了一把红色椅子</p></li><li><p>He always wears a shirt and tie to work.<br>他去工作时总是穿衬衫打领带</p></li><li><p>I drink the water because I’m thirsty.<br>我口渴所以喝水</p></li><li><p>My sister and I water the plants.<br>姐姐和我在给植物浇水</p></li><li><p>Milk is a tasty and healthy drink.<br>牛奶是一种可口又健康的饮品</p></li><li><p>Would you like a cup of tea?<br>你要来杯茶么？</p></li></ol><a id="more"></a><ol start="8"><li><p>I want to drink orange juice!<br>我好想喝橘子汁啊！</p></li><li><p>I want to find a job from the newspaper.<br>我想要从报纸上找一份工作</p></li><li><p>I’m very hungry,so i can eat a lot.<br>我很饿，因此我可以吃很多.</p></li><li><p>Fish have very simple lives.<br>鱼过着简单的生活</p></li><li><p>These chickens look so different.<br>这些鸡长得很不一样</p></li><li><p>I’ll have some eggs for breakfast.<br>我早餐会吃一些鸡蛋</p></li><li><p>I’ll cook rice for dinner.<br>晚餐我做米饭</p></li><li><p>The boy is saying sorry to his girlfriend.<br>男孩在给他女朋友道歉</p></li><li><p>She says,”Sure! It’s OK!”<br>她说：“当然了！没问题！”</p></li><li><p>I like the green doll.<br>我喜欢这个绿色的玩偶</p></li><li><p>My bed is so comfortable.<br>我的床相当舒服</p></li><li><p>The box of books is really heavy.<br>这一箱书可真沉啊</p></li><li><p>She will write down her menu on the blackboard.<br>她会把她的菜单写在这块黑板上</p></li><li><p>The black car looks cool and expensive.<br>那辆黑色的车看起来气派豪华</p></li><li><p>The train is about to travel through the building.<br>列车即将穿楼而过</p></li><li><p>Kick the ball into the net.<br>把球踢进网</p></li><li><p>I like to travel by plane.<br>我喜欢乘坐飞机旅行</p></li><li><p>Who is the girl standing behind the boy?<br>站在那个男孩后面的女孩是谁？</p></li><li><p>Where does the door lead to?<br>这个门通向哪里？</p></li><li><p>There is a ball near the hole.<br>那个球在洞口附近</p></li><li><p>On holidays,fireworks light up the sky.<br>在节日，烟火照亮填空</p></li><li><p>The cat is hiding under the sofa.<br>那只猫躲在沙发下面</p></li><li><p>All of my textbooks are on my desk.<br>我所有的课本都在我的书桌上</p></li><li><p>There is an empty desk right here.<br>这里有一张空桌子</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>以下将是自己每日所学英语，怕引起不适，故在首页省略展示。</p><a id="more"></a><h2 id="2020-04-09"><a href="#2020-04-09" class="headerlink" title="2020-04-09"></a>2020-04-09</h2><ol><li><p>Humans,whales,cats and cows are mammals.<br>人、鲸鱼、猫、牛都是哺乳动物。</p></li><li><p>The boy is worried about his homework.<br>这个男孩为功课感到担忧。</p></li><li><p>There are shelled peanuts in the bowl.<br>碗里装着去了壳的花生。</p></li><li><p>Every morning he brings me a package of things for my baby.<br>每天早晨他都给我带一包东西给我的宝宝。</p></li><li><p>The little baby girl is crying.<br>小女孩正在哭泣。</p></li><li><p>The American West was only settled by Europeans in the nineteenth century.<br>19世纪，在美国西部定居的只有欧洲人。</p></li><li><p>The elephant raised his trunk to say hello.<br>大象举起鼻子来打招呼。</p></li><li><p>The blind woman is crossing the street with her guide dog.<br>这位失明的女人正和她的导盲犬一起过街。</p></li><li><p>He invented the light bulb.<br>爱迪生发明了灯泡。</p></li></ol><h2 id="2020-04-08"><a href="#2020-04-08" class="headerlink" title="2020-04-08"></a>2020-04-08</h2><p>一直在白斩词上记英语，在3月中旬左右突然更新了，体验了新版，发现句子不见了，截止到今日也就没有按日更新句子，昨日发现可以在列表里看到已学过的词的句子，这下又可以愉快的记句子了，发现没记句子的这几天学的词都是朦朦胧的。</p><p>贴一张3月份的打卡记录：</p><p><img src="3m.jpeg" alt="3月英语打卡"></p><p>接下来句子不能停，不能停，不能停</p><ol><li><p>I think the shark wants to eat me!<br>我觉得这只鲨鱼想吃掉我！</p></li><li><p>She is ill and is taken care of by the doctor.<br>她生命了，医生在照看她。</p></li><li><p>We got lost in the foggy weather.<br>我们在大雾天气里迷路了。</p></li><li><p>I hear some sounds out there.<br>我听到外面有声音。</p></li><li><p>Tsinghua University is one of the most famous universities in china.<br>清华大学是国内最知名的大学之一。</p></li><li><p>I enjoy eating Chinese dumplings for lunch.<br>我喜欢午饭吃饺子。</p></li><li><p>I love hiking through mountains and deserts.<br>我爱徒步穿越山峰和沙漠。</p></li><li><p>The ice cream tastes good.<br>冰淇淋味道不错。</p></li><li><p>He is one of the most famous poets in Chinese history.<br>他是中国历史最著名的诗人之一。</p></li><li><p>The students are having a running competition.<br>学生们正在进行跑步比赛。</p></li></ol><h2 id="2020-03-10"><a href="#2020-03-10" class="headerlink" title="2020-03-10"></a>2020-03-10</h2><ol><li><p>Today is my birthday!<br>今天是我的生日</p></li><li><p>I like to wear my white coat.<br>我喜欢穿我的白色外套。</p></li><li><p>Vegetables are ok,but i prefer eating meat.<br>蔬菜是不错，但是我还是更喜欢吃肉。</p></li><li><p>There are different kinds of bread in the picture.<br>图片中有各式各样的面包。</p></li></ol><h2 id="陌生单词"><a href="#陌生单词" class="headerlink" title="陌生单词"></a>陌生单词</h2><ul><li><p>kinds:<br>n. 种类；特征；圣餐的圣体（指面包或葡萄酒）（kind 的复数）</p></li><li><p>prefer:<br>vt. 更喜欢；宁愿；提出；提升<br>vi. 喜欢；愿意</p></li></ul><h2 id="2020-03-09"><a href="#2020-03-09" class="headerlink" title="2020-03-09"></a>2020-03-09</h2><ol><li><p>Let’s meet again on the sixteenth – a week from today.<br>让我们16号再见吧，也就是一周后的今天</p></li><li><p>Sea turtles swim so gracefully.<br>海龟再优雅地游水。</p></li><li><p>The old friends are walking in a park.<br>这些老朋友正在公园里散步。</p></li><li><p>After hearing the bad news,she cannot fall asleep.<br>听到这个坏消息之后他难以入睡</p></li><li><p>I love eating cakes!<br>我爱吃蛋糕！</p></li><li><p>Would you like a pet rabbit?<br>你想要一直宠物兔吗？</p></li><li><p>I took a big bite out of my sandwich.<br>我咬了一大口我的三明治</p></li><li><p>Ducks are swimming happily in the water.<br>鸭子们在水中愉快的游着。</p></li><li><p>How did you get your hair so straight?<br>你如何让你的头发这么直的？</p></li><li><p>Her hand looks so soft and clean.<br>她的手看起来又嫩又干净。</p></li><li><p>My head aches – maybe I think too much.<br>我的头好痛，估计是我用脑过度。</p></li><li><p>These students are having a music class.<br>这些学生正在上音乐课。</p></li><li><p>This is a blue police cap.<br>这是一顶蓝色的警察帽</p></li><li><p>My monther went to the supermarket with a shopping list.<br>我的妈妈带着购物清单去了超市。</p></li><li><p>2020 is the Year of the Rat.<br>2020年是鼠年。</p></li></ol><h2 id="陌生词："><a href="#陌生词：" class="headerlink" title="陌生词："></a>陌生词：</h2><ul><li><p>soft:<br>adj. 软的，柔软的；温柔的，温和的；软弱的；笨的<br>adv. 柔软地；温和地<br>n. 柔性；柔软的东西；柔软部分</p></li><li><p>straight:<br>adj. 直的；连续的；笔直的；正直的；整齐的；异性恋的<br>adv. 直接地；不断地；立即；坦率地<br>n. 直；直线；直男，直女，异性恋者</p></li><li><p>out of:<br>由于；缺乏；自…离开；用…（材料</p></li><li><p>bite:<br>vt. 咬；刺痛<br>n. 咬；一口；咬伤；刺痛<br>vi. 咬；刺痛</p></li><li><p>took:<br>v. 拿；取；接受（take的过去式）</p></li><li><p>fall:<br>v. 落下；跌倒；下垂；跪下；（地面）向下倾斜；（数量等的）减少； （雨或雪） 降落；沦陷； 阵亡；进入（某状态）；突然来到<br>n. 落下；跌倒；（雪、岩石等的）降落；（数量等的）减少；秋季；垮台、衰败<br>adj. 秋天的</p></li><li><p>asleep:<br>adj. 睡着的；麻木的；长眠的；不积极的；不专心的<br>adv. 熟睡地；进入睡眠状态（地）</p></li><li><p>gracefully:[ˈɡreɪsfəli]<br>adv. 优雅地；温文地</p></li><li><p>sea<br>n. 海；海洋；许多；大量</p></li></ul><h2 id="2020-03-08"><a href="#2020-03-08" class="headerlink" title="2020-03-08"></a>2020-03-08</h2><ol><li><p>“Who is the little boy in the photo?”,”it’s me.”<br>“照片上的小男孩是谁？”, “是我.”</p></li><li><p>Look at the baby’s chubby legs! So cute!<br>看这个宝宝胖嘟嘟的腿，真可爱！</p></li><li><p>This hamburger looks samll but delicious.<br>这个汉堡虽小，但看起来十分美味。</p></li><li><p>This cat is my mom’s pet.<br>这只猫是我妈妈的宠物。</p></li><li><p>The fresh red tomato is a healthy food.<br>红色的番茄是一种健康的食物。</p></li><li><p>She is lying in the sun with bare feet.<br>她光着脚躺在阳光下。</p></li><li><p>There are several fresh potatoes in the field.<br>田里有几个新鲜的土豆。</p></li><li><p>I have four T-shirts.<br>我有四件T恤</p></li><li><p>A basket of fresh fruits is on the wooden table.<br>木桌上放了一篮新鲜水果</p></li><li><p>The horse’s long tail lifted up into the air as it ran.<br>马的尾巴随着其奔跑而甩向空中。</p></li><li><p>She hurt her leg this morning.<br>今天早上她伤到了腿</p></li><li><p>We need to kick every day.<br>每天我们都要踢腿</p></li><li><p>She wears a red sweater.<br>她穿了一件红色的针织套衫</p></li><li><p>Don’t be afraid of my pet snake; it’s very friendly.<br>不用害怕我的宠物蛇，它是很友好的。</p></li><li><p>The three trousers have the same color.<br>这三条裤子颜色都一样。</p></li></ol><h2 id="单词"><a href="#单词" class="headerlink" title="单词"></a>单词</h2><ul><li><p>wooden:[ˈwʊdn]<br>adj. 木制的；僵硬的，呆板的</p></li><li><p>several:[ˈsevrəl]<br>adj. 几个的；各自的<br>pron. 几个；数个</p></li><li><p>field:[fiːld]<br>n. 领域；牧场；旷野；战场；运动场;字段<br>vi. 担任场外队员<br>adj. 扫描场；田赛的；野生的<br>vt. 把暴晒于场上；使上场</p></li><li><p>fresh:[freʃ]<br>adj. 新鲜的；清新的；淡水的；无经验的<br>n. 开始；新生；泛滥<br>adv. 刚刚，才；最新地</p></li><li><p>basket:[ˈbɑːskɪt]<br>n. 篮子；（篮球比赛的）得分；一篮之量；篮筐<br>vt. 装入篮</p></li></ul><h2 id="2020-03-07"><a href="#2020-03-07" class="headerlink" title="2020-03-07"></a>2020-03-07</h2><ol><li><p>She helped the old man to walk.<br>她帮助老人走路。</p></li><li><p>Your tongue is longer than mine!<br>你的舌头比我的长！</p></li><li><p>Did you get a good grade on your last exam?<br>最后一门考试你取得好成绩了吗？</p></li><li><p>He wrote a summary of the terrible year he had.<br>这是他悲惨的2018年总结</p></li><li><p>Cola is a sweet,brown drink.<br>可乐是种甜味的棕色饮料。</p></li><li><p>We have a lot to learn about the human body.<br>关于人体我们有太多要学。</p></li><li><p>Is this the right place to look for science fiction novels?<br>这是找科幻小说的地方吗？</p></li><li><p>Her beautiful blonde hair is long and curly.<br>她的美丽金发又长又卷</p></li><li><p>“Looking forward to seeing you soon.” She wrote it on the letter.<br>她在信中写到：“我盼望与你尽快相见。”</p></li><li><p>Today is her birthday and she is 20 years of age？<br>今天是她20岁的生日</p></li><li><p>They often dance with music.<br>她们常随音乐起舞。</p></li><li><p>They were happy to buy this house.<br>他们高兴地买下了这座房子。</p></li><li><p>Everyone had a great time at my birthday party.<br>在我的生日聚会上每个人都玩得很开心。</p></li><li><p>He wore a thick coat to keep warm in the winter.<br>冬天他穿了一件厚外套来保暖。</p></li><li><p>The girl is touching her arm.<br>这个女孩正在摸她的手臂</p></li></ol><h2 id="单词-1"><a href="#单词-1" class="headerlink" title="单词"></a>单词</h2><p>terrible:[ˈterəbl]<br>adj. 可怕的；很糟的；令人讨厌的<br>adv. 很，非常</p><p>science:[ˈsaɪəns]<br>n. 科学；技术；学科；理科</p><p>fiction:[ˈfɪkʃn]<br>n. 小说；虚构，编造；谎言</p><p>novels:[‘nɔvəlz]<br>n. 小说（novel的复数）</p><p>thick:[θɪk]<br>adj. 厚的，有……厚；浓密的；粘稠的；浑浊的；迟钝的；明显的；粗壮的；（字体）粗体的；（气味）浓烈的；沙哑的；口音重的；思路不清的；大量的；（非正式）交情厚的<br>n. 最激烈处，最密集处，中心处<br>adv. 厚厚地；密集地</p><h2 id="2020-03-03"><a href="#2020-03-03" class="headerlink" title="2020-03-03"></a>2020-03-03</h2><ol><li><p>I prefer the cold. snowy mountains over warm places.<br>比起温暖的地方，我更喜欢寒冷的、白雪皑皑的山区。</p></li><li><p>My favourite pet is my dog, Lucy.<br>我喜欢的宠物是我的狗狗，露西。</p></li><li><p>Today is the 15th of August.<br>今天是八月十五号。</p></li><li><p>It’s time for breakfast.<br>是该吃早饭的时间了。</p></li><li><p>There are four seasons in a year.<br>一年有四个季节。</p></li><li><p>I usually get up around 7 o’clock in the morning.<br>我通常早上7点钟起床。</p></li></ol><h2 id="单词-2"><a href="#单词-2" class="headerlink" title="单词"></a>单词</h2><ul><li><p>perferred:<br>adj. 优先的；选择的</p></li><li><p>over:<br>adv. 倒下；翻转；穿过；完全覆盖；以上；大于；再；结束；改变；完毕；仔细地<br>prep. 在……上面；从……上方；穿越；在……的另一边；在……的远端；从……落下；遍及；多于；在……期间；渡过；由于；关于；利用；通过；声音大于；高于；级别在……之上；优先于；超过<br>n. （板球）一轮投球<br>adj. 倒下的；折起来的；结束的；剩下的<br>v. 越过</p></li><li><p>August:<br>n. 八月</p></li><li><p>usually:<br>adv. 通常，经常</p></li></ul><h2 id="2020-03-02"><a href="#2020-03-02" class="headerlink" title="2020-03-02"></a>2020-03-02</h2><ol><li><p>She can swim like a finsh! Loook at her!<br>看看她，她像鱼一样游泳！</p></li><li><p>Bring your umbrella. It is rainy outside.<br>带上你的雨伞，外面再下雨</p></li><li><p>It’s cloudy today. so you can’t see the sun.<br>今天多云，所以你看不见太阳</p></li><li><p>There snowy mountains are very beautiful.<br>这些白雪皑皑的山，非常漂亮</p></li><li><p>The trees are swaying beacause of the windy weather.<br>树在大风天气中随风舞动。</p></li><li><p>The blue sky means that today is a sunny day.<br>蓝蓝的天空表明今天是个晴天</p></li><li><p>The doy can use an umbrella?<br>这只狗会撑伞？</p></li><li><p>The weather this week has been mostly cloudy.<br>这周天气以多云为主</p></li><li><p>In china, the flying swallows are a sign of spring.<br>在中国，飞燕是春天的讯号</p></li><li><p>My family always take a summer vacation at the beach.<br>我家总会在海边过暑假</p></li><li><p>Leaves turn yellow in the autumn.<br>秋天，叶子都变黄了。</p></li><li><p>I can go skiing in the winter.<br>我可以在冬天滑雪</p></li><li><p>I like eating bread with hot coffe.<br>我喜欢就着热咖啡吃面包</p></li><li><p>We feel warm with the fire.<br>火让我们感到温暖</p></li><li><p>Washing face with cold water is so cool.<br>用冷水洗脸特别凉爽。</p></li></ol><h2 id="陌生词"><a href="#陌生词" class="headerlink" title="陌生词"></a>陌生词</h2><ul><li><p>Bring:[brɪŋ]<br>vt. 带来；促使；引起；使某人处于某种情况或境地</p></li><li><p>swaying:<br>v. 使摇动；支配；偏向一边（sway的ing形式）</p></li><li><p>mostly:[ˈməʊstli]<br>adv. 主要地；通常；多半地</p></li><li><p>swallows:<br>n. 燕子；咽喉；吞咽（swallow 的复数）<br>v. 吞下；做吞咽动作；吞没；用尽；轻信；不流露；默默忍受；吞并（swallow 的第三人称单数）</p></li><li><p>vacation:[veɪˈkeɪʃn; vəˈkeɪʃn]<br>n. 假期；（房屋）搬出<br>vi. 休假，度假</p></li><li><p>beach:[biːtʃ]<br>n. 海滩；湖滨<br>vt. 将…拖上岸<br>vi. 搁浅；定居</p></li><li><p>turn:[tɜːn]<br>vt. 转动，使旋转；转弯；翻过来；兑换<br>vi. 转向；转变；转动<br>n. 转弯；变化；(损害或有益于别人的)行为，举动，举止</p></li></ul><h2 id="2020-03-01"><a href="#2020-03-01" class="headerlink" title="2020-03-01"></a>2020-03-01</h2><ol><li><p>The girl keeps a diary everyday.<br>女孩儿每天都在写日记</p></li><li><p>We can get some gifts in Christmas.<br>我们在圣诞节可以得到礼物。</p></li><li><p>The boy is making a Chrismas greeting card by himself.<br>这个小男孩亲自制作圣诞节贺卡。</p></li><li><p>She felt happy when her boyfriend gave her a persent.<br>男朋友送给她礼物时她感到很开心。</p></li><li><p>The girls felt merry and happy at the party.<br>在派对上这些女孩感到愉快和高兴</p></li><li><p>She is always happy to see her friend.<br>见到自己的朋友，她总是很开心。</p></li></ol><h2 id="词"><a href="#词" class="headerlink" title="词"></a>词</h2><ul><li><p>diary:[ˈdaɪəri]<br>n. 日志，日记；日记簿</p></li><li><p>felt:[felt]<br>n. 毡，毛毡；毡制品<br>v. 把……制成毡；毡合；用毡覆盖<br>v. 感觉，感觉是；感受到；认为；触摸（feel 的过去式和过去分词）</p></li></ul><h2 id="2020-02-29"><a href="#2020-02-29" class="headerlink" title="2020-02-29"></a>2020-02-29</h2><ol><li><p>All of them have short hair.<br>他们都留着短发。</p></li><li><p>The handsome man posed for pictures.<br>这位英俊的男子摆好姿势准备照相</p></li><li><p>The man loves his new motorbike！<br>这个男人超爱他的新摩托车！</p></li><li><p>They like their bookshop very much.<br>他们喜欢他们的书店</p></li><li><p>There are so many animals in the zoo!<br>动物园里有好多动物啊！</p></li><li><p>You can buy a lot of things from the supermarke.<br>你可以在超市买到很多东西</p></li><li><p>There are some people relaxing by the lake in the park.<br>有些人再公园的湖边休息</p></li><li><p>The patient was taken to the hospital for treatment.<br>病人被带进医院进行治疗</p></li><li><p>Where do you want to go,child?<br>你要去哪里，孩子？</p></li><li><p>We enjoy talking one the grass under the blue sky.<br>我们很喜欢蓝天下躺在草坪上聊天。</p></li><li><p>People are resting under the big tree.<br>人们在这颗大树下休息。</p></li><li><p>There are colorful flowers in that place.<br>那里有五颜六色的花。</p></li><li><p>The little wooden boat floats on the water.<br>这艘小木船浮在水面上。</p></li><li><p>The beautiful lake lies at the foot of the mountain.<br>那个美丽的湖泊坐落在山脚下。</p></li></ol><h2 id="词-1"><a href="#词-1" class="headerlink" title="词"></a>词</h2><ul><li><p>posed：<br>v. 形成（pose的过去分词）；摆姿势；主张；装模作样</p></li><li><p>relaxing：<br>adj. 令人放松的<br>v. 放松，休息（relax 的现在分词）</p></li><li><p>taken：<br>v. 拿，带（take的过去分词）</p></li><li><p>treatment：<br>n. 治疗，疗法；处理；对待</p></li><li><p>patient：<br>adj. 有耐心的，能容忍的<br>n. 病人，患者；受动者，承受者</p></li><li><p>lies：<br>n. 谎言（lie的复数）<br>v. 躺卧（lie的第三人称单数形式）</p></li><li><p>foot：<br>n. 脚；英尺；步调；末尾<br>vi. 步行；跳舞；总计<br>vt. 支付；给……换底</p></li></ul><h2 id="2020-02-28"><a href="#2020-02-28" class="headerlink" title="2020-02-28"></a>2020-02-28</h2><ol><li><p>Her red skirt mathes well with her red sunglasses.<br>她的红色裙子和红色太阳镜很搭。</p></li><li><p>We have kinds of dresses in our store. Try one on!<br>本店女装款式多样，欢迎选购。</p></li><li><p>This is a pair of jean shorts.<br>这是一条牛仔短裤。</p></li><li><p>This kind of metal looks very hard.<br>这种金属看上去很硬。</p></li><li><p>This father has a daughter and a son.<br>这位父亲有一儿一女。</p></li><li><p>The mother wathes over her baby.<br>这位母亲照看她的宝宝。</p></li><li><p>The brother and sister play together.<br>两兄妹在一起玩。</p></li><li><p>My sister is also my best friend.<br>我的姐姐也是我最好的朋友。</p></li><li><p>My grandmother gave me a candy cane.<br>我祖母给了我一个拐杖糖。</p></li><li><p>My classmates and I can use this computer.<br>我和我的同学可以用这台电脑。</p></li><li><p>My grandmother is such an elegant woman.<br>我的奶奶是多么优雅的女人啊。</p></li><li><p>The girl with brown hair is so cute.<br>这个棕色头发的女孩太可爱了。</p></li><li><p>A man smiles happily.<br>这个男人笑起来很开心。</p></li><li><p>The little boy loves to read.<br>这个小男孩喜欢阅读。</p></li><li><p>I look at myself in the mirror before work.<br>上班前我照了照镜子。</p></li><li><p>I am going to eat this big sandwich.<br>我要吃了这个巨大的三明治。</p></li><li><p>How did you grow so tall?<br>你是怎么长到这么高的？</p></li><li><p>Wow, she’s pretty! Does she have a boyfriend?<br>哇哇，她真漂亮！她有男朋友吗？</p></li><li><p>The sun is slowly rising from the horizon.<br>太阳从地平线缓缓升起。</p></li></ol><h2 id="词-2"><a href="#词-2" class="headerlink" title="词"></a>词</h2><ul><li><p>kinds:<br>n. 种类；特征；圣餐的圣体（指面包或葡萄酒）（kind 的复数）</p></li><li><p>jean:<br>n. 牛仔裤；[纺] 斜纹棉布</p></li><li><p>pair:<br>n. 一对，一双，一副<br>vt. 把…组成一对</p></li><li><p>hard:<br>adj. 努力的；硬的；困难的；辛苦的；确实的；严厉的；猛烈的；冷酷无情的<br>adv. 努力地；困难地；辛苦地；接近地；猛烈地；牢固地</p></li><li><p>candy:[ˈkændi]<br>n. 糖果，巧克力；冰糖；（糖果包装的）毒品；中看不中用的东西<br>v. 把……制成蜜饯；用糖煮；使结晶</p></li><li><p>cane:[keɪn]<br>n. 手杖；藤条；细长的茎<br>vt. 以杖击；以藤编制</p></li><li><p>such:[sʌtʃ]<br>adj. 这样的，如此的</p></li><li><p>elegant:[ˈelɪɡənt]<br>adj. 高雅的，优雅的；讲究的；简炼的；简洁的</p></li><li><p>brown:[braʊn]<br>adj. 棕色的，褐色的；太阳晒黑的<br>vi. 变成褐色<br>n. 褐色，棕色<br>vt. 使变成褐色</p></li><li><p>cute:[kjuːt]<br>adj. 可爱的；漂亮的；聪明的，伶俐的</p></li><li><p>mirror:[ˈmɪrə(r)]<br>n. 镜子；真实的写照；榜样<br>vt. 反射；反映</p></li><li><p>rising:[ˈraɪzɪŋ]<br>n. 上升；起床；造反<br>adj. 上升的；上涨的；新兴的<br>adv. 接近<br>v. 上升（rise的ing形式）</p></li><li><p>horizon:[həˈraɪzn]<br>n. [天] 地平线；视野；眼界；范围</p></li></ul><h2 id="2020-02-24"><a href="#2020-02-24" class="headerlink" title="2020-02-24"></a>2020-02-24</h2><ol><li><p>I’m scard of the bear; don’t let it get near me!<br>我怕熊，别让他靠近我！</p></li><li><p>I bought a red chair.<br>我买了一把红色椅子</p></li><li><p>He always wears a shirt and tie to work.<br>他去工作时总是穿衬衫打领带</p></li><li><p>I drink the water because I’m thirsty.<br>我口渴所以喝水</p></li><li><p>My sister and I water the plants.<br>姐姐和我在给植物浇水</p></li><li><p>Milk is a tasty and healthy drink.<br>牛奶是一种可口又健康的饮品</p></li><li><p>Would you like a cup of tea?<br>你要来杯茶么？</p></li><li><p>I want to drink orange juice!<br>我好想喝橘子汁啊！</p></li><li><p>I want to find a job from the newspaper.<br>我想要从报纸上找一份工作</p></li><li><p>I’m very hungry,so i can eat a lot.<br>我很饿，因此我可以吃很多.</p></li><li><p>Fish have very simple lives.<br>鱼过着简单的生活</p></li><li><p>These chickens look so different.<br>这些鸡长得很不一样</p></li><li><p>I’ll have some eggs for breakfast.<br>我早餐会吃一些鸡蛋</p></li><li><p>I’ll cook rice for dinner.<br>晚餐我做米饭</p></li><li><p>The boy is saying sorry to his girlfriend.<br>男孩在给他女朋友道歉</p></li><li><p>She says,”Sure! It’s OK!”<br>她说：“当然了！没问题！”</p></li><li><p>I like the green doll.<br>我喜欢这个绿色的玩偶</p></li><li><p>My bed is so comfortable.<br>我的床相当舒服</p></li><li><p>The box of books is really heavy.<br>这一箱书可真沉啊</p></li><li><p>She will write down her menu on the blackboard.<br>她会把她的菜单写在这块黑板上</p></li><li><p>The black car looks cool and expensive.<br>那辆黑色的车看起来气派豪华</p></li><li><p>The train is about to travel through the building.<br>列车即将穿楼而过</p></li><li><p>Kick the ball into the net.<br>把球踢进网</p></li><li><p>I like to travel by plane.<br>我喜欢乘坐飞机旅行</p></li><li><p>Who is the girl standing behind the boy?<br>站在那个男孩后面的女孩是谁？</p></li><li><p>Where does the door lead to?<br>这个门通向哪里？</p></li><li><p>There is a ball near the hole.<br>那个球在洞口附近</p></li><li><p>On holidays,fireworks light up the sky.<br>在节日，烟火照亮填空</p></li><li><p>The cat is hiding under the sofa.<br>那只猫躲在沙发下面</p></li><li><p>All of my textbooks are on my desk.<br>我所有的课本都在我的书桌上</p></li><li><p>There is an empty desk right here.<br>这里有一张空桌子</p></li></ol>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;今日语句&quot;&gt;&lt;a href=&quot;#今日语句&quot; class=&quot;headerlink&quot; title=&quot;今日语句&quot;&gt;&lt;/a&gt;今日语句&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;I’m scard of the bear; don’t let it get near me!&lt;br&gt;我怕熊，别让他靠近我！&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;I bought a red chair.&lt;br&gt;我买了一把红色椅子&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;He always wears a shirt and tie to work.&lt;br&gt;他去工作时总是穿衬衫打领带&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;I drink the water because I’m thirsty.&lt;br&gt;我口渴所以喝水&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;My sister and I water the plants.&lt;br&gt;姐姐和我在给植物浇水&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Milk is a tasty and healthy drink.&lt;br&gt;牛奶是一种可口又健康的饮品&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Would you like a cup of tea?&lt;br&gt;你要来杯茶么？&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
+      &lt;p&gt;以下将是自己每日所学英语，怕引起不适，故在首页省略展示。&lt;/p&gt;
     
     </summary>
     
-      <category term="每日英语" scheme="https://dbing.github.io/categories/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
+      <category term="英语与阅读" scheme="https://dbing.github.io/categories/%E8%8B%B1%E8%AF%AD%E4%B8%8E%E9%98%85%E8%AF%BB/"/>
     
     
       <category term="每日英语" scheme="https://dbing.github.io/tags/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD/"/>
@@ -1064,7 +765,7 @@
     <link href="https://dbing.github.io/2020/02/17/2020%E5%B9%B4%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9%E8%B5%B4%E5%85%AC%E5%8F%B8%E4%B8%8A%E7%8F%AD/"/>
     <id>https://dbing.github.io/2020/02/17/2020年的第一天赴公司上班/</id>
     <published>2020-02-17T15:14:46.000Z</published>
-    <updated>2020-02-17T15:40:28.322Z</updated>
+    <updated>2020-04-24T09:34:01.805Z</updated>
     
     <content type="html"><![CDATA[<p>自从疫情以来，已在远程办公两周，在这两周期间，本身就让有良好的自控力我，深深习惯了在家里办公，那叫一个爽呼呼尽管稍微有点（晚睡晚起-_-||），But 我会准时出席<code>9:30</code>的例会，按时吃早饭、中饭、偶尔稍微一点吃晚餐。今天是2020年首次进公司上班，以下是一些途中记录的照片。</p><h2 id="途中"><a href="#途中" class="headerlink" title="途中"></a>途中</h2><a id="more"></a><img src="/2020/02/17/2020年的第一天赴公司上班/1.jpeg"><img src="/2020/02/17/2020年的第一天赴公司上班/2.jpeg"><img src="/2020/02/17/2020年的第一天赴公司上班/3.jpeg"><img src="/2020/02/17/2020年的第一天赴公司上班/4.jpeg"><img src="/2020/02/17/2020年的第一天赴公司上班/5.jpeg"><img src="/2020/02/17/2020年的第一天赴公司上班/6.jpeg"><h2 id="公司"><a href="#公司" class="headerlink" title="公司"></a>公司</h2><img src="/2020/02/17/2020年的第一天赴公司上班/7.jpeg"><img src="/2020/02/17/2020年的第一天赴公司上班/8.jpeg"><h2 id="日本"><a href="#日本" class="headerlink" title="日本"></a>日本</h2><p>此时日本东京的地铁（日本已确诊400+例），位居国外首榜🤦‍♀️</p><img src="/2020/02/17/2020年的第一天赴公司上班/9.jpeg">]]></content>
     
@@ -1075,7 +776,7 @@
     
     </summary>
     
-      <category term="记事" scheme="https://dbing.github.io/categories/%E8%AE%B0%E4%BA%8B/"/>
+      <category term="随笔" scheme="https://dbing.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
   </entry>
@@ -1108,7 +809,7 @@
     <link href="https://dbing.github.io/2020/02/10/%E6%9D%8E%E8%B6%85%E8%87%B4%E5%85%84%E5%BC%9F%E8%BF%9E%E5%85%A8%E4%BD%93%E5%AD%A6%E5%91%98%E3%80%81%E5%91%98%E5%B7%A5%E3%80%81%E8%82%A1%E4%B8%9C%E7%9A%84%E4%B8%80%E5%B0%81%E4%BF%A1/"/>
     <id>https://dbing.github.io/2020/02/10/李超致兄弟连全体学员、员工、股东的一封信/</id>
     <published>2020-02-10T15:07:38.000Z</published>
-    <updated>2020-02-10T15:57:50.243Z</updated>
+    <updated>2020-04-24T09:34:08.291Z</updated>
     
     <content type="html"><![CDATA[<p>平日里我是一个不刷「抖音」、不刷「微博」、不刷「头条」、偶尔刷刷「人民日报」、微信公众号技术文章，每天沉浸于自个的工作和所关注的那个点的领域，感觉自个不像个活在当下21世纪的。</p><p>今天朋友分享过来一篇文章<a href="https://mp.weixin.qq.com/s/Tcew-SDseA7fzW_e4LivMA" target="_blank" rel="noopener">致兄弟连全体学员、员工、股东的一封信</a>，这是这次「新型冠状病毒疫情」期间更有感触的消息了，身边一位北京老朋友从里面学出来的，自己「北京八维研修学院」、「上海弘烨」干了3年教育，也晓得兄弟连在同行中的体量，他没能挺过这冬天还真是出乎意料。</p><p>从这封信中我读出来了两种味道，一味是：因为疫情问题，如他所说恢复时间根据疫情防控工作情况另行通知，让一直亏损的兄弟连无疑是雪上加霜，导致最终没能挺过来。教育行业的利润怎样是行业中有目共睹的，生源决定命脉「入口」，结果系着生源「出口」。我的孙院长曾这么给我说过，把握住这两口也就把握住了学校。想想不无道理。他从零做到了1000多学员的规模用2年的时间。可谓速度之快。<code>PHP</code>的大环境在18、19年就开始出现下滑趋势，19年尤其不怎么好的情况。同样不好的处境还有我一个上海创业开培训的老同事，机构就先不说，说了你也不晓得。</p><p>二味是：有这么一位义无反馈支持自己的妻子，我想这也应该是他成功的原因吧。</p><p>最后道别兄弟连、保重李超。</p>]]></content>
     
@@ -1122,7 +823,7 @@
     
     </summary>
     
-      <category term="记事" scheme="https://dbing.github.io/categories/%E8%AE%B0%E4%BA%8B/"/>
+      <category term="随笔" scheme="https://dbing.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
   </entry>
@@ -1300,7 +1001,7 @@
     <link href="https://dbing.github.io/2020/02/01/%E5%8F%B2%E8%AE%B0/"/>
     <id>https://dbing.github.io/2020/02/01/史记/</id>
     <published>2020-02-01T03:01:16.000Z</published>
-    <updated>2020-02-22T10:04:27.886Z</updated>
+    <updated>2020-04-24T09:30:38.583Z</updated>
     
     <content type="html"><![CDATA[<h2 id="本纪"><a href="#本纪" class="headerlink" title="本纪"></a>本纪</h2><h3 id="五帝本纪"><a href="#五帝本纪" class="headerlink" title="五帝本纪"></a>五帝本纪</h3><p>汉代文学家司马迁创作的第一篇文章，位于《史记》首篇，记载远古传说中被后人尊称为五个部落联盟首领–黄帝、颛顼(zhuān xū)、帝喾（kù）、尧、舜的事迹。</p><h3 id="夏本纪"><a href="#夏本纪" class="headerlink" title="夏本纪"></a>夏本纪</h3><p>《夏本纪》创作于西汉，出自《史记卷二·夏本纪第二》。作品中主要记述了夏朝的历史。夏代年代久远，《夏本纪》中记载的内容是现代人研究夏代历史的重要参考资料。夏本是一个古老的部落，相传是由包括夏在内的十多个部落联合发展而来的，与古代其他部落交错分布于中国境内。到唐尧、虞舜时期，夏族的首领禹因治水有功，取得了帝位，并传给其子启，从而建立了我国历史上第一个奴隶制王朝。</p><h3 id="殷本纪"><a href="#殷本纪" class="headerlink" title="殷本纪"></a>殷本纪</h3><p>《殷本纪》是西汉史学家司马迁创作的一篇文言文，出自《史记卷三·殷本纪第三》。商朝是中国历史上的第二个朝代，从公元前1600年——公元前1046年，前后相传17世31王，延续约600年时间。相传商的始祖契曾帮助禹治水有功而受封于商（今河南商丘），以后就以“商”来称其部落（或部族）。汤灭夏后，就以“商”作为国号。其后裔盘庚迁殷（今河南安阳西北）后，首都没有再变化过，故又以称“殷朝”或“殷商”。</p><h3 id="周本纪"><a href="#周本纪" class="headerlink" title="周本纪"></a>周本纪</h3><p>《周本纪》是西汉史学家司马迁创作的一篇文言文，出自司马迁《史记》卷四、本纪第四。该作品概括地描述了周王朝兴衰的历史，勾画出一个天下朝宗、幅员辽阔的强大奴隶制王国的概貌，以及其间不同阶段不同君王厚民爱民或伤民虐民的不同政治作风，君臣之间协力相助共图大业或相互倾轧各执已见的不同政治气氛。</p><h3 id="秦本纪"><a href="#秦本纪" class="headerlink" title="秦本纪"></a>秦本纪</h3><p>《秦本纪》是西汉史学家司马迁创作的一篇文言文，出自《史记卷五·秦本纪第五》。主要讲述了春秋和战国时期的诸侯国秦国从兴起、发展到称霸天下、秦王嬴政统一全国之前的历史。</p><h3 id="秦始皇本纪"><a href="#秦始皇本纪" class="headerlink" title="秦始皇本纪"></a>秦始皇本纪</h3><p>《秦始皇本纪》出自《史记卷六·秦始皇本纪第六》，作者是司马迁。这篇本纪以编年记事的形式，记载了秦始皇赵政(嬴政)及秦二世赵胡亥一生的主要活动和所发生的重大事件，条理清晰，内容丰富，真实地反映了秦朝建立前后四十年间风云变幻的历史场面。<br>这篇本纪以秦始皇赵政(嬴政)和秦二世赵胡亥的活动为中心，逐年叙写，简中有繁，概括与重笔相间，通篇读来，不仅给人以历史的原貌，还可以使人感到一切都是历史的必然，两代帝王的形象活脱脱地呈现在眼前。</p><h3 id="项羽本纪"><a href="#项羽本纪" class="headerlink" title="项羽本纪"></a>项羽本纪</h3><p>《项羽本纪》是西汉史学家司马迁创作的一篇文言文，收录于《史记》中第七卷，是关于楚霸王项羽的本纪，它记录了秦末项羽光辉壮烈的一生。<br>《项羽本纪》通过叙述秦末农民大起义和楚汉之争的宏阔历史场面，生动而又深刻地描述了项羽一生。项羽既是一个力拔山、气盖世、“近古以来未尝有”的英雄，又是一个性情暴戾、优柔寡断、只知用武不谙机谋的匹夫。司马迁巧妙地把项羽性格中矛盾的各个侧面，有机地统一于这一鸿篇巨著之中，虽然不乏深刻的挞伐，但更多的却是由衷的惋惜和同情。<br>而在《史记》中，“本纪”所记录的大都是皇帝，其中项羽并没有成为皇帝，司马迁把他归入“本纪”则表现了对项羽的尊重。</p><h3 id="高祖本纪"><a href="#高祖本纪" class="headerlink" title="高祖本纪"></a>高祖本纪</h3><p>《高祖本纪》是西汉史学家司马迁创作的一篇文言文，收录于《史记》中。该文记述了汉高祖刘邦从布衣到皇帝的传奇一生。刘邦是汉朝的开国皇帝，庙号为太祖，谥号为高皇帝，所以史称太祖高皇帝、汉高祖或汉高帝。他对汉民族的统一、中国的强大和汉文化的保护和发扬有着决定性的贡献。</p><h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><h2 id="书"><a href="#书" class="headerlink" title="书"></a>书</h2><h2 id="世家"><a href="#世家" class="headerlink" title="世家"></a>世家</h2><h2 id="列传"><a href="#列传" class="headerlink" title="列传"></a>列传</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://baike.baidu.com/item/%E5%8F%B2%E8%AE%B0/254522?fr=aladdin" target="_blank" rel="noopener">史记百科</a></li></ul>]]></content>
     
@@ -1313,7 +1014,7 @@
     
     </summary>
     
-      <category term="每周阅读" scheme="https://dbing.github.io/categories/%E6%AF%8F%E5%91%A8%E9%98%85%E8%AF%BB/"/>
+      <category term="英语与阅读" scheme="https://dbing.github.io/categories/%E8%8B%B1%E8%AF%AD%E4%B8%8E%E9%98%85%E8%AF%BB/"/>
     
     
       <category term="史记" scheme="https://dbing.github.io/tags/%E5%8F%B2%E8%AE%B0/"/>
@@ -1325,9 +1026,9 @@
     <link href="https://dbing.github.io/2020/01/29/Docker-%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"/>
     <id>https://dbing.github.io/2020/01/29/Docker-基础命令/</id>
     <published>2020-01-29T08:26:09.000Z</published>
-    <updated>2020-01-30T13:16:11.365Z</updated>
+    <updated>2020-04-20T02:51:42.420Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="目录挂载"><a href="#目录挂载" class="headerlink" title="目录挂载"></a>目录挂载</h2><p>应用场景：启动容器，挂载宿主机的目录到容器目录，从而利用容器环境执行宿主机目录中代码。</p><p>可以通过<code>-v</code>参数指定要挂载宿主机的哪个目录，对应到容器内的目录，参考命令如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v /Users/bing/website/php-opencv:/work  morozovsk/php-opencv bash</span><br></pre></td></tr></table></figure><p>注意事项：</p><ol><li>容器目录不能是相对路径，否则会报错<code>invalid mount path:.....</code></li><li>宿主机目录如果不存在，会自动生成</li><li>修改容器内文件拥有者，会根据容器内文件用户id，对应修改宿主机上目录的拥有者为同一个UID</li></ol><p>如果宿主机为相对目录，比如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm -v aaa:/work  morozovsk/php-opencv bash</span><br></pre></td></tr></table></figure><p>或者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm -v aaa:/work  morozovsk/php-opencv bash</span><br></pre></td></tr></table></figure></p><p>通过<code>inspect</code>查看，默认<code>Mounts</code>挂载位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect CONTAINER ID</span><br></pre></td></tr></table></figure></p><p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&quot;Mounts&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;Type&quot;: &quot;volume&quot;,</span><br><span class="line">                &quot;Name&quot;: &quot;aaa&quot;,</span><br><span class="line">                &quot;Source&quot;: &quot;/var/lib/docker/volumes/aaa/_data&quot;,</span><br><span class="line">                &quot;Destination&quot;: &quot;/work&quot;,</span><br><span class="line">                &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">                &quot;Mode&quot;: &quot;z&quot;,</span><br><span class="line">                &quot;RW&quot;: true,</span><br><span class="line">                &quot;Propagation&quot;: &quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br></pre></td></tr></table></figure></p><h2 id="退出容器自动销毁"><a href="#退出容器自动销毁" class="headerlink" title="退出容器自动销毁"></a>退出容器自动销毁</h2><p>通过<code>--rm</code>参数完成</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="目录挂载"><a href="#目录挂载" class="headerlink" title="目录挂载"></a>目录挂载</h2><p>应用场景：启动容器，挂载宿主机的目录到容器目录，从而利用容器环境执行宿主机目录中代码。</p><p>可以通过<code>-v</code>参数指定要挂载宿主机的哪个目录，对应到容器内的目录，参考命令如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v /Users/bing/website/php-opencv:/work  morozovsk/php-opencv bash</span><br></pre></td></tr></table></figure><p>注意事项：</p><ol><li>容器目录不能是相对路径，否则会报错<code>invalid mount path:.....</code></li><li>宿主机目录如果不存在，会自动生成</li><li>修改容器内文件拥有者，会根据容器内文件用户id，对应修改宿主机上目录的拥有者为同一个UID</li></ol><p>如果宿主机为相对目录，比如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm -v aaa:/work  morozovsk/php-opencv bash</span><br></pre></td></tr></table></figure><p>或者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm -v aaa:/work  morozovsk/php-opencv bash</span><br></pre></td></tr></table></figure></p><p>通过<code>inspect</code>查看，默认<code>Mounts</code>挂载位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect CONTAINER ID</span><br></pre></td></tr></table></figure></p><p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&quot;Mounts&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;Type&quot;: &quot;volume&quot;,</span><br><span class="line">                &quot;Name&quot;: &quot;aaa&quot;,</span><br><span class="line">                &quot;Source&quot;: &quot;/var/lib/docker/volumes/aaa/_data&quot;,</span><br><span class="line">                &quot;Destination&quot;: &quot;/work&quot;,</span><br><span class="line">                &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">                &quot;Mode&quot;: &quot;z&quot;,</span><br><span class="line">                &quot;RW&quot;: true,</span><br><span class="line">                &quot;Propagation&quot;: &quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br></pre></td></tr></table></figure></p><h2 id="退出容器自动销毁"><a href="#退出容器自动销毁" class="headerlink" title="退出容器自动销毁"></a>退出容器自动销毁</h2><p>通过<code>--rm</code>参数完成</p><h2 id="好文推荐"><a href="#好文推荐" class="headerlink" title="好文推荐"></a>好文推荐</h2><ul><li><a href="https://blog.lab99.org/post/docker-2016-07-14-faq.html#gai-nian-wen-ti-5" target="_blank" rel="noopener">docker 问答录</a></li></ul>]]></content>
     
     <summary type="html">
     
@@ -1557,7 +1258,7 @@
     <link href="https://dbing.github.io/2019/07/31/%E8%BE%B9%E9%94%8B%E7%9A%84%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86/"/>
     <id>https://dbing.github.io/2019/07/31/边锋的一次面试经历/</id>
     <published>2019-07-31T11:28:39.000Z</published>
-    <updated>2019-07-31T16:39:28.108Z</updated>
+    <updated>2020-04-24T09:35:16.307Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>前几天，去边锋网络上海分公司去面试，去了以后，说 PHP 负责人请假了，一个 Golang 后端面的，聊了2个非语言层面的问题，这里梳理总一下。</p></blockquote><h2 id="Q1：编写-API-接口，如果保证幂等性？"><a href="#Q1：编写-API-接口，如果保证幂等性？" class="headerlink" title="Q1：编写 API 接口，如果保证幂等性？"></a>Q1：编写 API 接口，如果保证幂等性？</h2><p>所谓幂等性设计，就是说，一次和多次请求某一个资源应该具有同样的副作用。用数学的语言来 表达就是:f(x) = f(f(x))。</p><p>举几个例子:</p><ul><li>订单创建接口，第一次调用超时了，然后调用方重试了一次。是否会多创建一笔订单?</li></ul><p>因为系统超时，而调用户方重试一下，会给我们的系统带来不一致的副作用。</p><p>为什么会产生这样的问题，就是在我们把系统解耦隔离后，服务间的调用可能会有三个状态，一个是成功(Success)，一个是失败(Failed)，还有一个是超时(Timeout)。前两者都是明确的状态，而超时则是完全不知道是什么状态。</p><p>这种情况下，一般有两种处理方式：</p><ul><li>一种是下游服务提供查询接口，上游再请求超时后查询一下，如果查询到则表示成功，如果查询不到则表示失败。</li><li>另一种是做接口幂等设计，也就是将查询动作放在下游服务，上游只管做重试，请求一次和请求多次结果是一样的。</li></ul><p>对于第一种方式，需要对方提供一个查询接口来做配合。而第二种方式则需要下游的系统提供支持幂等性的交易接口。</p><a id="more"></a><p>要做到幂等性的交易接口，需要有一个唯一的标识，来标志交易是同一笔交易。而这个交易 ID 由谁来分配是一件比较头疼的事。因为这个标识要能做到全局唯一。</p><h3 id="全局-ID"><a href="#全局-ID" class="headerlink" title="全局 ID"></a>全局 ID</h3><p>在全局唯一 ID 的算法中，这里介绍一个 Twitter 的开源项目 Snowflake。它是一个分布式 ID 的生成算法。其核心思想是，产生一个 long 型的 ID，其中:</p><ul><li>41bits 作为毫秒数。大概可以用 69.7 年。</li><li>10bits 作为机器编号(5bits 是数据中心，5bits 的机器 ID)，支持 1024 个实例。</li><li>12bits 作为毫秒内的序列号。一毫秒可以生成 4096 个序号。</li></ul><p>其他的像 Redis 或 MongoDB 的全局 ID 生成都和这个算法大同小异。我在这里就不多说了，提供一个<a href="https://juejin.im/post/5b3a23746fb9a024e15cad79" target="_blank" rel="noopener">掘金链接</a>。 你可以根据实际情况加上业务的编号。</p><h3 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h3><p>对于幂等性的处理流程来说，说白了就是要过滤一下已经收到的交易。要做到这个事，我们需要一个存储来记录收到的交易。</p><p>于是，当收到交易请求的时候，我们就会到这个存储中去查询。如果查找到了，那么就不再做查询了，并把上次做的结果返回。如果没有查到，那么我们就记录下来。</p><img src="/2019/07/31/边锋的一次面试经历/uid@1x.png"><p>但是，上面这个流程是有一个可优化的细节，对于绝大请求应该都不会是重新发过来的，所以让所有请求都去查询一下这个不太合理。</p><p>所以，这里我们收到交易请求后，直接去存储记录这个 ID(相对于数据的 Insert 操作)，如果出现 ID 冲突了的异常，那么我们就知道这个之前已经有人发过来了，所以就不用再做了。</p><h3 id="HTTP-的幂等性"><a href="#HTTP-的幂等性" class="headerlink" title="HTTP 的幂等性"></a>HTTP 的幂等性</h3><ol><li><p>HTTP GET 方法用于获取资源，不应有副作用，所以是幂等的。比如:GET <a href="http://www.bank.com/account/123456，不会改变资源的状态，不论调用一次还是" target="_blank" rel="noopener">http://www.bank.com/account/123456，不会改变资源的状态，不论调用一次还是</a> N 次 都没有副作用。</p></li><li><p>HTTP HEAD 和 GET 本质是一样的，区别在于 HEAD 不含有呈现数据，而仅仅是 HTTP 头信 息，不应用有副作用，也是幂等的。</p></li><li><p>HTTP OPTIONS 主要用于获取当前 URL 所支持的方法，所以也是幂等的。若请求成功，则它 会在 HTTP 头中包含一个名为“Allow”的头，值是所支持的方法，如“GET, POST”。</p></li><li><p>HTTP DELETE 方法用于删除资源，有副作用，但它应该满足幂等性。比如:DELETE <a href="http://www.forum.com/article/4231，调用一次和" target="_blank" rel="noopener">http://www.forum.com/article/4231，调用一次和</a> N 次对系统产生的副作用是相同 的，即删掉 ID 为 4231 的帖子。因此，调用者可以多次调用或刷新页面而不必担心引起错误。</p></li><li><p>HTTP POST 方法用于创建资源，所对应的 URI 并非创建的资源本身，而是去执行创建动作的操 作者，有副作用，不满足幂等性。比如:POST <a href="http://www.forum.com/articles的语义" target="_blank" rel="noopener">http://www.forum.com/articles的语义</a> 是在<a href="http://www.forum.com/articles下创建一篇帖子，HTTP" target="_blank" rel="noopener">http://www.forum.com/articles下创建一篇帖子，HTTP</a> 响应中应包含帖子的创建状态以及帖子的 URI。两次相同的 POST 请求会在服务器端创建两份资源，它们具有不同的 URI;所以，POST 方法不具备幂等性。</p></li><li><p>HTTP PUT 方法用于创建或更新操作，所对应的 URI 是要创建或更新的资源本身，有副作用， 它应该满足幂等性。比如:PUT <a href="http://www.forum/articles/4231的语义是创建或更新" target="_blank" rel="noopener">http://www.forum/articles/4231的语义是创建或更新</a> ID 为 4231 的帖子。对同一 URI 进行多次 PUT 的副作用和一次 PUT 是相同的;因此，PUT 方 法具有幂等性。</p></li></ol><p>所以，对于 POST 的方式，很可能会出现多次提交的问题，对此的一般的幂等性的设计如下：</p><ul><li><p>其一，在表单中需要隐藏一个 token，这个 token 是后端生成的一个唯一的 ID。用于防止用户多次点击了表单提交按钮，而导致后端收到了多次请求，接到请求后首先效验表单 token 是否有效（是否存在服务端），否则判定为非法提交，在后端 PHP 众多框架中，这个步骤一般都是自动完成，比如 Yii、Laravel。</p></li><li><p>还有一种稳妥的做法是，后端成功后向前端返回 302 跳转，把用户的前端页跳转到 GET 请求，把刚刚 POST 的数据给展示出来。如果是 Web 上的最好还把之前的表单设置成过期，这样用户不能通过浏览器后退按钮来重新提交。这个模式又叫做 PRG 模式 (Post/Redirect/Get)。</p></li></ul><p>以上内容参考自，陈皓：《左耳听风》</p><h2 id="Q2：如果保证-DB-与-Cache-数据一致？"><a href="#Q2：如果保证-DB-与-Cache-数据一致？" class="headerlink" title="Q2：如果保证 DB 与 Cache 数据一致？"></a>Q2：如果保证 DB 与 Cache 数据一致？</h2><p>场景：当用户更新自己的信息时，你的程序代码如何写：</p><ol><li>先更新 DB 再更新 Cache，</li><li>先更新 DB 再删除 Cache</li><li>先更新 Cache 再更新 DB</li><li>先删除 Cache 再更新 DB</li></ol><p>这里就此问题，上述 3 个步骤，再我去面试前完全没有细细思考过，事后仔细反思下，大有文章，于是小描一下。</p><p>参考大厂「Facebook」套路：缓存旁路模式（Cache Aside Pattern），大白话就是：先更新数据库，再删缓存。</p><p>对于为什么是缓存删除而不是采用缓存更新，对于实际业务中我们缓存的信息往往不单单是纯粹的表中的一行数据，有可能涉及到计算属性或者关联属性，相比删除缓存，让请求后自建缓存更容易。</p><img src="/2019/07/31/边锋的一次面试经历/Cache-Aside-Design.png"><img src="/2019/07/31/边锋的一次面试经历/Updating-Data-using-the-Cache.png"><p>此方案有两个潜在问题：</p><ol><li>如果发生更新数据库成功，删除缓存失败呢？</li><li>在高并发的场景下，会不会出现数据库与缓存数据不一致的概率呢？</li></ol><p>对于第一种方法问题的解决方案：</p><img src="/2019/07/31/边锋的一次面试经历/retry-cache-db.png"><p>处理流程步骤：</p><ol><li>更新数据库数据</li><li>缓存因为种种问题删除失败</li><li>将需要删除的key发送至消息队列</li><li>消费队列消息，获得需要删除的 key 继续重试删除操作，直到成功</li></ol><p>参考地址：</p><ol><li><a href="https://coolshell.cn/articles/17416.html/comment-page-2#comments" target="_blank" rel="noopener">酷壳</a></li><li><a href="http://ddrv.cn/a/127228" target="_blank" rel="noopener">算法网</a></li><li><a href="https://www.xttblog.com/?p=3598" target="_blank" rel="noopener">业余草</a></li></ol>]]></content>
     
@@ -1582,10 +1283,10 @@
     
     </summary>
     
-      <category term="面试" scheme="https://dbing.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+      <category term="随笔" scheme="https://dbing.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="边锋网络" scheme="https://dbing.github.io/tags/%E8%BE%B9%E9%94%8B%E7%BD%91%E7%BB%9C/"/>
+      <category term="面试" scheme="https://dbing.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   

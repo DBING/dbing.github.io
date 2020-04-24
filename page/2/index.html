@@ -443,6 +443,27 @@
           <h2 id="Anaconda-是什么"><a href="#Anaconda-是什么" class="headerlink" title="Anaconda 是什么"></a>Anaconda 是什么</h2><blockquote>
 <p>Anaconda Enterprise supports your organization no matter the size, easily scaling from a single user on one laptop to thousands of machines. No headaches, no IT nightmares.</p>
 </blockquote>
+<h2 id="Anaconda-安装"><a href="#Anaconda-安装" class="headerlink" title="Anaconda 安装"></a>Anaconda 安装</h2><p>官方地址（mac端）：<a href="https://www.anaconda.com/distribution/#macos" target="_blank" rel="noopener">https://www.anaconda.com/distribution/#macos</a></p>
+<p>安装后，默认有一个<code>base</code>环境，如下图：</p>
+<img src="/2020/03/13/Anaconda-常用命令/install-conda.png" title="conda安装">
+<p>接下来可以使用提供的GUI工具，创建环境、安装各种所需包，同样亦可通过命令行来完成，下面演示命令行的方式。</p>
+<h2 id="案例操作记录"><a href="#案例操作记录" class="headerlink" title="案例操作记录"></a>案例操作记录</h2><p>这里我以为<code>mydemo</code>为例创建一个可运行python3+opencv的环境，下面以命令演示一下(GUI方式同样可以完成)。</p>
+<p>查看当前env环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜ ~ conda env list</span><br><span class="line"><span class="comment"># conda environments:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">base /Users/bing/opt/anaconda3</span><br><span class="line">learn-python /Users/bing/opt/anaconda3/envs/learn-python</span><br><span class="line">my-opencv /Users/bing/opt/anaconda3/envs/my-opencv</span><br></pre></td></tr></table></figure>
+<p>创建mydemo env环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜ ~ conda create --name mydemo</span><br><span class="line">Collecting package metadata (current_repodata.json): <span class="keyword">done</span></span><br><span class="line">Solving environment: <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>进入mydemo环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜ ~ conda activate mydemo</span><br><span class="line">(mydemo) ➜ ~</span><br></pre></td></tr></table></figure>
+<!---->
+<p>列出mydemo环境所有包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(mydemo) ➜ ~ conda list -n mydemo</span><br><span class="line"><span class="comment"># packages in environment at /Users/bing/opt/anaconda3/envs/mydemo:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Name Version Build Channel</span></span><br></pre></td></tr></table></figure>
+<p>搜索限制版本的python包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(mydemo) ➜ ~ conda search <span class="string">'python&gt;=3'</span></span><br><span class="line">Loading channels: <span class="keyword">done</span></span><br><span class="line"><span class="comment"># Name Version Build Channel</span></span><br><span class="line">python 3.5.4 h4bd9b1b_18 pkgs/main</span><br><span class="line">python 3.5.4 h821eb87_14 pkgs/main</span><br><span class="line">python 3.5.4 h8f450c2_22 pkgs/main</span><br><span class="line">python 3.5.4 hb8880cc_19 pkgs/main</span><br><span class="line">python 3.5.4 hc167b69_27 pkgs/main</span><br><span class="line">python 3.5.4 hdd9bdb2_21 pkgs/main</span><br></pre></td></tr></table></figure>
+<p>为mydemo 环境安装指定版本的python包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(mydemo) ➜ ~ conda install -n mydemo python=3.7.6</span><br><span class="line">Collecting package metadata (current_repodata.json): <span class="keyword">done</span></span><br><span class="line">Solving environment: <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>注意：会询问提示是否安装相关依赖包，输入<code>y</code>，确认安装。</p>
+<p>为mydemo环境安装指定版本的py-opencv包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(mydemo) ➜ ~ conda install -n mydemo py-opencv=3.4.2</span><br><span class="line">Collecting package metadata (current_repodata.json): <span class="keyword">done</span></span><br><span class="line">Solving environment: <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <h2 id="创建环境"><a href="#创建环境" class="headerlink" title="创建环境"></a>创建环境</h2><h3 id="查看全部环境"><a href="#查看全部环境" class="headerlink" title="查看全部环境"></a>查看全部环境</h3><p>conda env -h</p>
 <p>conda create –name your_env_name</p>
 <h3 id="创建制定python版本的环境"><a href="#创建制定python版本的环境" class="headerlink" title="创建制定python版本的环境"></a>创建制定python版本的环境</h3><p>conda create –name your_env_name python=2.7<br>conda create –name your_env_name python=3<br>conda create –name your_env_name python=3.5</p>
@@ -486,7 +507,7 @@
         
           <span class="post-category">
             
-              <a href="/categories/面试/">面试</a>
+              <a href="/categories/随笔/">随笔</a>
             
           </span>
         
@@ -550,68 +571,6 @@
           <div class="read-more">
             <a href="/2020/03/11/2018-2019年-面试经历-上/" class="read-more-link">阅读更多</a>
           </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/03/10/每日英语-10/">每日英语-10</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-03-10
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/每日英语/">每日英语</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol>
-<li><p>Today is my birthday!<br>今天是我的生日</p>
-</li>
-<li><p>I like to wear my white coat.<br>我喜欢穿我的白色外套。</p>
-</li>
-<li><p>Vegetables are ok,but i prefer eating meat.<br>蔬菜是不错，但是我还是更喜欢吃肉。</p>
-</li>
-<li><p>There are different kinds of bread in the picture.<br>图片中有各式各样的面包。</p>
-</li>
-</ol>
-<h2 id="陌生单词"><a href="#陌生单词" class="headerlink" title="陌生单词"></a>陌生单词</h2><ul>
-<li><p>kinds:<br>n. 种类；特征；圣餐的圣体（指面包或葡萄酒）（kind 的复数）</p>
-</li>
-<li><p>prefer:<br>vt. 更喜欢；宁愿；提出；提升<br>vi. 喜欢；愿意</p>
-</li>
-</ul>
-
         
       
     </div>
@@ -696,66 +655,6 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2020/03/09/每日英语-9/">每日英语-9</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-03-09
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/每日英语/">每日英语</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol>
-<li><p>Let’s meet again on the sixteenth – a week from today.<br>让我们16号再见吧，也就是一周后的今天</p>
-</li>
-<li><p>Sea turtles swim so gracefully.<br>海龟再优雅地游水。</p>
-</li>
-<li><p>The old friends are walking in a park.<br>这些老朋友正在公园里散步。</p>
-</li>
-<li><p>After hearing the bad news,she cannot fall asleep.<br>听到这个坏消息之后他难以入睡</p>
-</li>
-</ol>
-          <div class="read-more">
-            <a href="/2020/03/09/每日英语-9/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
           <a class="post-link" href="/2020/03/09/Laravel-Task-Scheduling-Preventing-Task-Overlaps/">Laravel Task Scheduling Preventing Task Overlaps</a>
         
       </h1>
@@ -817,18 +716,18 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2020/03/08/每日英语-8/">每日英语-8</a>
+          <a class="post-link" href="/2020/03/05/将数组值从字符串转换为int/">将数组值从字符串转换为int</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2020-03-08
+          2020-03-05
         </span>
         
           <span class="post-category">
             
-              <a href="/categories/每日英语/">每日英语</a>
+              <a href="/categories/PHP/">PHP</a>
             
           </span>
         
@@ -844,25 +743,139 @@
       
         
         
-          
+
+        
+          <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$string = <span class="string">"1,2,3"</span></span><br><span class="line">$ids = explode(<span class="string">','</span>, $string);</span><br><span class="line">var_dump($ids);</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">array</span>(<span class="number">3</span>) &#123;</span><br><span class="line">  [<span class="number">0</span>]=&gt;</span><br><span class="line">  string(<span class="number">1</span>) <span class="string">"1"</span></span><br><span class="line">  [<span class="number">1</span>]=&gt;</span><br><span class="line">  string(<span class="number">1</span>) <span class="string">"2"</span></span><br><span class="line">  [<span class="number">2</span>]=&gt;</span><br><span class="line">  string(<span class="number">1</span>) <span class="string">"3"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目标：</p>
+<p>每个值需要的是<code>int</code>类型，而不是<code>string</code></p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>1.代码一</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$integerIds = array_map(<span class="string">'intval'</span>, explode(<span class="string">','</span>, $string));</span><br></pre></td></tr></table></figure>
+<p>2.代码二</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$integerIds = json_decode(<span class="string">'['</span> . $string . <span class="string">']'</span>, <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/05/基础篇-怎么理解平均负载/">基础篇-怎么理解平均负载</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-05
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
         
 
         
-          <h2 id="今日句子"><a href="#今日句子" class="headerlink" title="今日句子"></a>今日句子</h2><ol>
-<li><p>“Who is the little boy in the photo?”,”it’s me.”<br>“照片上的小男孩是谁？”, “是我.”</p>
-</li>
-<li><p>Look at the baby’s chubby legs! So cute!<br>看这个宝宝胖嘟嘟的腿，真可爱！</p>
-</li>
-<li><p>This hamburger looks samll but delicious.<br>这个汉堡虽小，但看起来十分美味。</p>
-</li>
-<li><p>This cat is my mom’s pet.<br>这只猫是我妈妈的宠物。</p>
-</li>
-<li><p>The fresh red tomato is a healthy food.<br>红色的番茄是一种健康的食物。</p>
-</li>
-</ol>
-          <div class="read-more">
-            <a href="/2020/03/08/每日英语-8/" class="read-more-link">阅读更多</a>
-          </div>
+          <h2 id="uptime-查看平均负载"><a href="#uptime-查看平均负载" class="headerlink" title="uptime 查看平均负载"></a>uptime 查看平均负载</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ uptime</span><br><span class="line"> 12:37:58 up 67 days, 12:43,  2 users,  load average: 0.00, 0.02, 0.00</span><br></pre></td></tr></table></figure>
+<p>解释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">12:37:58            # 当前时间</span><br><span class="line">up 67 days, 12:43   # 系统运行时间</span><br><span class="line">2 users             # 正在登录用户数</span><br></pre></td></tr></table></figure>
+<p>最后三个数字呢，依次则是过去 1 分钟、5 分钟、15 分钟的平均负载(Load Average)</p>
+<blockquote>
+<p>平均负载是指单位时间内，系统处于「可运行状态」和「不可中断状态」的平均进程数，也就是平均活跃进程数</p>
+</blockquote>
+<p>可运行状态的进程：是指正在使用 CPU 或者正在等待 CPU 的进程，也就是我们常用 ps 命令看到的，处于 R 状态(Running 或 Runnable)的进程</p>
+<p>不可中断状态的进程：则是正处于内核态关键流程中的进程，并且这些流程是不可打断的， 比如最常见的是等待硬件设备的 I/O 响应，也就是我们在 ps 命令中看到的 D 状态 (Uninterruptible Sleep，也称为 Disk Sleep)的进程。</p>
+<p>比如，当一个进程向磁盘读写数据时，为了保证数据的一致性，在得到磁盘回复前，它是 不能被其他进程或者中断打断的，这个时候的进程就处于不可中断状态。如果此时的进程 被打断了，就容易出现磁盘数据与进程数据不一致的问题。</p>
+<p>所以，不可中断状态实际上是系统对进程和硬件设备的一种保护机制。</p>
+<p>既然平均的是活跃进程数，那么最理想的，就是每个 CPU 上都刚好运行着一个进程，这样 每个 CPU 都得到了充分利用。</p>
+<p>比如当平均负载为 2 时，意味着什么呢?</p>
+<ul>
+<li>在只有 2 个 CPU 的系统上，意味着所有的 CPU 都刚好被完全占用。</li>
+<li>在 4 个 CPU 的系统上，意味着 CPU 有 50% 的空闲。</li>
+<li>而在只有 1 个 CPU 的系统中，则意味着有一半的进程竞争不到 CPU。</li>
+</ul>
+<h2 id="平均负载为多少时合理"><a href="#平均负载为多少时合理" class="headerlink" title="平均负载为多少时合理"></a>平均负载为多少时合理</h2><p>查看系统有几个 CPU,从<code>/proc/cpuinfo</code>中读取，命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">'model name'</span> /proc/cpuinfo | wc -l</span><br></pre></td></tr></table></figure>
+<p>有了 CPU 个数，我们就可以判断出，当平均负载比 CPU 个数还大的时候，系统已经出现 了过载。</p>
+<h2 id="找出负载过大进程"><a href="#找出负载过大进程" class="headerlink" title="找出负载过大进程"></a>找出负载过大进程</h2><p>mpstat 查看 CPU 使用率的变化情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -P ALL 表示监控所有 CPU，后面数字 5 表示间隔 5 秒</span></span><br><span class="line">mpstat -P ALL 5</span><br><span class="line">12:59:39 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle</span><br><span class="line">12:59:44 PM  all   50.76    0.00    0.50    0.00    0.00    0.00    0.00    0.00    0.00   48.74</span><br><span class="line">12:59:44 PM    0    0.81    0.00    1.01    0.00    0.00    0.00    0.00    0.00    0.00   98.17</span><br><span class="line">12:59:44 PM    1  100.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00</span><br></pre></td></tr></table></figure>
+<p>pidstat 来查询是哪个进程导致了 CPU 使用率为 100% 呢</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 间隔 5 秒后输出一组数据</span></span><br><span class="line">pidstat -u 5 1</span><br><span class="line">12:59:02 PM   UID       PID    %usr %system  %guest    %CPU   CPU  Command</span><br><span class="line">12:59:07 PM   110      9706    0.40    0.00    0.00    0.40     0  mongod</span><br><span class="line">12:59:07 PM     0      9750    0.20    0.00    0.00    0.20     1  watch</span><br><span class="line">12:59:07 PM     0      9833  100.00    0.00    0.00  100.00     0  stress</span><br><span class="line">12:59:07 PM     0     10123    0.00    0.20    0.00    0.20     1  pidstat</span><br><span class="line">12:59:07 PM     0     14287    0.60    0.40    0.00    1.00     1  AliYunDun</span><br><span class="line">12:59:07 PM     0     19835    0.20    0.00    0.00    0.20     1  containerd-shim</span><br><span class="line">12:59:07 PM   111     22629    0.00    0.20    0.00    0.20     1  redis-server</span><br><span class="line">12:59:07 PM     0     27102    0.40    0.20    0.00    0.60     1  exe</span><br><span class="line">12:59:07 PM   999     29885    0.20    0.00    0.00    0.20     1  redis-server</span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>平均负载提供了一个快速查看系统整体性能的手段，反映了整体的负载情况。</p>
+<p>平均负载过高，有可能是CPU密集进程导致，还有可能是 I/O 更繁忙了。</p>
+<p>可以使用 mpstat、pidstat 等工具，辅助分析负载的来源。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>整理自「Linux 性能优化实战」</li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/02/29/Hexo-posts目录归档/">Hexo_posts目录归档</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-29
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><code>Blog</code>文章写多了，都堆积在<code>source/_posts</code>根目录下，每次创建了一篇新博文，找起来很是花时间，想要实现创建的博文按<code>/年/月</code>目录划分，访问<code>URL</code>地址保持不变即可。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>配置<code>_config.yml</code>文件中<code>new_post_name</code>值为<code>:year/:month/:title.md</code>即可。然后使用<code>hexo new &#39;demo&#39;</code>创建一篇测试文章，就会发现自动归纳到相应<code>/年/月</code>目录下了。</p>
+<p>Q1：针对旧文章怎么办？<br>A1：手动创建对应年、月目录，将其移动到对应目录下即可。</p>
+<p>The end.</p>
+
         
       
     </div>
