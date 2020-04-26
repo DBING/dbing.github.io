@@ -246,6 +246,163 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/03/26/Linux-du-命令/">Linux du 命令</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-26
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/NeoX/">NeoX</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>以下执行命令，均在如下目录位置执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab <span class="built_in">pwd</span></span><br><span class="line">/usr/<span class="built_in">local</span>/gitlab</span><br></pre></td></tr></table></figure>
+<ul>
+<li>统计当前目录的大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du  -sh</span><br><span class="line">21G     .</span><br></pre></td></tr></table></figure>
+<ul>
+<li>统计当前目录所有下文件和文件夹大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du * -sh</span><br><span class="line">8.0K    docker-compose.yml</span><br><span class="line">20K     gitlab-certs-backup</span><br><span class="line">20G     gitlab-data</span><br><span class="line">16K     gitlab-sh</span><br><span class="line">633M    postgresql-data</span><br><span class="line">3.4M    redis-data</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查找当前目录下一级目录中大小单位在G的目录并排序</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du -h --max-depth=1 |grep G |sort</span><br><span class="line">20G     ./gitlab-data</span><br><span class="line">21G     .</span><br></pre></td></tr></table></figure>
+<p><code>--max-depth=1</code> 限制一级目录，如果单位是<code>T</code>或<code>M</code>，更改参数即可</p>
+<ul>
+<li>查找当前目录下一级目录中大小上M的目录并倒排序</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du -h --max-depth=1 |grep <span class="string">'M'</span> |sort -nr</span><br><span class="line">633M    ./postgresql-data</span><br><span class="line">3.4M    ./redis-data</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/26/Composer-安装私有包/">Composer 安装私有包</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-26
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/NeoX/">NeoX</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p>我司一个项目这里简称：<code>神居</code>，分为<code>C</code>端（「代号：mooncake」），“平台端”「代号：internal」,<code>B</code>端「代号：agent」，“任务端”「代号：script」，为了保护公司隐私，这里不方便介绍每个项目处理的业务，你只需要知道的是每个代号代表一个独立运行的项目，那么这些项目又如果做到代码的复用（Library/Model）呢，且需要做到每个项目可独立迭代更新。我们现采用的方式就是<code>composer</code>管理私有包的方式。</p>
+<p>这里也有一篇描述<a href="https://barryvanveen.nl/blog/55-installing-a-private-package-with-composer" target="_blank" rel="noopener"><code>Composer</code>安装私有PHP软件包</a>文章，以下我部分步骤翻译自这篇文章。</p>
+<h2 id="Composer安装私有PHP软件包"><a href="#Composer安装私有PHP软件包" class="headerlink" title="Composer安装私有PHP软件包"></a><code>Composer</code>安装私有PHP软件包</h2><p>使用<code>Composer</code>安装私有PHP软件包。首先我们需要在<code>composer.json</code>文件中进行一些额外的配置，然后设置SSH密钥。按照以下3个简单步骤进行操作</p>
+<h3 id="1-指向Git仓库"><a href="#1-指向Git仓库" class="headerlink" title="1. 指向Git仓库"></a>1. 指向Git仓库</h3><p>更新composer.json并添加一个存储库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;repositories&quot;:[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;type&quot;: &quot;vcs&quot;,</span><br><span class="line">        &quot;url&quot;: &quot;git@github.com:barryvanveen/secret.git&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>这里<code>url</code>，可以是<code>gitlab</code>或者其他地址（可别犯傻）。</p>
+<h3 id="2-创建一个SSH密钥"><a href="#2-创建一个SSH密钥" class="headerlink" title="2.创建一个SSH密钥"></a>2.创建一个SSH密钥</h3><p>在要安装软件包的计算机上创建一个SSH密钥，如果感觉自己既要配置<code>gitlab</code>又要配置<code>github</code>等等其他的<code>SSH</code>秘钥，如何共存使用，可以参考我的这篇文章<a href="/2018/12/31/%E9%85%8D%E7%BD%AE%E5%8F%8C%E5%85%AC%E9%92%A5%E5%AE%8C%E6%88%90%E5%90%8C%E6%97%B6%E5%AF%B9-gitee-%E5%92%8C-github-%E7%9A%84%E4%BD%BF%E7%94%A8/">传送门</a>。</p>
+<p>如果您在开发机器上工作，则可能要将SSH密钥添加到GitHub / BitBucket / GitLab帐户。这样就可以访问您帐户有权访问的所有私有存储库。</p>
+<p><a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/" target="_blank" rel="noopener">将SSH密钥添加到GitHub帐户</a><br><a href="https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html#SetupanSSHkey-#installpublickeyStep3.AddthepublickeytoyourBitbucketsettings" target="_blank" rel="noopener">将SSH密钥添加到BitBucket帐户</a><br><a href="https://docs.gitlab.com/ee/gitlab-basics/create-your-ssh-keys.html" target="_blank" rel="noopener">将SSH密钥添加到GitLab帐户</a></p>
+<p>如果要配置部署服务器，则最好配置访问密钥或部署密钥。访问密钥仅提供对单个存储库的访问，因此可以进行更具体的访问管理。</p>
+<p><a href="https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys" target="_blank" rel="noopener">将部署密钥添加到GitHub存储库</a><br><a href="https://confluence.atlassian.com/bitbucket/use-deployment-keys-294486051.html" target="_blank" rel="noopener">将访问密钥添加到BitBucket存储库</a><br><a href="https://docs.gitlab.com/ee/ssh/#deploy-keys" target="_blank" rel="noopener">将部署密钥添加到GitLab存储库</a></p>
+<p>你肯能会问，开发机器和部署服务器使用同样的<code>SSH</code>秘钥不就完事了嘛，搞这么麻烦干啥，因为开发机器的秘钥对<code>repo</code>拥有写的权限，而部署服务器只需拥有<code>repo</code>的读权限即可了，还是建议共用的做法。</p>
+<h3 id="3-运行作曲家"><a href="#3-运行作曲家" class="headerlink" title="3.运行作曲家"></a>3.运行作曲家</h3><p>现在只需<code>composer require</code>或<code>composer install</code>像往常一样打包。</p>
+<blockquote>
+<p>这里值得提一下 <code>composer require</code> 指定版本时，会同时更新 composer.json 中对应的版本号，<code>composer update</code> 则不会</p>
+</blockquote>
+<p><strong>警告：向已知主机添加SSH指纹</strong></p>
+<p>首次在新主机名上使用SSH密钥时，它将显示如下警告：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">'123.123.123.123 (123.123.123.123)'</span> can<span class="string">'t be established.</span></span><br><span class="line"><span class="string">RSA key fingerprint is a1:b2:c3:d4:e5:f6:6f:5e:4d:3c:2b:1a:00:11:22:33.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)?</span></span><br></pre></td></tr></table></figure>
+<p>这是额外的保护层，可防止您错误地连接到未知主机。但是，如果要使用SSH密钥自动执行任务，则确实会带来一些问题。</p>
+<p>这就是为什么我们要手动触发此警告，并避免将来再次弹出它。可以使用以下命令完成此操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>当然，您应该用<code>repo</code>私有存储库的主机名替换掉<a href="mailto:`git@github.com" target="_blank" rel="noopener">`git@github.com</a>`。此命令将调用上面列出的警告。您可以使用GitHub / BitBucket / GitLab帐户中的指纹列表来验证指纹。</p>
+<p>确认此警告后，SSH指纹将被添加到已知主机列表中，这将防止警告再次弹出。</p>
+<h2 id="案例分享"><a href="#案例分享" class="headerlink" title="案例分享"></a>案例分享</h2><p>以<code>mooncake</code>为例，一下是相关的<code>composer.json</code>配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&quot;require&quot;: &#123;</span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">  &quot;neox/lib&quot;: &quot;2.9.0&quot;,</span><br><span class="line">  &quot;neox/model&quot;: &quot;1.6.1&quot;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">&quot;repositories&quot;: &#123;</span><br><span class="line">  &quot;neox-lib&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;vcs&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;git@git.neox-inc.com:be-sushi/neox-library.git&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;neox-model&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;vcs&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;git@git.neox-inc.com:be-sushi/neox-model.git&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="使用私有库的开发技巧"><a href="#使用私有库的开发技巧" class="headerlink" title="使用私有库的开发技巧"></a>使用私有库的开发技巧</h2><p>抛出问题：我们晓得私有库都有独立的<code>repo</code>，还以<code>mooncake</code>项目为例那我们在本地开发需要改动私有库<code>lib</code>或<code>model</code>下代码，那么改完后如何测试？私有库放哪里？是直接动手改<code>vendor/neox/lib</code>，还是改独立目录下与<code>mooncake</code>项目平级<code>lib</code>库代码（假设我们将私有库<code>lib</code>克隆到与<code>mooncake</code>平级目录），如果改的是后者如何使其改过的代码生效呢？好了~不买官司了。接下分享一下我采用的方式：</p>
+<p><strong>方案一</strong><br>私有仓库<code>lib</code>和项目<code>mooncake</code>平级（不是必须），配置<code>composer</code>达到指定使用私有库<code>lib</code>分支代码，修改代码以后需要把修改后的代码<code>require</code>进<code>vendor</code>目录下，我们可以<code>composer.json</code>配置达到从本地指定私有<code>lib</code>目录，将指定分支代码<code>require</code>进<code>vendor</code>，而不是从<code>gitlab</code>下载。</p>
+<p>缺点：每次改动私有的<code>lib</code>库代码，都需要<code>composer install</code>，还需先删除<code>composer.lock</code>文件再<code>install</code>。刚一开始我采用的这种方案，你会发现每次的<code>install</code>，都要执行一堆没用的（效率太低，不推荐）。以下是这种方案我的<code>composer.json</code>配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&quot;require&quot;: &#123;</span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">  &quot;neox/lib&quot;: &quot;dev-feature/20200323-db-rename-namespace&quot;,</span><br><span class="line">  &quot;neox/model&quot;: &quot;dev-feature/20200323-db-rename-namespace&quot;,</span><br><span class="line">&#125;,</span><br><span class="line">&quot;repositories&quot;: &#123;</span><br><span class="line">  &quot;neox-lib&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;vcs&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;../lib&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;neox-model&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;vcs&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;../model&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：实际<code>lib</code>和<code>model</code>代码分支名是<code>feature/20200323-db-rename-namespace</code></p>
+</blockquote>
+<p><strong>方案二</strong></p>
+<p>直接修改<code>vendor</code>目录下的<code>lib</code>或<code>model</code>，修改前可以通过<code>git</code>分支自行创建和切换分支以维护不同的代码，将此目录下的代码直接作为<code>lib</code>和<code>model</code>的本地开发仓库（其实本来也就是了）。这种方式改完代码及时生效无需执行<code>composer</code>任何命令，因为<code>vendor</code>下的代码包本来也就已经被处理好了<code>autolaod</code>。此种方式也是我现在采用的方法，推荐。</p>
+<p>最后贴一下，我司私有库的<code>composer.json</code>配置图（因为隐私我做了部分模糊）：</p>
+<p>私有库<code>Lib</code>:<br><img src="/2020/03/26/Composer-安装私有包/lib-u.png"></p>
+<p>私有库<code>Model</code>:</p>
+<img src="/2020/03/26/Composer-安装私有包/model-u.png">
+<p>最终被<code>composer</code>处理后的<code>psr-4</code>目录映射形式：</p>
+<img src="/2020/03/26/Composer-安装私有包/psr-4-u.png">
+<h2 id="好文同享"><a href="#好文同享" class="headerlink" title="好文同享"></a>好文同享</h2><ul>
+<li><a href="https://segmentfault.com/a/1190000014948542#item-4" target="_blank" rel="noopener">segmentfault composer 原理</a></li>
+<li><a href="https://github.com/LeoYang90/laravel-source-analysis/blob/master/PHP%20Composer%E2%80%94%E2%80%94%20%E5%88%9D%E5%A7%8B%E5%8C%96%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md" target="_blank" rel="noopener">github composer 原理</a></li>
+<li><a href="https://barryvanveen.nl/blog/55-installing-a-private-package-with-composer" target="_blank" rel="noopener">Composer 创建私有库-英文</a></li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/03/20/Visual-Studio-Code-中值得推荐的扩展/">Visual Studio Code 中值得推荐的扩展</a>
         
       </h1>
@@ -257,7 +414,7 @@
         
           <span class="post-category">
             
-              <a href="/categories/开发者工具/">开发者工具</a>
+              <a href="/categories/coding-tools/">coding tools</a>
             
           </span>
         
@@ -323,7 +480,7 @@
         
           <span class="post-category">
             
-              <a href="/categories/Neox/">Neox</a>
+              <a href="/categories/NeoX/">NeoX</a>
             
           </span>
         
@@ -507,7 +664,7 @@
         
           <span class="post-category">
             
-              <a href="/categories/随笔/">随笔</a>
+              <a href="/categories/essays/">essays</a>
             
           </span>
         
@@ -754,127 +911,6 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$integerIds = array_map(<span class="string">'intval'</span>, explode(<span class="string">','</span>, $string));</span><br></pre></td></tr></table></figure>
 <p>2.代码二</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$integerIds = json_decode(<span class="string">'['</span> . $string . <span class="string">']'</span>, <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/03/05/基础篇-怎么理解平均负载/">基础篇-怎么理解平均负载</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-03-05
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Linux/">Linux</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="uptime-查看平均负载"><a href="#uptime-查看平均负载" class="headerlink" title="uptime 查看平均负载"></a>uptime 查看平均负载</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ uptime</span><br><span class="line"> 12:37:58 up 67 days, 12:43,  2 users,  load average: 0.00, 0.02, 0.00</span><br></pre></td></tr></table></figure>
-<p>解释：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">12:37:58            # 当前时间</span><br><span class="line">up 67 days, 12:43   # 系统运行时间</span><br><span class="line">2 users             # 正在登录用户数</span><br></pre></td></tr></table></figure>
-<p>最后三个数字呢，依次则是过去 1 分钟、5 分钟、15 分钟的平均负载(Load Average)</p>
-<blockquote>
-<p>平均负载是指单位时间内，系统处于「可运行状态」和「不可中断状态」的平均进程数，也就是平均活跃进程数</p>
-</blockquote>
-<p>可运行状态的进程：是指正在使用 CPU 或者正在等待 CPU 的进程，也就是我们常用 ps 命令看到的，处于 R 状态(Running 或 Runnable)的进程</p>
-<p>不可中断状态的进程：则是正处于内核态关键流程中的进程，并且这些流程是不可打断的， 比如最常见的是等待硬件设备的 I/O 响应，也就是我们在 ps 命令中看到的 D 状态 (Uninterruptible Sleep，也称为 Disk Sleep)的进程。</p>
-<p>比如，当一个进程向磁盘读写数据时，为了保证数据的一致性，在得到磁盘回复前，它是 不能被其他进程或者中断打断的，这个时候的进程就处于不可中断状态。如果此时的进程 被打断了，就容易出现磁盘数据与进程数据不一致的问题。</p>
-<p>所以，不可中断状态实际上是系统对进程和硬件设备的一种保护机制。</p>
-<p>既然平均的是活跃进程数，那么最理想的，就是每个 CPU 上都刚好运行着一个进程，这样 每个 CPU 都得到了充分利用。</p>
-<p>比如当平均负载为 2 时，意味着什么呢?</p>
-<ul>
-<li>在只有 2 个 CPU 的系统上，意味着所有的 CPU 都刚好被完全占用。</li>
-<li>在 4 个 CPU 的系统上，意味着 CPU 有 50% 的空闲。</li>
-<li>而在只有 1 个 CPU 的系统中，则意味着有一半的进程竞争不到 CPU。</li>
-</ul>
-<h2 id="平均负载为多少时合理"><a href="#平均负载为多少时合理" class="headerlink" title="平均负载为多少时合理"></a>平均负载为多少时合理</h2><p>查看系统有几个 CPU,从<code>/proc/cpuinfo</code>中读取，命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">'model name'</span> /proc/cpuinfo | wc -l</span><br></pre></td></tr></table></figure>
-<p>有了 CPU 个数，我们就可以判断出，当平均负载比 CPU 个数还大的时候，系统已经出现 了过载。</p>
-<h2 id="找出负载过大进程"><a href="#找出负载过大进程" class="headerlink" title="找出负载过大进程"></a>找出负载过大进程</h2><p>mpstat 查看 CPU 使用率的变化情况</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -P ALL 表示监控所有 CPU，后面数字 5 表示间隔 5 秒</span></span><br><span class="line">mpstat -P ALL 5</span><br><span class="line">12:59:39 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle</span><br><span class="line">12:59:44 PM  all   50.76    0.00    0.50    0.00    0.00    0.00    0.00    0.00    0.00   48.74</span><br><span class="line">12:59:44 PM    0    0.81    0.00    1.01    0.00    0.00    0.00    0.00    0.00    0.00   98.17</span><br><span class="line">12:59:44 PM    1  100.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00</span><br></pre></td></tr></table></figure>
-<p>pidstat 来查询是哪个进程导致了 CPU 使用率为 100% 呢</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 间隔 5 秒后输出一组数据</span></span><br><span class="line">pidstat -u 5 1</span><br><span class="line">12:59:02 PM   UID       PID    %usr %system  %guest    %CPU   CPU  Command</span><br><span class="line">12:59:07 PM   110      9706    0.40    0.00    0.00    0.40     0  mongod</span><br><span class="line">12:59:07 PM     0      9750    0.20    0.00    0.00    0.20     1  watch</span><br><span class="line">12:59:07 PM     0      9833  100.00    0.00    0.00  100.00     0  stress</span><br><span class="line">12:59:07 PM     0     10123    0.00    0.20    0.00    0.20     1  pidstat</span><br><span class="line">12:59:07 PM     0     14287    0.60    0.40    0.00    1.00     1  AliYunDun</span><br><span class="line">12:59:07 PM     0     19835    0.20    0.00    0.00    0.20     1  containerd-shim</span><br><span class="line">12:59:07 PM   111     22629    0.00    0.20    0.00    0.20     1  redis-server</span><br><span class="line">12:59:07 PM     0     27102    0.40    0.20    0.00    0.60     1  exe</span><br><span class="line">12:59:07 PM   999     29885    0.20    0.00    0.00    0.20     1  redis-server</span><br></pre></td></tr></table></figure>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>平均负载提供了一个快速查看系统整体性能的手段，反映了整体的负载情况。</p>
-<p>平均负载过高，有可能是CPU密集进程导致，还有可能是 I/O 更繁忙了。</p>
-<p>可以使用 mpstat、pidstat 等工具，辅助分析负载的来源。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li>整理自「Linux 性能优化实战」</li>
-</ul>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/29/Hexo-posts目录归档/">Hexo_posts目录归档</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-29
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><code>Blog</code>文章写多了，都堆积在<code>source/_posts</code>根目录下，每次创建了一篇新博文，找起来很是花时间，想要实现创建的博文按<code>/年/月</code>目录划分，访问<code>URL</code>地址保持不变即可。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>配置<code>_config.yml</code>文件中<code>new_post_name</code>值为<code>:year/:month/:title.md</code>即可。然后使用<code>hexo new &#39;demo&#39;</code>创建一篇测试文章，就会发现自动归纳到相应<code>/年/月</code>目录下了。</p>
-<p>Q1：针对旧文章怎么办？<br>A1：手动创建对应年、月目录，将其移动到对应目录下即可。</p>
-<p>The end.</p>
 
         
       
