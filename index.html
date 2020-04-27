@@ -405,11 +405,21 @@
       
         
         
+          
+        
 
         
-          <p><a href="https://www.cnblogs.com/yanzibuaa/p/7808437.html" target="_blank" rel="noopener">https://www.cnblogs.com/yanzibuaa/p/7808437.html</a></p>
-<p><a href="https://blog.csdn.net/ithomer/article/details/9288353" target="_blank" rel="noopener">https://blog.csdn.net/ithomer/article/details/9288353</a></p>
-
+          <h2 id="标准输入输出"><a href="#标准输入输出" class="headerlink" title="标准输入输出"></a>标准输入输出</h2><p>Linux 中三种标准输入输出：</p>
+<ul>
+<li>STDIN：标准输入，默认从键盘读取信息</li>
+<li>STDOUT：标准输出，默认将输出结果输出至终端</li>
+<li>STDERR：标准的错误信息，默认也会显示在终端上</li>
+</ul>
+<p>由于<code>STDOUT</code>与<code>STDERR</code>都会默认显示在终端上，为了区分二者的信息，就有了编号的0，1，2的定义，用<code>1</code>表示<code>STDOUT</code>，<code>2</code>表示<code>STDERR</code>，<code>0</code>表示：<code>STDIN</code>。</p>
+<h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h2><p><code>/tmp/test.sh &gt; /tmp/test.log 2&gt;&amp;1</code>，这里<code>2&gt;&amp;1</code>的意思就是将标准错误也输出到标准输出当中。</p>
+          <div class="read-more">
+            <a href="/2020/04/21/Linux中-2-1-是什么/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>
