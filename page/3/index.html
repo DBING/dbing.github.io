@@ -246,6 +246,61 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/03/05/将数组值从字符串转换为int/">将数组值从字符串转换为int</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-05
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/PHP/">PHP</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$string = <span class="string">"1,2,3"</span></span><br><span class="line">$ids = explode(<span class="string">','</span>, $string);</span><br><span class="line">var_dump($ids);</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">array</span>(<span class="number">3</span>) &#123;</span><br><span class="line">  [<span class="number">0</span>]=&gt;</span><br><span class="line">  string(<span class="number">1</span>) <span class="string">"1"</span></span><br><span class="line">  [<span class="number">1</span>]=&gt;</span><br><span class="line">  string(<span class="number">1</span>) <span class="string">"2"</span></span><br><span class="line">  [<span class="number">2</span>]=&gt;</span><br><span class="line">  string(<span class="number">1</span>) <span class="string">"3"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目标：</p>
+<p>每个值需要的是<code>int</code>类型，而不是<code>string</code></p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>1.代码一</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$integerIds = array_map(<span class="string">'intval'</span>, explode(<span class="string">','</span>, $string));</span><br></pre></td></tr></table></figure>
+<p>2.代码二</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$integerIds = json_decode(<span class="string">'['</span> . $string . <span class="string">']'</span>, <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/03/05/基础篇-怎么理解平均负载/">基础篇-怎么理解平均负载</a>
         
       </h1>
@@ -704,60 +759,6 @@
         
           <h2 id="错误现场"><a href="#错误现场" class="headerlink" title="错误现场"></a>错误现场</h2><p>页面<code>500</code>没有错误<code>Log</code>，手动修改<code>index.php</code>捕获异常。</p>
 <h2 id="查看Log"><a href="#查看Log" class="headerlink" title="查看Log"></a>查看Log</h2><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/18/opencv-单目标追踪/">opencv 单目标追踪</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-18
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/OpenCV/">OpenCV</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>自动去除纯色背景，自动画框（最小外接矩形）然后将素材提交给机器学习。</p>
-<h2 id="已实现"><a href="#已实现" class="headerlink" title="已实现"></a>已实现</h2><p>今日下午利用零碎时间，写出手动画框单目标跟踪，效果GIF图如下：</p>
-<img src="/2020/02/18/opencv-单目标追踪/follow.gif">
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2>
-          <div class="read-more">
-            <a href="/2020/02/18/opencv-单目标追踪/" class="read-more-link">阅读更多</a>
-          </div>
         
       
     </div>

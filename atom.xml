@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dbing.github.io/"/>
-  <updated>2020-04-26T08:46:39.004Z</updated>
+  <updated>2020-04-27T02:11:15.593Z</updated>
   <id>https://dbing.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>学习Python的十本好书</title>
+    <link href="https://dbing.github.io/2020/04/27/%E5%AD%A6%E4%B9%A0Python%E7%9A%84%E5%8D%81%E6%9C%AC%E5%A5%BD%E4%B9%A6/"/>
+    <id>https://dbing.github.io/2020/04/27/学习Python的十本好书/</id>
+    <published>2020-04-27T02:09:15.000Z</published>
+    <updated>2020-04-27T02:11:15.593Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Python is one of the best languages to learn first. And there’s no better way to delve deep into a new language than by reading a good book. These ten books on Python will move you from someone who has no experience programming to being a Python expert.</p></blockquote><p>以下是原文链接：<a href="https://x-team.com/blog/essential-python-resources/" target="_blank" rel="noopener">https://x-team.com/blog/essential-python-resources</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;Python is one of the best languages to learn first. And there’s no better way to delve deep into a new language than by read
+      
+    
+    </summary>
+    
+      <category term="Essays" scheme="https://dbing.github.io/categories/Essays/"/>
+    
+    
+      <category term="Python" scheme="https://dbing.github.io/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>Markdown 语法学习文档</title>
@@ -163,7 +189,7 @@
     <link href="https://dbing.github.io/2020/04/08/HelloKefu-%E5%BC%80%E6%BA%90%E5%AE%A2%E6%9C%8D%E7%B3%BB%E7%BB%9F/"/>
     <id>https://dbing.github.io/2020/04/08/HelloKefu-开源客服系统/</id>
     <published>2020-04-08T11:02:33.000Z</published>
-    <updated>2020-04-26T09:09:20.811Z</updated>
+    <updated>2020-04-26T10:19:44.140Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简短背景"><a href="#简短背景" class="headerlink" title="简短背景"></a>简短背景</h2><p>截止今日（2020年04月08日）写稿六个月前，偶然一个机会拿出了两周的时间，写出了一个客服系统（纯属情怀），技术栈：<code>Laravel+Vue+Swoole</code>，效果图如下：</p><p>客服端：</p><img src="/2020/04/08/HelloKefu-开源客服系统/serve.png"><p>访客端：</p><img src="/2020/04/08/HelloKefu-开源客服系统/client.png"><p>设计最让自己感觉满意的地方再于，<code>访客</code>(客户端)于<code>客服</code>(服务端)通过事件机制解耦了复杂的代码，两种消息机制(<code>Mutation</code>和<code>Action</code>)直接对应<code>Vux</code>中<code>Mutation</code>和<code>Action</code>相应方法，从而客户端一行代码直接触发<code>Server</code>端对应的<code>Event</code>，服务端打包相应的消息直接调用对应的<code>Mutation</code>或<code>Action</code>。</p><p>让通信方式更简单。<code>Vue</code>和<code>Laravel</code>之间通过<code>Api</code>的方式通信。</p><p>因时间安排原因，放弃此项目不再维护。</p><h2 id="Repo-地址"><a href="#Repo-地址" class="headerlink" title="Repo 地址"></a>Repo 地址</h2><p><a href="https://github.com/dbing/hellokefu/" target="_blank" rel="noopener">hellokefu</a></p>]]></content>
     
@@ -176,7 +202,7 @@
     
     </summary>
     
-      <category term="essays" scheme="https://dbing.github.io/categories/essays/"/>
+      <category term="Essays" scheme="https://dbing.github.io/categories/Essays/"/>
     
     
       <category term="Hellokefu" scheme="https://dbing.github.io/tags/Hellokefu/"/>
@@ -188,22 +214,28 @@
     <link href="https://dbing.github.io/2020/04/06/Mac-%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     <id>https://dbing.github.io/2020/04/06/Mac-快捷键/</id>
     <published>2020-04-06T04:59:20.000Z</published>
-    <updated>2020-04-26T08:58:14.478Z</updated>
+    <updated>2020-04-27T03:49:27.962Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="截屏"><a href="#截屏" class="headerlink" title="截屏"></a>截屏</h2><ul><li>command + shift + 3 ：全屏截屏</li><li>command + shift + 4 ：选定区域截屏</li></ul><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul><li>command + tab ：应用间切换</li><li>command + shift + u ：使用工具</li></ul><h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><ul><li>control + a : 移动至行首</li><li>control + e : 移动至行尾</li></ul><h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><ul><li>command + 0 : 打开文件</li><li>command + option + l : 打开下载</li><li>command + c : 复制</li><li>command + v : 粘贴</li><li>command + alt + v : 移动</li><li>command + alt + ← ：删除文件（Tab键确认、空格键确认删除）</li></ul><h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul><li>command + shift + { ：上个标签页</li><li>command + shift + } ：下个标签页</li><li>command + alt + ← ：上一个标签</li><li>command + n ：新开一个标签</li><li>command + w : 关闭当前标签</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="截屏"><a href="#截屏" class="headerlink" title="截屏"></a>截屏</h2><ul><li>command + shift + 3 ：全屏截屏</li><li>command + shift + 4 ：选定区域截屏</li></ul><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul><li>command + tab ：应用间切换</li><li>command + shift + u ：使用工具</li></ul><h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><ul><li>control + a : 移动至行首</li><li>control + e : 移动至行尾</li></ul><a id="more"></a><h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><ul><li>command + 0 : 打开文件</li><li>command + option + l : 打开下载</li><li>command + c : 复制</li><li>command + v : 粘贴</li><li>command + alt + v : 移动</li><li>command + alt + ← ：删除文件（Tab键确认、空格键确认删除）</li></ul><h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul><li>command + shift + { ：上个标签页</li><li>command + shift + } ：下个标签页</li><li>command + alt + ← ：上一个标签</li><li>command + n ：新开一个标签</li><li>command + w : 关闭当前标签</li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;截屏&quot;&gt;&lt;a href=&quot;#截屏&quot; class=&quot;headerlink&quot; title=&quot;截屏&quot;&gt;&lt;/a&gt;截屏&lt;/h2&gt;&lt;ul&gt;
+      &lt;h2 id=&quot;截屏&quot;&gt;&lt;a href=&quot;#截屏&quot; class=&quot;headerlink&quot; title=&quot;截屏&quot;&gt;&lt;/a&gt;截屏&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;command + shift + 3 ：全屏截屏&lt;/li&gt;
-&lt;li&gt;command + shift + 4 ：选定区域截屏&lt;/
-      
+&lt;li&gt;command + shift + 4 ：选定区域截屏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;应用&quot;&gt;&lt;a href=&quot;#应用&quot; class=&quot;headerlink&quot; title=&quot;应用&quot;&gt;&lt;/a&gt;应用&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;command + tab ：应用间切换&lt;/li&gt;
+&lt;li&gt;command + shift + u ：使用工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;文本&quot;&gt;&lt;a href=&quot;#文本&quot; class=&quot;headerlink&quot; title=&quot;文本&quot;&gt;&lt;/a&gt;文本&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;control + a : 移动至行首&lt;/li&gt;
+&lt;li&gt;control + e : 移动至行尾&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
-      <category term="essays" scheme="https://dbing.github.io/categories/essays/"/>
+      <category term="Essays" scheme="https://dbing.github.io/categories/Essays/"/>
     
     
       <category term="Mac" scheme="https://dbing.github.io/tags/Mac/"/>
@@ -215,7 +247,7 @@
     <link href="https://dbing.github.io/2020/04/03/Electron-%E4%B8%93%E6%B3%A8%E4%BA%8E%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/"/>
     <id>https://dbing.github.io/2020/04/03/Electron-专注于桌面应用开发/</id>
     <published>2020-04-03T10:46:12.000Z</published>
-    <updated>2020-04-26T08:57:55.561Z</updated>
+    <updated>2020-04-26T10:19:44.141Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Electron"><a href="#Electron" class="headerlink" title="Electron"></a>Electron</h2><p>Electron 可以让你使用纯 JavaScript 调用丰富的原生(操作系统) APIs 来创造桌面应用。 你可以把它看作一个 Node. js 的变体，它专注于桌面应用而不是 Web 服务器端。</p><p>这不意味着 Electron 是某个图形用户界面（GUI）库的 JavaScript 版本。 相反，Electron 使用 web 页面作为它的 GUI，所以你能把它看作成一个被 JavaScript 控制的，精简版的 Chromium 浏览器。</p><p>以上是摘自<code>Electron</code>官方文档对其的描述，望以后有时间开发也给桌面应用小程序，这里<code>Mark</code>一下，感兴趣可以翻阅其<a href="https://www.electronjs.org/docs/tutorial/first-app" target="_blank" rel="noopener">官网文档</a></p>]]></content>
     
@@ -228,7 +260,7 @@
     
     </summary>
     
-      <category term="essays" scheme="https://dbing.github.io/categories/essays/"/>
+      <category term="Essays" scheme="https://dbing.github.io/categories/Essays/"/>
     
     
       <category term="Electron" scheme="https://dbing.github.io/tags/Electron/"/>
@@ -240,7 +272,7 @@
     <link href="https://dbing.github.io/2020/03/26/Vim-%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
     <id>https://dbing.github.io/2020/03/26/Vim-基础篇/</id>
     <published>2020-03-26T11:10:39.000Z</published>
-    <updated>2020-04-26T08:57:38.286Z</updated>
+    <updated>2020-04-26T10:19:44.142Z</updated>
     
     <content type="html"><![CDATA[<h2 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h2><h3 id="开头"><a href="#开头" class="headerlink" title="开头"></a>开头</h3><ul><li><code>NORMAL</code>模式输入<code>:0</code>或<code>:1</code>，然后<code>Enter</code></li><li><code>NORMAL</code>模式小写<code>gg</code></li></ul><h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><ul><li><code>NORMAL</code>模式输入<code>:$</code>，然后<code>Enter</code></li><li><code>NORMAL</code>模式按大写<code>G</code></li><li><code>NORMAL</code>按键<code>shift</code>+<code>g</code></li></ul><p>自己还么有时间总结，分享一篇不错的资料：</p><p><a href="https://github.com/wsdjeg/vim-galore-zh_cn#linux-%E6%88%96%E8%80%85-mac-os" target="_blank" rel="noopener">https://github.com/wsdjeg/vim-galore-zh_cn#linux-%E6%88%96%E8%80%85-mac-os</a></p>]]></content>
     
@@ -254,7 +286,7 @@
     
     </summary>
     
-      <category term="essays" scheme="https://dbing.github.io/categories/essays/"/>
+      <category term="Essays" scheme="https://dbing.github.io/categories/Essays/"/>
     
     
       <category term="Vim" scheme="https://dbing.github.io/tags/Vim/"/>
@@ -317,7 +349,7 @@
     <link href="https://dbing.github.io/2020/03/20/Visual-Studio-Code-%E4%B8%AD%E5%80%BC%E5%BE%97%E6%8E%A8%E8%8D%90%E7%9A%84%E6%89%A9%E5%B1%95/"/>
     <id>https://dbing.github.io/2020/03/20/Visual-Studio-Code-中值得推荐的扩展/</id>
     <published>2020-03-20T09:53:30.000Z</published>
-    <updated>2020-04-26T09:01:23.943Z</updated>
+    <updated>2020-04-26T09:49:34.967Z</updated>
     
     <content type="html"><![CDATA[<h2 id="推荐的扩展"><a href="#推荐的扩展" class="headerlink" title="推荐的扩展"></a>推荐的扩展</h2><ul><li>vscode-icons</li><li>Bracket Pair Colorizer</li><li>Path Autocomplete</li><li><a href="https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync" target="_blank" rel="noopener">Settings Sync</a></li></ul><blockquote><p>Previously known as Visual Studio Code Settings Sync</p></blockquote><p><code>Visual Studio Code</code>设置同步，用于在多台设备下快速同步所有配置。</p><p>快捷键</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. Upload Key : Shift + Alt + U</span><br><span class="line">2. Download Key : Shift + Alt + D</span><br><span class="line"></span><br><span class="line">(on macOS: Shift + Option + U / Shift + Option + D)</span><br></pre></td></tr></table></figure><ul><li>Path Autocomplete</li><li>filesize</li></ul><h2 id="主题扩展"><a href="#主题扩展" class="headerlink" title="主题扩展"></a>主题扩展</h2><ul><li>One Dark Pro</li><li>Brackets Light Pro</li></ul>]]></content>
     
@@ -333,7 +365,7 @@
     
     </summary>
     
-      <category term="coding tools" scheme="https://dbing.github.io/categories/coding-tools/"/>
+      <category term="Coding tools" scheme="https://dbing.github.io/categories/Coding-tools/"/>
     
     
       <category term="Visual Studio Code" scheme="https://dbing.github.io/tags/Visual-Studio-Code/"/>
@@ -420,7 +452,7 @@
     <link href="https://dbing.github.io/2020/03/11/2018-2019%E5%B9%B4-%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86-%E4%B8%8A/"/>
     <id>https://dbing.github.io/2020/03/11/2018-2019年-面试经历-上/</id>
     <published>2020-03-11T10:10:33.000Z</published>
-    <updated>2020-04-26T08:53:37.060Z</updated>
+    <updated>2020-04-26T10:19:44.141Z</updated>
     
     <content type="html"><![CDATA[<h2 id="智众医疗"><a href="#智众医疗" class="headerlink" title="智众医疗"></a>智众医疗</h2><ol><li>自我介绍</li><li>MySQL 优化，常见的索引优化的方式</li><li>阿里云的 RDS 报 IOPS 过高（使用到索引了）</li><li>除了用 Redis 做缓存还用到了什么？（消息队列和锁，讲一下）</li><li>讲一下你的比较顺畅的一个工作流程</li><li>有一个接口，用户反馈很慢？</li><li>你们是怎么监控接口的？</li><li>docker 的原理？</li><li>如何优化镜像的打包速度和大小</li><li>讲一下个人是怎么成长的？</li><li>谈谈你对 MySQL 的优化</li><li>在创建 MySQL 索引时你是如何考虑的？</li><li>Btree 和 红黑树的区别</li><li>你在生产环境是如何部署任务队列的？</li><li>Laravel 中你认为哪些比较好的地方</li><li>ELK 有没有了解过？</li></ol><h2 id="韩创科技"><a href="#韩创科技" class="headerlink" title="韩创科技"></a>韩创科技</h2><h3 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h3><ol><li>最后一道笔试题</li><li>3千万的网站做个用户消息，用户读取后标记已读，请问你该如何设计。</li><li>Redis 的二进制存储，Redis 以及 Redis 存储结构以及 Redis 更高逼格的应用。</li><li>Elasticsearch 你再什么场景下使用的，怎么使用的。数据量级别是多少。</li><li>阿里云的开发搜索，出现延迟或空白现象有没有遇到过</li><li>当你下面的技术人员与产品发生了冲突，你会怎么做？</li><li>Kafka 有没有应用过，或是跑过 Demo</li><li>Redis 下 count 函数有没有了解</li></ol><h3 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h3><ol><li>Composer 自动加载原理</li><li>队列任务，单机消费处理不过来，多消费者如何做？</li><li>网站代码发布更新，如果做到不影响正常访问的用户</li><li>你是如何在三台或更多台生产服务器发布代码？</li><li>谈谈你对 MySQL 分区、分表的理解。</li><li>数据是如何在磁盘分布的。</li><li>使用主键查询与普通索引查询的区别。</li></ol><h2 id="乐贝"><a href="#乐贝" class="headerlink" title="乐贝"></a>乐贝</h2><h3 id="二面-1"><a href="#二面-1" class="headerlink" title="二面"></a>二面</h3><ol><li>Elasticsearch 下做查询或统计为什么这么快，谈谈你对它的理解。</li><li>谈谈你做过的最成熟的一个项目，你是怎么架构的。</li></ol><a id="more"></a><h3 id="一面-1"><a href="#一面-1" class="headerlink" title="一面"></a>一面</h3><ol><li>PHP 中有哪些常量？</li><li>PHP 的设计模式有了解吗？手写一个单例模式，这个代码在 swoole下运行有问题吗？如果有会有哪些问题？</li><li>__call  是什么？</li><li>Redis 如何防止高并发下，下单导致的问题</li><li>Laravel 中的 event 怎么用？</li><li>lua 有了解过吗？</li><li>Laravel 中懒加载是什么原理？Laravel 下加载扩展原理是什么？</li><li>Laravel 有一个扩展包，现在不满足我的业务，需要做修改你怎么做。</li><li>有了解 Http 协议吗？Http 协议分为哪个部分，Method 发生在哪个阶段，Post 传值在哪个层，Get传值在哪个层。</li></ol><h2 id="字节跳动"><a href="#字节跳动" class="headerlink" title="字节跳动"></a>字节跳动</h2><ol><li>504具体原因</li><li>最有代表性的一个项目，简述下使用的技术栈</li><li>PHP7的新特性</li><li>简述下 nginx 比 apache 优秀的原因</li><li>简述下 nginx 进程模型和 fastcgi 模型区别</li><li>mysql 事物4中隔离级别以及，默认隔离级别</li><li>死锁原因</li><li>索引应该注意哪些？</li><li>sql 优化具体有哪些</li><li>docker 下日志怎么管理</li><li>explain 优化sql 看什么指标参数</li><li>离职原因</li><li>gorouting 原理</li></ol><h3 id="算法题"><a href="#算法题" class="headerlink" title="算法题"></a>算法题</h3><ol><li>一共有10层楼梯，人每次可以走1-2步，一共有多少种走法</li></ol><h2 id="亦诊医疗"><a href="#亦诊医疗" class="headerlink" title="亦诊医疗"></a>亦诊医疗</h2><ol><li>Laravel 中 service Providers 你是怎么应用的？</li><li>说说 PHP 数组，在PHP底层怎么存储的（HashTable）</li><li>一个一维整数数组，如何快速取出前最大（或最小）的两个（SPL）</li><li>简述依赖注入的作用和实现方式</li><li>列举常见的 WEB 性能优化方法</li><li>git cherry-pick master</li></ol><h2 id="寻找母星"><a href="#寻找母星" class="headerlink" title="寻找母星"></a>寻找母星</h2><h3 id="电面"><a href="#电面" class="headerlink" title="电面"></a>电面</h3><ol><li>一台4核8G的服务器，只运行nginx 和 php，如何调优使其利用最大化。</li><li>TP5 或 Laravel 加载时经历了什么。</li></ol><h2 id="毒APP"><a href="#毒APP" class="headerlink" title="毒APP"></a>毒APP</h2><h3 id="一面-2"><a href="#一面-2" class="headerlink" title="一面"></a>一面</h3><ol><li>简单介绍一下自己</li><li>laravel yii2.0 tp5 优缺点</li><li>PHP 5与 PHP 7 哪些变化</li><li>PHP7 为什么会对这些 参数声明和返回值做强制类型声明？</li><li>对某一个类进行扩展，你应该怎么扩展？</li><li>有用过装饰器模式吗？</li><li>针对数据库的调优（为什么最左侧索引使用不上，索引就会失效）</li><li>yii 有哪些优势</li><li>PHP 跑脚本跑过没？</li><li>Crontab 如何实现每秒执行一次？</li><li>PHP 垃圾回收机制？</li><li>502、503、504 具体区别是什么？</li><li>Redis 哪些数据类型</li><li>elasticsearch 为什么快？</li><li>你们是如何管理代码的？</li><li>简述一下常用git 命令，git-rebase 应用场景是什么？</li><li>git reset 在本地回退代码后，如何提交到线上？</li><li>抢购如何处理库存和并发问题？</li></ol><h3 id="二面-2"><a href="#二面-2" class="headerlink" title="二面"></a>二面</h3><ol><li>可以详细描述一下一个 http 的请求过程嘛？</li><li>fpm 和 fastcgi 有什么关系</li><li>fastcgi 和 cgi 有什么关系？</li><li>数组在PHP底层是怎么存储的？（这里准确的说应该是HashTable）</li><li>假如 Hash 碰撞他会怎么处理？</li><li>innodb 有哪些索引？</li><li>复合索引哪些情况下会失效？</li><li>怎么查看 sql 有没有使用索引？</li><li>你再查看 explain 会看哪些参数？</li><li>B+tree 结构有没有了解？，B+tree 的层级是</li><li>redis 管道有用过吗？</li><li>订单表数据量比较大做拆分，需要从三个维度查询条件是订单号，商户id，用户id？</li><li>除了redis 还用过别的消息队列吗？</li><li>自己手写过框架吗？</li><li>微服务有了解过吗？</li><li>之前有用php做过一些服务化的东西吗？之前有做过一些模块拆分的东西吗？服务之间的依赖怎么处理？要怎么通信？</li><li>你现在参与研发的时间还多吗？</li><li>你的离职原因是什么？</li><li>你这么有什么问题要问的吗？</li></ol><h3 id="三面"><a href="#三面" class="headerlink" title="三面"></a>三面</h3><ol><li>redis 删除机制</li><li>缓存雪崩</li></ol><h2 id="连米科技"><a href="#连米科技" class="headerlink" title="连米科技"></a>连米科技</h2><h3 id="一面-3"><a href="#一面-3" class="headerlink" title="一面"></a>一面</h3><ol><li>你大概介绍一下你之前的项目和经历。</li><li>你做过的有代表性的项目介绍一下。</li><li>优惠券的活动，瞬时并发按5000算，你应该怎么处理。</li><li>在这个场景上，还有别的点上需要做优化的吗？</li><li>发送验证码的接口，被别人用大批量的手机号恶意利用，你应该怎么去处理。<br> 答：1.针对单个手机号在一日内做总次数发送限制。<br> 2.在 HTTP 请求头上做特殊标记<br> 3.传递的参数做加密，携带签名。</li><li>如果入职一家公司你的期待或预期是怎样的。</li><li>相对于别的开发，你有什么优势。</li><li>我这边了解的差不多了，你还有什么想了解的吗？</li></ol><h3 id="二面-3"><a href="#二面-3" class="headerlink" title="二面"></a>二面</h3><ol><li>你这个项目还在运行着吗？为什么不能访问了？介绍一下你这个项目的技术栈。</li><li>你这个项目的部署细节</li><li>你处理的电商项目中有哪些亮点呢。</li><li>第三方支付你积累的哪些经验呢。</li><li>说一个你项目的物理结构。</li><li>RDS 提供哪些服务让你选择 RDS</li><li>PHP 线上配置</li><li>PHP 和 Nginx 是怎么通信的</li><li>Docker 有多少了解呢</li><li>你怎么编排 Docker 的呢</li><li>Laravel 需要改哪些设置使其更快</li><li>PHP 垃圾回收机制</li><li>PHP 自动加载机制有了解过吗？</li></ol><h3 id="二三四五"><a href="#二三四五" class="headerlink" title="二三四五"></a>二三四五</h3><ol><li>简单做个自我介绍</li><li>你在开发过程中你有没有用过php的扩展，你是如何安装php扩展的</li><li>你是怎么判断一个字符串长度的，</li><li>strlen 和 mb_strlen 有什么区别，两个中文汉字，这个两个函数返回值分别是多少。</li><li>怎么用php读取一个10G的文件，</li><li>PHP 中两个等号和三个等号的区别是什么呢？</li><li>php 中常用的魔术方法举几个例子，tostring 是什么意思</li><li>array_map 有用过吗？他主要功能描述一下。</li><li>array_walk 呢？</li><li>怎么获取一个文件的类型？</li><li>你开发过程中有没有用redis，他有集中数据类型</li><li>redis 有几种持久化方式呢。</li><li>你是怎么优化mysql呢？</li><li>你是怎么判断一个sql 有无没使用索引呢，explain 看什么指标呢？</li><li>为什么使用索引就很快呢，索引的原理是什么呢？</li><li>索引覆盖是什么呢？什么时候会使用到呢？</li><li>如何控制mysql的一个连接数</li><li>你平时用的nginx多呢还是apache呢，你是如何创建一个虚拟主机的。</li><li>PHP 和 Nginx 是怎么通信的。</li><li>PHP 和 Nginx 有几种通信方式。</li></ol><h3 id="开发类"><a href="#开发类" class="headerlink" title="开发类"></a>开发类</h3><ol><li>有一个接口每天只能访问一万次，你应该怎么做。</li><li>让你设计一个抢购系统，你关注哪些点。</li><li>你维护一个网站，有一段时间也没有上传代码，突然有人告诉你这个网站今天打开特别慢，你该怎么排查一下，以及一下有哪些步骤。</li><li>正则表达式匹配出所有是4的倍数的二进制数</li></ol><h3 id="开发题"><a href="#开发题" class="headerlink" title="开发题"></a>开发题</h3><p>1.写一个函数，得出1等奖中奖概率是0.5%，2等奖中奖概率5%，3等奖中奖概率10%<br>2.一个二维数据，根据某个key值的大小按升序或降序排序</p><h2 id="边锋科技"><a href="#边锋科技" class="headerlink" title="边锋科技"></a>边锋科技</h2><p>php负责人请假，GoLang 技术面试</p><ol><li>插入数据表真实是成功的，但是获取db的写入状态确是不成功的，请问如何提示给客户端，如何解决？（他的回答：插入后再查一次）</li><li>更新缓存成功了，但是更新DB确失败了，怎么办？</li></ol>]]></content>
     
@@ -470,7 +502,7 @@
     
     </summary>
     
-      <category term="essays" scheme="https://dbing.github.io/categories/essays/"/>
+      <category term="Essays" scheme="https://dbing.github.io/categories/Essays/"/>
     
     
       <category term="面试" scheme="https://dbing.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
@@ -817,7 +849,7 @@
     <link href="https://dbing.github.io/2020/02/17/2020%E5%B9%B4%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9%E8%B5%B4%E5%85%AC%E5%8F%B8%E4%B8%8A%E7%8F%AD/"/>
     <id>https://dbing.github.io/2020/02/17/2020年的第一天赴公司上班/</id>
     <published>2020-02-17T15:14:46.000Z</published>
-    <updated>2020-04-26T08:53:18.884Z</updated>
+    <updated>2020-04-26T10:19:44.141Z</updated>
     
     <content type="html"><![CDATA[<p>自从疫情以来，已在远程办公两周，在这两周期间，本身就让有良好的自控力我，深深习惯了在家里办公，那叫一个爽呼呼尽管稍微有点（晚睡晚起-_-||），But 我会准时出席<code>9:30</code>的例会，按时吃早饭、中饭、偶尔稍微一点吃晚餐。今天是2020年首次进公司上班，以下是一些途中记录的照片。</p><h2 id="途中"><a href="#途中" class="headerlink" title="途中"></a>途中</h2><a id="more"></a><img src="/2020/02/17/2020年的第一天赴公司上班/1.jpeg"><img src="/2020/02/17/2020年的第一天赴公司上班/2.jpeg"><img src="/2020/02/17/2020年的第一天赴公司上班/3.jpeg"><img src="/2020/02/17/2020年的第一天赴公司上班/4.jpeg"><img src="/2020/02/17/2020年的第一天赴公司上班/5.jpeg"><img src="/2020/02/17/2020年的第一天赴公司上班/6.jpeg"><h2 id="公司"><a href="#公司" class="headerlink" title="公司"></a>公司</h2><img src="/2020/02/17/2020年的第一天赴公司上班/7.jpeg"><img src="/2020/02/17/2020年的第一天赴公司上班/8.jpeg"><h2 id="日本"><a href="#日本" class="headerlink" title="日本"></a>日本</h2><p>此时日本东京的地铁（日本已确诊400+例），位居国外首榜🤦‍♀️</p><img src="/2020/02/17/2020年的第一天赴公司上班/9.jpeg">]]></content>
     
@@ -828,7 +860,7 @@
     
     </summary>
     
-      <category term="essays" scheme="https://dbing.github.io/categories/essays/"/>
+      <category term="Essays" scheme="https://dbing.github.io/categories/Essays/"/>
     
     
   </entry>
@@ -861,7 +893,7 @@
     <link href="https://dbing.github.io/2020/02/10/%E6%9D%8E%E8%B6%85%E8%87%B4%E5%85%84%E5%BC%9F%E8%BF%9E%E5%85%A8%E4%BD%93%E5%AD%A6%E5%91%98%E3%80%81%E5%91%98%E5%B7%A5%E3%80%81%E8%82%A1%E4%B8%9C%E7%9A%84%E4%B8%80%E5%B0%81%E4%BF%A1/"/>
     <id>https://dbing.github.io/2020/02/10/李超致兄弟连全体学员、员工、股东的一封信/</id>
     <published>2020-02-10T15:07:38.000Z</published>
-    <updated>2020-04-26T08:53:32.799Z</updated>
+    <updated>2020-04-26T10:19:44.141Z</updated>
     
     <content type="html"><![CDATA[<p>平日里我是一个不刷「抖音」、不刷「微博」、不刷「头条」、偶尔刷刷「人民日报」、微信公众号技术文章，每天沉浸于自个的工作和所关注的那个点的领域，感觉自个不像个活在当下21世纪的。</p><p>今天朋友分享过来一篇文章<a href="https://mp.weixin.qq.com/s/Tcew-SDseA7fzW_e4LivMA" target="_blank" rel="noopener">致兄弟连全体学员、员工、股东的一封信</a>，这是这次「新型冠状病毒疫情」期间更有感触的消息了，身边一位北京老朋友从里面学出来的，自己「北京八维研修学院」、「上海弘烨」干了3年教育，也晓得兄弟连在同行中的体量，他没能挺过这冬天还真是出乎意料。</p><p>从这封信中我读出来了两种味道，一味是：因为疫情问题，如他所说恢复时间根据疫情防控工作情况另行通知，让一直亏损的兄弟连无疑是雪上加霜，导致最终没能挺过来。教育行业的利润怎样是行业中有目共睹的，生源决定命脉「入口」，结果系着生源「出口」。我的孙院长曾这么给我说过，把握住这两口也就把握住了学校。想想不无道理。他从零做到了1000多学员的规模用2年的时间。可谓速度之快。<code>PHP</code>的大环境在18、19年就开始出现下滑趋势，19年尤其不怎么好的情况。同样不好的处境还有我一个上海创业开培训的老同事，机构就先不说，说了你也不晓得。</p><p>二味是：有这么一位义无反馈支持自己的妻子，我想这也应该是他成功的原因吧。</p><p>最后道别兄弟连、保重李超。</p>]]></content>
     
@@ -875,7 +907,7 @@
     
     </summary>
     
-      <category term="essays" scheme="https://dbing.github.io/categories/essays/"/>
+      <category term="Essays" scheme="https://dbing.github.io/categories/Essays/"/>
     
     
   </entry>
@@ -1310,7 +1342,7 @@
     <link href="https://dbing.github.io/2019/07/31/%E8%BE%B9%E9%94%8B%E7%9A%84%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86/"/>
     <id>https://dbing.github.io/2019/07/31/边锋的一次面试经历/</id>
     <published>2019-07-31T11:28:39.000Z</published>
-    <updated>2020-04-26T08:53:24.203Z</updated>
+    <updated>2020-04-26T10:19:44.141Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>前几天，去边锋网络上海分公司去面试，去了以后，说 PHP 负责人请假了，一个 Golang 后端面的，聊了2个非语言层面的问题，这里梳理总一下。</p></blockquote><h2 id="Q1：编写-API-接口，如果保证幂等性？"><a href="#Q1：编写-API-接口，如果保证幂等性？" class="headerlink" title="Q1：编写 API 接口，如果保证幂等性？"></a>Q1：编写 API 接口，如果保证幂等性？</h2><p>所谓幂等性设计，就是说，一次和多次请求某一个资源应该具有同样的副作用。用数学的语言来 表达就是:f(x) = f(f(x))。</p><p>举几个例子:</p><ul><li>订单创建接口，第一次调用超时了，然后调用方重试了一次。是否会多创建一笔订单?</li></ul><p>因为系统超时，而调用户方重试一下，会给我们的系统带来不一致的副作用。</p><p>为什么会产生这样的问题，就是在我们把系统解耦隔离后，服务间的调用可能会有三个状态，一个是成功(Success)，一个是失败(Failed)，还有一个是超时(Timeout)。前两者都是明确的状态，而超时则是完全不知道是什么状态。</p><p>这种情况下，一般有两种处理方式：</p><ul><li>一种是下游服务提供查询接口，上游再请求超时后查询一下，如果查询到则表示成功，如果查询不到则表示失败。</li><li>另一种是做接口幂等设计，也就是将查询动作放在下游服务，上游只管做重试，请求一次和请求多次结果是一样的。</li></ul><p>对于第一种方式，需要对方提供一个查询接口来做配合。而第二种方式则需要下游的系统提供支持幂等性的交易接口。</p><a id="more"></a><p>要做到幂等性的交易接口，需要有一个唯一的标识，来标志交易是同一笔交易。而这个交易 ID 由谁来分配是一件比较头疼的事。因为这个标识要能做到全局唯一。</p><h3 id="全局-ID"><a href="#全局-ID" class="headerlink" title="全局 ID"></a>全局 ID</h3><p>在全局唯一 ID 的算法中，这里介绍一个 Twitter 的开源项目 Snowflake。它是一个分布式 ID 的生成算法。其核心思想是，产生一个 long 型的 ID，其中:</p><ul><li>41bits 作为毫秒数。大概可以用 69.7 年。</li><li>10bits 作为机器编号(5bits 是数据中心，5bits 的机器 ID)，支持 1024 个实例。</li><li>12bits 作为毫秒内的序列号。一毫秒可以生成 4096 个序号。</li></ul><p>其他的像 Redis 或 MongoDB 的全局 ID 生成都和这个算法大同小异。我在这里就不多说了，提供一个<a href="https://juejin.im/post/5b3a23746fb9a024e15cad79" target="_blank" rel="noopener">掘金链接</a>。 你可以根据实际情况加上业务的编号。</p><h3 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h3><p>对于幂等性的处理流程来说，说白了就是要过滤一下已经收到的交易。要做到这个事，我们需要一个存储来记录收到的交易。</p><p>于是，当收到交易请求的时候，我们就会到这个存储中去查询。如果查找到了，那么就不再做查询了，并把上次做的结果返回。如果没有查到，那么我们就记录下来。</p><img src="/2019/07/31/边锋的一次面试经历/uid@1x.png"><p>但是，上面这个流程是有一个可优化的细节，对于绝大请求应该都不会是重新发过来的，所以让所有请求都去查询一下这个不太合理。</p><p>所以，这里我们收到交易请求后，直接去存储记录这个 ID(相对于数据的 Insert 操作)，如果出现 ID 冲突了的异常，那么我们就知道这个之前已经有人发过来了，所以就不用再做了。</p><h3 id="HTTP-的幂等性"><a href="#HTTP-的幂等性" class="headerlink" title="HTTP 的幂等性"></a>HTTP 的幂等性</h3><ol><li><p>HTTP GET 方法用于获取资源，不应有副作用，所以是幂等的。比如:GET <a href="http://www.bank.com/account/123456，不会改变资源的状态，不论调用一次还是" target="_blank" rel="noopener">http://www.bank.com/account/123456，不会改变资源的状态，不论调用一次还是</a> N 次 都没有副作用。</p></li><li><p>HTTP HEAD 和 GET 本质是一样的，区别在于 HEAD 不含有呈现数据，而仅仅是 HTTP 头信 息，不应用有副作用，也是幂等的。</p></li><li><p>HTTP OPTIONS 主要用于获取当前 URL 所支持的方法，所以也是幂等的。若请求成功，则它 会在 HTTP 头中包含一个名为“Allow”的头，值是所支持的方法，如“GET, POST”。</p></li><li><p>HTTP DELETE 方法用于删除资源，有副作用，但它应该满足幂等性。比如:DELETE <a href="http://www.forum.com/article/4231，调用一次和" target="_blank" rel="noopener">http://www.forum.com/article/4231，调用一次和</a> N 次对系统产生的副作用是相同 的，即删掉 ID 为 4231 的帖子。因此，调用者可以多次调用或刷新页面而不必担心引起错误。</p></li><li><p>HTTP POST 方法用于创建资源，所对应的 URI 并非创建的资源本身，而是去执行创建动作的操 作者，有副作用，不满足幂等性。比如:POST <a href="http://www.forum.com/articles的语义" target="_blank" rel="noopener">http://www.forum.com/articles的语义</a> 是在<a href="http://www.forum.com/articles下创建一篇帖子，HTTP" target="_blank" rel="noopener">http://www.forum.com/articles下创建一篇帖子，HTTP</a> 响应中应包含帖子的创建状态以及帖子的 URI。两次相同的 POST 请求会在服务器端创建两份资源，它们具有不同的 URI;所以，POST 方法不具备幂等性。</p></li><li><p>HTTP PUT 方法用于创建或更新操作，所对应的 URI 是要创建或更新的资源本身，有副作用， 它应该满足幂等性。比如:PUT <a href="http://www.forum/articles/4231的语义是创建或更新" target="_blank" rel="noopener">http://www.forum/articles/4231的语义是创建或更新</a> ID 为 4231 的帖子。对同一 URI 进行多次 PUT 的副作用和一次 PUT 是相同的;因此，PUT 方 法具有幂等性。</p></li></ol><p>所以，对于 POST 的方式，很可能会出现多次提交的问题，对此的一般的幂等性的设计如下：</p><ul><li><p>其一，在表单中需要隐藏一个 token，这个 token 是后端生成的一个唯一的 ID。用于防止用户多次点击了表单提交按钮，而导致后端收到了多次请求，接到请求后首先效验表单 token 是否有效（是否存在服务端），否则判定为非法提交，在后端 PHP 众多框架中，这个步骤一般都是自动完成，比如 Yii、Laravel。</p></li><li><p>还有一种稳妥的做法是，后端成功后向前端返回 302 跳转，把用户的前端页跳转到 GET 请求，把刚刚 POST 的数据给展示出来。如果是 Web 上的最好还把之前的表单设置成过期，这样用户不能通过浏览器后退按钮来重新提交。这个模式又叫做 PRG 模式 (Post/Redirect/Get)。</p></li></ul><p>以上内容参考自，陈皓：《左耳听风》</p><h2 id="Q2：如果保证-DB-与-Cache-数据一致？"><a href="#Q2：如果保证-DB-与-Cache-数据一致？" class="headerlink" title="Q2：如果保证 DB 与 Cache 数据一致？"></a>Q2：如果保证 DB 与 Cache 数据一致？</h2><p>场景：当用户更新自己的信息时，你的程序代码如何写：</p><ol><li>先更新 DB 再更新 Cache，</li><li>先更新 DB 再删除 Cache</li><li>先更新 Cache 再更新 DB</li><li>先删除 Cache 再更新 DB</li></ol><p>这里就此问题，上述 3 个步骤，再我去面试前完全没有细细思考过，事后仔细反思下，大有文章，于是小描一下。</p><p>参考大厂「Facebook」套路：缓存旁路模式（Cache Aside Pattern），大白话就是：先更新数据库，再删缓存。</p><p>对于为什么是缓存删除而不是采用缓存更新，对于实际业务中我们缓存的信息往往不单单是纯粹的表中的一行数据，有可能涉及到计算属性或者关联属性，相比删除缓存，让请求后自建缓存更容易。</p><img src="/2019/07/31/边锋的一次面试经历/Cache-Aside-Design.png"><img src="/2019/07/31/边锋的一次面试经历/Updating-Data-using-the-Cache.png"><p>此方案有两个潜在问题：</p><ol><li>如果发生更新数据库成功，删除缓存失败呢？</li><li>在高并发的场景下，会不会出现数据库与缓存数据不一致的概率呢？</li></ol><p>对于第一种方法问题的解决方案：</p><img src="/2019/07/31/边锋的一次面试经历/retry-cache-db.png"><p>处理流程步骤：</p><ol><li>更新数据库数据</li><li>缓存因为种种问题删除失败</li><li>将需要删除的key发送至消息队列</li><li>消费队列消息，获得需要删除的 key 继续重试删除操作，直到成功</li></ol><p>参考地址：</p><ol><li><a href="https://coolshell.cn/articles/17416.html/comment-page-2#comments" target="_blank" rel="noopener">酷壳</a></li><li><a href="http://ddrv.cn/a/127228" target="_blank" rel="noopener">算法网</a></li><li><a href="https://www.xttblog.com/?p=3598" target="_blank" rel="noopener">业余草</a></li></ol>]]></content>
     
@@ -1335,7 +1367,7 @@
     
     </summary>
     
-      <category term="essays" scheme="https://dbing.github.io/categories/essays/"/>
+      <category term="Essays" scheme="https://dbing.github.io/categories/Essays/"/>
     
     
       <category term="面试" scheme="https://dbing.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
@@ -1576,7 +1608,7 @@
     <link href="https://dbing.github.io/2019/04/19/PhpStorm-Material-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%AD%97%E4%BD%93%E9%80%89%E6%8B%A9/"/>
     <id>https://dbing.github.io/2019/04/19/PhpStorm-Material-主题配置与字体选择/</id>
     <published>2019-04-19T10:39:45.000Z</published>
-    <updated>2020-04-26T09:01:04.669Z</updated>
+    <updated>2020-04-26T09:49:25.138Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>古人云: “工欲善其事必先利其器”，分享一下自己在<code>PhpStorm</code>中的自己喜欢的<code>Material</code>主题以及开发字体。</p></blockquote><h2 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h2><p>预览官网效果，<a href="https://plugins.jetbrains.com/plugin/8006-material-theme-ui" target="_blank" rel="noopener">去预览</a></p><p>我的主题效果<img src="/2019/04/19/PhpStorm-Material-主题配置与字体选择/install-view.png" title="预览效果"></p><a id="more"></a><h2 id="安装-Material"><a href="#安装-Material" class="headerlink" title="安装 Material"></a>安装 Material</h2><p>步骤 File-&gt;Setting-&gt;Plugins-&gt;Marketplace</p><p>已安装后截图<br><img src="/2019/04/19/PhpStorm-Material-主题配置与字体选择/install-material.png" title="安装 Material"></p><h2 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a>选择主题</h2><p>步骤 File-&gt;Setting-&gt;Material Theme-&gt;Selected Theme</p><img src="/2019/04/19/PhpStorm-Material-主题配置与字体选择/theme-material.png" title="选择主题"><h2 id="设置字体"><a href="#设置字体" class="headerlink" title="设置字体"></a>设置字体</h2><p>步骤 File-&gt;Setting-&gt;Editor-&gt;Color Scheme-&gt;Color Scheme Font</p><img src="/2019/04/19/PhpStorm-Material-主题配置与字体选择/theme-material-font.png" title="设置字体"><p>个人喜好字体：<code>Fira Code Medium</code></p><h2 id="个人配置文件"><a href="#个人配置文件" class="headerlink" title="个人配置文件"></a>个人配置文件</h2><a href="/2019/04/19/PhpStorm-Material-主题配置与字体选择/settings.zip" title="[下载我的配置]">[下载我的配置]</a><p>导入步骤 File-&gt;Import Settings</p><h2 id="官网地址"><a href="#官网地址" class="headerlink" title="官网地址"></a>官网地址</h2><ul><li><a href="https://github.com/equinusocio/material-theme" title="[material-theme github]" target="_blank" rel="noopener">跳转至 material Github</a></li></ul><p>End :-)</p>]]></content>
     
@@ -1590,7 +1622,7 @@
     
     </summary>
     
-      <category term="coding tools" scheme="https://dbing.github.io/categories/coding-tools/"/>
+      <category term="Coding tools" scheme="https://dbing.github.io/categories/Coding-tools/"/>
     
     
       <category term="PhpStorm" scheme="https://dbing.github.io/tags/PhpStorm/"/>
@@ -1673,7 +1705,7 @@
     <link href="https://dbing.github.io/2019/03/19/PhpStorm-%E9%85%8D%E7%BD%AE-Xdebug-%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/"/>
     <id>https://dbing.github.io/2019/03/19/PhpStorm-配置-Xdebug-远程调试/</id>
     <published>2019-03-19T02:29:54.000Z</published>
-    <updated>2020-04-26T09:00:49.598Z</updated>
+    <updated>2020-04-26T09:49:46.844Z</updated>
     
     <content type="html"><![CDATA[<p>调试复杂些的项目代码，<code>Xdebug</code> 是一把利器，本文结合自己的开发环境简讲通过<code>PhpStorm</code>完成<code>Xdebug</code>调试,部分原理图借鉴<code>xxlegend</code>作者</p><h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><blockquote class="pullquote [class]"><p>本机：Windows10 + PhpStorm 2018 + Ip 192.168.10.108</p><p>开发机：CentOS 6.10 + PHP 7.1 + Nginx 1.14 + Ip 192.168.10.140</p></blockquote><h3 id="开发方式"><a href="#开发方式" class="headerlink" title="开发方式"></a>开发方式</h3><p>一般情况开发者都是在本地开发，使用的开发环境也是本地自己搭建的，无论是在<code>Win</code>、<code>Mac</code>、<code>Linux</code>三者哪一个平台开发，最终想达到的体验是尽可能和生产环境一致，如果是在<code>Win</code>下开发，带来的代码兼容性问题时长让人难受（如：大小写问题），以至于追求<code>Unix</code>开发是一种潮流，这可能便是<code>Mac</code>之所以时程序员所爱的原因吧，<code>Win</code>下要想到达此效果。</p><ol><li>通过在<code>Window</code>下安装虚拟机，虚拟机中安装<code>Linxu</code>系统；</li><li>使用<code>Windows 10</code>已经支持开启子系统，<code>Ubuntu</code>子系统中安装<code>PHP</code>开发环境；</li><li>使用公司提供的公共开发机，开发机环境和所需服务都是安装好的，通过<code>samba</code>共享目录方式，本机无环境，开发机创建一个自己的虚拟目录；</li></ol><ul><li>方法一：没有配置上<code>SSD</code>，内存没到<code>4G</code> 慎用 </li><li>方法二：<code>Windows 10</code> 开启子系统，在应用市场一键安装<code>Ubuntu</code>，还是很方便的，在子系统中可以直接访问宿主机(本机)目录，使用感很方便。</li><li>方法三：我公司为了开发者方便，搭建了<code>IP</code>为<code>140</code>的开发机，通过<code>samba</code>创建虚拟目录，本地添加网络盘方式打开<code>140</code>自己<code>Home</code>开发目录；</li></ul><a id="more"></a><h3 id="目录介绍"><a href="#目录介绍" class="headerlink" title="目录介绍"></a>目录介绍</h3><blockquote><p>开发机（140）项目目录<code>/home/dingbing/zhifu</code><br>本机目录<code>Z:\zhifu</code></p></blockquote><p>本机通过挂载网络盘方式，访问到开发机<code>/home/dingbing/zhifu</code></p><h2 id="Xdebug-原理介绍"><a href="#Xdebug-原理介绍" class="headerlink" title="Xdebug 原理介绍"></a>Xdebug 原理介绍</h2><h3 id="工作方式"><a href="#工作方式" class="headerlink" title="工作方式"></a>工作方式</h3><img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/xdebug_1.png" class="[class names]" title="[width] [height] [title text [alt text]]"><p>客户端（浏览器）发起请求，服务器Apache（或Nginx等），接收请求根据服务端配置规则如果是<code>.php</code>转交<code>PHP</code>，如果携带调试信息<code>?XDEBUG_SESSION_START=10003</code>参数，并且<code>PHP</code>引擎安装且开启了<code>Xdebug</code>，<code>Xdebug</code>把信息转发给<code>IDE</code>，从而完成断点调试。</p><h3 id="通信设置"><a href="#通信设置" class="headerlink" title="通信设置"></a>通信设置</h3><p>使用静态IP/单个开发人员</p><img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/dbgp-setup.gif" class="[class names]" title="[width] [height] [title text [alt text]]"><ol><li>服务器的IP是10.0.1.2，端口是HTTP</li><li>IDE在IP 10.0.1.42上，因此xdebug。remote_host被设置为10.0.1.42</li><li>IDE监听端口9000，所以是xdebug。remote_port被设置为9000</li><li>HTTP请求在运行IDE的机器上启动</li><li>Xdebug连接到10.0.1.42:9000</li><li>调试运行，提供HTTP响应</li></ol><h2 id="安装并调试"><a href="#安装并调试" class="headerlink" title="安装并调试"></a>安装并调试</h2><h3 id="安装-Xdebug"><a href="#安装-Xdebug" class="headerlink" title="安装 Xdebug"></a>安装 Xdebug</h3><p>这里平台不一样，安装方式也不一样，<code>Linux</code> 和 <code>Window</code> 平台会稍有不同，PHP 版本不一样，对应安装的<code>Xdebug</code>版本也不一样，安装方式这里暂时不总结了。</p><p><code>Linux</code> 下编译后，将<code>.so</code>文件引入到<code>php.ini</code><br><code>Window</code>下，将对应的<code>xdebug.dll</code>库文件引入到<code>php.ini</code></p><p>官方下载地址 <a href="https://xdebug.org/download.php" target="_blank" rel="noopener">https://xdebug.org/download.php</a><br>安装后我的(CentOS)<code>php.ini</code>配置清单<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[XDebug]</span><br><span class="line">xdebug.idekey=PHPSTORM</span><br><span class="line">xdebug.remote_mode=req</span><br><span class="line"></span><br><span class="line">;xdebug.remote_connect_back = 1</span><br><span class="line">;//注意：如果开启此，将忽略下面的 xdebug.remote_host 的参数</span><br><span class="line"></span><br><span class="line">xdebug.remote_host=192.168.10.117</span><br><span class="line">;//注意：客户端的IP&lt;即IDE的机器的ip&gt;</span><br><span class="line"></span><br><span class="line">xdebug.remote_enable=1</span><br><span class="line">xdebug.remote_port=9009</span><br><span class="line">;//注意：客户端的端口&lt;与IDE的Xdebug端口一致，此端口不能被其他程序占用&gt;</span><br><span class="line"></span><br><span class="line">xdebug.remote_handler=dbgp</span><br><span class="line">xdebug.auto_trace = 1</span><br><span class="line">;xdebug.remote_log = /tmp/xdebug.log</span><br><span class="line"></span><br><span class="line">zend_extension=/www/server/php/71/lib/php/extensions/no-debug-non-zts-20160303/xdebug.so</span><br></pre></td></tr></table></figure></p><p>配置项解释：<a href="https://xdebug.org/docs/remote" target="_blank" rel="noopener">https://xdebug.org/docs/remote</a></p><h3 id="配置-Debug"><a href="#配置-Debug" class="headerlink" title="配置 Debug"></a>配置 Debug</h3><p>步骤 File-&gt;Setting-&gt;Languages &amp; Frameworks-&gt;PHP-&gt;Debug</p><p>注意<code>IDE Xdebug port</code>端口要和<code>php.ini</code>配置保持一致。</p><img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/xdebug_set_1.png" class="[class names]" title="[width] [height] [title text [alt text]]"><h3 id="配置-Servers"><a href="#配置-Servers" class="headerlink" title="配置 Servers"></a>配置 Servers</h3><p>步骤 File-&gt;Setting-&gt;Languages &amp; Frameworks-&gt;PHP-&gt;Servers</p><img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/xdebug_set_2.png" class="[class names]" title="[width] [height] [title text [alt text]]"><h3 id="配置-Debug-Configuer"><a href="#配置-Debug-Configuer" class="headerlink" title="配置 Debug Configuer"></a>配置 Debug Configuer</h3><p>步骤 Run-&gt;Edit Configurations-&gt;Add New Configuration</p><img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/xdebug_set_3.png" class="[class names]" title="[width] [height] [title text [alt text]]"><h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><ol><li>打断点</li><li>点击右上角小虫子图标，开启调试</li></ol><img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/xdebug_set_4.png" class="[class names]" title="[width] [height] [title text [alt text]]"><ol start="3"><li>如果看到如下图，那么恭喜你，已经成功开启了断点调试</li></ol><img src="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/xdebug_set_5.png" class="[class names]" title="[width] [height] [title text [alt text]]"><h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>Q：开启<code>Debug</code>后，1分钟后调试自动终止了。<br>A：是因为<code>PHP</code>脚本默认超时时间是 1分钟，设置<code>PHP</code> 超时时间为1小时、或2小时，</p><p>设置方式：</p><ol><li>Nginx、php-fpm 情况，修改 php-fpm.conf 文件<code>request_terminate_timeout = 7200</code> </li><li>apache Module 情况，修改 httpd/conf.d/fcgid.conf 文件 <code>FcgidIOTimeout 7200</code></li></ol><p>END :-)</p><h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul><li><a href="http://xxlegend.com/2017/05/23/PhpStorm%20Xdebug%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%E5%8F%8A%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/" target="_blank" rel="noopener">http://xxlegend.com/2017/05/23/PhpStorm%20Xdebug%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%E5%8F%8A%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/</a></li></ul>]]></content>
     
@@ -1697,7 +1729,7 @@
     
     </summary>
     
-      <category term="coding tools" scheme="https://dbing.github.io/categories/coding-tools/"/>
+      <category term="Coding tools" scheme="https://dbing.github.io/categories/Coding-tools/"/>
     
     
       <category term="xdebug" scheme="https://dbing.github.io/tags/xdebug/"/>
