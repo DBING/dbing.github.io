@@ -246,6 +246,226 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/03/11/2018-2019年-面试经历-上/">2018-2019年-面试经历-上</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-11
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Essays/">Essays</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="智众医疗"><a href="#智众医疗" class="headerlink" title="智众医疗"></a>智众医疗</h2><ol>
+<li>自我介绍</li>
+<li>MySQL 优化，常见的索引优化的方式</li>
+<li>阿里云的 RDS 报 IOPS 过高（使用到索引了）</li>
+<li>除了用 Redis 做缓存还用到了什么？（消息队列和锁，讲一下）</li>
+<li>讲一下你的比较顺畅的一个工作流程</li>
+<li>有一个接口，用户反馈很慢？</li>
+<li>你们是怎么监控接口的？</li>
+<li>docker 的原理？</li>
+<li>如何优化镜像的打包速度和大小</li>
+<li>讲一下个人是怎么成长的？</li>
+<li>谈谈你对 MySQL 的优化</li>
+<li>在创建 MySQL 索引时你是如何考虑的？</li>
+<li>Btree 和 红黑树的区别</li>
+<li>你在生产环境是如何部署任务队列的？</li>
+<li>Laravel 中你认为哪些比较好的地方</li>
+<li>ELK 有没有了解过？</li>
+</ol>
+<h2 id="韩创科技"><a href="#韩创科技" class="headerlink" title="韩创科技"></a>韩创科技</h2><h3 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h3><ol>
+<li>最后一道笔试题</li>
+<li>3千万的网站做个用户消息，用户读取后标记已读，请问你该如何设计。</li>
+<li>Redis 的二进制存储，Redis 以及 Redis 存储结构以及 Redis 更高逼格的应用。</li>
+<li>Elasticsearch 你再什么场景下使用的，怎么使用的。数据量级别是多少。</li>
+<li>阿里云的开发搜索，出现延迟或空白现象有没有遇到过</li>
+<li>当你下面的技术人员与产品发生了冲突，你会怎么做？</li>
+<li>Kafka 有没有应用过，或是跑过 Demo</li>
+<li>Redis 下 count 函数有没有了解</li>
+</ol>
+<h3 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h3><ol>
+<li>Composer 自动加载原理</li>
+<li>队列任务，单机消费处理不过来，多消费者如何做？</li>
+<li>网站代码发布更新，如果做到不影响正常访问的用户</li>
+<li>你是如何在三台或更多台生产服务器发布代码？</li>
+<li>谈谈你对 MySQL 分区、分表的理解。</li>
+<li>数据是如何在磁盘分布的。</li>
+<li>使用主键查询与普通索引查询的区别。</li>
+</ol>
+<h2 id="乐贝"><a href="#乐贝" class="headerlink" title="乐贝"></a>乐贝</h2><h3 id="二面-1"><a href="#二面-1" class="headerlink" title="二面"></a>二面</h3><ol>
+<li>Elasticsearch 下做查询或统计为什么这么快，谈谈你对它的理解。</li>
+<li>谈谈你做过的最成熟的一个项目，你是怎么架构的。</li>
+</ol>
+          <div class="read-more">
+            <a href="/2020/03/11/2018-2019年-面试经历-上/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/09/PHP写时复制/">PHP写时复制</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-09
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/PHP/">PHP</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="PHP-写时复制"><a href="#PHP-写时复制" class="headerlink" title="PHP 写时复制"></a>PHP 写时复制</h2><blockquote>
+<p>Copy On Write 简写 COW，中文意思即：写时复制</p>
+</blockquote>
+<ol>
+<li>当一个变量赋值给另外一个变量时，此时内存开销会是*2吗？</li>
+<li>当再调用一个函数传递一个很大实参数组时，你有没有考虑过，内存的开销是怎样的！</li>
+</ol>
+<p>如果针对这两个问题，你可以毫无疑问的准确回答出来，那么接下来你可以不用再看了。</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">'init memory: '</span> . memory_get_usage() . <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">$str = array_fill(<span class="number">0</span>, <span class="number">1024</span>, <span class="string">'hi'</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'fill after: '</span> . memory_get_usage() . <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">$newStr = $str;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'copy after: '</span> . memory_get_usage() . <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="keyword">die</span>;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init memory: 354296</span><br><span class="line">fill after: 391216</span><br><span class="line">copy after: 391216</span><br></pre></td></tr></table></figure>
+<p>可以看到重新赋值给新的变量<code>$newStr</code>后内存并没有增长。</p>
+<h2 id="原理解释"><a href="#原理解释" class="headerlink" title="原理解释"></a>原理解释</h2><p>多个相同值的变量共用同一块内存的确节省了内存空间，但变量的值是会发生变化的，如果在上面的例子中， 指向同一内存的值发生了变化（或者可能发生变化），就需要将变化的值“分离”出去，这个“分离”的操作， 就是“复制”。</p>
+<p>在PHP中，Zend引擎为了区别同一个zval地址是否被多个变量共享，引入了ref_count和is_ref两个变量进行标识：</p>
+<ul>
+<li><p>ref_count和is_ref是定义于zval结构体中</p>
+</li>
+<li><p>is_ref标识是不是用户使用 &amp; 的强制引用；</p>
+</li>
+</ul>
+<p>ref_count是引用计数，用于标识此zval被多少个变量引用，即COW的自动引用，为0时会被销毁；</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/09/Laravel-Task-Scheduling-Preventing-Task-Overlaps/">Laravel Task Scheduling Preventing Task Overlaps</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-09
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Laravel/">Laravel</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>一个<code>Task</code>没有允许结束，另一个<code>Task</code>又起了，这固然会造成程序执行的结果不是我们想要的，为了解决这个问题我发现<code>Laravel</code>有提供现成的方法。</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>方法一：可以在代码中使用原子锁，这样即使第二个<code>tash</code>进程启动了，也可以阻挡住。</p>
+<p>方法二：使用<code>Laravel</code>提供现成的<code>withoutOverlapping</code>方法，官方案例：<code>$schedule-&gt;command(&#39;emails:send&#39;)-&gt;withoutOverlapping();</code></p>
+<p>方法一中使用哪一种的锁机制，那就看自家自己的喜好了不分好坏，只分性能高低😼，个人使用<code>redis</code>原子锁，从<code>2.6.12</code>版本以后，使用锁的方式变得更为简单，如设置一个名为<code>lock</code>的5秒钟原子锁：<code>SET lock 1 EX 5 NX</code>，<a href="http://redisdoc.com/string/set.html" target="_blank" rel="noopener">SET 更多参数用法</a></p>
+<p>方法二我的测试结果如下：</p>
+<ol>
+<li><p>创建测试<code>command</code>文件,命令：<code>php artisan make:command Test</code></p>
+</li>
+<li><p>代码</p>
+</li>
+</ol>
+          <div class="read-more">
+            <a href="/2020/03/09/Laravel-Task-Scheduling-Preventing-Task-Overlaps/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/03/05/将数组值从字符串转换为int/">将数组值从字符串转换为int</a>
         
       </h1>
@@ -622,143 +842,6 @@
 <p>查看<code>torch</code>是否开启了<code>cuda</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import torch</span><br><span class="line">&gt;&gt;&gt; torch.__version__</span><br><span class="line"><span class="string">'1.4.0'</span></span><br><span class="line">&gt;&gt;&gt; torch.cuda.is_available()</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
 
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/20/Iterm-下管理-SSH-工具/">Iterm 下管理 SSH 工具</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-20
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>命令行下<code>ssh</code>登录远程服务器，当服务多起来后，如何管理就是以及快速登录就尤为重要，比如：我们有测试服：<code>tiger</code>、生产：<code>prod</code>，<code>prod</code>又不只一台等等，又是通过证书文件远程登录服务器，总不能将这些登录命令记录到“小本本”上，每次用到去<code>copy</code>吧，太不不科技了。</p>
-<h2 id="开源工具"><a href="#开源工具" class="headerlink" title="开源工具"></a>开源工具</h2><p>地址：<a href="https://github.com/islenbo/autossh" target="_blank" rel="noopener">https://github.com/islenbo/autossh</a></p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/19/Laravel-Query-Builder-一个复杂查询/">Laravel Query Builder 一个复杂查询</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-19
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Laravel/">Laravel</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>Laravel 框架下，在文章列表中附带上前 10 条评论，如何优雅的处理此种场景。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p><a href="https://guojiang.club/cms/detail/3" target="_blank" rel="noopener">https://guojiang.club/cms/detail/3</a></p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/19/又一次被这错误坑了/">又一次被这错误坑了</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-19
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/NeoX/">NeoX</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="错误现场"><a href="#错误现场" class="headerlink" title="错误现场"></a>错误现场</h2><p>页面<code>500</code>没有错误<code>Log</code>，手动修改<code>index.php</code>捕获异常。</p>
-<h2 id="查看Log"><a href="#查看Log" class="headerlink" title="查看Log"></a>查看Log</h2><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2>
         
       
     </div>

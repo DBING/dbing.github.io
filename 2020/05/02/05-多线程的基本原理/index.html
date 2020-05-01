@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="tags">
+  <meta name="description" content="05-多线程的基本原理">
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://dbing.github.io/tags/">
+<link rel="canonical" href="https://dbing.github.io/2020/05/02/05-多线程的基本原理/">
 
 
 
@@ -90,7 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title> 标签 - Bing's blog </title>
+    <title> 05-多线程的基本原理 - Bing's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -237,14 +237,136 @@
         <div class="content-wrapper">
           <div id="content" class="content">
             
-  <div class="tag-cloud">
-    <div class="tag-cloud-title">
-      目前共计 46 个标签
-    </div>
-    <div class="tag-cloud-tags">
-      <a href="/tags/laravel5-7/" style="font-size: 16px;">laravel5.7</a> <a href="/tags/配置公钥/" style="font-size: 16px;">配置公钥</a> <a href="/tags/PhpStorm/" style="font-size: 16px;">PhpStorm</a> <a href="/tags/Linux-PATH/" style="font-size: 16px;">Linux PATH</a> <a href="/tags/Composer/" style="font-size: 20px;">Composer</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/Window10-LNMP-环境搭建/" style="font-size: 16px;">Window10 LNMP 环境搭建</a> <a href="/tags/JWT/" style="font-size: 16px;">JWT</a> <a href="/tags/tar/" style="font-size: 16px;">tar</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a> <a href="/tags/code/" style="font-size: 16px;">code</a> <a href="/tags/Laravel/" style="font-size: 24px;">Laravel</a> <a href="/tags/Go/" style="font-size: 16px;">Go</a> <a href="/tags/docker/" style="font-size: 16px;">docker</a> <a href="/tags/Gitlab/" style="font-size: 16px;">Gitlab</a> <a href="/tags/vpn/" style="font-size: 16px;">vpn</a> <a href="/tags/zsh/" style="font-size: 16px;">zsh</a> <a href="/tags/supervisor/" style="font-size: 16px;">supervisor</a> <a href="/tags/redis/" style="font-size: 16px;">redis</a> <a href="/tags/持续交付/" style="font-size: 16px;">持续交付</a> <a href="/tags/gittalk/" style="font-size: 16px;">gittalk</a> <a href="/tags/hexo/" style="font-size: 16px;">hexo</a> <a href="/tags/CORS/" style="font-size: 16px;">CORS</a> <a href="/tags/scp/" style="font-size: 16px;">scp</a> <a href="/tags/ssh/" style="font-size: 16px;">ssh</a> <a href="/tags/OpenCV/" style="font-size: 28px;">OpenCV</a> <a href="/tags/anaconda/" style="font-size: 20px;">anaconda</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/NeoX/" style="font-size: 20px;">NeoX</a> <a href="/tags/史记/" style="font-size: 16px;">史记</a> <a href="/tags/ssl证书/" style="font-size: 16px;">ssl证书</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/du/" style="font-size: 16px;">du</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/Vim/" style="font-size: 16px;">Vim</a> <a href="/tags/Visual-Studio-Code/" style="font-size: 16px;">Visual Studio Code</a> <a href="/tags/Electron/" style="font-size: 16px;">Electron</a> <a href="/tags/Hellokefu/" style="font-size: 16px;">Hellokefu</a> <a href="/tags/Mac/" style="font-size: 16px;">Mac</a> <a href="/tags/markdown/" style="font-size: 16px;">markdown</a> <a href="/tags/MongoDB/" style="font-size: 16px;">MongoDB</a> <a href="/tags/数据结构与算法/" style="font-size: 16px;">数据结构与算法</a> <a href="/tags/Python/" style="font-size: 24px;">Python</a> <a href="/tags/laravel5-7-jwt-auth/" style="font-size: 16px;">laravel5.7 | jwt-auth</a> <a href="/tags/xdebug/" style="font-size: 16px;">xdebug</a> <a href="/tags/每日英语/" style="font-size: 16px;">每日英语</a>
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          05-多线程的基本原理
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-02
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Python-spider/">Python spider</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#并发"><span class="toc-text">并发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#并行"><span class="toc-text">并行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程使用场景"><span class="toc-text">多线程使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-实现多线程"><span class="toc-text">Python 实现多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加锁保护"><span class="toc-text">加锁保护</span></a></li></ol>
     </div>
   </div>
+
+
+
+    <div class="post-content">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>进程-可以理解为是一个可独立运行的程序单位，比如：</p>
+<ul>
+<li>打开一个浏览器，就开启了一个浏览器进程</li>
+<li>打开一个文本编辑器，就开启了一个文本编辑器进程</li>
+</ul>
+<p>一个进程中可以同时处理很多事情，比如：<br>浏览器中可以在多个选项卡中打开多个页面，每个页面干不同的事情（一个浏览页面、一个播放音乐，等）可以同时运行，互不干扰。</p>
+<p>为什么能同时做到运行这么多的任务呢？</p>
+<p>答：任务对应着线程的执行。</p>
+<p>「进程」是线程的集合，是由一个或多个线程构成的，「线程」是操作系统运行运算调度的最小单位，是进程中的一个最小运行单元。</p>
+<h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><p>指同一时刻只能有一条指令执行，但多个线程的对应的指令被快速轮换地执行，宏观上看起来多个线程在同时运行，但微观上只是这个处理器再连续不断的在多个线程之间切换和执行</p>
+<blockquote>
+<p>在单处理器和多处理器系统中都可以存在，仅靠一个核，就可以实现并发</p>
+</blockquote>
+<h2 id="并行"><a href="#并行" class="headerlink" title="并行"></a>并行</h2><p>指同一时刻有多条指令再多个处理器上同时执行，并行必须要依赖于多个处理器，不论宏观上还是微观上多个线程都是在同一时刻一起执行的。</p>
+<blockquote>
+<p>只能在多处理器系统中存在，如果计算机处理器只有一个核就不可能实现并行</p>
+</blockquote>
+<h2 id="多线程使用场景"><a href="#多线程使用场景" class="headerlink" title="多线程使用场景"></a>多线程使用场景</h2><p>在一个程序进程中，有些操作是比较耗时或需要等待的，如：</p>
+<ul>
+<li>等待数据库的查询结果的返回</li>
+<li>等待网页结果的响应</li>
+</ul>
+<p><strong>使用单线程</strong><br>处理器必须要等到这些操作完成之后才能继续往下执行其他操作，而这个线程在等待的过程中，处理器明显是可以用来执行其他的操作的</p>
+<p><strong>使用多线程</strong><br>处理器就可以在某个线程等待时，去执行其他的线程，从而从整体上提高执行效率</p>
+<h2 id="Python-实现多线程"><a href="#Python-实现多线程" class="headerlink" title="Python 实现多线程"></a>Python 实现多线程</h2><p>在 <code>Python</code> 中，实现多线程的模块叫做 <code>threading</code> 是 <code>Python</code> 自带的模块</p>
+<h2 id="加锁保护"><a href="#加锁保护" class="headerlink" title="加锁保护"></a>加锁保护</h2><p>往往为了保证数据的结果的准确性，某个线程在对数据进程操作钱，需要先加锁，这样其他的线程发现被加锁之后，就无法继续向下执行，会一直等待锁被释放，只有加锁的线程把锁释放了，其他的线程才能继续加锁并对数据做修改，修改完了再释放锁。</p>
+<p>这样就可以确保同一时间只有一个线程操作数据，防止多个线程同时对数据执行修改，产生错误结果。</p>
+<p><code>GIL</code>  全称为 <code>Global Interpreter Lock</code>，译为「全局解释器锁」</p>
+<p>在 Python 多线程下，每个线程的执行方式如下：</p>
+<ul>
+<li>获取 GIL</li>
+<li>执行对应线程的代码</li>
+<li>释放 GIL</li>
+</ul>
+<p>The end</p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://dbing.github.io">bing</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://dbing.github.io/2020/05/02/05-多线程的基本原理/">https://dbing.github.io/2020/05/02/05-多线程的基本原理/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Python/">Python</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2020/05/01/06-多进程的基本原理/">
+        <span class="next-text nav-default">06-多进程的基本原理</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
 
           </div>
           
