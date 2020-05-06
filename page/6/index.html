@@ -246,14 +246,20 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2020/01/15/Docker-搭建-Gitlab-服务/">Docker 搭建 Gitlab 服务</a>
+          <a class="post-link" href="/2020/02/18/opencv-单目标追踪/">opencv 单目标追踪</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2020-01-15
+          2020-02-18
         </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/OpenCV/">OpenCV</a>
+            
+          </span>
         
         
       </div>
@@ -267,64 +273,17 @@
       
         
         
+          
+        
 
         
-          <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>公司使用的<code>bitbucket</code>提供的<code>git</code>远程仓库，为什么选择他历史原因喽，回想第一天克隆一个<code>1G+</code>的<code>repo</code>等待了一天，这个痛苦啊。最近的每次发版都着实的感觉到<code>bitbucket</code>慢的给蜗牛一样（应该是墙的问题每次都得开VPN才能正常玩啥），鉴于此情况下，决定使用自建<code>Gitlab</code>服务，选择华东(上海)地区机房，日本团队的小伙伴测试的速度<code>400M+</code>大小的<code>repo</code>，克隆下来30分钟左右。</p>
-<h2 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h2><p>Ubuntu 安装 Docker，官方文档：<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a></p>
-<ol>
-<li><p>更新 apt 包索引</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装最新版本的 Docker Engine-Community和containerd</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看安装成功的版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">root@jira:~# docker version</span><br><span class="line">Client: Docker Engine - Community</span><br><span class="line"> Version:           19.03.5</span><br><span class="line"> API version:       1.40</span><br><span class="line"> Go version:        go1.12.12</span><br><span class="line"> Git commit:        633a0ea838</span><br><span class="line"> Built:             Wed Nov 13 07:50:12 2019</span><br><span class="line"> OS/Arch:           linux/amd64</span><br><span class="line"> Experimental:      false</span><br><span class="line"> ...</span><br><span class="line"> ...</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="Docker-下快速部署-Gitlab-服务"><a href="#Docker-下快速部署-Gitlab-服务" class="headerlink" title="Docker 下快速部署 Gitlab 服务"></a>Docker 下快速部署 Gitlab 服务</h2><p>使用开源的<a href="https://github.com/sameersbn/docker-gitlab" target="_blank" rel="noopener">Gitlab</a> <code>docker-compose.yml</code>快速搭建，</p>
-<p>我计划将<code>gitlab</code>服务放在<code>/usr/local/gitlab</code>目录，故创建了此目录</p>
-<ol>
-<li><p>下载<code>docker-compose.yml</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/local/gitlab &amp;&amp; cd /usr/local/gitlab</span><br><span class="line">wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改<code>docker-compose.yml</code>配置项，这里仅贴出修改过的配置项</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 时区</span><br><span class="line">- TZ=Asia/Shanghai</span><br><span class="line">- GITLAB_TIMEZONE=PRC</span><br><span class="line"></span><br><span class="line"># 开启SSL</span><br><span class="line">- GITLAB_HTTPS=true</span><br><span class="line"></span><br><span class="line"># Gitlab 域和端口，域名不要带协议如（http://或https://）</span><br><span class="line">- GITLAB_HOST=git.neox-inc.com</span><br><span class="line">- GITLAB_PORT=443</span><br><span class="line">- GITLAB_SSH_PORT=22</span><br></pre></td></tr></table></figure>
-<p>这里我对外暴露的是<code>9180</code>和<code>9122</code>端口，然后在负载均衡器中配置<code>SSL</code>证书，完成对<code>https</code>的访问，如需<code>ssh</code>方式访问，负载均衡器中还需配置<code>22=&gt;9122</code>的转发，负载均衡器配置图见下图。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">gitlab:</span><br><span class="line">   restart: always</span><br><span class="line">   image: sameersbn/gitlab:12.5.5</span><br><span class="line">   depends_on:</span><br><span class="line">   - redis</span><br><span class="line">   - postgresql</span><br><span class="line">   ports:</span><br><span class="line">   - &quot;9180:80&quot;</span><br><span class="line">   - &quot;9122:22&quot;</span><br><span class="line">   - &quot;443:443&quot;</span><br><span class="line">   volumes:</span><br><span class="line">   - ./gitlab-data:/home/git/data:Z</span><br></pre></td></tr></table></figure>
-<p>为更日后更方便迁移gitlab服务，<code>redis-data</code>、<code>postgresql-data</code>、<code>gitlab-data</code>volumes，这里我分别配置成相对’./‘目录</p>
-<ol start="3">
-<li>安装 docker-compose<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install docker-compose</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>或者通过<code>pip</code>安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install docker-compose==1.8.0</span><br></pre></td></tr></table></figure></p>
-<p>不推荐如下<code>curl</code>方式安装（你要问为什么？下载速度比乌龟爬的都慢「龟速」）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
-<p>4.启动 gitlab 服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>访问 gitlab 服务</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ip:9180</span><br></pre></td></tr></table></figure>
-<p>如果你是域名直接解析到本地，那么可以通过域名访问。</p>
-<h2 id="特殊场景"><a href="#特殊场景" class="headerlink" title="特殊场景"></a>特殊场景</h2><p>我司<code>ssl</code>证书统一管理在阿里云负载均衡器上，为了日后方便统一更换过期证书，<code>gitlab</code>服务也使用负载均衡器。通过研究阿里云负载均衡器发现,不支持前端协议<code>http</code>转后端协议<code>tcp</code>。</p>
-<p>那么问题来了，<code>docker-compose</code>启的服务全部都是<code>tcp</code>协议，那么如何完成<code>ssl</code>即<code>http</code>前端协议转后端某个端口的<code>http</code>协议呢？</p>
-<p>经过思考，只得借用<code>nginx</code>转发实现，配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">upstream git.neox-inc.com &#123;</span><br><span class="line">        server ip:9180;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 80 default_server;</span><br><span class="line">        listen [::]:80 default_server;</span><br><span class="line"></span><br><span class="line">        server_name git.neox-inc.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://git.neox-inc.com;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>均衡器中监听配置图</p>
-<img src="/2020/01/15/Docker-搭建-Gitlab-服务/gitlab.png" class="[class names]" title="[width] [height] [阿里云负载均衡器截图 [均衡器配置]]">
-<h2 id="批量导入用户"><a href="#批量导入用户" class="headerlink" title="批量导入用户"></a>批量导入用户</h2><p>参考地址：<a href="https://www.jianshu.com/p/83b06525c946" target="_blank" rel="noopener">https://www.jianshu.com/p/83b06525c946</a></p>
-<h2 id="温馨提醒"><a href="#温馨提醒" class="headerlink" title="温馨提醒"></a>温馨提醒</h2><p>为了方便后期迁移<code>Gitlab</code>到别的服务器，强烈建议将数据目录配置<code>gitlab-data</code>数据目录，方便迁移（不远的3个月我就迁移过，甚是方便:-)）</p>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>docker-compose 卸载方式：</p>
-<ol>
-<li>删除对应的二进制文件</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
-<p>2.<code>pip</code>方式卸载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall docker-compose</span><br></pre></td></tr></table></figure>
-
+          <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>自动去除纯色背景，自动画框（最小外接矩形）然后将素材提交给机器学习。</p>
+<h2 id="已实现"><a href="#已实现" class="headerlink" title="已实现"></a>已实现</h2><p>今日下午利用零碎时间，写出手动画框单目标跟踪，效果GIF图如下：</p>
+<img src="/2020/02/18/opencv-单目标追踪/follow.gif">
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2>
+          <div class="read-more">
+            <a href="/2020/02/18/opencv-单目标追踪/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>
@@ -341,235 +300,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2020/01/14/ZSH快捷键/">ZSH快捷键</a>
+          <a class="post-link" href="/2020/02/17/2020年的第一天赴公司上班/">2020年的第一天赴公司上班</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2020-01-14
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>⌃ + u：清空当前行<br>⌃ + a：移动到行首<br>⌃ + e：移动到行尾<br>⌃ + f：向前移动<br>⌃ + b：向后移动<br>⌃ + p：上一条命令<br>⌃ + n：下一条命令<br>⌃ + r：搜索历史命令<br>⌃ + y：召回最近用命令删除的文字<br>⌃ + h：删除光标之前的字符<br>⌃ + d：删除光标所指的字符<br>⌃ + w：删除光标之前的单词<br>⌃ + k：删除从光标到行尾的内容<br>⌃ + t：交换光标和之前的字符</p>
-<p>⌘ + Click：可以打开文件，文件夹和链接<br>⌘ + n：新建窗口<br>⌘ + t：新建标签页<br>⌘ + w：关闭当前页<br>⌘ + 数字 &amp; ⌘ + 方向键：切换标签页<br>⌥⌘ + 数字：切换窗口<br>⌘ + enter：切换全屏<br>⌘ + d：左右分屏<br>⇧⌘ + d：上下分屏<br>⌘ + ;：自动补全历史记录<br>⇧⌘ + h：自动补全剪贴板历史<br>⌥⌘ + e：查找所有来定位某个标签页<br>⌘ + r &amp; ⌃ + l：清屏<br>⌘ + /：显示光标位置<br>⌥⌘ + b：历史回放<br>⌘ + f：查找，然后用 tab 和 ⇧ + tab 可以向右和向左补全，补全之后的内容会被自动复制， 还可以用 ⌥ + enter 将查找结果输入终端<br>选中即复制，鼠标中键粘贴</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/01/10/使用-supervisor-监控Laravel-queue-消费队列/">使用 supervisor 监控Laravel queue 消费队列</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-10
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><ul>
-<li>Ubuntu 5.4.0-6ubuntu1~16.04.9</li>
-</ul>
-<h2 id="安装-Supervisor"><a href="#安装-Supervisor" class="headerlink" title="安装 Supervisor"></a>安装 Supervisor</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install supervisor</span><br></pre></td></tr></table></figure>
-<p>安装后可以查看到 supervisor 已经启动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ps aux|grep supervisor</span><br><span class="line">root     14314  0.9  0.2  58936 18572 ?        Ss   16:13   0:00 /usr/bin/python /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf</span><br><span class="line">root     14358  0.0  0.0  14228   908 pts/2    S+   16:13   0:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn supervisor</span><br></pre></td></tr></table></figure>
-<h2 id="配置-Supervisor"><a href="#配置-Supervisor" class="headerlink" title="配置 Supervisor"></a>配置 Supervisor</h2><p>我的<code>supervisord.conf</code>配置文件，<code>cat /etc/supervisor/supervisord.conf</code>如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">; supervisor config file</span><br><span class="line"></span><br><span class="line">[unix_http_server]</span><br><span class="line">file=/var/run/supervisor.sock   ; (the path to the socket file)</span><br><span class="line">chmod=0700                       ; sockef file mode (default 0700)</span><br><span class="line"></span><br><span class="line">[supervisord]</span><br><span class="line">logfile=/var/log/supervisor/supervisord.log ; (main log file;default $CWD/supervisord.log)</span><br><span class="line">pidfile=/var/run/supervisord.pid ; (supervisord pidfile;default supervisord.pid)</span><br><span class="line">childlogdir=/var/log/supervisor            ; (&apos;AUTO&apos; child log dir, default $TEMP)</span><br><span class="line"></span><br><span class="line">; the below section must remain in the config file for RPC</span><br><span class="line">; (supervisorctl/web interface) to work, additional interfaces may be</span><br><span class="line">; added by defining them in separate rpcinterface: sections</span><br><span class="line">[rpcinterface:supervisor]</span><br><span class="line">supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface</span><br><span class="line"></span><br><span class="line">[supervisorctl]</span><br><span class="line">serverurl=unix:///var/run/supervisor.sock ; use a unix:// URL  for a unix socket</span><br><span class="line"></span><br><span class="line">; The [include] section can just contain the &quot;files&quot; setting.  This</span><br><span class="line">; setting can list multiple files (separated by whitespace or</span><br><span class="line">; newlines).  It can also contain wildcards.  The filenames are</span><br><span class="line">; interpreted as relative to this file.  Included files *cannot*</span><br><span class="line">; include files themselves.</span><br><span class="line"></span><br><span class="line">[include]</span><br><span class="line">files = /etc/supervisor/conf.d/*.conf</span><br></pre></td></tr></table></figure>
-<p>这里我以为<code>mooncake-queue-worker.conf</code>为例，命令：<code>vim /etc/supervisor/conf.d/mooncake-queue-worker.conf</code></p>
-<p>配置清单如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[program:mooncake-worker]</span><br><span class="line">process_name=%(program_name)s_%(process_num)02d</span><br><span class="line">command=php /project/artisan queue:work redis --queue=access</span><br><span class="line">autostart=true</span><br><span class="line"></span><br><span class="line">autorestart=true</span><br><span class="line">user=www-data</span><br><span class="line">numprocs=4</span><br><span class="line">redirect_stderr=true</span><br><span class="line">stdout_logfile=/run/log/moonkcake-queue-worker.log</span><br></pre></td></tr></table></figure>
-<p>注意：</p>
-<ol>
-<li><code>project</code> 换成自己的项目路径</li>
-<li><code>user=www-data</code> 配置成自己的<code>php</code>进程用户</li>
-<li><code>numprocs</code> 是启动进程数</li>
-</ol>
-<h2 id="启动-Supervisor"><a href="#启动-Supervisor" class="headerlink" title="启动 Supervisor"></a>启动 Supervisor</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl reread</span><br><span class="line">mooncake-worker: available</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl update</span><br><span class="line">mooncake-worker: added process group</span><br></pre></td></tr></table></figure>
-<p>此时再查看一下<code>php</code>进程，可以成功看到4个Queue启动了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ps aux|grep php</span><br><span class="line">www-data  9933  0.0  0.8 466168 68760 ?        S    11:55   0:03 php-fpm: pool www</span><br><span class="line">www-data 14383  0.3  0.8 558056 71696 ?        S    16:15   0:01 php-fpm: pool www</span><br><span class="line">www-data 14508  1.2  0.6 335088 49780 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14509  1.3  0.6 335088 49648 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14510  1.5  0.6 337136 52176 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14511  1.7  0.6 337136 52228 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br></pre></td></tr></table></figure>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 停止某个进程</span></span><br><span class="line">supervisorctl stop program_name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动某个进程</span></span><br><span class="line">supervisorctl start program_name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启某个进程</span></span><br><span class="line">supervisorctl restart program_name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止全部进程</span></span><br><span class="line">supervisorctl stop all</span><br><span class="line"></span><br><span class="line"><span class="comment"># 载入最新的配置文件，停止原有进程并按新的配置启动、管理所有进程</span></span><br><span class="line">supervisorctl reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启</span></span><br><span class="line">supervisorctl update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 杀死进程</span></span><br><span class="line"><span class="built_in">kill</span> supervisor-pid(查询得知 ps aux|grep super)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启监听</span></span><br><span class="line">/usr/bin/supervisord -c /etc/supervisor/supervisord.conf</span><br></pre></td></tr></table></figure>
-<h2 id="Centos-中使用-Supervisor"><a href="#Centos-中使用-Supervisor" class="headerlink" title="Centos 中使用 Supervisor"></a>Centos 中使用 Supervisor</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>​<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release</span><br><span class="line">yum install -y supervisor</span><br></pre></td></tr></table></figure></p>
-<h3 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl status：查看所有进程的状态</span><br><span class="line">supervisorctl stop ：停止</span><br><span class="line">supervisorctl start ：启动</span><br><span class="line">supervisorctl restart : 重启</span><br><span class="line">supervisorctl update ：配置文件修改后可以使用该命令加载新的配置</span><br><span class="line">supervisorctl reload: 重新启动配置中的所有程序</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Centos 中使用 Supervisor 文档来自孟昭利反馈</p>
-</blockquote>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1. Invalid user name</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl reread                            </span><br><span class="line">ERROR: CANT_REREAD: Invalid user name www <span class="keyword">in</span> section <span class="string">'program:mooncake-worker'</span> (file: <span class="string">'/etc/supervisor/conf.d/mooncake-queue-worker.conf'</span>)</span><br></pre></td></tr></table></figure>
-<p>A1:查看当前<code>PHP</code>进程用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  nginx ps aux|grep php  </span><br><span class="line">www-data  1736  0.0  0.9 540960 79144 ?        S    Jan09   0:30 php-fpm: pool www</span><br><span class="line">www-data  2114  0.0  0.8 537876 73172 ?        S    Jan09   0:30 php-fpm: pool www</span><br></pre></td></tr></table></figure>
-<p>修改<code>mooncake-queue-worker.conf</code>中<code>user</code>项为<code>user=www-data</code>。</p>
-<p>Q2. 启动：sudo supervisorctl reread，报错如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error: &lt;class <span class="string">'socket.error'</span>&gt;, [Errno 2] No such file or directory: file: /usr/lib64/python2.7/socket.py line: 224</span><br></pre></td></tr></table></figure>
-<p>A2. 解决办法，输入supervisord</p>
-<p>获取到提示信息：/usr/lib/python2.7/site-packages/supervisor/options.py:461: UserWarning: Supervisord is running as root and it is searching for its configuration file in default locations (including its current working directory); you probably want to specify a “-c” argument specifying an absolute path to a configuration file for improved security.Supervisord is running as root and it is searching 很明显的看到提示信息  需要指定一个“-c”参数来指定配置文件的绝对路径。</p>
-<p>所以使用<code>supervisord -c /etc/supervisor/supervisord.conf</code>来启动</p>
-<p>Q3. 解决unix:///tmp/supervisor.sock no such file 的问题</p>
-<p>A3. 参考地址：<a href="https://blog.csdn.net/qq_28885149/article/details/79364685" target="_blank" rel="noopener">https://blog.csdn.net/qq_28885149/article/details/79364685</a></p>
-<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
-<li><a href="http://www.supervisord.org/running.html" target="_blank" rel="noopener">supervisord 官网</a></li>
-<li><a href="https://laravel.com/docs/5.7/queues#supervisor-configuration" target="_blank" rel="noopener">Laravel 官方地址</a></li>
-<li><a href="https://ryanmckern.com/2013/01/daemon-ize-your-processes-on-the-cheap-part-two-supervisor/" target="_blank" rel="noopener">ryanmckern.com</a></li>
-</ul>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/01/08/使用阿里云-Redis-服务内存用完导致的网站停摆/">使用阿里云 Redis 服务内存用完导致的网站停摆</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-08
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>虽然事件过去一周多了，但是记忆还尚尤新，理论上我们都晓得 Redis 是基于内存存储的，一般也是用于存储一些有价值的热数据，而我死中就有傻孩纸把图片这种二进制文件<code>bese64_encode</code>后使用<code>chunk_split</code>函数分成小块，给存进了 <code>redis</code>。以下是情景重放。</p>
-<h2 id="情景描述"><a href="#情景描述" class="headerlink" title="情景描述"></a>情景描述</h2><img src="/2020/01/08/使用阿里云-Redis-服务内存用完导致的网站停摆/redis.png" class="[class names]" title="[width] [height] [title text [alt text]]">
-<p>再发现使用率是<code>108%</code>时，此时服务是正常的，达到<code>110%</code>时，云Redis服务就拒绝连接了，此时<code>sentry</code>里收到大量错误，收到打开网站500错误页，服务瘫痪。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
-<li><p>云 redis 存储空间</p>
-</li>
-<li><p>释放现有 redis 空间</p>
-</li>
-</ol>
-<p>操作面板无法得知，方案1中耗时问题，果断选择了方案2，一行命令删除指定前缀key，命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli -h 主机地址 -p 端口 keys &quot;course-*&quot; |xargs ./redis-cli -h 主机地址 -p 端口 del</span><br><span class="line"></span><br><span class="line"># 具体执行命令</span><br><span class="line">redis-cli -h 主机 -n 2 keys &apos;wechat*&apos; | xargs redis-cli -h 主机 -n 2 del</span><br></pre></td></tr></table></figure>
-<h2 id="问题代码"><a href="#问题代码" class="headerlink" title="问题代码"></a>问题代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 获取该页面对应的二维码</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> string $scene</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> string WXACodeBase64</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getWXACode</span><span class="params">($scene)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    $sceneMd5 = md5($scene);</span><br><span class="line">    $getWXACodeImgBase64 = Redis::get(<span class="string">'wechat:js:api:WXACodeImg:'</span> . $sceneMd5);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">isset</span>($getWXACodeImgBase64)) &#123;</span><br><span class="line">        $result = [</span><br><span class="line">            <span class="string">'code'</span> =&gt; <span class="number">200</span>,</span><br><span class="line">            <span class="string">'msg'</span> =&gt; <span class="string">'success'</span>,</span><br><span class="line">            <span class="string">'data'</span> =&gt; $getWXACodeImgBase64</span><br><span class="line">        ];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $accessToken = <span class="keyword">$this</span>-&gt;getAccessToken(<span class="keyword">self</span>::GET_WXACODE);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>($accessToken)) &#123;</span><br><span class="line">            $param = [</span><br><span class="line">                <span class="string">'scene'</span> =&gt; $scene</span><br><span class="line">            ];</span><br><span class="line">            $apiResult = HttpToolLib::curl(<span class="keyword">self</span>::WXACODE_API_URL . $accessToken, json_encode($param), <span class="keyword">true</span>);</span><br><span class="line">            $resJson = json_decode($apiResult, <span class="keyword">true</span>);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">isset</span>($resJson) &amp;&amp; array_key_exists(<span class="string">'errcode'</span>, $resJson)) &#123;</span><br><span class="line">                $result = [</span><br><span class="line">                    <span class="string">'code'</span> =&gt; $resJson[<span class="string">'errcode'</span>],</span><br><span class="line">                    <span class="string">'msg'</span> =&gt; $resJson[<span class="string">'errmsg'</span>],</span><br><span class="line">                    <span class="string">'data'</span> =&gt; <span class="keyword">null</span></span><br><span class="line">                ];</span><br><span class="line">                \Log::error(<span class="string">'getWXACodeError[code:'</span> . $resJson[<span class="string">'errcode'</span>] . <span class="string">';msg:'</span> . $resJson[<span class="string">'errmsg'</span>] . <span class="string">'.]'</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                $getWXACodeImgBase64 = chunk_split(base64_encode($apiResult));</span><br><span class="line">                Redis::setnx(<span class="string">'wechat:js:api:WXACodeImg:'</span> . $sceneMd5, $getWXACodeImgBase64);</span><br><span class="line">                $result = [</span><br><span class="line">                    <span class="string">'code'</span> =&gt; <span class="number">200</span>,</span><br><span class="line">                    <span class="string">'msg'</span> =&gt; <span class="string">'success'</span>,</span><br><span class="line">                    <span class="string">'data'</span> =&gt; $getWXACodeImgBase64</span><br><span class="line">                ];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/11/27/Laravel-采坑记录/">Laravel 采坑记录</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-11-27
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="Laravel-Middleware-里-Cookie-设置不成功问题"><a href="#Laravel-Middleware-里-Cookie-设置不成功问题" class="headerlink" title="Laravel Middleware 里 Cookie 设置不成功问题"></a>Laravel Middleware 里 Cookie 设置不成功问题</h2><p>我在laravel中间件里写了下面一行代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$response = $next($request)-&gt;cookie($clientKey, $client-&gt;id, 100 * 60 * 24 * 365);</span><br><span class="line"></span><br><span class="line">#或者</span><br><span class="line">\Cookie::queue($clientKey, $client-&gt;id, $ttl);</span><br><span class="line"></span><br><span class="line">dump($client-&gt;id);</span><br></pre></td></tr></table></figure></p>
-<p>然后再中间件里，dump 一个变量，导致<code>cookie</code>不能设置上去，事后发现中间件里不能有任何输出，比如：<code>echo</code>,<code>dump</code>,<code>var_dump</code>,<code>print_r</code> 否则都会导致不成功</p>
-<h2 id="Laravel-Jobs-不消费和消费失败问题-DB-是-mongodb"><a href="#Laravel-Jobs-不消费和消费失败问题-DB-是-mongodb" class="headerlink" title="Laravel Jobs 不消费和消费失败问题(DB 是 mongodb)"></a>Laravel Jobs 不消费和消费失败问题(DB 是 mongodb)</h2><p>创建了一个<code>AccessLogJob</code>死活不会执行，终端也不抛异常，经过排查最终发现是，在<code>DB</code>为<code>mongodb</code>库的情况下 <code>SerializesModels</code> 压根不会触发，也就是会导致<code>model</code>实例不会被序列化，临时解决方案注入时手动序列化<code>serialize</code>，使用时反序列化<code>unserialize</code></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AccessLogJob</span> <span class="keyword">implements</span> <span class="title">ShouldQueue</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">InteractsWithQueue</span>, <span class="title">Queueable</span>, <span class="title">SerializesModels</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> AccessLog</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> $accessLog;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Create a new job instance.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(AccessLog $log)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;accessLog = serialize($log);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Execute the job.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        (unserialize(<span class="keyword">$this</span>-&gt;accessLog))-&gt;save();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/07/31/边锋的一次面试经历/">边锋的一次面试经历</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-07-31
+          2020-02-17
         </span>
         
           <span class="post-category">
@@ -594,24 +331,10 @@
         
 
         
-          <blockquote>
-<p>前几天，去边锋网络上海分公司去面试，去了以后，说 PHP 负责人请假了，一个 Golang 后端面的，聊了2个非语言层面的问题，这里梳理总一下。</p>
-</blockquote>
-<h2 id="Q1：编写-API-接口，如果保证幂等性？"><a href="#Q1：编写-API-接口，如果保证幂等性？" class="headerlink" title="Q1：编写 API 接口，如果保证幂等性？"></a>Q1：编写 API 接口，如果保证幂等性？</h2><p>所谓幂等性设计，就是说，一次和多次请求某一个资源应该具有同样的副作用。用数学的语言来 表达就是:f(x) = f(f(x))。</p>
-<p>举几个例子:</p>
-<ul>
-<li>订单创建接口，第一次调用超时了，然后调用方重试了一次。是否会多创建一笔订单?</li>
-</ul>
-<p>因为系统超时，而调用户方重试一下，会给我们的系统带来不一致的副作用。</p>
-<p>为什么会产生这样的问题，就是在我们把系统解耦隔离后，服务间的调用可能会有三个状态，一个是成功(Success)，一个是失败(Failed)，还有一个是超时(Timeout)。前两者都是明确的状态，而超时则是完全不知道是什么状态。</p>
-<p>这种情况下，一般有两种处理方式：</p>
-<ul>
-<li>一种是下游服务提供查询接口，上游再请求超时后查询一下，如果查询到则表示成功，如果查询不到则表示失败。</li>
-<li>另一种是做接口幂等设计，也就是将查询动作放在下游服务，上游只管做重试，请求一次和请求多次结果是一样的。</li>
-</ul>
-<p>对于第一种方式，需要对方提供一个查询接口来做配合。而第二种方式则需要下游的系统提供支持幂等性的交易接口。</p>
+          <p>自从疫情以来，已在远程办公两周，在这两周期间，本身就让有良好的自控力我，深深习惯了在家里办公，那叫一个爽呼呼尽管稍微有点（晚睡晚起-_-||），But 我会准时出席<code>9:30</code>的例会，按时吃早饭、中饭、偶尔稍微一点吃晚餐。今天是2020年首次进公司上班，以下是一些途中记录的照片。</p>
+<h2 id="途中"><a href="#途中" class="headerlink" title="途中"></a>途中</h2>
           <div class="read-more">
-            <a href="/2019/07/31/边锋的一次面试经历/" class="read-more-link">阅读更多</a>
+            <a href="/2020/02/17/2020年的第一天赴公司上班/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -629,20 +352,14 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2019/06/10/Laravel-JWT-多用户端验证/">Laravel JWT 多用户端验证</a>
+          <a class="post-link" href="/2020/02/14/Mac与Linux-使用-scp-文件互相传输/">Mac与Linux 使用 scp 文件互相传输</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2019-06-10
+          2020-02-14
         </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Laravel/">Laravel</a>
-            
-          </span>
         
         
       </div>
@@ -658,7 +375,13 @@
         
 
         
-          <p>原文链接：<a href="https://learnku.com/articles/28881" target="_blank" rel="noopener">https://learnku.com/articles/28881</a></p>
+          <h2 id="由远端-Linux-传输到本机-Mac"><a href="#由远端-Linux-传输到本机-Mac" class="headerlink" title="由远端 Linux 传输到本机 Mac"></a>由远端 Linux 传输到本机 Mac</h2><p>命令格式 <code>scp username@remote_ip:remote_folder local_folder</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i ~/.ssh/company/neox/demo-key.pem root@ip:/usr/share/demo.csv ./</span><br></pre></td></tr></table></figure>
+<h2 id="由到本机-Mac-传输到远端-Linux"><a href="#由到本机-Mac-传输到远端-Linux" class="headerlink" title="由到本机 Mac 传输到远端 Linux"></a>由到本机 Mac 传输到远端 Linux</h2><p>命令格式 <code>scp local_file remote_username@remote_ip:remote_folder</code></p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1: permissions are too open</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added <span class="string">'host'</span> (ECDSA) to the list of known hosts.</span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @</span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">Permissions 0644 <span class="keyword">for</span> <span class="string">'/Users/bing/.ssh/company/neox/prod-neox-aliyun-key.pem'</span> are too open.</span><br><span class="line">It is required that your private key files are NOT accessible by others.</span><br><span class="line">This private key will be ignored.</span><br><span class="line">Load key <span class="string">"/Users/bing/.ssh/company/neox/prod-neox-aliyun-key.pem"</span>: bad permissions</span><br></pre></td></tr></table></figure>
+<p>解决办法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 ~/.ssh/company/neox/prod-neox-aliyun-key.pem</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">chmod 600 ~/.ssh/company/neox/prod-neox-aliyun-key.pem</span><br></pre></td></tr></table></figure>
 
         
       
@@ -676,59 +399,18 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2019/06/05/MySQL-中的事务/">MySQL 中的事务</a>
+          <a class="post-link" href="/2020/02/10/李超致兄弟连全体学员、员工、股东的一封信/">李超致兄弟连全体学员、员工、股东的一封信</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2019-06-05
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>编码中事务的使用，不能跨库，不能夸会话</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/06/03/初识-Go-语言/">初识 Go 语言</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-06-03
+          2020-02-10
         </span>
         
           <span class="post-category">
             
-              <a href="/categories/Go/">Go</a>
+              <a href="/categories/Essays/">Essays</a>
             
           </span>
         
@@ -746,17 +428,125 @@
         
 
         
-          <p>Go 语言主要特性</p>
-<ul>
-<li>自动垃圾回收 </li>
-<li>更丰富的内置类型 </li>
-<li>函数多返回值 </li>
-<li>错误处理 </li>
-<li>匿名函数和闭包 </li>
-<li>类型和接口 </li>
-<li>并发编程 </li>
-<li>反射 </li>
-<li>语言交互性 </li>
+          <p>平日里我是一个不刷「抖音」、不刷「微博」、不刷「头条」、偶尔刷刷「人民日报」、微信公众号技术文章，每天沉浸于自个的工作和所关注的那个点的领域，感觉自个不像个活在当下21世纪的。</p>
+<p>今天朋友分享过来一篇文章<a href="https://mp.weixin.qq.com/s/Tcew-SDseA7fzW_e4LivMA" target="_blank" rel="noopener">致兄弟连全体学员、员工、股东的一封信</a>，这是这次「新型冠状病毒疫情」期间更有感触的消息了，身边一位北京老朋友从里面学出来的，自己「北京八维研修学院」、「上海弘烨」干了3年教育，也晓得兄弟连在同行中的体量，他没能挺过这冬天还真是出乎意料。</p>
+<p>从这封信中我读出来了两种味道，一味是：因为疫情问题，如他所说恢复时间根据疫情防控工作情况另行通知，让一直亏损的兄弟连无疑是雪上加霜，导致最终没能挺过来。教育行业的利润怎样是行业中有目共睹的，生源决定命脉「入口」，结果系着生源「出口」。我的孙院长曾这么给我说过，把握住这两口也就把握住了学校。想想不无道理。他从零做到了1000多学员的规模用2年的时间。可谓速度之快。<code>PHP</code>的大环境在18、19年就开始出现下滑趋势，19年尤其不怎么好的情况。同样不好的处境还有我一个上海创业开培训的老同事，机构就先不说，说了你也不晓得。</p>
+<p>二味是：有这么一位义无反馈支持自己的妻子，我想这也应该是他成功的原因吧。</p>
+<p>最后道别兄弟连、保重李超。</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/02/09/Hexo-docsify-添加-Gitalk/">Hexo docsify 添加 Gitalk</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-09
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="Gitalk"><a href="#Gitalk" class="headerlink" title="Gitalk"></a>Gitalk</h2><p><a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md" target="_blank" rel="noopener">官方地址</a></p>
+<p><a href="https://gitalk.github.io/" target="_blank" rel="noopener">体验地址</a></p>
+<blockquote>
+<p>为 Hexo 的 <code>even</code>主题添加<code>gitalk</code>评论系统</p>
+</blockquote>
+<h2 id="创建-gitalk-文件"><a href="#创建-gitalk-文件" class="headerlink" title="创建 gitalk 文件"></a>创建 gitalk 文件</h2><p>在<code>themes/even/layout/_script/_comments</code>目录下新增<code>gitalk.swig</code>文件，代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.comments &amp;&amp; theme.gitalk.enable %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('js/src') &#125;&#125;/md5.min.js?v=&#123;&#123; theme.version &#125;&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        var gitalk = new Gitalk(&#123;</span></span><br><span class="line"><span class="undefined">          clientID: '&#123;&#123; theme.gitalk.clientID &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          clientSecret: '&#123;&#123; theme.gitalk.clientSecret &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          repo: '&#123;&#123; theme.gitalk.repo &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          owner: '&#123;&#123; theme.gitalk.owner &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          admin: ['&#123;&#123; theme.gitalk.admin &#125;&#125;'],</span></span><br><span class="line"><span class="undefined">          id: md5(location.pathname),</span></span><br><span class="line"><span class="undefined">          distractionFreeMode: '&#123;&#123; theme.gitalk.distractionFreeMode &#125;&#125;'</span></span><br><span class="line"><span class="undefined">        &#125;)</span></span><br><span class="line"><span class="undefined">        gitalk.render('gitalk-container')</span></span><br><span class="line"><span class="undefined">       </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>为了解决「常见问题」中1，这里引用<code>md5.min.js</code>文件，然后将<code>id</code>，通过<code>md5</code>函数加密后再请求<code>github issue</code>API，<code>md5.min.js</code>文件我放在<code>themes/even/source/js/src/md5.min.js</code>目录，当然你也可以引入远程地址，<a href="https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js" target="_blank" rel="noopener">md5库地址</a></p>
+<h2 id="添加-gitalk-判断逻辑"><a href="#添加-gitalk-判断逻辑" class="headerlink" title="添加 gitalk 判断逻辑"></a>添加 gitalk 判断逻辑</h2><p><code>themes/even/layout/_partial/comments.swig</code>添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% elseif theme.gitalk.enable %&#125;</span><br><span class="line">    &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;  </span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<code>if elseif endif</code> 语法。</p>
+</blockquote>
+<h2 id="引入-gitalk"><a href="#引入-gitalk" class="headerlink" title="引入 gitalk"></a>引入 gitalk</h2><p>在<code>themes/even/layout/_script/comments.swig</code>文件中引入<code>gitalk.swig</code>文件，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.gitalk.enable %&#125;</span><br><span class="line">  &#123;% include &apos;_comments/gitalk.swig&apos; %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="配置-gitalk"><a href="#配置-gitalk" class="headerlink" title="配置 gitalk"></a>配置 gitalk</h2><p>配置<code>themes/even/_config.yml</code>中关于<code>gitalk</code>的配置，新增代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># more info please open https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  clientID: xxxxxxx</span><br><span class="line">  clientSecret: yyyyyyyyyyy</span><br><span class="line">  repo: &apos;dbing.github.io&apos;</span><br><span class="line">  owner: &apos;dbing&apos;</span><br><span class="line">  admin: &apos;dbing&apos;</span><br><span class="line">  distractionFreeMode: true</span><br></pre></td></tr></table></figure>
+<p>没有<code>clientID</code>和<code>clientSecret</code>，<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">点击申请</a>，配置完以上恭喜你，重新生产部署一下你的博客文章命令：<code>hexo g -d</code>，打开文章详情页看看是否多出了评论框 :)</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1.Error: Validation Failed.</p>
+<p>解决方法：<a href="https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482</a></p>
+<p>打开<code>Network</code>看请求，多半是因为<code>github issues</code>接口错误，以上方案给出的很详细。</p>
+<p>Q2.Error: Issues are disabled for this repo</p>
+<p>解决方法：<a href="https://github.com/imsun/gitment/issues/125" target="_blank" rel="noopener">https://github.com/imsun/gitment/issues/125</a></p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/02/06/因PHP内存超出限制导致首页500/">因PHP内存超出限制导致首页500</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-06
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="现场"><a href="#现场" class="headerlink" title="现场"></a>现场</h2><p>事发后的某一段<code>log</code>日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[2020-02-06 14:09:20] production.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Allowed memory size of 134217728 bytes exhausted (tried to allocate 1191936 bytes) in /project-path/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Query/Builder.php:373</span><br><span class="line">Stack trace:</span><br><span class="line">#0 &#123;main&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2020/02/06/因PHP内存超出限制导致首页500/500.png" width="500">
+<h2 id="临时解决办法"><a href="#临时解决办法" class="headerlink" title="临时解决办法"></a>临时解决办法</h2><p>放开PHP内存限制，修改<code>php.ini</code>，中<code>memory_limit=-1</code>，然后重启，<code>php-fpm</code> 服务，<code>sudo service php7.1-fpm restart</code></p>
+<p>网站恢复访问后，排查首页代码，定位手改一处过大查询代码（前人遗留）。</p>
+<h2 id="问题代码"><a href="#问题代码" class="headerlink" title="问题代码"></a>问题代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据发布时间倒序获取新闻 首页用</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int $limit</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getNewsAtIndexPage</span><span class="params">($limit = <span class="number">5</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $newsList = [];</span><br><span class="line">    $rawNews = (<span class="keyword">new</span> Filter())-&gt;getEnableDisplay()-&gt;sortByPublishAt()-&gt;getNews();</span><br><span class="line">    <span class="keyword">foreach</span> ($rawNews <span class="keyword">as</span> $news) &#123;</span><br><span class="line">        $newsList[] = [</span><br><span class="line">            <span class="string">'url'</span>   =&gt; <span class="keyword">$this</span>-&gt;getNewsPublishURL($news[<span class="string">'type'</span>], $news[<span class="string">'_id'</span>],<span class="keyword">false</span>),</span><br><span class="line">            <span class="string">'title'</span> =&gt; $news[<span class="string">'title'</span>],</span><br><span class="line">            <span class="string">'cover'</span> =&gt; $news[<span class="string">'cover'</span>],</span><br><span class="line">            <span class="string">'publish_at'</span>=&gt; $news[<span class="string">'publish_at'</span>]</span><br><span class="line">        ];</span><br><span class="line">        <span class="keyword">if</span>(count($newsList) == $limit) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $newsList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getNews</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;model-&gt;get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="优化前后结果"><a href="#优化前后结果" class="headerlink" title="优化前后结果"></a>优化前后结果</h2><img src="/2020/02/06/因PHP内存超出限制导致首页500/1.png">
+<img src="/2020/02/06/因PHP内存超出限制导致首页500/2.png">
+<img src="/2020/02/06/因PHP内存超出限制导致首页500/code.png" title="code">
+<h2 id="好文推荐"><a href="#好文推荐" class="headerlink" title="好文推荐"></a>好文推荐</h2><ul>
+<li><a href="https://juejin.im/post/5aa7c5575188255589497de2" target="_blank" rel="noopener">PHP 内存泄漏分析定位</a></li>
 </ul>
 
         
@@ -775,13 +565,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2019/05/22/Composer-中国镜像/">Composer 中国镜像</a>
+          <a class="post-link" href="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/">因更换SSL证书安卓APP和CDN停止服务</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2019-05-22
+          2020-02-06
         </span>
         
         
@@ -798,17 +588,185 @@
         
 
         
-          <p>Composer 中国镜像-阿里云镜像</p>
-<p>原文地址：<a href="https://developer.aliyun.com/composer" target="_blank" rel="noopener">https://developer.aliyun.com/composer</a></p>
-<p>选项一、全局配置（推荐）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
-<p>取消镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g --unset repos.packagist</span><br></pre></td></tr></table></figure></p>
-<p>选项二、项目配置</p>
-<p>仅修改当前工程配置，仅当前工程可使用该镜像地址：：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure></p>
-<p>取消镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config --unset repos.packagist</span><br></pre></td></tr></table></figure></p>
-<p>调试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer -vvv install</span><br></pre></td></tr></table></figure></p>
-<h2 id="Composer-manager"><a href="#Composer-manager" class="headerlink" title="Composer manager"></a>Composer manager</h2><p>鲜有日子，阿里云镜像也会抽风，那么这是镜像管理工具推荐给你，很方便切换到你想要使用的源</p>
-<p>原文地址：<a href="https://github.com/slince/composer-registry-manager" target="_blank" rel="noopener">https://github.com/slince/composer-registry-manager</a></p>
+          <h2 id="现场"><a href="#现场" class="headerlink" title="现场"></a>现场</h2><ol>
+<li>网站样式图片全丢，通过<code>network</code>看到所有<code>css</code>、<code>js</code>、<code>image</code>，都指向到<code>static.shenjumiaosuan.com</code>，响应状态<code>502</code>，我们的静态资源使用的是七牛<code>CDN</code>服务，当日因我们的<code>ssl</code>年证书到期，已经更换为新证书。</li>
+</ol>
+<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/cdn.png" title="七牛CDN">
+<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/502.png" width="502">
+<ol start="2">
+<li>安卓开发者反馈，安卓客户端无法打开，所有<code>api</code>均无法正常请求，同时<code>ios</code>确是好的（是不是很惊喜、很意外）。后了解到安卓是需要中间证书。</li>
+</ol>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
+<li>静态CDN域<code>static.shenjumiaosuan.com</code>，通过项目<code>.env</code>配置切换到本站<code>www.shenjumiaosuan.com</code></li>
+<li>SSL证书紧急切换为之前旧证书</li>
+<li>重新下载新证书，并拼接上中间证书，重新上传</li>
+</ol>
+<h2 id="证书续期"><a href="#证书续期" class="headerlink" title="证书续期"></a>证书续期</h2><p>因我们的域名是在爱名网，故以下有在爱名网操作步骤：</p>
+<p>1、 缴费续期后通过openssl生成新的CSR。参考文档<a href="https://ssl.22.cn/Helper/Details/347（也可使用相关在线工具https://myssl.com/csr_create.html）。" target="_blank" rel="noopener">https://ssl.22.cn/Helper/Details/347（也可使用相关在线工具https://myssl.com/csr_create.html）。</a></p>
+<p>2、得到private.key和csr.pem后，将csr提交到爱名网，并将文件存档。</p>
+<p>3、域名续期进入审核状态，需要联系客服进行认证。认证流程中需要将对方给到的字符串解进行dns解析（@ TXT记录），等待审核通过后可以通过爱名网下载域名的crt签名。</p>
+<h2 id="生成证书"><a href="#生成证书" class="headerlink" title="生成证书"></a>生成证书</h2><p>将中间人证书补充到签发的证书中</p>
+<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/ssl.png">
+<p>因涉及公司隐私，暂不提供参考图。</p>
+<p>1、查找邮箱链接找到链接，进入后填写邮件标题中的订单号和邮箱进入后，点击request access</p>
+<p>2、通过邮件链接下载证书颁发机构的附加证书</p>
+<p>私钥部分：private.key<br>公钥部分：<br>拼装爱名网下载的crt+中间人crt，格式如下（检查空格回车）：</p>
+<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/crt.png">
+<h2 id="上传证书"><a href="#上传证书" class="headerlink" title="上传证书"></a>上传证书</h2><p>阿里云lbs：<br>证书管理 &gt;&gt; 创建证书（上传非阿里云签发证书） &gt;&gt; 替换证书</p>
+<p>七牛云：<br>证书服务 &gt;&gt; 上传自有证书<br>CDN &gt;&gt; 域名管理 &gt;&gt; 配置 &gt;&gt; 更换证书</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>内部 wiki</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/02/06/Python-入门指南/">Python 入门指南</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-06
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>快速搞定<code>Python</code>语法</p>
+<h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><p><a href="http://ddrv.cn/docs/pythontutorial3/" target="_blank" rel="noopener">http://ddrv.cn/docs/pythontutorial3/</a></p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/02/06/anaconda-和-zsh-不兼容问题/">anaconda 和 zsh 不兼容问题</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-06
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>错误场景：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ /Users/bing/.anaconda/navigator/a.tool ; <span class="built_in">exit</span>;</span><br><span class="line">/Users/bing/.anaconda/navigator/a.tool: line 1: syntax error near unexpected token `(<span class="string">'</span></span><br><span class="line"><span class="string">/Users/bing/.anaconda/navigator/a.tool: line 1: `bash --init-file &lt;(echo "source activate /Users/bing/opt/anaconda3/envs/my-opencv;")'</span></span><br></pre></td></tr></table></figure>
+<img src="/2020/02/06/anaconda-和-zsh-不兼容问题/error.png">
+<h2 id="临时解决方法"><a href="#临时解决方法" class="headerlink" title="临时解决方法"></a>临时解决方法</h2><p>切换到<code>bash</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
+<p>通过<code>conda</code>GUI，打开命令行后，再切换到<code>zsh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<h2 id="我使用了这个方法"><a href="#我使用了这个方法" class="headerlink" title="我使用了这个方法"></a>我使用了这个方法</h2><p>This problem is a problem with the zsh environment variable, the solution<br>echo ‘source ~/.bash_profile’ &gt;&gt; ~/.zshrc<br>Append the bash environment variable to zsh</p>
+<p>链接：<a href="https://github.com/ContinuumIO/anaconda-issues/issues/1831#issuecomment-425714638" target="_blank" rel="noopener">https://github.com/ContinuumIO/anaconda-issues/issues/1831#issuecomment-425714638</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://iaside.com/archives/455" target="_blank" rel="noopener">https://iaside.com/archives/455</a></li>
+<li><a href="https://github.com/ContinuumIO/anaconda-issues/issues/1831" target="_blank" rel="noopener">github issue</a></li>
+<li><a href="https://stackoverflow.com/questions/54502718/cant-run-anaconda-in-macos-terminal" target="_blank" rel="noopener">stackoverflow</a></li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/02/06/opencv-对比度亮度调整/">opencv 对比度亮度调整</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-06
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/OpenCV/">OpenCV</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>来源需要对一张图片，弱化背景效果的需求。与其说弱化不如说是把暗度调亮。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>图片对比度和亮度的调整一般通过下面公式计算：g(x,y)=a∗f(x,y)+b</p>
+<p>f(x,y) 代表源图像 x行，y列的像素点的c通道的数值<br>g(x,y) 代表目标图像x行，y列的像素点的c通道的数值<br>a 参数（a&gt;0）表示放大的倍数（一般在0.0~3.0之间）<br>b 参数一般称为偏置，用来调节亮度</p>
+<p>方案一代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  cv2</span><br><span class="line"></span><br><span class="line">img=cv2.imread(<span class="string">'test.jpg'</span>)</span><br><span class="line">cv2.imshow(<span class="string">'original_img'</span>,img)</span><br><span class="line">rows,cols,channels=img.shape</span><br><span class="line">dst=img.copy()</span><br><span class="line"></span><br><span class="line">a=<span class="number">0.5</span></span><br><span class="line">b=<span class="number">80</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(rows):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(cols):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">            color=img[i,j][c]*a+b</span><br><span class="line">            <span class="keyword">if</span> color&gt;<span class="number">255</span>:           <span class="comment"># 防止像素值越界（0~255）</span></span><br><span class="line">                dst[i,j][c]=<span class="number">255</span></span><br><span class="line">            <span class="keyword">elif</span> color&lt;<span class="number">0</span>:           <span class="comment"># 防止像素值越界（0~255）</span></span><br><span class="line">                dst[i,j][c]=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'dst'</span>,dst)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p>方案二：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">contrast_img</span><span class="params">(img1, c, b)</span>:</span>  <span class="comment"># 亮度就是每个像素所有通道都加上b</span></span><br><span class="line">    rows, cols, channels = img1.shape</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 新建全零(黑色)图片数组:np.zeros(img1.shape, dtype=uint8)</span></span><br><span class="line">    blank = np.zeros([rows, cols, channels], img1.dtype)</span><br><span class="line">    dst = cv2.addWeighted(img1, c, blank, <span class="number">1</span>-c, b)</span><br><span class="line">    cv2.imshow(<span class="string">'original_img'</span>, img)</span><br><span class="line">    cv2.imshow(<span class="string">"contrast_img"</span>, dst)</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">"./test.png"</span>, cv2.IMREAD_COLOR)</span><br><span class="line">contrast_img(img, <span class="number">1.3</span>, <span class="number">3</span>)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li>原文来自 <a href="https://blog.csdn.net/wsp_1138886114/article/details/82624534" target="_blank" rel="noopener">csdn</a></li>
+</ul>
 
         
       

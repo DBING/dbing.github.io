@@ -246,13 +246,175 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/">Laravel 5.7 安装 Json Web Tokens (tymon/jwt-auth)</a>
+          <a class="post-link" href="/2020/01/08/使用阿里云-Redis-服务内存用完导致的网站停摆/">使用阿里云 Redis 服务内存用完导致的网站停摆</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2019-03-30
+          2020-01-08
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>虽然事件过去一周多了，但是记忆还尚尤新，理论上我们都晓得 Redis 是基于内存存储的，一般也是用于存储一些有价值的热数据，而我死中就有傻孩纸把图片这种二进制文件<code>bese64_encode</code>后使用<code>chunk_split</code>函数分成小块，给存进了 <code>redis</code>。以下是情景重放。</p>
+<h2 id="情景描述"><a href="#情景描述" class="headerlink" title="情景描述"></a>情景描述</h2><img src="/2020/01/08/使用阿里云-Redis-服务内存用完导致的网站停摆/redis.png" class="[class names]" title="[width] [height] [title text [alt text]]">
+<p>再发现使用率是<code>108%</code>时，此时服务是正常的，达到<code>110%</code>时，云Redis服务就拒绝连接了，此时<code>sentry</code>里收到大量错误，收到打开网站500错误页，服务瘫痪。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
+<li><p>云 redis 存储空间</p>
+</li>
+<li><p>释放现有 redis 空间</p>
+</li>
+</ol>
+<p>操作面板无法得知，方案1中耗时问题，果断选择了方案2，一行命令删除指定前缀key，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli -h 主机地址 -p 端口 keys &quot;course-*&quot; |xargs ./redis-cli -h 主机地址 -p 端口 del</span><br><span class="line"></span><br><span class="line"># 具体执行命令</span><br><span class="line">redis-cli -h 主机 -n 2 keys &apos;wechat*&apos; | xargs redis-cli -h 主机 -n 2 del</span><br></pre></td></tr></table></figure>
+<h2 id="问题代码"><a href="#问题代码" class="headerlink" title="问题代码"></a>问题代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 获取该页面对应的二维码</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> string $scene</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> string WXACodeBase64</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getWXACode</span><span class="params">($scene)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    $sceneMd5 = md5($scene);</span><br><span class="line">    $getWXACodeImgBase64 = Redis::get(<span class="string">'wechat:js:api:WXACodeImg:'</span> . $sceneMd5);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">isset</span>($getWXACodeImgBase64)) &#123;</span><br><span class="line">        $result = [</span><br><span class="line">            <span class="string">'code'</span> =&gt; <span class="number">200</span>,</span><br><span class="line">            <span class="string">'msg'</span> =&gt; <span class="string">'success'</span>,</span><br><span class="line">            <span class="string">'data'</span> =&gt; $getWXACodeImgBase64</span><br><span class="line">        ];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $accessToken = <span class="keyword">$this</span>-&gt;getAccessToken(<span class="keyword">self</span>::GET_WXACODE);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>($accessToken)) &#123;</span><br><span class="line">            $param = [</span><br><span class="line">                <span class="string">'scene'</span> =&gt; $scene</span><br><span class="line">            ];</span><br><span class="line">            $apiResult = HttpToolLib::curl(<span class="keyword">self</span>::WXACODE_API_URL . $accessToken, json_encode($param), <span class="keyword">true</span>);</span><br><span class="line">            $resJson = json_decode($apiResult, <span class="keyword">true</span>);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">isset</span>($resJson) &amp;&amp; array_key_exists(<span class="string">'errcode'</span>, $resJson)) &#123;</span><br><span class="line">                $result = [</span><br><span class="line">                    <span class="string">'code'</span> =&gt; $resJson[<span class="string">'errcode'</span>],</span><br><span class="line">                    <span class="string">'msg'</span> =&gt; $resJson[<span class="string">'errmsg'</span>],</span><br><span class="line">                    <span class="string">'data'</span> =&gt; <span class="keyword">null</span></span><br><span class="line">                ];</span><br><span class="line">                \Log::error(<span class="string">'getWXACodeError[code:'</span> . $resJson[<span class="string">'errcode'</span>] . <span class="string">';msg:'</span> . $resJson[<span class="string">'errmsg'</span>] . <span class="string">'.]'</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                $getWXACodeImgBase64 = chunk_split(base64_encode($apiResult));</span><br><span class="line">                Redis::setnx(<span class="string">'wechat:js:api:WXACodeImg:'</span> . $sceneMd5, $getWXACodeImgBase64);</span><br><span class="line">                $result = [</span><br><span class="line">                    <span class="string">'code'</span> =&gt; <span class="number">200</span>,</span><br><span class="line">                    <span class="string">'msg'</span> =&gt; <span class="string">'success'</span>,</span><br><span class="line">                    <span class="string">'data'</span> =&gt; $getWXACodeImgBase64</span><br><span class="line">                ];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/11/27/Laravel-采坑记录/">Laravel 采坑记录</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-11-27
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="Laravel-Middleware-里-Cookie-设置不成功问题"><a href="#Laravel-Middleware-里-Cookie-设置不成功问题" class="headerlink" title="Laravel Middleware 里 Cookie 设置不成功问题"></a>Laravel Middleware 里 Cookie 设置不成功问题</h2><p>我在laravel中间件里写了下面一行代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$response = $next($request)-&gt;cookie($clientKey, $client-&gt;id, 100 * 60 * 24 * 365);</span><br><span class="line"></span><br><span class="line">#或者</span><br><span class="line">\Cookie::queue($clientKey, $client-&gt;id, $ttl);</span><br><span class="line"></span><br><span class="line">dump($client-&gt;id);</span><br></pre></td></tr></table></figure></p>
+<p>然后再中间件里，dump 一个变量，导致<code>cookie</code>不能设置上去，事后发现中间件里不能有任何输出，比如：<code>echo</code>,<code>dump</code>,<code>var_dump</code>,<code>print_r</code> 否则都会导致不成功</p>
+<h2 id="Laravel-Jobs-不消费和消费失败问题-DB-是-mongodb"><a href="#Laravel-Jobs-不消费和消费失败问题-DB-是-mongodb" class="headerlink" title="Laravel Jobs 不消费和消费失败问题(DB 是 mongodb)"></a>Laravel Jobs 不消费和消费失败问题(DB 是 mongodb)</h2><p>创建了一个<code>AccessLogJob</code>死活不会执行，终端也不抛异常，经过排查最终发现是，在<code>DB</code>为<code>mongodb</code>库的情况下 <code>SerializesModels</code> 压根不会触发，也就是会导致<code>model</code>实例不会被序列化，临时解决方案注入时手动序列化<code>serialize</code>，使用时反序列化<code>unserialize</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AccessLogJob</span> <span class="keyword">implements</span> <span class="title">ShouldQueue</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">InteractsWithQueue</span>, <span class="title">Queueable</span>, <span class="title">SerializesModels</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> AccessLog</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> $accessLog;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Create a new job instance.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(AccessLog $log)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;accessLog = serialize($log);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Execute the job.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        (unserialize(<span class="keyword">$this</span>-&gt;accessLog))-&gt;save();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/07/31/边锋的一次面试经历/">边锋的一次面试经历</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-07-31
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Essays/">Essays</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <blockquote>
+<p>前几天，去边锋网络上海分公司去面试，去了以后，说 PHP 负责人请假了，一个 Golang 后端面的，聊了2个非语言层面的问题，这里梳理总一下。</p>
+</blockquote>
+<h2 id="Q1：编写-API-接口，如果保证幂等性？"><a href="#Q1：编写-API-接口，如果保证幂等性？" class="headerlink" title="Q1：编写 API 接口，如果保证幂等性？"></a>Q1：编写 API 接口，如果保证幂等性？</h2><p>所谓幂等性设计，就是说，一次和多次请求某一个资源应该具有同样的副作用。用数学的语言来 表达就是:f(x) = f(f(x))。</p>
+<p>举几个例子:</p>
+<ul>
+<li>订单创建接口，第一次调用超时了，然后调用方重试了一次。是否会多创建一笔订单?</li>
+</ul>
+<p>因为系统超时，而调用户方重试一下，会给我们的系统带来不一致的副作用。</p>
+<p>为什么会产生这样的问题，就是在我们把系统解耦隔离后，服务间的调用可能会有三个状态，一个是成功(Success)，一个是失败(Failed)，还有一个是超时(Timeout)。前两者都是明确的状态，而超时则是完全不知道是什么状态。</p>
+<p>这种情况下，一般有两种处理方式：</p>
+<ul>
+<li>一种是下游服务提供查询接口，上游再请求超时后查询一下，如果查询到则表示成功，如果查询不到则表示失败。</li>
+<li>另一种是做接口幂等设计，也就是将查询动作放在下游服务，上游只管做重试，请求一次和请求多次结果是一样的。</li>
+</ul>
+<p>对于第一种方式，需要对方提供一个查询接口来做配合。而第二种方式则需要下游的系统提供支持幂等性的交易接口。</p>
+          <div class="read-more">
+            <a href="/2019/07/31/边锋的一次面试经历/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/06/10/Laravel-JWT-多用户端验证/">Laravel JWT 多用户端验证</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-06-10
         </span>
         
           <span class="post-category">
@@ -273,38 +435,10 @@
       
         
         
-          
-        
 
         
-          <p>本文介绍 Laravel 5.7 框架集成 jwt 操作指南，在官方的 <a href="https://github.com/tymondesigns/jwt-auth/wiki/Installation[external]" title="[wiki]" target="_blank" rel="noopener">wiki</a> 中也有介绍，是使用的<code>0.5.*</code>版本，本文使用的<code>jwt-auth</code>是<code>1.0.0-rc.3</code>版本，切记使用此扩展包的版本不同，集成也会稍有不同，否则你会得到意想不到的问题，根据自己 <code>laravel</code>版本不同使用<code>jwt-auth</code>版本建议如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Laravel version</th>
-<th>jwt-auth version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>4.*</code></td>
-<td><code>0.3.*</code> <code>0.4.*</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>5.*</code> &amp;&amp; <code>&lt;5.5</code></td>
-<td><code>0.5.*</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>5.*</code></td>
-<td><code>1.0.*</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="安装扩展包-jwt-auth"><a href="#安装扩展包-jwt-auth" class="headerlink" title="安装扩展包 jwt-auth"></a>安装扩展包 jwt-auth</h2><p>将扩展包添加到<code>composer.json</code>，添加如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">“require”: &#123;</span><br><span class="line">    ...</span><br><span class="line">    “tymon/jwt-auth”: “1.0.0-rc.3”</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后通过命令更新<code>Composer</code>命令如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer update</span><br></pre></td></tr></table></figure></p>
-          <div class="read-more">
-            <a href="/2019/03/30/Laravel-5-7-安装-Json-Web-Tokens-tymon-jwt-auth/" class="read-more-link">阅读更多</a>
-          </div>
+          <p>原文链接：<a href="https://learnku.com/articles/28881" target="_blank" rel="noopener">https://learnku.com/articles/28881</a></p>
+
         
       
     </div>
@@ -321,18 +455,171 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/">PhpStorm配置Xdebug远程调试</a>
+          <a class="post-link" href="/2019/06/05/MySQL-中的事务/">MySQL 中的事务</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2019-03-19
+          2019-06-05
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <blockquote>
+<p>MySQL 中事务的使用，不能跨库，不能夸会话。</p>
+</blockquote>
+<p>To do</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/06/03/初识-Go-语言/">初识 Go 语言</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-06-03
         </span>
         
           <span class="post-category">
             
-              <a href="/categories/开发者工具/">开发者工具</a>
+              <a href="/categories/Go/">Go</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>Go 语言主要特性</p>
+<ul>
+<li>自动垃圾回收 </li>
+<li>更丰富的内置类型 </li>
+<li>函数多返回值 </li>
+<li>错误处理 </li>
+<li>匿名函数和闭包 </li>
+<li>类型和接口 </li>
+<li>并发编程 </li>
+<li>反射 </li>
+<li>语言交互性 </li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/05/22/Composer-中国镜像/">Composer 中国镜像</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-05-22
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>Composer 中国镜像-阿里云镜像</p>
+<p>原文地址：<a href="https://developer.aliyun.com/composer" target="_blank" rel="noopener">https://developer.aliyun.com/composer</a></p>
+<p>选项一、全局配置（推荐）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
+<p>取消镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g --unset repos.packagist</span><br></pre></td></tr></table></figure></p>
+<p>选项二、项目配置</p>
+<p>仅修改当前工程配置，仅当前工程可使用该镜像地址：：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure></p>
+<p>取消镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config --unset repos.packagist</span><br></pre></td></tr></table></figure></p>
+<p>调试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer -vvv install</span><br></pre></td></tr></table></figure></p>
+<h2 id="Composer-manager"><a href="#Composer-manager" class="headerlink" title="Composer manager"></a>Composer manager</h2><p>鲜有日子，阿里云镜像也会抽风，那么这是镜像管理工具推荐给你，很方便切换到你想要使用的源</p>
+<p>原文地址：<a href="https://github.com/slince/composer-registry-manager" target="_blank" rel="noopener">https://github.com/slince/composer-registry-manager</a></p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/05/22/Linxu-压缩与解压常用命令/">Linxu 压缩与解压常用命令</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-05-22
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Linux/">Linux</a>
             
           </span>
         
@@ -352,23 +639,11 @@
         
 
         
-          <p>调试复杂些的项目代码，<code>Xdebug</code> 是一把利器，本文结合自己的开发环境简讲通过<code>PhpStorm</code>完成<code>Xdebug</code>调试,部分原理图借鉴<code>xxlegend</code>作者</p>
-<h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><blockquote class="pullquote [class]"><p>本机：Windows10 + PhpStorm 2018 + Ip 192.168.10.108</p>
-<p>开发机：CentOS 6.10 + PHP 7.1 + Nginx 1.14 + Ip 192.168.10.140</p>
-</blockquote>
-<h3 id="开发方式"><a href="#开发方式" class="headerlink" title="开发方式"></a>开发方式</h3><p>一般情况开发者都是在本地开发，使用的开发环境也是本地自己搭建的，无论是在<code>Win</code>、<code>Mac</code>、<code>Linux</code>三者哪一个平台开发，最终想达到的体验是尽可能和生产环境一致，如果是在<code>Win</code>下开发，带来的代码兼容性问题时长让人难受（如：大小写问题），以至于追求<code>Unix</code>开发是一种潮流，这可能便是<code>Mac</code>之所以时程序员所爱的原因吧，<code>Win</code>下要想到达此效果。</p>
-<ol>
-<li>通过在<code>Window</code>下安装虚拟机，虚拟机中安装<code>Linxu</code>系统；</li>
-<li>使用<code>Windows 10</code>已经支持开启子系统，<code>Ubuntu</code>子系统中安装<code>PHP</code>开发环境；</li>
-<li>使用公司提供的公共开发机，开发机环境和所需服务都是安装好的，通过<code>samba</code>共享目录方式，本机无环境，开发机创建一个自己的虚拟目录；</li>
-</ol>
-<ul>
-<li>方法一：没有配置上<code>SSD</code>，内存没到<code>4G</code> 慎用 </li>
-<li>方法二：<code>Windows 10</code> 开启子系统，在应用市场一键安装<code>Ubuntu</code>，还是很方便的，在子系统中可以直接访问宿主机(本机)目录，使用感很方便。</li>
-<li>方法三：我公司为了开发者方便，搭建了<code>IP</code>为<code>140</code>的开发机，通过<code>samba</code>创建虚拟目录，本地添加网络盘方式打开<code>140</code>自己<code>Home</code>开发目录；</li>
-</ul>
+          <p>以下均已<code>demo.tar.xz</code>文件为例演示</p>
+<h2 id="tar"><a href="#tar" class="headerlink" title="*.tar"></a>*.tar</h2><p>解压：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf demo.tar</span><br></pre></td></tr></table></figure></p>
+<h2 id="gz"><a href="#gz" class="headerlink" title="*.gz"></a>*.gz</h2><p>解压：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gzip -d demo.gz</span><br><span class="line">gunzip demo.gz</span><br></pre></td></tr></table></figure></p>
           <div class="read-more">
-            <a href="/2019/03/19/PhpStorm-配置-Xdebug-远程调试/" class="read-more-link">阅读更多</a>
+            <a href="/2019/05/22/Linxu-压缩与解压常用命令/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -386,14 +661,20 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/">配置双公钥完成同时对 gitee 和 github 的使用</a>
+          <a class="post-link" href="/2019/05/22/Linux-PATH-环境变量配置/">Linux PATH 环境变量配置</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2018-12-31
+          2019-05-22
         </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </span>
         
         
       </div>
@@ -411,9 +692,66 @@
         
 
         
-          <p>通过配置 .ssh/config 文件完成对 gitee、gitlab、github...等多域下分别使用不同公钥的，达到可以在命令行中愉快的玩耍各个 git 远程仓库</p>
+          <p>以添加<code>go</code>为例，修改<code>PATH</code>的几种方法</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">pwd</span><br><span class="line">/home/bing</span><br><span class="line">wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz</span><br><span class="line">tar -xzvf go1.12.5.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="查看-PATH"><a href="#查看-PATH" class="headerlink" title="查看 PATH"></a>查看 PATH</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br></pre></td></tr></table></figure>
+<p>以<code>:</code>符号分割，每一段都是一个环境变量</p>
+<h2 id="修改-PATH"><a href="#修改-PATH" class="headerlink" title="修改 PATH"></a>修改 PATH</h2>
           <div class="read-more">
-            <a href="/2018/12/31/配置双公钥完成同时对-gitee-和-github-的使用/" class="read-more-link">阅读更多</a>
+            <a href="/2019/05/22/Linux-PATH-环境变量配置/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2019/05/21/酷代码-第一篇/">酷代码-第一篇</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-05-21
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/PHP/">PHP</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>分享一下，工作中遇见值得分享的<code>Code</code>，这些代码往往比较有趣、有意义、或者少见（有意义），在此我统称为：酷代码。</p>
+<h2 id="IP-白名单检测"><a href="#IP-白名单检测" class="headerlink" title="IP 白名单检测"></a>IP 白名单检测</h2><p>场景描述：我司的一个子项目，用来处理全部的支付业务，为了安全，所有的内部请求必须经过 IP 检测（这只是其中一环），分享一下基于我老大（涛哥）思想，利用位运算完成，<code>IP</code>白名单检测方法，以下是核心代码</p>
+<p>定义检测函数<code>checkRemoteAddr()</code><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 验证 IP 白名单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $ip   string              待验证IP地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $AllowRemoteIps array     允许的IP白名单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> bool</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkRemoteAddr</span><span class="params">($ip,$AllowRemoteIps)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $ipNum = ip2long($ip);</span><br><span class="line">    <span class="keyword">foreach</span> ($AllowRemoteIps <span class="keyword">as</span> $mask)</span><br><span class="line">    &#123;</span><br><span class="line">        @<span class="keyword">list</span>($maskIp, $maskStep) = explode(<span class="string">"/"</span>, $mask);</span><br><span class="line">        $maskIpNum = ip2long($maskIp);</span><br><span class="line">        $maskStep = !<span class="keyword">isset</span>($maskStep) ? <span class="number">0</span> : <span class="number">32</span> - intval($maskStep);</span><br><span class="line">        <span class="keyword">if</span>( ($ipNum &gt;&gt; $maskStep) === ($maskIpNum &gt;&gt; $maskStep) )  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+          <div class="read-more">
+            <a href="/2019/05/21/酷代码-第一篇/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -434,6 +772,11 @@
         <span class="prev-text">上一页</span>
       </a>
     
+    
+      <a class="next" href="/page/9/">
+        <span class="next-text">下一页</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 

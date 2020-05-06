@@ -246,18 +246,18 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2020/05/02/05-多线程的基本原理/">05-多线程的基本原理</a>
+          <a class="post-link" href="/2020/05/04/Go-正则表达式/">Go 正则表达式</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2020-05-02
+          2020-05-04
         </span>
         
           <span class="post-category">
             
-              <a href="/categories/Python-spider/">Python spider</a>
+              <a href="/categories/Go/">Go</a>
             
           </span>
         
@@ -275,41 +275,14 @@
         
 
         
-          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>进程-可以理解为是一个可独立运行的程序单位，比如：</p>
-<ul>
-<li>打开一个浏览器，就开启了一个浏览器进程</li>
-<li>打开一个文本编辑器，就开启了一个文本编辑器进程</li>
-</ul>
-<p>一个进程中可以同时处理很多事情，比如：<br>浏览器中可以在多个选项卡中打开多个页面，每个页面干不同的事情（一个浏览页面、一个播放音乐，等）可以同时运行，互不干扰。</p>
-<p>为什么能同时做到运行这么多的任务呢？</p>
-<p>答：任务对应着线程的执行。</p>
-<p>「进程」是线程的集合，是由一个或多个线程构成的，「线程」是操作系统运行运算调度的最小单位，是进程中的一个最小运行单元。</p>
-<h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><p>指同一时刻只能有一条指令执行，但多个线程的对应的指令被快速轮换地执行，宏观上看起来多个线程在同时运行，但微观上只是这个处理器再连续不断的在多个线程之间切换和执行</p>
-<blockquote>
-<p>在单处理器和多处理器系统中都可以存在，仅靠一个核，就可以实现并发</p>
-</blockquote>
-<h2 id="并行"><a href="#并行" class="headerlink" title="并行"></a>并行</h2><p>指同一时刻有多条指令再多个处理器上同时执行，并行必须要依赖于多个处理器，不论宏观上还是微观上多个线程都是在同一时刻一起执行的。</p>
-<blockquote>
-<p>只能在多处理器系统中存在，如果计算机处理器只有一个核就不可能实现并行</p>
-</blockquote>
-<h2 id="多线程使用场景"><a href="#多线程使用场景" class="headerlink" title="多线程使用场景"></a>多线程使用场景</h2><p>在一个程序进程中，有些操作是比较耗时或需要等待的，如：</p>
-<ul>
-<li>等待数据库的查询结果的返回</li>
-<li>等待网页结果的响应</li>
-</ul>
-<p><strong>使用单线程</strong><br>处理器必须要等到这些操作完成之后才能继续往下执行其他操作，而这个线程在等待的过程中，处理器明显是可以用来执行其他的操作的</p>
-<p><strong>使用多线程</strong><br>处理器就可以在某个线程等待时，去执行其他的线程，从而从整体上提高执行效率</p>
-<h2 id="Python-实现多线程"><a href="#Python-实现多线程" class="headerlink" title="Python 实现多线程"></a>Python 实现多线程</h2><p>在 <code>Python</code> 中，实现多线程的模块叫做 <code>threading</code> 是 <code>Python</code> 自带的模块</p>
-<h2 id="加锁保护"><a href="#加锁保护" class="headerlink" title="加锁保护"></a>加锁保护</h2><p>往往为了保证数据的结果的准确性，某个线程在对数据进程操作钱，需要先加锁，这样其他的线程发现被加锁之后，就无法继续向下执行，会一直等待锁被释放，只有加锁的线程把锁释放了，其他的线程才能继续加锁并对数据做修改，修改完了再释放锁。</p>
-<p>这样就可以确保同一时间只有一个线程操作数据，防止多个线程同时对数据执行修改，产生错误结果。</p>
-<p><code>GIL</code>  全称为 <code>Global Interpreter Lock</code>，译为「全局解释器锁」</p>
-<p>在 Python 多线程下，每个线程的执行方式如下：</p>
-<ul>
-<li>获取 GIL</li>
-<li>执行对应线程的代码</li>
-<li>释放 GIL</li>
-</ul>
-<p>The end</p>
+          <h2 id="查找单个-FindString"><a href="#查找单个-FindString" class="headerlink" title="查找单个 FindString"></a>查找单个 FindString</h2><p>从一个字符串中精确查找</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> text  = <span class="string">`</span></span><br><span class="line"><span class="string">this is email 123465@qq.cm</span></span><br><span class="line"><span class="string">email 11111@gmail.com</span></span><br><span class="line"><span class="string">email is 22222@sina.com</span></span><br><span class="line"><span class="string">email bing@sina.cn</span></span><br><span class="line"><span class="string">test@abc.com.cn</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    compile := regexp.MustCompile(<span class="string">"bing@sina.cn"</span>)</span><br><span class="line">    match := compile.FindString(text)</span><br><span class="line">    fmt.Println(match)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">bing@sina.cn</span><br></pre></td></tr></table></figure>
+<p>正则匹配一个</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">compile := regexp.MustCompile(<span class="string">"[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+"</span>)</span><br><span class="line">match := compile.FindString(text)</span><br><span class="line">fmt.Println(match)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line"><span class="number">123465</span>@qq.cm</span><br></pre></td></tr></table></figure>
+<p>如果正则内不想使用转义符<code>\</code>，也可以使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 查找多个 FindAllString</span><br><span class="line"></span><br><span class="line">```go</span><br><span class="line">compile := regexp.MustCompile(`[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+`)</span><br><span class="line">match := compile.FindAllString(text, -1)</span><br><span class="line">fmt.Println(match)</span><br><span class="line">// 结果</span><br><span class="line">[123465@qq.cm 11111@gmail.com 22222@sina.com bing@sina.cn test@abc.com]</span><br></pre></td></tr></table></figure></p>
+<h2 id="提取匹配-FindAllStringSubmatch"><a href="#提取匹配-FindAllStringSubmatch" class="headerlink" title="提取匹配 FindAllStringSubmatch"></a>提取匹配 FindAllStringSubmatch</h2><p>先用小括号<code>()</code>框住，将要提取的信息</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">compile := regexp.MustCompile(<span class="string">`([a-zA-Z0-9]+)@([a-zA-Z0-9]+)(\.[a-zA-Z0-9]+)`</span>)</span><br><span class="line">match := compile.FindAllStringSubmatch(text, <span class="number">-1</span>)</span><br><span class="line"><span class="keyword">for</span> _, m := <span class="keyword">range</span> match &#123;</span><br><span class="line">    fmt.Println(m)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">[<span class="number">123465</span>@qq.cm <span class="number">123465</span> qq .cm]</span><br><span class="line">[<span class="number">11111</span>@gmail.com <span class="number">11111</span> gmail .com]</span><br><span class="line">[<span class="number">22222</span>@sina.com <span class="number">22222</span> sina .com]</span><br><span class="line">[bing@sina.cn bing sina .cn]</span><br><span class="line">[test@abc.com test abc .com]</span><br></pre></td></tr></table></figure>
+<p>The End!</p>
 
         
       
@@ -327,163 +300,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2020/05/01/06-多进程的基本原理/">06-多进程的基本原理</a>
+          <a class="post-link" href="/2020/05/04/Go-实现广度优先算法/">Go 实现广度优先算法</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2020-05-01
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Python-spider/">Python spider</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="多进程的含义"><a href="#多进程的含义" class="headerlink" title="多进程的含义"></a>多进程的含义</h2><p>进程（Process）</p>
-<ul>
-<li>是具有一定独立功能的程序关于某个数据集合上的一次运行活动</li>
-<li>是系统进行资源分配和调度的一个独立单位</li>
-</ul>
-<p>多进程就是启动多个进程同时运行。</p>
-<h2 id="Python-多进程的优势"><a href="#Python-多进程的优势" class="headerlink" title="Python 多进程的优势"></a>Python 多进程的优势</h2><ol>
-<li><p>由于进程中<code>GIL</code>的存在，Python 中多线程并不能很好的发挥多核优势，一个进程中的多个线程，同一时刻只能有一个线程运行。</p>
-</li>
-<li><p>对于多进程来说，每个进程都有属于自己的<code>GIL</code>，所以多核处理器下，多进程的运行是不受 GIL 的影响的，多进程能更好的发挥多核的优势。</p>
-</li>
-<li><p><code>Python</code>的多进程整体来看是比多线程更有优势，在条件的允许的情况下，能用多进程就尽量用多进程</p>
-</li>
-</ol>
-<p>由于进程是系统进程资源分配和调用的一个独立单位，所以各个进程之间的数据是无法共享的。</p>
-<h2 id="多进程的实现"><a href="#多进程的实现" class="headerlink" title="多进程的实现"></a>多进程的实现</h2><p>Multiprocessing</p>
-<ul>
-<li>Process(进程)</li>
-<li>Queue(队列)</li>
-<li>Semaphore(信号量)</li>
-<li>Pipe(管道)</li>
-<li>Lock(锁)</li>
-<li>Pool(进程池)</li>
-</ul>
-<p>直接使用<code>Process</code>类<br>在<code>multiprocessing</code>中，每个进程都用一个<code>Process</code>类表示</p>
-<p>API 调用：<code>Process([group[, target [, name [, args [, kwargs]]]]])</code></p>
-<ul>
-<li>target 表示调用对象，可以传入方法的名字</li>
-<li>args 表示被调用对象的位置参数元祖<br>比如 target 是函数 func, 他有两个参数 m,n, 那么 args 就传入[m, n]即可</li>
-<li>kwargs 表示调用对象的字典</li>
-<li>name 是别名，相当于给这个进程取个名字</li>
-<li>group 分组</li>
-</ul>
-<p>以下是使用<code>Process</code>类：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># process-01.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process</span><span class="params">(index)</span>:</span></span><br><span class="line">    print(<span class="string">f'Process: <span class="subst">&#123;index&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        p = multiprocessing.Process(target=process, args=(i,))</span><br><span class="line">        p.start()</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜  studay-spider git:(master) ✗ python3 process.py</span><br><span class="line">Process: 1</span><br><span class="line">Process: 2</span><br><span class="line">Process: 0</span><br><span class="line">Process: 3</span><br><span class="line">Process: 4</span><br></pre></td></tr></table></figure>
-<p><code>multiprocessing</code>还提供了几个比较有用的方法：</p>
-<ul>
-<li>通过<code>cpu_count</code>方法，获取当前机器 CPU 的核心数量</li>
-<li>通过<code>active_children</code>方法，获取当前还在运行的所有进程</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># process-02.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process</span><span class="params">(index)</span>:</span></span><br><span class="line">    time.sleep(index)</span><br><span class="line">    print(<span class="string">f'Process: <span class="subst">&#123;index&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        p = multiprocessing.Process(target=process, args=[i])</span><br><span class="line">        p.start()</span><br><span class="line">    print(<span class="string">f'CPU number: <span class="subst">&#123;multiprocessing.cpu_count()&#125;</span>'</span>)</span><br><span class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> multiprocessing.active_children():</span><br><span class="line">        print(<span class="string">f'Child process name: <span class="subst">&#123;p.name&#125;</span> id: <span class="subst">&#123;p.pid&#125;</span>'</span>)</span><br><span class="line">    print(<span class="string">'Process Ended'</span>)</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜  studay-spider git:(master) ✗ python3 process-02.py Process: 0</span><br><span class="line">CPU number: 4</span><br><span class="line">Child process name: Process-2 id: 44432</span><br><span class="line">Child process name: Process-4 id: 44434</span><br><span class="line">Child process name: Process-5 id: 44435</span><br><span class="line">Child process name: Process-3 id: 44433</span><br><span class="line">Process Ended</span><br><span class="line">Process: 1</span><br><span class="line">Process: 2</span><br><span class="line">Process: 3</span><br><span class="line">Process: 4</span><br></pre></td></tr></table></figure>
-<p>继承 <code>Process</code> 类</p>
-<p>创建进程的方式不止一种，也可以像线程 Thread 一样来通过继承的方式创建一个进程类，<br>进程的基本操作在子类的 <code>run</code> 方法中实现即可。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># process-03.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyProcess</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, loop)</span>:</span></span><br><span class="line">        Process.__init__(self)</span><br><span class="line">        self.loop = loop</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> count <span class="keyword">in</span> range(self.loop):</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">            print(<span class="string">f'Pid: <span class="subst">&#123;self.pid&#125;</span> LoopCount: <span class="subst">&#123;count&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, <span class="number">5</span>):</span><br><span class="line">        p = MyProcess(i)</span><br><span class="line">        p.start()</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜  studay-spider git:(master) ✗ python3 process-03.py</span><br><span class="line">Pid: 45236 LoopCount: 0</span><br><span class="line">Pid: 45237 LoopCount: 0</span><br><span class="line">Pid: 45238 LoopCount: 0</span><br><span class="line">Pid: 45236 LoopCount: 1</span><br><span class="line">Pid: 45237 LoopCount: 1</span><br><span class="line">Pid: 45238 LoopCount: 1</span><br><span class="line">Pid: 45237 LoopCount: 2</span><br><span class="line">Pid: 45238 LoopCount: 2</span><br><span class="line">Pid: 45238 LoopCount: 3</span><br></pre></td></tr></table></figure>
-<h3 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h3><p>如果一个进程被设置为守护进程，当父进程结束后，子进程会自动被终止，可以通过设置 <code>daemon</code> 属性来控制是否为守护进程。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 守护进程</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyProcess</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, loop)</span>:</span></span><br><span class="line">        Process.__init__(self)</span><br><span class="line">        self.loop = loop</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> count <span class="keyword">in</span> range(self.loop):</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">            print(<span class="string">f'Pid: <span class="subst">&#123;self.pid&#125;</span> LoopCount: <span class="subst">&#123;count&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, <span class="number">5</span>):</span><br><span class="line">        p = MyProcess(i)</span><br><span class="line">        p.daemon = <span class="keyword">True</span></span><br><span class="line">        p.start()</span><br><span class="line">print(<span class="string">'Main Process ended'</span>)</span><br></pre></td></tr></table></figure>
-<p>运行结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜  studay-spider git:(master) ✗ python3 process-04.py</span><br><span class="line">Main Process ended</span><br></pre></td></tr></table></figure>
-<h3 id="进程等待"><a href="#进程等待" class="headerlink" title="进程等待"></a>进程等待</h3><p>让所有子进程都执行完了然后再结束，只需要加入<code>join</code>方法即可，示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, <span class="number">5</span>):</span><br><span class="line">        p = MyProcess(i)</span><br><span class="line">        p.daemon = <span class="keyword">True</span></span><br><span class="line">        p.start()</span><br><span class="line">        <span class="comment"># 进程等待</span></span><br><span class="line">        p.join()</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜  studay-spider git:(master) ✗ python3 process-04.py</span><br><span class="line">Pid: 46609 LoopCount: 0</span><br><span class="line">Pid: 46609 LoopCount: 1</span><br><span class="line">Pid: 46613 LoopCount: 0</span><br><span class="line">Pid: 46613 LoopCount: 1</span><br><span class="line">Pid: 46613 LoopCount: 2</span><br><span class="line">Pid: 46616 LoopCount: 0</span><br><span class="line">Pid: 46616 LoopCount: 1</span><br><span class="line">Pid: 46616 LoopCount: 2</span><br><span class="line">Pid: 46616 LoopCount: 3</span><br><span class="line">Main Process ended</span><br></pre></td></tr></table></figure>
-<p>改写后：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, <span class="number">5</span>):</span><br><span class="line">        p = MyProcess(i)</span><br><span class="line">        p.daemon = <span class="keyword">True</span></span><br><span class="line">        p.start()</span><br><span class="line">        <span class="comment"># 进程等待</span></span><br><span class="line">        p.join(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜  studay-spider git:(master) ✗ python3 process-04.py</span><br><span class="line">Pid: 46662 LoopCount: 0</span><br><span class="line">Pid: 46662 LoopCount: 1</span><br><span class="line">Pid: 46663 LoopCount: 0</span><br><span class="line">Pid: 46663 LoopCount: 1</span><br><span class="line">Pid: 46667 LoopCount: 0</span><br><span class="line">Main Process ended</span><br></pre></td></tr></table></figure>
-<h3 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程"></a>终止进程</h3><p>终止进程不止有守护进程这一种做法，通过<code>terminate</code>方法来终止某个子进程，还可以通过<code>is_alive</code>方法半盘进程是否还在运行，</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 终止进程</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'Starting'</span>)</span><br><span class="line">    time.sleep(<span class="number">5</span>)</span><br><span class="line">    print(<span class="string">'Finished'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    p = multiprocessing.Process(target=process)</span><br><span class="line">    print(<span class="string">'Before:'</span>, p, p.is_alive())</span><br><span class="line"></span><br><span class="line">    p.start()</span><br><span class="line">    print(<span class="string">'During:'</span>, p, p.is_alive())</span><br><span class="line"></span><br><span class="line">    p.terminate()</span><br><span class="line">    print(<span class="string">'Terminate:'</span>, p, p.is_alive())</span><br><span class="line"></span><br><span class="line">    p.join()</span><br><span class="line">    print(<span class="string">'Joined:'</span>, p, p.is_alive())</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜  studay-spider git:(master) ✗ python3 process-05.py</span><br><span class="line">Before: &lt;Process(Process-1, initial)&gt; False</span><br><span class="line">During: &lt;Process(Process-1, started)&gt; True</span><br><span class="line">Terminate: &lt;Process(Process-1, started)&gt; True</span><br><span class="line">Joined: &lt;Process(Process-1, stopped[SIGTERM])&gt; False</span><br></pre></td></tr></table></figure>
-<h3 id="进程互斥锁"><a href="#进程互斥锁" class="headerlink" title="进程互斥锁"></a>进程互斥锁</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Lock</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进程互斥锁</span></span><br><span class="line"></span><br><span class="line">看代码：</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyProcess</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, loop, lock)</span>:</span></span><br><span class="line">        Process.__init__(self)</span><br><span class="line">        self.loop = loop</span><br><span class="line">        self.lock = lock</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> count <span class="keyword">in</span> range(self.loop):</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">            <span class="comment"># self.lock.acquire()</span></span><br><span class="line">            print(<span class="string">f'Pid: <span class="subst">&#123;self.pid&#125;</span> LoopCount: <span class="subst">&#123;count&#125;</span>'</span>)</span><br><span class="line">            <span class="comment"># self.lock.release()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    lock = Lock()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, <span class="number">5</span>):</span><br><span class="line">        p = MyProcess(i, lock)</span><br><span class="line">        p.start()</span><br></pre></td></tr></table></figure>
-<p>有时输出的结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Pid: 48275 LoopCount: 0Pid: 48276 LoopCount: 0</span><br><span class="line"></span><br><span class="line">Pid: 48277 LoopCount: 0</span><br><span class="line">Pid: 48275 LoopCount: 1Pid: 48276 LoopCount: 1</span><br><span class="line"></span><br><span class="line">Pid: 48277 LoopCount: 1</span><br><span class="line">Pid: 48276 LoopCount: 2</span><br><span class="line">Pid: 48277 LoopCount: 2</span><br></pre></td></tr></table></figure>
-<p>如果能保证多个进程期间的任一时间只能一个进程输出，其他进程等待，等刚才那个进程输出完毕之后另一个进程再进行输出就不会出现没有换行的现象。</p>
-<p>去掉刚才代码中注释的两行，对其进程加锁，结果如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Pid: 48543 LoopCount: 0</span><br><span class="line">Pid: 48544 LoopCount: 0</span><br><span class="line">Pid: 48545 LoopCount: 0</span><br><span class="line">Pid: 48543 LoopCount: 1</span><br><span class="line">Pid: 48544 LoopCount: 1</span><br><span class="line">Pid: 48545 LoopCount: 1</span><br><span class="line">Pid: 48544 LoopCount: 2</span><br><span class="line">Pid: 48545 LoopCount: 2</span><br><span class="line">Pid: 48545 LoopCount: 3</span><br></pre></td></tr></table></figure>
-<h3 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h3><p><code>信号量</code>是进程同步过程中一个比较重要的角色，可以控制临界资源的数量，实现多个进程同时访问共享资源，限制进程的并发量</p>
-<p>可以用 <code>multiprocessing</code> 库中的 <code>Semaphore</code> 来实现信号量：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Semaphore, Lock, Queue</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">buffer = Queue(<span class="number">10</span>)</span><br><span class="line">empty = Semaphore(<span class="number">2</span>)</span><br><span class="line">full = Semaphore(<span class="number">0</span>)</span><br><span class="line">lock = Lock()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">global</span> buffer, empty, full, lock</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            full.acquire()</span><br><span class="line">            lock.acquire()</span><br><span class="line">            buffer.get()</span><br><span class="line">            print(<span class="string">'Consumer pop an element'</span>)</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">            lock.release()</span><br><span class="line">            empty.release()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">global</span> buffer, empty, full, lock</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            empty.acquire()</span><br><span class="line">            lock.acquire()</span><br><span class="line">            buffer.put(<span class="number">1</span>)</span><br><span class="line">            print(<span class="string">'Producer append an element'</span>)</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">            lock.release()</span><br><span class="line">            full.release()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    p = Producer()</span><br><span class="line">    c = Consumer()</span><br><span class="line">    p.daemon = c.daemon = <span class="keyword">True</span></span><br><span class="line">    p.start()</span><br><span class="line">    c.start()</span><br><span class="line">    p.join()</span><br><span class="line">    c.join()</span><br><span class="line">    print(<span class="string">'Main Process Ended'</span>)</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Producer append an element</span><br><span class="line">Producer append an element</span><br><span class="line">Consumer pop an element</span><br><span class="line">Consumer pop an element</span><br><span class="line">Producer append an element</span><br><span class="line">Producer append an element</span><br><span class="line">Consumer pop an element</span><br><span class="line">Consumer pop an element</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p>队列，即 <code>Queue</code> 让进程共享数据，这里的队列指的是 <code>multiprocessing</code> 里面的 <code>Queue</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Semaphore, Lock, Queue</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment"># 队列</span></span><br><span class="line"></span><br><span class="line">buffer = Queue(<span class="number">10</span>)</span><br><span class="line">empty = Semaphore(<span class="number">2</span>)</span><br><span class="line">full = Semaphore(<span class="number">0</span>)</span><br><span class="line">lock = Lock()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">global</span> buffer, empty, full, lock</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            full.acquire()</span><br><span class="line">            lock.acquire()</span><br><span class="line">            buffer.get()</span><br><span class="line">            print(<span class="string">'Consumer pop an element'</span>)</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">            lock.release()</span><br><span class="line">            empty.release()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">global</span> buffer, empty, full, lock</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            empty.acquire()</span><br><span class="line">            lock.acquire()</span><br><span class="line">            num = random()</span><br><span class="line">            print(<span class="string">f'Producer put <span class="subst">&#123;num&#125;</span>'</span>)</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">            lock.release()</span><br><span class="line">            full.release()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    p = Producer()</span><br><span class="line">    c = Consumer()</span><br><span class="line">    p.daemon = c.daemon = <span class="keyword">True</span></span><br><span class="line">    p.start()</span><br><span class="line">    c.start()</span><br><span class="line">    p.join()</span><br><span class="line">    c.join()</span><br><span class="line">    print(<span class="string">'Main Process Ended'</span>)</span><br></pre></td></tr></table></figure>
-<p>结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Producer put 0.2183099559744145</span><br><span class="line">Producer put 0.20124931823006031</span><br></pre></td></tr></table></figure>
-<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>可以理解为两个进程之间通信的通道，可以是「单向」的，即<code>half-duplex</code>:一个进程负责发消息，另一个进程负责收消息。</p>
-<p>也可以是「双向」的<code>duplex</code>，即互相收发消息，默认声明 <code>Pipe</code> 对象是双向管道，</p>
-<p>如果要创建单向管道，可以在初始化的时候传入 <code>deplex</code> 参数为 <code>False</code> </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Pipe</span><br><span class="line"></span><br><span class="line"><span class="comment"># 管道</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, pipe)</span>:</span></span><br><span class="line">        Process.__init__(self)</span><br><span class="line">        self.pipe = pipe</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">f'Producer Received: <span class="subst">&#123;self.pipe.recv()&#125;</span>'</span>)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    pipe = Pipe()</span><br><span class="line">    p = Producer(pipe[<span class="number">0</span>])</span><br><span class="line">    c = Producer(pipe[<span class="number">1</span>])</span><br><span class="line">    p.daemon = c.daemon = <span class="keyword">True</span></span><br><span class="line">    p.start()</span><br><span class="line">    c.start()</span><br><span class="line">    p.join()</span><br><span class="line">    c.join()</span><br><span class="line">    print(<span class="string">'Main Process Ended'</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="进程池"><a href="#进程池" class="headerlink" title="进程池"></a>进程池</h3><p>假如有 10000 个任务，每个任务需要启动一个进程来执行，并且一个进程运行完毕之后要紧接着启动下一个进程，同时还需要控制进程的并发数量，不能并发太高，不然 CPU 处理不过来（如果同时运行的进程能维持在一个最高恒定值当然利用率是最高的），</p>
-<p>那么我们该如何来实现这个需求呢？</p>
-<p>进程池即 <code>multiprocessing</code> 中的 <code>Pool</code>，可以提供指定数量的进程，供用户调用，当有新的请求提交到 poll 中时，</p>
-<ul>
-<li>如果池还没有满，就会创建一个新的进程用来执行该请求</li>
-<li>如果池中进程数已达到规定最大值，那么该请求就会等待直到池中有进程结束，才会创建新的进程来执行它。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function</span><span class="params">(index)</span>:</span></span><br><span class="line">    print(<span class="string">f'Start process: <span class="subst">&#123;index&#125;</span>'</span>)</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    print(<span class="string">f'End process <span class="subst">&#123;index&#125;</span>'</span>,)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    pool = Pool(processes=<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">        pool.apply_async(function, args=(i,))</span><br><span class="line">    print(<span class="string">'Main Process started'</span>)</span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br><span class="line">    print(<span class="string">'Main Process ended'</span>)</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜  studay-spider git:(master) ✗ python3 pool.py</span><br><span class="line">Main Process started</span><br><span class="line">Start process: 0</span><br><span class="line">Start process: 1</span><br><span class="line">Start process: 2</span><br><span class="line">End process 0</span><br><span class="line">End process 1</span><br><span class="line">End process 2</span><br><span class="line">Start process: 3</span><br><span class="line">End process 3</span><br><span class="line">Main Process ended</span><br></pre></td></tr></table></figure>
-<p><code>map</code> 方法的使用：</p>
-<ul>
-<li>第一个参数：是启动的进程对应的执行方法</li>
-<li>第二个参数：一个可迭代对象，其中的每个元素会被传递给这个可执行方法</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.error</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">scrape</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        urllib.request.urlopen(url)</span><br><span class="line">        print(<span class="string">f'URL <span class="subst">&#123;url&#125;</span> Scraped'</span>)</span><br><span class="line">    <span class="keyword">except</span> (urllib.error.HTTPError, urllib.error.URLError):</span><br><span class="line">        print(<span class="string">f'URL <span class="subst">&#123;url&#125;</span> not Scraped'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    pool = Pool(processes=<span class="number">3</span>)</span><br><span class="line">    urls = [</span><br><span class="line">        <span class="string">'https://www.baidu.com'</span>,</span><br><span class="line">        <span class="string">'http://www.meituan.com'</span>,</span><br><span class="line">        <span class="string">'http://blog.csdn.net/'</span>,</span><br><span class="line">        <span class="string">'http://xyzxyz.com'</span></span><br><span class="line">    ]</span><br><span class="line">    pool.map(scrape, urls)</span><br><span class="line">    pool.close()</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜  studay-spider git:(master) ✗ python3 map.py</span><br><span class="line">URL http://blog.csdn.net/ Scraped</span><br><span class="line">URL http://xyzxyz.com Scraped</span><br><span class="line">URL https://www.baidu.com Scraped</span><br><span class="line">URL http://www.meituan.com Scraped</span><br></pre></td></tr></table></figure>
-<p>The end</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/05/01/Invent-Your-Own-Computer-Games-with-Python/">Invent Your Own Computer Games with Python</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-05-01
+          2020-05-04
         </span>
         
         
@@ -499,201 +322,9 @@
         
         
 
-        
-          <h2 id="Invent-Your-Own-Computer-Games-with-Python"><a href="#Invent-Your-Own-Computer-Games-with-Python" class="headerlink" title="Invent Your Own Computer Games with Python"></a>Invent Your Own Computer Games with Python</h2><p>使用 Python 制作自己的小游戏，英文教程<img src="./Invent Your Own Computer Games with Python.pdf" alt="Invent Your Own Computer Games with Python.pdf"></p>
-<p>原文地址<a href="https://www.dbooks.org/invent-your-own-computer-games-with-python-1503212300/" target="_blank" rel="noopener">https://www.dbooks.org/invent-your-own-computer-games-with-python-1503212300/</a></p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/04/27/学习Python的十本好书/">学习Python的十本好书</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-04-27
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Essays/">Essays</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <blockquote>
-<p>Python is one of the best languages to learn first. And there’s no better way to delve deep into a new language than by reading a good book. These ten books on Python will move you from someone who has no experience programming to being a Python expert.</p>
-</blockquote>
-<p>以下是原文链接：<a href="https://x-team.com/blog/essential-python-resources/" target="_blank" rel="noopener">https://x-team.com/blog/essential-python-resources</a></p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/04/26/Markdown-语法学习文档/">Markdown 语法学习文档</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-04-26
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p><code>Markdown</code>是一种格式化文本的简单方法，在任何设备上看起来都很漂亮。它没有做任何花哨的东西。推荐这个网站学习其写法<code>https://commonmark.org/help/</code></p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/04/24/数组-为什么大多编程语下标都是从0开始/">数组:为什么大多编程语下标都是从0开始?</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-04-24
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/数据结构与算法/">数据结构与算法</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><em>数组（Array）</em>：一种线性表数据结构，用一组连续的内存空间，存储一组具有相同数据类型的数据。</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/04/21/Linux中-2-1-是什么/">Linux中 2>&1 是什么</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-04-21
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
         
           
         
-
-        
-          <h2 id="标准输入输出"><a href="#标准输入输出" class="headerlink" title="标准输入输出"></a>标准输入输出</h2><p>Linux 中三种标准输入输出：</p>
-<ul>
-<li>STDIN：标准输入，默认从键盘读取信息</li>
-<li>STDOUT：标准输出，默认将输出结果输出至终端</li>
-<li>STDERR：标准的错误信息，默认也会显示在终端上</li>
-</ul>
-<p>由于<code>STDOUT</code>与<code>STDERR</code>都会默认显示在终端上，为了区分二者的信息，就有了编号的0，1，2的定义，用<code>1</code>表示<code>STDOUT</code>，<code>2</code>表示<code>STDERR</code>，<code>0</code>表示：<code>STDIN</code>。</p>
-<h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h2><p><code>/tmp/test.sh &gt; /tmp/test.log 2&gt;&amp;1</code>，这里<code>2&gt;&amp;1</code>的意思就是将标准错误也输出到标准输出当中。</p>
-          <div class="read-more">
-            <a href="/2020/04/21/Linux中-2-1-是什么/" class="read-more-link">阅读更多</a>
-          </div>
-        
       
     </div>
 
@@ -709,20 +340,14 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2020/04/21/OpenCV-擦除图片虚线与直线/">OpenCV 擦除图片虚线与直线</a>
+          <a class="post-link" href="/2020/05/04/Go-http-标准库/">Go-http 标准库</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2020-04-21
+          2020-05-04
         </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/OpenCV/">OpenCV</a>
-            
-          </span>
         
         
       </div>
@@ -735,18 +360,11 @@
     <div class="post-content">
       
         
+        
+
         
           
         
-
-        
-          <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>分享一下最近和同事一起的研究成果（使用 OpenCV 查找虚线并擦除的结果），原因是竖线会导致我司 OCR 引擎的识别错误。</p>
-<p>效果如下：</p>
-<img src="/2020/04/21/OpenCV-擦除图片虚线与直线/line.png">
-          <div class="read-more">
-            <a href="/2020/04/21/OpenCV-擦除图片虚线与直线/" class="read-more-link">阅读更多</a>
-          </div>
-        
       
     </div>
 
@@ -762,60 +380,18 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2020/04/15/Laravel-下常用-Redis-类型写法应用/">Laravel 下常用 Redis 类型写法应用</a>
+          <a class="post-link" href="/2020/05/04/Go-通道/">Go-通道</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2020-04-15
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p><a href="https://redis.io/commands/hmset" target="_blank" rel="noopener">https://redis.io/commands/hmset</a></p>
-<p><a href="https://segmentfault.com/a/1190000009695841#item-3-2" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009695841#item-3-2</a></p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/04/14/MongoDB-常用SQL写法/">MongoDB 常用SQL写法</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-04-14
+          2020-05-04
         </span>
         
           <span class="post-category">
             
-              <a href="/categories/NeoX/">NeoX</a>
+              <a href="/categories/Go/">Go</a>
             
           </span>
         
@@ -833,10 +409,353 @@
         
 
         
-          <h2 id="增"><a href="#增" class="headerlink" title="增"></a>增</h2><h2 id="删"><a href="#删" class="headerlink" title="删"></a>删</h2><h2 id="改"><a href="#改" class="headerlink" title="改"></a>改</h2><h2 id="查"><a href="#查" class="headerlink" title="查"></a>查</h2><ul>
-<li>查询某个字段是否存在</li>
+          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>通道（channel）是用来传递数据的一个数据结构。</p>
+<p>通道可用于两个 goroutine 之间通过传递一个指定类型的值来同步运行和通讯。</p>
+<p>操作符 &lt;- 用于指定通道的方向，发送或接收。如果未指定方向，则为双向通道。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明一个通道</span></span><br><span class="line">c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 把 1 和 A 发送到通道</span></span><br><span class="line">c &lt;- <span class="number">1</span></span><br><span class="line">c &lt;- <span class="string">'A'</span></span><br></pre></td></tr></table></figure>
+<p>从通道中获取</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        n := &lt;-c</span><br><span class="line">        fmt.Println(n)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br><span class="line">c &lt;- <span class="number">1</span></span><br><span class="line">c &lt;- <span class="string">'A'</span></span><br><span class="line">time.Sleep(time.Millisecond)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">65</span></span><br></pre></td></tr></table></figure>
+<p>把匿名函数拆出来写，把 <code>chan</code> 作为参数</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">(c <span class="keyword">chan</span> <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        n := &lt;-c</span><br><span class="line">        fmt.Println(n)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">go</span> worker(c)</span><br><span class="line">    c &lt;- <span class="number">1</span></span><br><span class="line">    c &lt;- <span class="string">'A'</span></span><br><span class="line">    time.Sleep(time.Millisecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建10个 <code>chan</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">(id <span class="keyword">int</span>, c <span class="keyword">chan</span> <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        fmt.Printf(<span class="string">"work %d received %c\n"</span>, id, &lt;-c)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> channels [<span class="number">10</span>] <span class="keyword">chan</span> <span class="keyword">int</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">        channels[i] = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">        <span class="keyword">go</span> worker(i, channels[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">        channels[i] &lt;- <span class="string">'a'</span> + i</span><br><span class="line">    &#125;</span><br><span class="line">    time.Sleep(time.Millisecond)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">work <span class="number">3</span> received d</span><br><span class="line">work <span class="number">1</span> received b</span><br><span class="line">work <span class="number">2</span> received c</span><br><span class="line">work <span class="number">7</span> received h</span><br><span class="line">work <span class="number">0</span> received a</span><br><span class="line">work <span class="number">8</span> received i</span><br><span class="line">work <span class="number">6</span> received g</span><br><span class="line">work <span class="number">5</span> received f</span><br><span class="line">work <span class="number">9</span> received j</span><br><span class="line">work <span class="number">4</span> received e</span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li><code>chan</code> 也可以做为返回结果</li>
+<li>Go 通过 <code>range</code> 关键字来实现遍历读取到的数据，类似于与数组或切片</li>
+<li><code>v, ok := &lt;-ch</code><br>如果通道接收不到数据后 ok 就为 false，这时通道就可以使用 close() 函数来关闭。</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># </span></span><br><span class="line">db.getCollection('test').find(&#123;name:&#123;$exists:false&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>The End!</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/05/04/Go-并发/">Go-并发</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-04
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Go/">Go</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>Go 语言支持并发，我们只需要通过 go 关键字来开启 goroutine 即可。</p>
+<p>goroutine 是轻量级线程，goroutine 的调度是由 Golang 运行时进行管理的。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">say</span><span class="params">(m <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        fmt.Printf(<span class="string">"Hello from goroutine %d\n"</span>, m)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">go</span> say(i)</span><br><span class="line">    &#125;</span><br><span class="line">    time.Sleep(time.Millisecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>换一种匿名函数写法</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span> <span class="params">(m <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">            <span class="keyword">for</span> &#123;</span><br><span class="line">                fmt.Printf(<span class="string">"Hello from goroutine %d\n"</span>, m)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;(i)</span><br><span class="line">    &#125;</span><br><span class="line">    time.Sleep(time.Millisecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>任何函数只需加上 <code>go</code> 就能送给调度器运行</li>
+<li>不需要在定义时区分是否是异步函数</li>
+<li>调度器在合适的点进行切换</li>
+<li>使用 <code>-race</code> 如：<code>go run -race goroutine.go</code> 来检测数据访问冲突</li>
+</ul>
+<p>goroutine 可能切换的点</p>
+<ul>
+<li><code>I/O, select</code></li>
+<li><code>channel</code></li>
+<li><code>runtime.Goshed()</code></li>
+<li>函数调用（有时）</li>
+<li>等待锁</li>
+</ul>
+<h2 id="Python-中协程"><a href="#Python-中协程" class="headerlink" title="Python 中协程"></a>Python 中协程</h2><ul>
+<li>使用 <code>yield</code> 关键字实现协程</li>
+<li>Python 3.5 加入了 <code>async def</code> 对协程原生支持</li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/05/04/Go-错误处理/">Go-错误处理</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-04
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/05/04/Go-接口/">Go-接口</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-04
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/05/04/Go-结构体/">Go-结构体</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-04
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/05/03/Go-集合/">Go-集合</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-03
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Go/">Go</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>集合（Map）：Map 是一种无序的键值对的集合</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">m := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">    <span class="string">"name"</span>:   <span class="string">"bing"</span>,</span><br><span class="line">    <span class="string">"course"</span>: <span class="string">"golang"</span>,</span><br><span class="line">    <span class="string">"site"</span>:   <span class="string">"codingbing"</span>,</span><br><span class="line">&#125;</span><br><span class="line">m2 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line"><span class="keyword">var</span> m3 <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span></span><br><span class="line"></span><br><span class="line">fmt.Println(m, m2, m3)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line"><span class="keyword">map</span>[name:bing course:golang site:codingbing] <span class="keyword">map</span>[] <span class="keyword">map</span>[]</span><br></pre></td></tr></table></figure>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> k, v := <span class="keyword">range</span> m &#123;</span><br><span class="line">    fmt.Println(<span class="string">"k,v="</span>, k, v)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">k,v= name bing</span><br><span class="line">k,v= course golang</span><br><span class="line">k,v= site codingbing</span><br></pre></td></tr></table></figure>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>获取某个 <code>key</code> 的值</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">course, ok := m[<span class="string">"course"</span>]</span><br><span class="line">fmt.Println(course, ok)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">golang <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>判断 <code>key</code> 是否存在</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> caurse, ok := m[<span class="string">"caurse"</span>]; ok &#123;</span><br><span class="line">    fmt.Println(caurse)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"key does not exist"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">key does not exist</span><br></pre></td></tr></table></figure>
+<p>删除某个 <code>key</code> 的值</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">delete</span>(m, <span class="string">"name"</span>)</span><br><span class="line">name, ok := m[<span class="string">"name"</span>]</span><br><span class="line">fmt.Println(name, ok)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line"> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>创建：<code>make(map[string]int)</code></li>
+<li>使用 <code>range</code> 遍历 <code>key</code>，或者遍历 <code>key,value</code> 对（不保证遍历顺序）</li>
+<li>使用 <code>len</code> 获得元素个数</li>
+<li>获取元素：<code>m[key]</code></li>
+<li><code>key</code> 不存在时，获得 <code>value</code> 类型的初始值</li>
+<li>用 <code>value,ok := m[key]</code> 来判断 <code>key</code> 是否存在</li>
+<li>用 <code>delete</code> 删除一个 <code>key</code></li>
+</ul>
+<p><code>map 的 key</code></p>
+<ul>
+<li>map 使用哈希表，必须可以比较相等</li>
+<li>除了 slice、map、function 的内建类型都可以作为 key</li>
+<li>Struct 类型不包含上述字段，也可作为 key</li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/05/03/Go-切片/">Go-切片</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-03
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Go/">Go</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="定义切片"><a href="#定义切片" class="headerlink" title="定义切片"></a>定义切片</h2><p>切片（Slice）：Go 语言切片是对数组的抽象。</p>
+<p>Go 数组的长度不可改变，但是提供了一种灵活，功能强悍的内置类型切片(“动态数组”),与数组相比切片的长度是不固定的，可以追加元素，在追加时可能使切片的容量增大。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s []<span class="keyword">int</span></span><br><span class="line">fmt.Printf(<span class="string">"value=%v len=%d cap=%d\n"</span>, s, <span class="built_in">len</span>(s), <span class="built_in">cap</span>(s))</span><br><span class="line"></span><br><span class="line">s1 := []<span class="keyword">int</span>&#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>&#125;</span><br><span class="line">fmt.Printf(<span class="string">"value=%v len=%d cap=%d\n"</span>, s1, <span class="built_in">len</span>(s1), <span class="built_in">cap</span>(s1))</span><br><span class="line"></span><br><span class="line">s2 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">16</span>)</span><br><span class="line">fmt.Printf(<span class="string">"value=%v len=%d cap=%d\n"</span>, s2, <span class="built_in">len</span>(s2), <span class="built_in">cap</span>(s2))</span><br><span class="line"></span><br><span class="line">s3 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">10</span>, <span class="number">32</span>)</span><br><span class="line">fmt.Printf(<span class="string">"value=%v len=%d cap=%d\n"</span>, s3, <span class="built_in">len</span>(s3), <span class="built_in">cap</span>(s3))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">value=[] <span class="built_in">len</span>=<span class="number">0</span> <span class="built_in">cap</span>=<span class="number">0</span></span><br><span class="line">value=[<span class="number">2</span> <span class="number">4</span> <span class="number">6</span> <span class="number">8</span>] <span class="built_in">len</span>=<span class="number">4</span> <span class="built_in">cap</span>=<span class="number">4</span></span><br><span class="line">value=[<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>] <span class="built_in">len</span>=<span class="number">16</span> <span class="built_in">cap</span>=<span class="number">16</span></span><br><span class="line">value=[<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>] <span class="built_in">len</span>=<span class="number">10</span> <span class="built_in">cap</span>=<span class="number">32</span></span><br></pre></td></tr></table></figure>
+<p>对数组进行切片</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    arr := [...]<span class="keyword">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>&#125;</span><br><span class="line">    fmt.Println(<span class="string">"arr[2:6] ="</span>, arr[<span class="number">2</span>:<span class="number">6</span>])</span><br><span class="line">    fmt.Println(<span class="string">"arr[:6] ="</span>, arr[:<span class="number">6</span>])</span><br><span class="line">    fmt.Println(<span class="string">"arr[2:] ="</span>, arr[<span class="number">2</span>:])</span><br><span class="line">    fmt.Println(<span class="string">"arr[:] ="</span>, arr[:])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">arr[<span class="number">2</span>:<span class="number">6</span>] = [<span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span>]</span><br><span class="line">arr[:<span class="number">6</span>] = [<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span>]</span><br><span class="line">arr[<span class="number">2</span>:] = [<span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span>]</span><br><span class="line">arr[:] = [<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span>]</span><br></pre></td></tr></table></figure>
+<p><code>Slice</code> 本身没有数据，是对底层 <code>array</code> 的一个 view</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">arr := [...]<span class="keyword">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>&#125;</span><br><span class="line">s := arr[<span class="number">2</span>:<span class="number">6</span>]</span><br><span class="line">s[<span class="number">0</span>] = <span class="number">10</span></span><br><span class="line">fmt.Println(arr)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">[<span class="number">0</span> <span class="number">1</span> <span class="number">10</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">s := arr[<span class="number">2</span>:<span class="number">6</span>]</span><br><span class="line">s = s[:<span class="number">3</span>]</span><br><span class="line">s = s[<span class="number">1</span>:]</span><br><span class="line">s = arr[:]</span><br><span class="line">fmt.Println(s)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">[<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="Slice-扩展"><a href="#Slice-扩展" class="headerlink" title="Slice 扩展"></a>Slice 扩展</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    arr := [...]<span class="keyword">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">    s1 := arr[<span class="number">2</span>:<span class="number">6</span>]</span><br><span class="line">    s2 := s1[<span class="number">3</span>:<span class="number">5</span>]</span><br><span class="line">    fmt.Printf(<span class="string">"s1=%v s2=%v\n"</span>, s1, s2)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结束</span></span><br><span class="line">s1=[<span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span>] s2=[<span class="number">5</span> <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>slice</code> 可以向后扩展，不可以向前扩展</li>
+<li><code>s[i]</code> 不可以超越<code>len(s)</code>，向后扩展不可以超越底层数组<code>cap(s)</code></li>
+</ul>
+<p>向 <code>slice</code> 添加元素</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">arr := [...]<span class="keyword">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">s1 := arr[<span class="number">2</span>:<span class="number">6</span>]</span><br><span class="line">s2 := s1[<span class="number">3</span>:<span class="number">5</span>]</span><br><span class="line">s3 := <span class="built_in">append</span>(s2, <span class="number">10</span>)</span><br><span class="line">s4 := <span class="built_in">append</span>(s3, <span class="number">11</span>)</span><br><span class="line">s5 := <span class="built_in">append</span>(s4, <span class="number">12</span>)</span><br><span class="line">fmt.Printf(<span class="string">"s3=%v s4=%v s5=%v arr=%v"</span>,s3, s4, s5, arr)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">s3=[<span class="number">5</span> <span class="number">6</span> <span class="number">10</span>] s4=[<span class="number">5</span> <span class="number">6</span> <span class="number">10</span> <span class="number">11</span>] s5=[<span class="number">5</span> <span class="number">6</span> <span class="number">10</span> <span class="number">11</span> <span class="number">12</span>] arr=[<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加元素时如果超越 <code>cap</code>，系统会重新分配更大的底层数组</li>
+<li>由于值传递的关系，必须接收 <code>append</code> 的返回值，<code>s=append(s,val)</code></li>
+</ul>
+<h2 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s1 := []<span class="keyword">int</span>&#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>&#125;</span><br><span class="line">s2 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">16</span>)</span><br><span class="line"><span class="built_in">copy</span>(s2, s1)</span><br><span class="line">fmt.Printf(<span class="string">"value=%v len=%d cap=%d\n"</span>, s2, <span class="built_in">len</span>(s2), <span class="built_in">cap</span>(s2))</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">value=[<span class="number">2</span> <span class="number">4</span> <span class="number">6</span> <span class="number">8</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>] <span class="built_in">len</span>=<span class="number">16</span> <span class="built_in">cap</span>=<span class="number">16</span></span><br></pre></td></tr></table></figure>
+<p>删除值为<code>8</code>，代码</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s2 = <span class="built_in">append</span>(s2[:<span class="number">3</span>],s2[<span class="number">4</span>:]...)</span><br><span class="line">fmt.Printf(<span class="string">"value=%v len=%d cap=%d\n"</span>, s2, <span class="built_in">len</span>(s2), <span class="built_in">cap</span>(s2))</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">value=[<span class="number">2</span> <span class="number">4</span> <span class="number">6</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>] <span class="built_in">len</span>=<span class="number">15</span> <span class="built_in">cap</span>=<span class="number">16</span></span><br></pre></td></tr></table></figure>
+<p><code>s2[4:]...</code> 展开这个切片</p>
+<h2 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h2><p>删除 <code>s2</code> 头、尾元素</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s2 = s2[<span class="number">1</span>:]</span><br><span class="line">s2 = s2[:<span class="built_in">len</span>(s2)<span class="number">-1</span>]</span><br><span class="line">fmt.Printf(<span class="string">"value=%v len=%d cap=%d\n"</span>, s2, <span class="built_in">len</span>(s2), <span class="built_in">cap</span>(s2))</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">value=[<span class="number">4</span> <span class="number">6</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>] <span class="built_in">len</span>=<span class="number">13</span> <span class="built_in">cap</span>=<span class="number">15</span></span><br></pre></td></tr></table></figure>
+<p>The End!</p>
 
         
       

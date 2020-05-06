@@ -246,60 +246,18 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2020/02/20/Iterm-下管理-SSH-工具/">Iterm 下管理 SSH 工具</a>
+          <a class="post-link" href="/2020/03/26/Vim-基础篇/">Vim 基础篇</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2020-02-20
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>命令行下<code>ssh</code>登录远程服务器，当服务多起来后，如何管理就是以及快速登录就尤为重要，比如：我们有测试服：<code>tiger</code>、生产：<code>prod</code>，<code>prod</code>又不只一台等等，又是通过证书文件远程登录服务器，总不能将这些登录命令记录到“小本本”上，每次用到去<code>copy</code>吧，太不不科技了。</p>
-<h2 id="开源工具"><a href="#开源工具" class="headerlink" title="开源工具"></a>开源工具</h2><p>地址：<a href="https://github.com/islenbo/autossh" target="_blank" rel="noopener">https://github.com/islenbo/autossh</a></p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/19/Laravel-Query-Builder-一个复杂查询/">Laravel Query Builder 一个复杂查询</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-19
+          2020-03-26
         </span>
         
           <span class="post-category">
             
-              <a href="/categories/Laravel/">Laravel</a>
+              <a href="/categories/Essays/">Essays</a>
             
           </span>
         
@@ -317,8 +275,17 @@
         
 
         
-          <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>Laravel 框架下，在文章列表中附带上前 10 条评论，如何优雅的处理此种场景。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p><a href="https://guojiang.club/cms/detail/3" target="_blank" rel="noopener">https://guojiang.club/cms/detail/3</a></p>
+          <h2 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h2><h3 id="开头"><a href="#开头" class="headerlink" title="开头"></a>开头</h3><ul>
+<li><code>NORMAL</code>模式输入<code>:0</code>或<code>:1</code>，然后<code>Enter</code></li>
+<li><code>NORMAL</code>模式小写<code>gg</code></li>
+</ul>
+<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><ul>
+<li><code>NORMAL</code>模式输入<code>:$</code>，然后<code>Enter</code></li>
+<li><code>NORMAL</code>模式按大写<code>G</code></li>
+<li><code>NORMAL</code>按键<code>shift</code>+<code>g</code></li>
+</ul>
+<p>自己还么有时间总结，分享一篇不错的资料：</p>
+<p><a href="https://github.com/wsdjeg/vim-galore-zh_cn#linux-%E6%88%96%E8%80%85-mac-os" target="_blank" rel="noopener">https://github.com/wsdjeg/vim-galore-zh_cn#linux-%E6%88%96%E8%80%85-mac-os</a></p>
 
         
       
@@ -336,13 +303,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2020/02/19/又一次被这错误坑了/">又一次被这错误坑了</a>
+          <a class="post-link" href="/2020/03/26/Linux-du-命令/">Linux du 命令</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2020-02-19
+          2020-03-26
         </span>
         
           <span class="post-category">
@@ -365,8 +332,26 @@
         
 
         
-          <h2 id="错误现场"><a href="#错误现场" class="headerlink" title="错误现场"></a>错误现场</h2><p>页面<code>500</code>没有错误<code>Log</code>，手动修改<code>index.php</code>捕获异常。</p>
-<h2 id="查看Log"><a href="#查看Log" class="headerlink" title="查看Log"></a>查看Log</h2><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2>
+          <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>以下执行命令，均在如下目录位置执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab <span class="built_in">pwd</span></span><br><span class="line">/usr/<span class="built_in">local</span>/gitlab</span><br></pre></td></tr></table></figure>
+<ul>
+<li>统计当前目录的大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du  -sh</span><br><span class="line">21G     .</span><br></pre></td></tr></table></figure>
+<ul>
+<li>统计当前目录所有下文件和文件夹大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du * -sh</span><br><span class="line">8.0K    docker-compose.yml</span><br><span class="line">20K     gitlab-certs-backup</span><br><span class="line">20G     gitlab-data</span><br><span class="line">16K     gitlab-sh</span><br><span class="line">633M    postgresql-data</span><br><span class="line">3.4M    redis-data</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查找当前目录下一级目录中大小单位在G的目录并排序</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du -h --max-depth=1 |grep G |sort</span><br><span class="line">20G     ./gitlab-data</span><br><span class="line">21G     .</span><br></pre></td></tr></table></figure>
+<p><code>--max-depth=1</code> 限制一级目录，如果单位是<code>T</code>或<code>M</code>，更改参数即可</p>
+<ul>
+<li>查找当前目录下一级目录中大小上M的目录并倒排序</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  gitlab du -h --max-depth=1 |grep <span class="string">'M'</span> |sort -nr</span><br><span class="line">633M    ./postgresql-data</span><br><span class="line">3.4M    ./redis-data</span><br></pre></td></tr></table></figure>
+
         
       
     </div>
@@ -383,171 +368,18 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2020/02/18/opencv-单目标追踪/">opencv 单目标追踪</a>
+          <a class="post-link" href="/2020/03/26/Composer-安装私有包/">Composer 安装私有包</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2020-02-18
+          2020-03-26
         </span>
         
           <span class="post-category">
             
-              <a href="/categories/OpenCV/">OpenCV</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>自动去除纯色背景，自动画框（最小外接矩形）然后将素材提交给机器学习。</p>
-<h2 id="已实现"><a href="#已实现" class="headerlink" title="已实现"></a>已实现</h2><p>今日下午利用零碎时间，写出手动画框单目标跟踪，效果GIF图如下：</p>
-<img src="/2020/02/18/opencv-单目标追踪/follow.gif">
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2>
-          <div class="read-more">
-            <a href="/2020/02/18/opencv-单目标追踪/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/17/2020年的第一天赴公司上班/">2020年的第一天赴公司上班</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-17
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Essays/">Essays</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>自从疫情以来，已在远程办公两周，在这两周期间，本身就让有良好的自控力我，深深习惯了在家里办公，那叫一个爽呼呼尽管稍微有点（晚睡晚起-_-||），But 我会准时出席<code>9:30</code>的例会，按时吃早饭、中饭、偶尔稍微一点吃晚餐。今天是2020年首次进公司上班，以下是一些途中记录的照片。</p>
-<h2 id="途中"><a href="#途中" class="headerlink" title="途中"></a>途中</h2>
-          <div class="read-more">
-            <a href="/2020/02/17/2020年的第一天赴公司上班/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/14/Mac与Linux-使用-scp-文件互相传输/">Mac与Linux 使用 scp 文件互相传输</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-14
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="由远端-Linux-传输到本机-Mac"><a href="#由远端-Linux-传输到本机-Mac" class="headerlink" title="由远端 Linux 传输到本机 Mac"></a>由远端 Linux 传输到本机 Mac</h2><p>命令格式 <code>scp username@remote_ip:remote_folder local_folder</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i ~/.ssh/company/neox/demo-key.pem root@ip:/usr/share/demo.csv ./</span><br></pre></td></tr></table></figure>
-<h2 id="由到本机-Mac-传输到远端-Linux"><a href="#由到本机-Mac-传输到远端-Linux" class="headerlink" title="由到本机 Mac 传输到远端 Linux"></a>由到本机 Mac 传输到远端 Linux</h2><p>命令格式 <code>scp local_file remote_username@remote_ip:remote_folder</code></p>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1: permissions are too open</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added <span class="string">'host'</span> (ECDSA) to the list of known hosts.</span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @</span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">Permissions 0644 <span class="keyword">for</span> <span class="string">'/Users/bing/.ssh/company/neox/prod-neox-aliyun-key.pem'</span> are too open.</span><br><span class="line">It is required that your private key files are NOT accessible by others.</span><br><span class="line">This private key will be ignored.</span><br><span class="line">Load key <span class="string">"/Users/bing/.ssh/company/neox/prod-neox-aliyun-key.pem"</span>: bad permissions</span><br></pre></td></tr></table></figure>
-<p>解决办法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 ~/.ssh/company/neox/prod-neox-aliyun-key.pem</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">chmod 600 ~/.ssh/company/neox/prod-neox-aliyun-key.pem</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/10/李超致兄弟连全体学员、员工、股东的一封信/">李超致兄弟连全体学员、员工、股东的一封信</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-10
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Essays/">Essays</a>
+              <a href="/categories/NeoX/">NeoX</a>
             
           </span>
         
@@ -565,125 +397,51 @@
         
 
         
-          <p>平日里我是一个不刷「抖音」、不刷「微博」、不刷「头条」、偶尔刷刷「人民日报」、微信公众号技术文章，每天沉浸于自个的工作和所关注的那个点的领域，感觉自个不像个活在当下21世纪的。</p>
-<p>今天朋友分享过来一篇文章<a href="https://mp.weixin.qq.com/s/Tcew-SDseA7fzW_e4LivMA" target="_blank" rel="noopener">致兄弟连全体学员、员工、股东的一封信</a>，这是这次「新型冠状病毒疫情」期间更有感触的消息了，身边一位北京老朋友从里面学出来的，自己「北京八维研修学院」、「上海弘烨」干了3年教育，也晓得兄弟连在同行中的体量，他没能挺过这冬天还真是出乎意料。</p>
-<p>从这封信中我读出来了两种味道，一味是：因为疫情问题，如他所说恢复时间根据疫情防控工作情况另行通知，让一直亏损的兄弟连无疑是雪上加霜，导致最终没能挺过来。教育行业的利润怎样是行业中有目共睹的，生源决定命脉「入口」，结果系着生源「出口」。我的孙院长曾这么给我说过，把握住这两口也就把握住了学校。想想不无道理。他从零做到了1000多学员的规模用2年的时间。可谓速度之快。<code>PHP</code>的大环境在18、19年就开始出现下滑趋势，19年尤其不怎么好的情况。同样不好的处境还有我一个上海创业开培训的老同事，机构就先不说，说了你也不晓得。</p>
-<p>二味是：有这么一位义无反馈支持自己的妻子，我想这也应该是他成功的原因吧。</p>
-<p>最后道别兄弟连、保重李超。</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/09/Hexo-docsify-添加-Gitalk/">Hexo docsify 添加 Gitalk</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-09
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="Gitalk"><a href="#Gitalk" class="headerlink" title="Gitalk"></a>Gitalk</h2><p><a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md" target="_blank" rel="noopener">官方地址</a></p>
-<p><a href="https://gitalk.github.io/" target="_blank" rel="noopener">体验地址</a></p>
+          <h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p>我司一个项目这里简称：<code>神居</code>，分为<code>C</code>端（「代号：mooncake」），“平台端”「代号：internal」,<code>B</code>端「代号：agent」，“任务端”「代号：script」，为了保护公司隐私，这里不方便介绍每个项目处理的业务，你只需要知道的是每个代号代表一个独立运行的项目，那么这些项目又如果做到代码的复用（Library/Model）呢，且需要做到每个项目可独立迭代更新。我们现采用的方式就是<code>composer</code>管理私有包的方式。</p>
+<p>这里也有一篇描述<a href="https://barryvanveen.nl/blog/55-installing-a-private-package-with-composer" target="_blank" rel="noopener"><code>Composer</code>安装私有PHP软件包</a>文章，以下我部分步骤翻译自这篇文章。</p>
+<h2 id="Composer安装私有PHP软件包"><a href="#Composer安装私有PHP软件包" class="headerlink" title="Composer安装私有PHP软件包"></a><code>Composer</code>安装私有PHP软件包</h2><p>使用<code>Composer</code>安装私有PHP软件包。首先我们需要在<code>composer.json</code>文件中进行一些额外的配置，然后设置SSH密钥。按照以下3个简单步骤进行操作</p>
+<h3 id="1-指向Git仓库"><a href="#1-指向Git仓库" class="headerlink" title="1. 指向Git仓库"></a>1. 指向Git仓库</h3><p>更新composer.json并添加一个存储库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;repositories&quot;:[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;type&quot;: &quot;vcs&quot;,</span><br><span class="line">        &quot;url&quot;: &quot;git@github.com:barryvanveen/secret.git&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>这里<code>url</code>，可以是<code>gitlab</code>或者其他地址（可别犯傻）。</p>
+<h3 id="2-创建一个SSH密钥"><a href="#2-创建一个SSH密钥" class="headerlink" title="2.创建一个SSH密钥"></a>2.创建一个SSH密钥</h3><p>在要安装软件包的计算机上创建一个SSH密钥，如果感觉自己既要配置<code>gitlab</code>又要配置<code>github</code>等等其他的<code>SSH</code>秘钥，如何共存使用，可以参考我的这篇文章<a href="/2018/12/31/%E9%85%8D%E7%BD%AE%E5%8F%8C%E5%85%AC%E9%92%A5%E5%AE%8C%E6%88%90%E5%90%8C%E6%97%B6%E5%AF%B9-gitee-%E5%92%8C-github-%E7%9A%84%E4%BD%BF%E7%94%A8/">传送门</a>。</p>
+<p>如果您在开发机器上工作，则可能要将SSH密钥添加到GitHub / BitBucket / GitLab帐户。这样就可以访问您帐户有权访问的所有私有存储库。</p>
+<p><a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/" target="_blank" rel="noopener">将SSH密钥添加到GitHub帐户</a><br><a href="https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html#SetupanSSHkey-#installpublickeyStep3.AddthepublickeytoyourBitbucketsettings" target="_blank" rel="noopener">将SSH密钥添加到BitBucket帐户</a><br><a href="https://docs.gitlab.com/ee/gitlab-basics/create-your-ssh-keys.html" target="_blank" rel="noopener">将SSH密钥添加到GitLab帐户</a></p>
+<p>如果要配置部署服务器，则最好配置访问密钥或部署密钥。访问密钥仅提供对单个存储库的访问，因此可以进行更具体的访问管理。</p>
+<p><a href="https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys" target="_blank" rel="noopener">将部署密钥添加到GitHub存储库</a><br><a href="https://confluence.atlassian.com/bitbucket/use-deployment-keys-294486051.html" target="_blank" rel="noopener">将访问密钥添加到BitBucket存储库</a><br><a href="https://docs.gitlab.com/ee/ssh/#deploy-keys" target="_blank" rel="noopener">将部署密钥添加到GitLab存储库</a></p>
+<p>你肯能会问，开发机器和部署服务器使用同样的<code>SSH</code>秘钥不就完事了嘛，搞这么麻烦干啥，因为开发机器的秘钥对<code>repo</code>拥有写的权限，而部署服务器只需拥有<code>repo</code>的读权限即可了，还是建议共用的做法。</p>
+<h3 id="3-运行作曲家"><a href="#3-运行作曲家" class="headerlink" title="3.运行作曲家"></a>3.运行作曲家</h3><p>现在只需<code>composer require</code>或<code>composer install</code>像往常一样打包。</p>
 <blockquote>
-<p>为 Hexo 的 <code>even</code>主题添加<code>gitalk</code>评论系统</p>
+<p>这里值得提一下 <code>composer require</code> 指定版本时，会同时更新 composer.json 中对应的版本号，<code>composer update</code> 则不会</p>
 </blockquote>
-<h2 id="创建-gitalk-文件"><a href="#创建-gitalk-文件" class="headerlink" title="创建 gitalk 文件"></a>创建 gitalk 文件</h2><p>在<code>themes/even/layout/_script/_comments</code>目录下新增<code>gitalk.swig</code>文件，代码如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.comments &amp;&amp; theme.gitalk.enable %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('js/src') &#125;&#125;/md5.min.js?v=&#123;&#123; theme.version &#125;&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        var gitalk = new Gitalk(&#123;</span></span><br><span class="line"><span class="undefined">          clientID: '&#123;&#123; theme.gitalk.clientID &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          clientSecret: '&#123;&#123; theme.gitalk.clientSecret &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          repo: '&#123;&#123; theme.gitalk.repo &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          owner: '&#123;&#123; theme.gitalk.owner &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          admin: ['&#123;&#123; theme.gitalk.admin &#125;&#125;'],</span></span><br><span class="line"><span class="undefined">          id: md5(location.pathname),</span></span><br><span class="line"><span class="undefined">          distractionFreeMode: '&#123;&#123; theme.gitalk.distractionFreeMode &#125;&#125;'</span></span><br><span class="line"><span class="undefined">        &#125;)</span></span><br><span class="line"><span class="undefined">        gitalk.render('gitalk-container')</span></span><br><span class="line"><span class="undefined">       </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>为了解决「常见问题」中1，这里引用<code>md5.min.js</code>文件，然后将<code>id</code>，通过<code>md5</code>函数加密后再请求<code>github issue</code>API，<code>md5.min.js</code>文件我放在<code>themes/even/source/js/src/md5.min.js</code>目录，当然你也可以引入远程地址，<a href="https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js" target="_blank" rel="noopener">md5库地址</a></p>
-<h2 id="添加-gitalk-判断逻辑"><a href="#添加-gitalk-判断逻辑" class="headerlink" title="添加 gitalk 判断逻辑"></a>添加 gitalk 判断逻辑</h2><p><code>themes/even/layout/_partial/comments.swig</code>添加如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% elseif theme.gitalk.enable %&#125;</span><br><span class="line">    &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;  </span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>警告：向已知主机添加SSH指纹</strong></p>
+<p>首次在新主机名上使用SSH密钥时，它将显示如下警告：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">'123.123.123.123 (123.123.123.123)'</span> can<span class="string">'t be established.</span></span><br><span class="line"><span class="string">RSA key fingerprint is a1:b2:c3:d4:e5:f6:6f:5e:4d:3c:2b:1a:00:11:22:33.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)?</span></span><br></pre></td></tr></table></figure>
+<p>这是额外的保护层，可防止您错误地连接到未知主机。但是，如果要使用SSH密钥自动执行任务，则确实会带来一些问题。</p>
+<p>这就是为什么我们要手动触发此警告，并避免将来再次弹出它。可以使用以下命令完成此操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>当然，您应该用<code>repo</code>私有存储库的主机名替换掉<a href="mailto:`git@github.com" target="_blank" rel="noopener">`git@github.com</a>`。此命令将调用上面列出的警告。您可以使用GitHub / BitBucket / GitLab帐户中的指纹列表来验证指纹。</p>
+<p>确认此警告后，SSH指纹将被添加到已知主机列表中，这将防止警告再次弹出。</p>
+<h2 id="案例分享"><a href="#案例分享" class="headerlink" title="案例分享"></a>案例分享</h2><p>以<code>mooncake</code>为例，一下是相关的<code>composer.json</code>配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&quot;require&quot;: &#123;</span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">  &quot;neox/lib&quot;: &quot;2.9.0&quot;,</span><br><span class="line">  &quot;neox/model&quot;: &quot;1.6.1&quot;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">&quot;repositories&quot;: &#123;</span><br><span class="line">  &quot;neox-lib&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;vcs&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;git@git.neox-inc.com:be-sushi/neox-library.git&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;neox-model&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;vcs&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;git@git.neox-inc.com:be-sushi/neox-model.git&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="使用私有库的开发技巧"><a href="#使用私有库的开发技巧" class="headerlink" title="使用私有库的开发技巧"></a>使用私有库的开发技巧</h2><p>抛出问题：我们晓得私有库都有独立的<code>repo</code>，还以<code>mooncake</code>项目为例那我们在本地开发需要改动私有库<code>lib</code>或<code>model</code>下代码，那么改完后如何测试？私有库放哪里？是直接动手改<code>vendor/neox/lib</code>，还是改独立目录下与<code>mooncake</code>项目平级<code>lib</code>库代码（假设我们将私有库<code>lib</code>克隆到与<code>mooncake</code>平级目录），如果改的是后者如何使其改过的代码生效呢？好了~不买官司了。接下分享一下我采用的方式：</p>
+<p><strong>方案一</strong><br>私有仓库<code>lib</code>和项目<code>mooncake</code>平级（不是必须），配置<code>composer</code>达到指定使用私有库<code>lib</code>分支代码，修改代码以后需要把修改后的代码<code>require</code>进<code>vendor</code>目录下，我们可以<code>composer.json</code>配置达到从本地指定私有<code>lib</code>目录，将指定分支代码<code>require</code>进<code>vendor</code>，而不是从<code>gitlab</code>下载。</p>
+<p>缺点：每次改动私有的<code>lib</code>库代码，都需要<code>composer install</code>，还需先删除<code>composer.lock</code>文件再<code>install</code>。刚一开始我采用的这种方案，你会发现每次的<code>install</code>，都要执行一堆没用的（效率太低，不推荐）。以下是这种方案我的<code>composer.json</code>配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&quot;require&quot;: &#123;</span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">  &quot;neox/lib&quot;: &quot;dev-feature/20200323-db-rename-namespace&quot;,</span><br><span class="line">  &quot;neox/model&quot;: &quot;dev-feature/20200323-db-rename-namespace&quot;,</span><br><span class="line">&#125;,</span><br><span class="line">&quot;repositories&quot;: &#123;</span><br><span class="line">  &quot;neox-lib&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;vcs&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;../lib&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;neox-model&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;vcs&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;../model&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>注意：<code>if elseif endif</code> 语法。</p>
+<p>注意：实际<code>lib</code>和<code>model</code>代码分支名是<code>feature/20200323-db-rename-namespace</code></p>
 </blockquote>
-<h2 id="引入-gitalk"><a href="#引入-gitalk" class="headerlink" title="引入 gitalk"></a>引入 gitalk</h2><p>在<code>themes/even/layout/_script/comments.swig</code>文件中引入<code>gitalk.swig</code>文件，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.gitalk.enable %&#125;</span><br><span class="line">  &#123;% include &apos;_comments/gitalk.swig&apos; %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="配置-gitalk"><a href="#配置-gitalk" class="headerlink" title="配置 gitalk"></a>配置 gitalk</h2><p>配置<code>themes/even/_config.yml</code>中关于<code>gitalk</code>的配置，新增代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># more info please open https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  clientID: xxxxxxx</span><br><span class="line">  clientSecret: yyyyyyyyyyy</span><br><span class="line">  repo: &apos;dbing.github.io&apos;</span><br><span class="line">  owner: &apos;dbing&apos;</span><br><span class="line">  admin: &apos;dbing&apos;</span><br><span class="line">  distractionFreeMode: true</span><br></pre></td></tr></table></figure>
-<p>没有<code>clientID</code>和<code>clientSecret</code>，<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">点击申请</a>，配置完以上恭喜你，重新生产部署一下你的博客文章命令：<code>hexo g -d</code>，打开文章详情页看看是否多出了评论框 :)</p>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1.Error: Validation Failed.</p>
-<p>解决方法：<a href="https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482</a></p>
-<p>打开<code>Network</code>看请求，多半是因为<code>github issues</code>接口错误，以上方案给出的很详细。</p>
-<p>Q2.Error: Issues are disabled for this repo</p>
-<p>解决方法：<a href="https://github.com/imsun/gitment/issues/125" target="_blank" rel="noopener">https://github.com/imsun/gitment/issues/125</a></p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/06/因PHP内存超出限制导致首页500/">因PHP内存超出限制导致首页500</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-06
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="现场"><a href="#现场" class="headerlink" title="现场"></a>现场</h2><p>事发后的某一段<code>log</code>日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[2020-02-06 14:09:20] production.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Allowed memory size of 134217728 bytes exhausted (tried to allocate 1191936 bytes) in /project-path/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Query/Builder.php:373</span><br><span class="line">Stack trace:</span><br><span class="line">#0 &#123;main&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2020/02/06/因PHP内存超出限制导致首页500/500.png" width="500">
-<h2 id="临时解决办法"><a href="#临时解决办法" class="headerlink" title="临时解决办法"></a>临时解决办法</h2><p>放开PHP内存限制，修改<code>php.ini</code>，中<code>memory_limit=-1</code>，然后重启，<code>php-fpm</code> 服务，<code>sudo service php7.1-fpm restart</code></p>
-<p>网站恢复访问后，排查首页代码，定位手改一处过大查询代码（前人遗留）。</p>
-<h2 id="问题代码"><a href="#问题代码" class="headerlink" title="问题代码"></a>问题代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据发布时间倒序获取新闻 首页用</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int $limit</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getNewsAtIndexPage</span><span class="params">($limit = <span class="number">5</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $newsList = [];</span><br><span class="line">    $rawNews = (<span class="keyword">new</span> Filter())-&gt;getEnableDisplay()-&gt;sortByPublishAt()-&gt;getNews();</span><br><span class="line">    <span class="keyword">foreach</span> ($rawNews <span class="keyword">as</span> $news) &#123;</span><br><span class="line">        $newsList[] = [</span><br><span class="line">            <span class="string">'url'</span>   =&gt; <span class="keyword">$this</span>-&gt;getNewsPublishURL($news[<span class="string">'type'</span>], $news[<span class="string">'_id'</span>],<span class="keyword">false</span>),</span><br><span class="line">            <span class="string">'title'</span> =&gt; $news[<span class="string">'title'</span>],</span><br><span class="line">            <span class="string">'cover'</span> =&gt; $news[<span class="string">'cover'</span>],</span><br><span class="line">            <span class="string">'publish_at'</span>=&gt; $news[<span class="string">'publish_at'</span>]</span><br><span class="line">        ];</span><br><span class="line">        <span class="keyword">if</span>(count($newsList) == $limit) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $newsList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getNews</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;model-&gt;get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="优化前后结果"><a href="#优化前后结果" class="headerlink" title="优化前后结果"></a>优化前后结果</h2><img src="/2020/02/06/因PHP内存超出限制导致首页500/1.png">
-<img src="/2020/02/06/因PHP内存超出限制导致首页500/2.png">
-<img src="/2020/02/06/因PHP内存超出限制导致首页500/code.png" title="code">
-<h2 id="好文推荐"><a href="#好文推荐" class="headerlink" title="好文推荐"></a>好文推荐</h2><ul>
-<li><a href="https://juejin.im/post/5aa7c5575188255589497de2" target="_blank" rel="noopener">PHP 内存泄漏分析定位</a></li>
+<p><strong>方案二</strong></p>
+<p>直接修改<code>vendor</code>目录下的<code>lib</code>或<code>model</code>，修改前可以通过<code>git</code>分支自行创建和切换分支以维护不同的代码，将此目录下的代码直接作为<code>lib</code>和<code>model</code>的本地开发仓库（其实本来也就是了）。这种方式改完代码及时生效无需执行<code>composer</code>任何命令，因为<code>vendor</code>下的代码包本来也就已经被处理好了<code>autolaod</code>。此种方式也是我现在采用的方法，推荐。</p>
+<p>最后贴一下，我司私有库的<code>composer.json</code>配置图（因为隐私我做了部分模糊）：</p>
+<p>私有库<code>Lib</code>:<br><img src="/2020/03/26/Composer-安装私有包/lib-u.png"></p>
+<p>私有库<code>Model</code>:</p>
+<img src="/2020/03/26/Composer-安装私有包/model-u.png">
+<p>最终被<code>composer</code>处理后的<code>psr-4</code>目录映射形式：</p>
+<img src="/2020/03/26/Composer-安装私有包/psr-4-u.png">
+<h2 id="好文同享"><a href="#好文同享" class="headerlink" title="好文同享"></a>好文同享</h2><ul>
+<li><a href="https://segmentfault.com/a/1190000014948542#item-4" target="_blank" rel="noopener">segmentfault composer 原理</a></li>
+<li><a href="https://github.com/LeoYang90/laravel-source-analysis/blob/master/PHP%20Composer%E2%80%94%E2%80%94%20%E5%88%9D%E5%A7%8B%E5%8C%96%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md" target="_blank" rel="noopener">github composer 原理</a></li>
+<li><a href="https://barryvanveen.nl/blog/55-installing-a-private-package-with-composer" target="_blank" rel="noopener">Composer 创建私有库-英文</a></li>
 </ul>
 
         
@@ -702,13 +460,184 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/">因更换SSL证书安卓APP和CDN停止服务</a>
+          <a class="post-link" href="/2020/03/20/Visual-Studio-Code-中值得推荐的扩展/">Visual Studio Code 中值得推荐的扩展</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2020-02-06
+          2020-03-20
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Coding-tools/">Coding tools</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="推荐的扩展"><a href="#推荐的扩展" class="headerlink" title="推荐的扩展"></a>推荐的扩展</h2><ul>
+<li>vscode-icons</li>
+<li>Bracket Pair Colorizer</li>
+<li>Path Autocomplete</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync" target="_blank" rel="noopener">Settings Sync</a></li>
+</ul>
+<blockquote>
+<p>Previously known as Visual Studio Code Settings Sync</p>
+</blockquote>
+<p><code>Visual Studio Code</code>设置同步，用于在多台设备下快速同步所有配置。</p>
+<p>快捷键</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. Upload Key : Shift + Alt + U</span><br><span class="line">2. Download Key : Shift + Alt + D</span><br><span class="line"></span><br><span class="line">(on macOS: Shift + Option + U / Shift + Option + D)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Path Autocomplete</li>
+<li>filesize</li>
+</ul>
+<h2 id="主题扩展"><a href="#主题扩展" class="headerlink" title="主题扩展"></a>主题扩展</h2><ul>
+<li>One Dark Pro</li>
+<li>Brackets Light Pro</li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/18/不同语言系统下Accept-Language引发的小问题/">不同语言系统下Accept-Language引发的小问题</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-18
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/NeoX/">NeoX</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>不同语言环境下，浏览器请求头携带的<code>Accept-Language</code>值不一样的，导致的部分用户下默认显示「繁体中文」bug</p>
+<p>我的中文环境：<br><code>Accept-Language: en,zh-CN;q=0.9,zh;q=0.8</code></p>
+<p>同事的英文环境：<br><code>Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7,ru;q=0.6,ja;q=0.5,es;q=0.4,fr;q=0.3,de;q=0.2,mt;q=0.1,pl;q=0.1,lb;q=0.1</code></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>调整代码判断优先逻辑解决此问题，代码再此不贴出了。</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/13/CPU-上下文切换是什么意思上/">CPU 上下文切换是什么意思?</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-13
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="CPU-上下文"><a href="#CPU-上下文" class="headerlink" title="CPU 上下文"></a>CPU 上下文</h2><p>Linux 是一个多任务操作系统，它支持远大于 CPU 数量的任务同时运行。当然，这些任务实际上并不是真的在同时运行，而是因为系统在很短的时间内，将 CPU 轮流 分配给它们，每个任务运行前，CPU 都需要知道任务从哪里加载、又从哪里开始运行，而这些都是由系统事先帮它设置在 CPU 寄存器和程序计数器(Program Counter，PC)</p>
+<p>CPU 寄存器：是 CPU 内置的容量小、但速度极快的内存<br>程序计数器：是用来存储 CPU 正在执行的指令位置、或者即将执行的下一条指令位置。</p>
+<p>CPU 在运行任何任务前，必须的依赖环境也即是CPU 上下文。</p>
+<h2 id="CPU-上下文切换"><a href="#CPU-上下文切换" class="headerlink" title="CPU 上下文切换"></a>CPU 上下文切换</h2><p>CPU 上下文切换，就 是先把前一个任务的 CPU 上下文(也就是 CPU 寄存器和程序计数器)保存起来，然后加 载新任务的上下文到这些寄存器和程序计数器，最后再跳转到程序计数器所指的新位置， 运行新任务。</p>
+<p>根据任务的不同，CPU 上下文切换又可分为，进程上下文切换、线程上下文切换、中断上下文切换。</p>
+          <div class="read-more">
+            <a href="/2020/03/13/CPU-上下文切换是什么意思上/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/13/Anaconda-常用命令/">Anaconda 常用命令</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-13
         </span>
         
         
@@ -725,34 +654,266 @@
         
 
         
-          <h2 id="现场"><a href="#现场" class="headerlink" title="现场"></a>现场</h2><ol>
-<li>网站样式图片全丢，通过<code>network</code>看到所有<code>css</code>、<code>js</code>、<code>image</code>，都指向到<code>static.shenjumiaosuan.com</code>，响应状态<code>502</code>，我们的静态资源使用的是七牛<code>CDN</code>服务，当日因我们的<code>ssl</code>年证书到期，已经更换为新证书。</li>
-</ol>
-<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/cdn.png" title="七牛CDN">
-<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/502.png" width="502">
-<ol start="2">
-<li>安卓开发者反馈，安卓客户端无法打开，所有<code>api</code>均无法正常请求，同时<code>ios</code>确是好的（是不是很惊喜、很意外）。后了解到安卓是需要中间证书。</li>
-</ol>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
-<li>静态CDN域<code>static.shenjumiaosuan.com</code>，通过项目<code>.env</code>配置切换到本站<code>www.shenjumiaosuan.com</code></li>
-<li>SSL证书紧急切换为之前旧证书</li>
-<li>重新下载新证书，并拼接上中间证书，重新上传</li>
-</ol>
-<h2 id="证书续期"><a href="#证书续期" class="headerlink" title="证书续期"></a>证书续期</h2><p>因我们的域名是在爱名网，故以下有在爱名网操作步骤：</p>
-<p>1、 缴费续期后通过openssl生成新的CSR。参考文档<a href="https://ssl.22.cn/Helper/Details/347（也可使用相关在线工具https://myssl.com/csr_create.html）。" target="_blank" rel="noopener">https://ssl.22.cn/Helper/Details/347（也可使用相关在线工具https://myssl.com/csr_create.html）。</a></p>
-<p>2、得到private.key和csr.pem后，将csr提交到爱名网，并将文件存档。</p>
-<p>3、域名续期进入审核状态，需要联系客服进行认证。认证流程中需要将对方给到的字符串解进行dns解析（@ TXT记录），等待审核通过后可以通过爱名网下载域名的crt签名。</p>
-<h2 id="生成证书"><a href="#生成证书" class="headerlink" title="生成证书"></a>生成证书</h2><p>将中间人证书补充到签发的证书中</p>
-<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/ssl.png">
-<p>因涉及公司隐私，暂不提供参考图。</p>
-<p>1、查找邮箱链接找到链接，进入后填写邮件标题中的订单号和邮箱进入后，点击request access</p>
-<p>2、通过邮件链接下载证书颁发机构的附加证书</p>
-<p>私钥部分：private.key<br>公钥部分：<br>拼装爱名网下载的crt+中间人crt，格式如下（检查空格回车）：</p>
-<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/crt.png">
-<h2 id="上传证书"><a href="#上传证书" class="headerlink" title="上传证书"></a>上传证书</h2><p>阿里云lbs：<br>证书管理 &gt;&gt; 创建证书（上传非阿里云签发证书） &gt;&gt; 替换证书</p>
-<p>七牛云：<br>证书服务 &gt;&gt; 上传自有证书<br>CDN &gt;&gt; 域名管理 &gt;&gt; 配置 &gt;&gt; 更换证书</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>内部 wiki</p>
+          <h2 id="Anaconda-是什么"><a href="#Anaconda-是什么" class="headerlink" title="Anaconda 是什么"></a>Anaconda 是什么</h2><blockquote>
+<p>Anaconda Enterprise supports your organization no matter the size, easily scaling from a single user on one laptop to thousands of machines. No headaches, no IT nightmares.</p>
+</blockquote>
+<h2 id="Anaconda-安装"><a href="#Anaconda-安装" class="headerlink" title="Anaconda 安装"></a>Anaconda 安装</h2><p>官方地址（mac端）：<a href="https://www.anaconda.com/distribution/#macos" target="_blank" rel="noopener">https://www.anaconda.com/distribution/#macos</a></p>
+<p>安装后，默认有一个<code>base</code>环境，如下图：</p>
+<img src="/2020/03/13/Anaconda-常用命令/install-conda.png" title="conda安装">
+<p>接下来可以使用提供的GUI工具，创建环境、安装各种所需包，同样亦可通过命令行来完成，下面演示命令行的方式。</p>
+<h2 id="案例操作记录"><a href="#案例操作记录" class="headerlink" title="案例操作记录"></a>案例操作记录</h2><p>这里我以为<code>mydemo</code>为例创建一个可运行python3+opencv的环境，下面以命令演示一下(GUI方式同样可以完成)。</p>
+<p>查看当前env环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜ ~ conda env list</span><br><span class="line"><span class="comment"># conda environments:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">base /Users/bing/opt/anaconda3</span><br><span class="line">learn-python /Users/bing/opt/anaconda3/envs/learn-python</span><br><span class="line">my-opencv /Users/bing/opt/anaconda3/envs/my-opencv</span><br></pre></td></tr></table></figure>
+<p>创建mydemo env环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜ ~ conda create --name mydemo</span><br><span class="line">Collecting package metadata (current_repodata.json): <span class="keyword">done</span></span><br><span class="line">Solving environment: <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>进入mydemo环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜ ~ conda activate mydemo</span><br><span class="line">(mydemo) ➜ ~</span><br></pre></td></tr></table></figure>
+<!---->
+<p>列出mydemo环境所有包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(mydemo) ➜ ~ conda list -n mydemo</span><br><span class="line"><span class="comment"># packages in environment at /Users/bing/opt/anaconda3/envs/mydemo:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Name Version Build Channel</span></span><br></pre></td></tr></table></figure>
+<p>搜索限制版本的python包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(mydemo) ➜ ~ conda search <span class="string">'python&gt;=3'</span></span><br><span class="line">Loading channels: <span class="keyword">done</span></span><br><span class="line"><span class="comment"># Name Version Build Channel</span></span><br><span class="line">python 3.5.4 h4bd9b1b_18 pkgs/main</span><br><span class="line">python 3.5.4 h821eb87_14 pkgs/main</span><br><span class="line">python 3.5.4 h8f450c2_22 pkgs/main</span><br><span class="line">python 3.5.4 hb8880cc_19 pkgs/main</span><br><span class="line">python 3.5.4 hc167b69_27 pkgs/main</span><br><span class="line">python 3.5.4 hdd9bdb2_21 pkgs/main</span><br></pre></td></tr></table></figure>
+<p>为mydemo 环境安装指定版本的python包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(mydemo) ➜ ~ conda install -n mydemo python=3.7.6</span><br><span class="line">Collecting package metadata (current_repodata.json): <span class="keyword">done</span></span><br><span class="line">Solving environment: <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>注意：会询问提示是否安装相关依赖包，输入<code>y</code>，确认安装。</p>
+<p>为mydemo环境安装指定版本的py-opencv包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(mydemo) ➜ ~ conda install -n mydemo py-opencv=3.4.2</span><br><span class="line">Collecting package metadata (current_repodata.json): <span class="keyword">done</span></span><br><span class="line">Solving environment: <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建环境"><a href="#创建环境" class="headerlink" title="创建环境"></a>创建环境</h2><h3 id="查看全部环境"><a href="#查看全部环境" class="headerlink" title="查看全部环境"></a>查看全部环境</h3><p>conda env -h</p>
+<p>conda create –name your_env_name</p>
+<h3 id="创建制定python版本的环境"><a href="#创建制定python版本的环境" class="headerlink" title="创建制定python版本的环境"></a>创建制定python版本的环境</h3><p>conda create –name your_env_name python=2.7<br>conda create –name your_env_name python=3<br>conda create –name your_env_name python=3.5</p>
+<h3 id="创建包含某些包的环境"><a href="#创建包含某些包的环境" class="headerlink" title="创建包含某些包的环境"></a>创建包含某些包的环境</h3><p>conda create –name your_env_name numpy scipy</p>
+<h3 id="创建指定python版本下包含某些包的环境"><a href="#创建指定python版本下包含某些包的环境" class="headerlink" title="创建指定python版本下包含某些包的环境"></a>创建指定python版本下包含某些包的环境</h3><p>conda create –name your_env_name python=3.5 numpy scipy</p>
+<h3 id="列举当前所有环境"><a href="#列举当前所有环境" class="headerlink" title="列举当前所有环境"></a>列举当前所有环境</h3><p>conda info –envs<br>conda env list</p>
+<h3 id="进入某个环境"><a href="#进入某个环境" class="headerlink" title="进入某个环境"></a>进入某个环境</h3><p>activate  your_env_name</p>
+<h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><p>deactivate your_env_name</p>
+<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><p>conda create –name new_env_name –clone old_env_name </p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>conda remove –name your_env_name –all</p>
+<h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><h3 id="列举当前活跃环境下的所有包"><a href="#列举当前活跃环境下的所有包" class="headerlink" title="列举当前活跃环境下的所有包"></a>列举当前活跃环境下的所有包</h3><p>conda list</p>
+<h3 id="列举一个非当前活跃环境下的所有包"><a href="#列举一个非当前活跃环境下的所有包" class="headerlink" title="列举一个非当前活跃环境下的所有包"></a>列举一个非当前活跃环境下的所有包</h3><p>conda list -n your_env_name</p>
+<h3 id="为指定环境安装某个包"><a href="#为指定环境安装某个包" class="headerlink" title="为指定环境安装某个包"></a>为指定环境安装某个包</h3><p>conda install -n env_name package_name</p>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -n my-opencv pytorch=1.4.0 torchvision -c pytorch</span><br></pre></td></tr></table></figure>
 
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/11/2018-2019年-面试经历-上/">2018-2019年-面试经历-上</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-11
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Essays/">Essays</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="智众医疗"><a href="#智众医疗" class="headerlink" title="智众医疗"></a>智众医疗</h2><ol>
+<li>自我介绍</li>
+<li>MySQL 优化，常见的索引优化的方式</li>
+<li>阿里云的 RDS 报 IOPS 过高（使用到索引了）</li>
+<li>除了用 Redis 做缓存还用到了什么？（消息队列和锁，讲一下）</li>
+<li>讲一下你的比较顺畅的一个工作流程</li>
+<li>有一个接口，用户反馈很慢？</li>
+<li>你们是怎么监控接口的？</li>
+<li>docker 的原理？</li>
+<li>如何优化镜像的打包速度和大小</li>
+<li>讲一下个人是怎么成长的？</li>
+<li>谈谈你对 MySQL 的优化</li>
+<li>在创建 MySQL 索引时你是如何考虑的？</li>
+<li>Btree 和 红黑树的区别</li>
+<li>你在生产环境是如何部署任务队列的？</li>
+<li>Laravel 中你认为哪些比较好的地方</li>
+<li>ELK 有没有了解过？</li>
+</ol>
+<h2 id="韩创科技"><a href="#韩创科技" class="headerlink" title="韩创科技"></a>韩创科技</h2><h3 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h3><ol>
+<li>最后一道笔试题</li>
+<li>3千万的网站做个用户消息，用户读取后标记已读，请问你该如何设计。</li>
+<li>Redis 的二进制存储，Redis 以及 Redis 存储结构以及 Redis 更高逼格的应用。</li>
+<li>Elasticsearch 你再什么场景下使用的，怎么使用的。数据量级别是多少。</li>
+<li>阿里云的开发搜索，出现延迟或空白现象有没有遇到过</li>
+<li>当你下面的技术人员与产品发生了冲突，你会怎么做？</li>
+<li>Kafka 有没有应用过，或是跑过 Demo</li>
+<li>Redis 下 count 函数有没有了解</li>
+</ol>
+<h3 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h3><ol>
+<li>Composer 自动加载原理</li>
+<li>队列任务，单机消费处理不过来，多消费者如何做？</li>
+<li>网站代码发布更新，如果做到不影响正常访问的用户</li>
+<li>你是如何在三台或更多台生产服务器发布代码？</li>
+<li>谈谈你对 MySQL 分区、分表的理解。</li>
+<li>数据是如何在磁盘分布的。</li>
+<li>使用主键查询与普通索引查询的区别。</li>
+</ol>
+<h2 id="乐贝"><a href="#乐贝" class="headerlink" title="乐贝"></a>乐贝</h2><h3 id="二面-1"><a href="#二面-1" class="headerlink" title="二面"></a>二面</h3><ol>
+<li>Elasticsearch 下做查询或统计为什么这么快，谈谈你对它的理解。</li>
+<li>谈谈你做过的最成熟的一个项目，你是怎么架构的。</li>
+</ol>
+          <div class="read-more">
+            <a href="/2020/03/11/2018-2019年-面试经历-上/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/09/PHP写时复制/">PHP写时复制</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-09
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/PHP/">PHP</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="PHP-写时复制"><a href="#PHP-写时复制" class="headerlink" title="PHP 写时复制"></a>PHP 写时复制</h2><blockquote>
+<p>Copy On Write 简写 COW，中文意思即：写时复制</p>
+</blockquote>
+<ol>
+<li>当一个变量赋值给另外一个变量时，此时内存开销会是*2吗？</li>
+<li>当再调用一个函数传递一个很大实参数组时，你有没有考虑过，内存的开销是怎样的！</li>
+</ol>
+<p>如果针对这两个问题，你可以毫无疑问的准确回答出来，那么接下来你可以不用再看了。</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">'init memory: '</span> . memory_get_usage() . <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">$str = array_fill(<span class="number">0</span>, <span class="number">1024</span>, <span class="string">'hi'</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'fill after: '</span> . memory_get_usage() . <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">$newStr = $str;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'copy after: '</span> . memory_get_usage() . <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="keyword">die</span>;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init memory: 354296</span><br><span class="line">fill after: 391216</span><br><span class="line">copy after: 391216</span><br></pre></td></tr></table></figure>
+<p>可以看到重新赋值给新的变量<code>$newStr</code>后内存并没有增长。</p>
+<h2 id="原理解释"><a href="#原理解释" class="headerlink" title="原理解释"></a>原理解释</h2><p>多个相同值的变量共用同一块内存的确节省了内存空间，但变量的值是会发生变化的，如果在上面的例子中， 指向同一内存的值发生了变化（或者可能发生变化），就需要将变化的值“分离”出去，这个“分离”的操作， 就是“复制”。</p>
+<p>在PHP中，Zend引擎为了区别同一个zval地址是否被多个变量共享，引入了ref_count和is_ref两个变量进行标识：</p>
+<ul>
+<li><p>ref_count和is_ref是定义于zval结构体中</p>
+</li>
+<li><p>is_ref标识是不是用户使用 &amp; 的强制引用；</p>
+</li>
+</ul>
+<p>ref_count是引用计数，用于标识此zval被多少个变量引用，即COW的自动引用，为0时会被销毁；</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/09/Laravel-Task-Scheduling-Preventing-Task-Overlaps/">Laravel Task Scheduling Preventing Task Overlaps</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-09
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Laravel/">Laravel</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>一个<code>Task</code>没有允许结束，另一个<code>Task</code>又起了，这固然会造成程序执行的结果不是我们想要的，为了解决这个问题我发现<code>Laravel</code>有提供现成的方法。</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>方法一：可以在代码中使用原子锁，这样即使第二个<code>tash</code>进程启动了，也可以阻挡住。</p>
+<p>方法二：使用<code>Laravel</code>提供现成的<code>withoutOverlapping</code>方法，官方案例：<code>$schedule-&gt;command(&#39;emails:send&#39;)-&gt;withoutOverlapping();</code></p>
+<p>方法一中使用哪一种的锁机制，那就看自家自己的喜好了不分好坏，只分性能高低😼，个人使用<code>redis</code>原子锁，从<code>2.6.12</code>版本以后，使用锁的方式变得更为简单，如设置一个名为<code>lock</code>的5秒钟原子锁：<code>SET lock 1 EX 5 NX</code>，<a href="http://redisdoc.com/string/set.html" target="_blank" rel="noopener">SET 更多参数用法</a></p>
+<p>方法二我的测试结果如下：</p>
+<ol>
+<li><p>创建测试<code>command</code>文件,命令：<code>php artisan make:command Test</code></p>
+</li>
+<li><p>代码</p>
+</li>
+</ol>
+          <div class="read-more">
+            <a href="/2020/03/09/Laravel-Task-Scheduling-Preventing-Task-Overlaps/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>
