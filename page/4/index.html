@@ -246,6 +246,117 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/04/06/Mac-快捷键/">Mac 常用快捷键</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-04-06
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Essays/">Essays</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="截屏"><a href="#截屏" class="headerlink" title="截屏"></a>截屏</h2><ul>
+<li>command + shift + 3 ：全屏截屏</li>
+<li>command + shift + 4 ：选定区域截屏</li>
+</ul>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul>
+<li>command + tab ：应用间切换</li>
+<li>command + shift + u ：使用工具</li>
+</ul>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><ul>
+<li>control + a : 移动至行首</li>
+<li>control + e : 移动至行尾</li>
+</ul>
+          <div class="read-more">
+            <a href="/2020/04/06/Mac-快捷键/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/04/03/Electron-专注于桌面应用开发/">Electron 专注于桌面应用开发</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-04-03
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Essays/">Essays</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="Electron"><a href="#Electron" class="headerlink" title="Electron"></a>Electron</h2><p>Electron 可以让你使用纯 JavaScript 调用丰富的原生(操作系统) APIs 来创造桌面应用。 你可以把它看作一个 Node. js 的变体，它专注于桌面应用而不是 Web 服务器端。</p>
+<p>这不意味着 Electron 是某个图形用户界面（GUI）库的 JavaScript 版本。 相反，Electron 使用 web 页面作为它的 GUI，所以你能把它看作成一个被 JavaScript 控制的，精简版的 Chromium 浏览器。</p>
+<p>以上是摘自<code>Electron</code>官方文档对其的描述，望以后有时间开发也给桌面应用小程序，这里<code>Mark</code>一下，感兴趣可以翻阅其<a href="https://www.electronjs.org/docs/tutorial/first-app" target="_blank" rel="noopener">官网文档</a></p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/03/26/Vim-基础篇/">Vim 基础篇</a>
         
       </h1>
@@ -784,135 +895,6 @@
 </ol>
           <div class="read-more">
             <a href="/2020/03/11/2018-2019年-面试经历-上/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/03/09/PHP写时复制/">PHP写时复制</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-03-09
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/PHP/">PHP</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="PHP-写时复制"><a href="#PHP-写时复制" class="headerlink" title="PHP 写时复制"></a>PHP 写时复制</h2><blockquote>
-<p>Copy On Write 简写 COW，中文意思即：写时复制</p>
-</blockquote>
-<ol>
-<li>当一个变量赋值给另外一个变量时，此时内存开销会是*2吗？</li>
-<li>当再调用一个函数传递一个很大实参数组时，你有没有考虑过，内存的开销是怎样的！</li>
-</ol>
-<p>如果针对这两个问题，你可以毫无疑问的准确回答出来，那么接下来你可以不用再看了。</p>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">'init memory: '</span> . memory_get_usage() . <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">$str = array_fill(<span class="number">0</span>, <span class="number">1024</span>, <span class="string">'hi'</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'fill after: '</span> . memory_get_usage() . <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">$newStr = $str;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'copy after: '</span> . memory_get_usage() . <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="keyword">die</span>;</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init memory: 354296</span><br><span class="line">fill after: 391216</span><br><span class="line">copy after: 391216</span><br></pre></td></tr></table></figure>
-<p>可以看到重新赋值给新的变量<code>$newStr</code>后内存并没有增长。</p>
-<h2 id="原理解释"><a href="#原理解释" class="headerlink" title="原理解释"></a>原理解释</h2><p>多个相同值的变量共用同一块内存的确节省了内存空间，但变量的值是会发生变化的，如果在上面的例子中， 指向同一内存的值发生了变化（或者可能发生变化），就需要将变化的值“分离”出去，这个“分离”的操作， 就是“复制”。</p>
-<p>在PHP中，Zend引擎为了区别同一个zval地址是否被多个变量共享，引入了ref_count和is_ref两个变量进行标识：</p>
-<ul>
-<li><p>ref_count和is_ref是定义于zval结构体中</p>
-</li>
-<li><p>is_ref标识是不是用户使用 &amp; 的强制引用；</p>
-</li>
-</ul>
-<p>ref_count是引用计数，用于标识此zval被多少个变量引用，即COW的自动引用，为0时会被销毁；</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/03/09/Laravel-Task-Scheduling-Preventing-Task-Overlaps/">Laravel Task Scheduling Preventing Task Overlaps</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-03-09
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Laravel/">Laravel</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>一个<code>Task</code>没有允许结束，另一个<code>Task</code>又起了，这固然会造成程序执行的结果不是我们想要的，为了解决这个问题我发现<code>Laravel</code>有提供现成的方法。</p>
-<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>方法一：可以在代码中使用原子锁，这样即使第二个<code>tash</code>进程启动了，也可以阻挡住。</p>
-<p>方法二：使用<code>Laravel</code>提供现成的<code>withoutOverlapping</code>方法，官方案例：<code>$schedule-&gt;command(&#39;emails:send&#39;)-&gt;withoutOverlapping();</code></p>
-<p>方法一中使用哪一种的锁机制，那就看自家自己的喜好了不分好坏，只分性能高低😼，个人使用<code>redis</code>原子锁，从<code>2.6.12</code>版本以后，使用锁的方式变得更为简单，如设置一个名为<code>lock</code>的5秒钟原子锁：<code>SET lock 1 EX 5 NX</code>，<a href="http://redisdoc.com/string/set.html" target="_blank" rel="noopener">SET 更多参数用法</a></p>
-<p>方法二我的测试结果如下：</p>
-<ol>
-<li><p>创建测试<code>command</code>文件,命令：<code>php artisan make:command Test</code></p>
-</li>
-<li><p>代码</p>
-</li>
-</ol>
-          <div class="read-more">
-            <a href="/2020/03/09/Laravel-Task-Scheduling-Preventing-Task-Overlaps/" class="read-more-link">阅读更多</a>
           </div>
         
       

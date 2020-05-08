@@ -251,17 +251,37 @@
           2020-05-04
         </span>
         
+          <span class="post-category">
+            
+              <a href="/categories/Go/">Go</a>
+            
+          </span>
+        
         
       </div>
     </header>
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#示例"><span class="toc-text">示例</span></a></li></ol>
+    </div>
+  </div>
+
 
 
     <div class="post-content">
       
-        
+        <p>Go 语言提供了另外一种数据类型即接口，它把所有的具有共性的方法定义在一起，任何其他类型只要实现了这些方法就是实现了这个接口。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
+<li>定义一个<code>Animal</code>接口，接口里有一个方法<code>cry</code></li>
+<li>分别定义<code>Cat struct</code>和<code>Dog struct</code></li>
+<li>在<code>main</code>里定义<code>Animal</code>类型变量<code>animal</code>，并分别赋值<code>Cat</code>和<code>Dog</code>，然后调用<code>cry()</code>方法</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">interface</span> &#123;</span><br><span class="line">    cry()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(cat Cat)</span> <span class="title">cry</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"I am Cat. 喵喵~"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Dog <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(dog Dog)</span> <span class="title">cry</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"I am Dog. 旺旺~"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  &#123;</span><br><span class="line">    <span class="keyword">var</span> animal Animal</span><br><span class="line">    animal = <span class="built_in">new</span>(Cat)</span><br><span class="line">    animal.cry()</span><br><span class="line"></span><br><span class="line">    animal = <span class="built_in">new</span>(Dog)</span><br><span class="line">    animal.cry()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">I am Cat. 喵喵~</span><br><span class="line">I am Dog. 旺旺~</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -293,6 +313,12 @@
 
     
       <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
         
         
         

@@ -251,17 +251,43 @@
           2020-05-04
         </span>
         
+          <span class="post-category">
+            
+              <a href="/categories/Go/">Go</a>
+            
+          </span>
+        
         
       </div>
     </header>
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义结构体"><span class="toc-text">定义结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问结构成员"><span class="toc-text">访问结构成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构体作为函数参数传递"><span class="toc-text">结构体作为函数参数传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构体指针"><span class="toc-text">结构体指针</span></a></li></ol>
+    </div>
+  </div>
+
 
 
     <div class="post-content">
       
-        
+        <p>Go 语言中数组可以存储同一类型的数据，在结构体中我们可以定义不同的数据类型。</p>
+<p><strong>结构体</strong>：是由一系列具有相同类型或不同类型的数据构成的数据集合。</p>
+<h2 id="定义结构体"><a href="#定义结构体" class="headerlink" title="定义结构体"></a>定义结构体</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Books <span class="keyword">struct</span> &#123;</span><br><span class="line">    id     <span class="keyword">int</span></span><br><span class="line">    title  <span class="keyword">string</span></span><br><span class="line">    author <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 创建新结构体</span></span><br><span class="line">    fmt.Println(Books&#123;<span class="number">12345</span>, <span class="string">"Golang"</span>, <span class="string">"作者"</span>&#125;)</span><br><span class="line">    <span class="comment">// 也可以使用 key =&gt; value 格式，忽略的字段为 0 或空</span></span><br><span class="line">    fmt.Println(Books&#123;title: <span class="string">"Python"</span>&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">&#123;<span class="number">12345</span> Golang 作者&#125;</span><br><span class="line">&#123;<span class="number">0</span> Python &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="访问结构成员"><a href="#访问结构成员" class="headerlink" title="访问结构成员"></a>访问结构成员</h2><p>如果要访问结构体成员，需要使用点号 <code>.</code> 操作符，格式为：<code>结构体.成员名</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = Books&#123;&#125;</span><br><span class="line">book.title = <span class="string">"PHP"</span></span><br><span class="line">book.author = <span class="string">"This is Test"</span></span><br><span class="line">fmt.Println(book)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">&#123;<span class="number">0</span> PHP This is Test&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：在 Go 中，结构体属性如果允许外面访问，通常定义为首字母大写，比如再增加一个 subject 属性</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Books <span class="keyword">struct</span> &#123;</span><br><span class="line">    id     <span class="keyword">int</span></span><br><span class="line">    title  <span class="keyword">string</span></span><br><span class="line">    author <span class="keyword">string</span></span><br><span class="line">    Subject <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结构体作为函数参数传递"><a href="#结构体作为函数参数传递" class="headerlink" title="结构体作为函数参数传递"></a>结构体作为函数参数传递</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printBook</span><span class="params">(book Books)</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"book title: %s\n"</span>, book.title)</span><br><span class="line">    fmt.Printf(<span class="string">"book author: %s\n"</span>, book.author)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> book = Books&#123;&#125;</span><br><span class="line">    book.title = <span class="string">"PHP"</span></span><br><span class="line">    book.author = <span class="string">"This is Test"</span></span><br><span class="line">    printBook(book)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">book title: PHP</span><br><span class="line">book author: This is Test</span><br></pre></td></tr></table></figure>
+<p>这种传递会将结构体拷贝一份，传值过去</p>
+<h2 id="结构体指针"><a href="#结构体指针" class="headerlink" title="结构体指针"></a>结构体指针</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printBook</span><span class="params">(book Books)</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"book title: %s\n"</span>, book.title)</span><br><span class="line">    fmt.Printf(<span class="string">"book author: %s\n"</span>, book.author)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">updateBook</span><span class="params">(b *Books, title <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    b.title = title</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> book = Books&#123;&#125;</span><br><span class="line">    book.title = <span class="string">"PHP"</span></span><br><span class="line">    book.author = <span class="string">"This is Test"</span></span><br><span class="line">    printBook(book)</span><br><span class="line">    fmt.Println(<span class="string">"---- updated ----"</span>)</span><br><span class="line">    updateBook(&amp;book, <span class="string">"C++"</span>)</span><br><span class="line">    printBook(book)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">book title: PHP</span><br><span class="line">book author: This is Test</span><br><span class="line">---- updated ----</span><br><span class="line">book title: C++</span><br><span class="line">book author: This is Test</span><br></pre></td></tr></table></figure>
+<p><code>*</code> 可以定义指向结构体的指针<br><code>&amp;</code> 获取指针地址</p>
+
       
     </div>
 
@@ -293,6 +319,12 @@
 
     
       <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
         
         
         

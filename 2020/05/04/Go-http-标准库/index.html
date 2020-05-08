@@ -251,17 +251,49 @@
           2020-05-04
         </span>
         
+          <span class="post-category">
+            
+              <a href="/categories/Go/">Go</a>
+            
+          </span>
+        
         
       </div>
     </header>
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#起HTTP服务"><span class="toc-text">起HTTP服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Get-请求"><span class="toc-text">Get 请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Post"><span class="toc-text">Post</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Http-性能分析"><span class="toc-text">Http 性能分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他标准库"><span class="toc-text">其他标准库</span></a></li></ol>
+    </div>
+  </div>
+
 
 
     <div class="post-content">
       
-        
+        <h2 id="起HTTP服务"><a href="#起HTTP服务" class="headerlink" title="起HTTP服务"></a>起HTTP服务</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"io"</span></span><br><span class="line">    <span class="string">"log"</span></span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">HelloServer</span><span class="params">(w http.ResponseWriter, req *http.Request)</span></span> &#123;</span><br><span class="line">    io.WriteString(w, <span class="string">"Hello world!\n"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    http.HandleFunc(<span class="string">"/hello"</span>, HelloServer)</span><br><span class="line">    log.Fatal(http.ListenAndServe(<span class="string">":12345"</span>, <span class="literal">nil</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果</p>
+<img src="/2020/05/04/Go-http-标准库/http.png">
+<h2 id="Get-请求"><a href="#Get-请求" class="headerlink" title="Get 请求"></a>Get 请求</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">resp, err := http.Get(<span class="string">"https://www.baidu.com"</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="built_in">panic</span>(err)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">defer</span> resp.Body.Close()</span><br><span class="line">response, err := httputil.DumpResponse(resp, <span class="literal">true</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="built_in">panic</span>(err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">"%s\n"</span>, response)</span><br></pre></td></tr></table></figure>
+<h2 id="Post"><a href="#Post" class="headerlink" title="Post"></a>Post</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">resp, err := http.Get(<span class="string">"http://example.com/"</span>)</span><br><span class="line">...</span><br><span class="line">resp, err := http.Post(<span class="string">"http://example.com/upload"</span>, <span class="string">"image/jpeg"</span>, &amp;buf)</span><br><span class="line">...</span><br><span class="line">resp, err := http.PostForm(<span class="string">"http://example.com/form"</span>,url.Values&#123;<span class="string">"key"</span>: &#123;<span class="string">"Value"</span>&#125;, <span class="string">"id"</span>: &#123;<span class="string">"123"</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="Http-性能分析"><a href="#Http-性能分析" class="headerlink" title="Http 性能分析"></a>Http 性能分析</h2><ul>
+<li><code>import _ &quot;net/http/pprof&quot;</code></li>
+<li>访问 <code>/debug/pprof/</code></li>
+<li>使用 <code>go tool pprof</code> 分析性能</li>
+</ul>
+<h2 id="其他标准库"><a href="#其他标准库" class="headerlink" title="其他标准库"></a>其他标准库</h2><ul>
+<li>bufio</li>
+<li>log</li>
+<li>encoding/json</li>
+<li>time</li>
+<li>regexp</li>
+<li>strings/math/rand</li>
+<li>godoc-http:8888</li>
+</ul>
+
       
     </div>
 
@@ -293,6 +325,12 @@
 
     
       <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Go/">Go</a>
+            
+          </div>
         
         
         

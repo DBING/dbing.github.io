@@ -246,6 +246,116 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/02/06/anaconda-和-zsh-不兼容问题/">anaconda 和 zsh 不兼容问题</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-06
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>错误场景：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ /Users/bing/.anaconda/navigator/a.tool ; <span class="built_in">exit</span>;</span><br><span class="line">/Users/bing/.anaconda/navigator/a.tool: line 1: syntax error near unexpected token `(<span class="string">'</span></span><br><span class="line"><span class="string">/Users/bing/.anaconda/navigator/a.tool: line 1: `bash --init-file &lt;(echo "source activate /Users/bing/opt/anaconda3/envs/my-opencv;")'</span></span><br></pre></td></tr></table></figure>
+<img src="/2020/02/06/anaconda-和-zsh-不兼容问题/error.png">
+<h2 id="临时解决方法"><a href="#临时解决方法" class="headerlink" title="临时解决方法"></a>临时解决方法</h2><p>切换到<code>bash</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
+<p>通过<code>conda</code>GUI，打开命令行后，再切换到<code>zsh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<h2 id="我使用了这个方法"><a href="#我使用了这个方法" class="headerlink" title="我使用了这个方法"></a>我使用了这个方法</h2><p>This problem is a problem with the zsh environment variable, the solution<br>echo ‘source ~/.bash_profile’ &gt;&gt; ~/.zshrc<br>Append the bash environment variable to zsh</p>
+<p>链接：<a href="https://github.com/ContinuumIO/anaconda-issues/issues/1831#issuecomment-425714638" target="_blank" rel="noopener">https://github.com/ContinuumIO/anaconda-issues/issues/1831#issuecomment-425714638</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://iaside.com/archives/455" target="_blank" rel="noopener">https://iaside.com/archives/455</a></li>
+<li><a href="https://github.com/ContinuumIO/anaconda-issues/issues/1831" target="_blank" rel="noopener">github issue</a></li>
+<li><a href="https://stackoverflow.com/questions/54502718/cant-run-anaconda-in-macos-terminal" target="_blank" rel="noopener">stackoverflow</a></li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/02/06/opencv-对比度亮度调整/">opencv 对比度亮度调整</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-06
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/OpenCV/">OpenCV</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>来源需要对一张图片，弱化背景效果的需求。与其说弱化不如说是把暗度调亮。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>图片对比度和亮度的调整一般通过下面公式计算：g(x,y)=a∗f(x,y)+b</p>
+<p>f(x,y) 代表源图像 x行，y列的像素点的c通道的数值<br>g(x,y) 代表目标图像x行，y列的像素点的c通道的数值<br>a 参数（a&gt;0）表示放大的倍数（一般在0.0~3.0之间）<br>b 参数一般称为偏置，用来调节亮度</p>
+<p>方案一代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  cv2</span><br><span class="line"></span><br><span class="line">img=cv2.imread(<span class="string">'test.jpg'</span>)</span><br><span class="line">cv2.imshow(<span class="string">'original_img'</span>,img)</span><br><span class="line">rows,cols,channels=img.shape</span><br><span class="line">dst=img.copy()</span><br><span class="line"></span><br><span class="line">a=<span class="number">0.5</span></span><br><span class="line">b=<span class="number">80</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(rows):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(cols):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">            color=img[i,j][c]*a+b</span><br><span class="line">            <span class="keyword">if</span> color&gt;<span class="number">255</span>:           <span class="comment"># 防止像素值越界（0~255）</span></span><br><span class="line">                dst[i,j][c]=<span class="number">255</span></span><br><span class="line">            <span class="keyword">elif</span> color&lt;<span class="number">0</span>:           <span class="comment"># 防止像素值越界（0~255）</span></span><br><span class="line">                dst[i,j][c]=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'dst'</span>,dst)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p>方案二：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">contrast_img</span><span class="params">(img1, c, b)</span>:</span>  <span class="comment"># 亮度就是每个像素所有通道都加上b</span></span><br><span class="line">    rows, cols, channels = img1.shape</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 新建全零(黑色)图片数组:np.zeros(img1.shape, dtype=uint8)</span></span><br><span class="line">    blank = np.zeros([rows, cols, channels], img1.dtype)</span><br><span class="line">    dst = cv2.addWeighted(img1, c, blank, <span class="number">1</span>-c, b)</span><br><span class="line">    cv2.imshow(<span class="string">'original_img'</span>, img)</span><br><span class="line">    cv2.imshow(<span class="string">"contrast_img"</span>, dst)</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">"./test.png"</span>, cv2.IMREAD_COLOR)</span><br><span class="line">contrast_img(img, <span class="number">1.3</span>, <span class="number">3</span>)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li>原文来自 <a href="https://blog.csdn.net/wsp_1138886114/article/details/82624534" target="_blank" rel="noopener">csdn</a></li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/02/04/opencv-研究/">opencv 研究</a>
         
       </h1>
@@ -703,132 +813,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
 <p>2.<code>pip</code>方式卸载</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall docker-compose</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/01/14/ZSH快捷键/">ZSH快捷键</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-14
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>⌃ + u：清空当前行<br>⌃ + a：移动到行首<br>⌃ + e：移动到行尾<br>⌃ + f：向前移动<br>⌃ + b：向后移动<br>⌃ + p：上一条命令<br>⌃ + n：下一条命令<br>⌃ + r：搜索历史命令<br>⌃ + y：召回最近用命令删除的文字<br>⌃ + h：删除光标之前的字符<br>⌃ + d：删除光标所指的字符<br>⌃ + w：删除光标之前的单词<br>⌃ + k：删除从光标到行尾的内容<br>⌃ + t：交换光标和之前的字符</p>
-<p>⌘ + Click：可以打开文件，文件夹和链接<br>⌘ + n：新建窗口<br>⌘ + t：新建标签页<br>⌘ + w：关闭当前页<br>⌘ + 数字 &amp; ⌘ + 方向键：切换标签页<br>⌥⌘ + 数字：切换窗口<br>⌘ + enter：切换全屏<br>⌘ + d：左右分屏<br>⇧⌘ + d：上下分屏<br>⌘ + ;：自动补全历史记录<br>⇧⌘ + h：自动补全剪贴板历史<br>⌥⌘ + e：查找所有来定位某个标签页<br>⌘ + r &amp; ⌃ + l：清屏<br>⌘ + /：显示光标位置<br>⌥⌘ + b：历史回放<br>⌘ + f：查找，然后用 tab 和 ⇧ + tab 可以向右和向左补全，补全之后的内容会被自动复制， 还可以用 ⌥ + enter 将查找结果输入终端<br>选中即复制，鼠标中键粘贴</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/01/10/使用-supervisor-监控Laravel-queue-消费队列/">使用 supervisor 监控Laravel queue 消费队列</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-10
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><ul>
-<li>Ubuntu 5.4.0-6ubuntu1~16.04.9</li>
-</ul>
-<h2 id="安装-Supervisor"><a href="#安装-Supervisor" class="headerlink" title="安装 Supervisor"></a>安装 Supervisor</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install supervisor</span><br></pre></td></tr></table></figure>
-<p>安装后可以查看到 supervisor 已经启动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ps aux|grep supervisor</span><br><span class="line">root     14314  0.9  0.2  58936 18572 ?        Ss   16:13   0:00 /usr/bin/python /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf</span><br><span class="line">root     14358  0.0  0.0  14228   908 pts/2    S+   16:13   0:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn supervisor</span><br></pre></td></tr></table></figure>
-<h2 id="配置-Supervisor"><a href="#配置-Supervisor" class="headerlink" title="配置 Supervisor"></a>配置 Supervisor</h2><p>我的<code>supervisord.conf</code>配置文件，<code>cat /etc/supervisor/supervisord.conf</code>如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">; supervisor config file</span><br><span class="line"></span><br><span class="line">[unix_http_server]</span><br><span class="line">file=/var/run/supervisor.sock   ; (the path to the socket file)</span><br><span class="line">chmod=0700                       ; sockef file mode (default 0700)</span><br><span class="line"></span><br><span class="line">[supervisord]</span><br><span class="line">logfile=/var/log/supervisor/supervisord.log ; (main log file;default $CWD/supervisord.log)</span><br><span class="line">pidfile=/var/run/supervisord.pid ; (supervisord pidfile;default supervisord.pid)</span><br><span class="line">childlogdir=/var/log/supervisor            ; (&apos;AUTO&apos; child log dir, default $TEMP)</span><br><span class="line"></span><br><span class="line">; the below section must remain in the config file for RPC</span><br><span class="line">; (supervisorctl/web interface) to work, additional interfaces may be</span><br><span class="line">; added by defining them in separate rpcinterface: sections</span><br><span class="line">[rpcinterface:supervisor]</span><br><span class="line">supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface</span><br><span class="line"></span><br><span class="line">[supervisorctl]</span><br><span class="line">serverurl=unix:///var/run/supervisor.sock ; use a unix:// URL  for a unix socket</span><br><span class="line"></span><br><span class="line">; The [include] section can just contain the &quot;files&quot; setting.  This</span><br><span class="line">; setting can list multiple files (separated by whitespace or</span><br><span class="line">; newlines).  It can also contain wildcards.  The filenames are</span><br><span class="line">; interpreted as relative to this file.  Included files *cannot*</span><br><span class="line">; include files themselves.</span><br><span class="line"></span><br><span class="line">[include]</span><br><span class="line">files = /etc/supervisor/conf.d/*.conf</span><br></pre></td></tr></table></figure>
-<p>这里我以为<code>mooncake-queue-worker.conf</code>为例，命令：<code>vim /etc/supervisor/conf.d/mooncake-queue-worker.conf</code></p>
-<p>配置清单如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[program:mooncake-worker]</span><br><span class="line">process_name=%(program_name)s_%(process_num)02d</span><br><span class="line">command=php /project/artisan queue:work redis --queue=access</span><br><span class="line">autostart=true</span><br><span class="line"></span><br><span class="line">autorestart=true</span><br><span class="line">user=www-data</span><br><span class="line">numprocs=4</span><br><span class="line">redirect_stderr=true</span><br><span class="line">stdout_logfile=/run/log/moonkcake-queue-worker.log</span><br></pre></td></tr></table></figure>
-<p>注意：</p>
-<ol>
-<li><code>project</code> 换成自己的项目路径</li>
-<li><code>user=www-data</code> 配置成自己的<code>php</code>进程用户</li>
-<li><code>numprocs</code> 是启动进程数</li>
-</ol>
-<h2 id="启动-Supervisor"><a href="#启动-Supervisor" class="headerlink" title="启动 Supervisor"></a>启动 Supervisor</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl reread</span><br><span class="line">mooncake-worker: available</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl update</span><br><span class="line">mooncake-worker: added process group</span><br></pre></td></tr></table></figure>
-<p>此时再查看一下<code>php</code>进程，可以成功看到4个Queue启动了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ps aux|grep php</span><br><span class="line">www-data  9933  0.0  0.8 466168 68760 ?        S    11:55   0:03 php-fpm: pool www</span><br><span class="line">www-data 14383  0.3  0.8 558056 71696 ?        S    16:15   0:01 php-fpm: pool www</span><br><span class="line">www-data 14508  1.2  0.6 335088 49780 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14509  1.3  0.6 335088 49648 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14510  1.5  0.6 337136 52176 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br><span class="line">www-data 14511  1.7  0.6 337136 52228 ?        S    16:24   0:00 php /usr/share/nginx/neox-mooncake-sjms/artisan queue:work redis --queue=access</span><br></pre></td></tr></table></figure>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 停止某个进程</span></span><br><span class="line">supervisorctl stop program_name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动某个进程</span></span><br><span class="line">supervisorctl start program_name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启某个进程</span></span><br><span class="line">supervisorctl restart program_name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止全部进程</span></span><br><span class="line">supervisorctl stop all</span><br><span class="line"></span><br><span class="line"><span class="comment"># 载入最新的配置文件，停止原有进程并按新的配置启动、管理所有进程</span></span><br><span class="line">supervisorctl reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启</span></span><br><span class="line">supervisorctl update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 杀死进程</span></span><br><span class="line"><span class="built_in">kill</span> supervisor-pid(查询得知 ps aux|grep super)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启监听</span></span><br><span class="line">/usr/bin/supervisord -c /etc/supervisor/supervisord.conf</span><br></pre></td></tr></table></figure>
-<h2 id="Centos-中使用-Supervisor"><a href="#Centos-中使用-Supervisor" class="headerlink" title="Centos 中使用 Supervisor"></a>Centos 中使用 Supervisor</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>​<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release</span><br><span class="line">yum install -y supervisor</span><br></pre></td></tr></table></figure></p>
-<h3 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl status：查看所有进程的状态</span><br><span class="line">supervisorctl stop ：停止</span><br><span class="line">supervisorctl start ：启动</span><br><span class="line">supervisorctl restart : 重启</span><br><span class="line">supervisorctl update ：配置文件修改后可以使用该命令加载新的配置</span><br><span class="line">supervisorctl reload: 重新启动配置中的所有程序</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Centos 中使用 Supervisor 文档来自孟昭利反馈</p>
-</blockquote>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1. Invalid user name</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo supervisorctl reread                            </span><br><span class="line">ERROR: CANT_REREAD: Invalid user name www <span class="keyword">in</span> section <span class="string">'program:mooncake-worker'</span> (file: <span class="string">'/etc/supervisor/conf.d/mooncake-queue-worker.conf'</span>)</span><br></pre></td></tr></table></figure>
-<p>A1:查看当前<code>PHP</code>进程用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  nginx ps aux|grep php  </span><br><span class="line">www-data  1736  0.0  0.9 540960 79144 ?        S    Jan09   0:30 php-fpm: pool www</span><br><span class="line">www-data  2114  0.0  0.8 537876 73172 ?        S    Jan09   0:30 php-fpm: pool www</span><br></pre></td></tr></table></figure>
-<p>修改<code>mooncake-queue-worker.conf</code>中<code>user</code>项为<code>user=www-data</code>。</p>
-<p>Q2. 启动：sudo supervisorctl reread，报错如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error: &lt;class <span class="string">'socket.error'</span>&gt;, [Errno 2] No such file or directory: file: /usr/lib64/python2.7/socket.py line: 224</span><br></pre></td></tr></table></figure>
-<p>A2. 解决办法，输入supervisord</p>
-<p>获取到提示信息：/usr/lib/python2.7/site-packages/supervisor/options.py:461: UserWarning: Supervisord is running as root and it is searching for its configuration file in default locations (including its current working directory); you probably want to specify a “-c” argument specifying an absolute path to a configuration file for improved security.Supervisord is running as root and it is searching 很明显的看到提示信息  需要指定一个“-c”参数来指定配置文件的绝对路径。</p>
-<p>所以使用<code>supervisord -c /etc/supervisor/supervisord.conf</code>来启动</p>
-<p>Q3. 解决unix:///tmp/supervisor.sock no such file 的问题</p>
-<p>A3. 参考地址：<a href="https://blog.csdn.net/qq_28885149/article/details/79364685" target="_blank" rel="noopener">https://blog.csdn.net/qq_28885149/article/details/79364685</a></p>
-<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
-<li><a href="http://www.supervisord.org/running.html" target="_blank" rel="noopener">supervisord 官网</a></li>
-<li><a href="https://laravel.com/docs/5.7/queues#supervisor-configuration" target="_blank" rel="noopener">Laravel 官方地址</a></li>
-<li><a href="https://ryanmckern.com/2013/01/daemon-ize-your-processes-on-the-cheap-part-two-supervisor/" target="_blank" rel="noopener">ryanmckern.com</a></li>
-</ul>
 
         
       
