@@ -246,6 +246,65 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/05/02/05-多线程的基本原理/">05-多线程的基本原理</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-02
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Python/">Python</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>进程-可以理解为是一个可独立运行的程序单位，比如：</p>
+<ul>
+<li>打开一个浏览器，就开启了一个浏览器进程</li>
+<li>打开一个文本编辑器，就开启了一个文本编辑器进程</li>
+</ul>
+<p>一个进程中可以同时处理很多事情，比如：<br>浏览器中可以在多个选项卡中打开多个页面，每个页面干不同的事情（一个浏览页面、一个播放音乐，等）可以同时运行，互不干扰。</p>
+<p>为什么能同时做到运行这么多的任务呢？</p>
+<p>答：任务对应着线程的执行。</p>
+<p>「进程」是线程的集合，是由一个或多个线程构成的，「线程」是操作系统运行运算调度的最小单位，是进程中的一个最小运行单元。</p>
+          <div class="read-more">
+            <a href="/2020/05/02/05-多线程的基本原理/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/05/01/06-多进程的基本原理/">06-多进程的基本原理</a>
         
       </h1>
@@ -257,7 +316,7 @@
         
           <span class="post-category">
             
-              <a href="/categories/Python-spider/">Python spider</a>
+              <a href="/categories/Python/">Python</a>
             
           </span>
         
@@ -662,61 +721,6 @@
 <li>查询某个字段是否存在</li>
 </ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># </span></span><br><span class="line">db.getCollection('test').find(&#123;name:&#123;$exists:false&#125;&#125;)</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/04/08/HelloKefu-开源客服系统/">HelloKefu 开源客服系统</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-04-08
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Essays/">Essays</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="简短背景"><a href="#简短背景" class="headerlink" title="简短背景"></a>简短背景</h2><p>截止今日（2020年04月08日）写稿六个月前，偶然一个机会拿出了两周的时间，写出了一个客服系统（纯属情怀），技术栈：<code>Laravel+Vue+Swoole</code>，效果图如下：</p>
-<p>客服端：</p>
-<img src="/2020/04/08/HelloKefu-开源客服系统/serve.png">
-<p>访客端：</p>
-<img src="/2020/04/08/HelloKefu-开源客服系统/client.png">
-<p>设计最让自己感觉满意的地方再于，<code>访客</code>(客户端)于<code>客服</code>(服务端)通过事件机制解耦了复杂的代码，两种消息机制(<code>Mutation</code>和<code>Action</code>)直接对应<code>Vux</code>中<code>Mutation</code>和<code>Action</code>相应方法，从而客户端一行代码直接触发<code>Server</code>端对应的<code>Event</code>，服务端打包相应的消息直接调用对应的<code>Mutation</code>或<code>Action</code>。</p>
-<p>让通信方式更简单。<code>Vue</code>和<code>Laravel</code>之间通过<code>Api</code>的方式通信。</p>
-<p>因时间安排原因，放弃此项目不再维护。</p>
-<h2 id="Repo-地址"><a href="#Repo-地址" class="headerlink" title="Repo 地址"></a>Repo 地址</h2><p><a href="https://github.com/dbing/hellokefu/" target="_blank" rel="noopener">hellokefu</a></p>
 
         
       

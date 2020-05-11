@@ -246,6 +246,48 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/02/06/Python-入门指南/">Python 入门指南</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-06
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>快速搞定<code>Python</code>语法</p>
+<h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><p><a href="http://ddrv.cn/docs/pythontutorial3/" target="_blank" rel="noopener">http://ddrv.cn/docs/pythontutorial3/</a></p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/02/06/anaconda-和-zsh-不兼容问题/">anaconda 和 zsh 不兼容问题</a>
         
       </h1>
@@ -719,101 +761,6 @@
 
         
           
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/01/15/Docker-搭建-Gitlab-服务/">Docker 搭建 Gitlab 服务</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-15
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>公司使用的<code>bitbucket</code>提供的<code>git</code>远程仓库，为什么选择他历史原因喽，回想第一天克隆一个<code>1G+</code>的<code>repo</code>等待了一天，这个痛苦啊。最近的每次发版都着实的感觉到<code>bitbucket</code>慢的给蜗牛一样（应该是墙的问题每次都得开VPN才能正常玩啥），鉴于此情况下，决定使用自建<code>Gitlab</code>服务，选择华东(上海)地区机房，日本团队的小伙伴测试的速度<code>400M+</code>大小的<code>repo</code>，克隆下来30分钟左右。</p>
-<h2 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h2><p>Ubuntu 安装 Docker，官方文档：<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a></p>
-<ol>
-<li><p>更新 apt 包索引</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装最新版本的 Docker Engine-Community和containerd</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看安装成功的版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">root@jira:~# docker version</span><br><span class="line">Client: Docker Engine - Community</span><br><span class="line"> Version:           19.03.5</span><br><span class="line"> API version:       1.40</span><br><span class="line"> Go version:        go1.12.12</span><br><span class="line"> Git commit:        633a0ea838</span><br><span class="line"> Built:             Wed Nov 13 07:50:12 2019</span><br><span class="line"> OS/Arch:           linux/amd64</span><br><span class="line"> Experimental:      false</span><br><span class="line"> ...</span><br><span class="line"> ...</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="Docker-下快速部署-Gitlab-服务"><a href="#Docker-下快速部署-Gitlab-服务" class="headerlink" title="Docker 下快速部署 Gitlab 服务"></a>Docker 下快速部署 Gitlab 服务</h2><p>使用开源的<a href="https://github.com/sameersbn/docker-gitlab" target="_blank" rel="noopener">Gitlab</a> <code>docker-compose.yml</code>快速搭建，</p>
-<p>我计划将<code>gitlab</code>服务放在<code>/usr/local/gitlab</code>目录，故创建了此目录</p>
-<ol>
-<li><p>下载<code>docker-compose.yml</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/local/gitlab &amp;&amp; cd /usr/local/gitlab</span><br><span class="line">wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改<code>docker-compose.yml</code>配置项，这里仅贴出修改过的配置项</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 时区</span><br><span class="line">- TZ=Asia/Shanghai</span><br><span class="line">- GITLAB_TIMEZONE=PRC</span><br><span class="line"></span><br><span class="line"># 开启SSL</span><br><span class="line">- GITLAB_HTTPS=true</span><br><span class="line"></span><br><span class="line"># Gitlab 域和端口，域名不要带协议如（http://或https://）</span><br><span class="line">- GITLAB_HOST=git.neox-inc.com</span><br><span class="line">- GITLAB_PORT=443</span><br><span class="line">- GITLAB_SSH_PORT=22</span><br></pre></td></tr></table></figure>
-<p>这里我对外暴露的是<code>9180</code>和<code>9122</code>端口，然后在负载均衡器中配置<code>SSL</code>证书，完成对<code>https</code>的访问，如需<code>ssh</code>方式访问，负载均衡器中还需配置<code>22=&gt;9122</code>的转发，负载均衡器配置图见下图。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">gitlab:</span><br><span class="line">   restart: always</span><br><span class="line">   image: sameersbn/gitlab:12.5.5</span><br><span class="line">   depends_on:</span><br><span class="line">   - redis</span><br><span class="line">   - postgresql</span><br><span class="line">   ports:</span><br><span class="line">   - &quot;9180:80&quot;</span><br><span class="line">   - &quot;9122:22&quot;</span><br><span class="line">   - &quot;443:443&quot;</span><br><span class="line">   volumes:</span><br><span class="line">   - ./gitlab-data:/home/git/data:Z</span><br></pre></td></tr></table></figure>
-<p>为更日后更方便迁移gitlab服务，<code>redis-data</code>、<code>postgresql-data</code>、<code>gitlab-data</code>volumes，这里我分别配置成相对’./‘目录</p>
-<ol start="3">
-<li>安装 docker-compose<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install docker-compose</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>或者通过<code>pip</code>安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install docker-compose==1.8.0</span><br></pre></td></tr></table></figure></p>
-<p>不推荐如下<code>curl</code>方式安装（你要问为什么？下载速度比乌龟爬的都慢「龟速」）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
-<p>4.启动 gitlab 服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>访问 gitlab 服务</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ip:9180</span><br></pre></td></tr></table></figure>
-<p>如果你是域名直接解析到本地，那么可以通过域名访问。</p>
-<h2 id="特殊场景"><a href="#特殊场景" class="headerlink" title="特殊场景"></a>特殊场景</h2><p>我司<code>ssl</code>证书统一管理在阿里云负载均衡器上，为了日后方便统一更换过期证书，<code>gitlab</code>服务也使用负载均衡器。通过研究阿里云负载均衡器发现,不支持前端协议<code>http</code>转后端协议<code>tcp</code>。</p>
-<p>那么问题来了，<code>docker-compose</code>启的服务全部都是<code>tcp</code>协议，那么如何完成<code>ssl</code>即<code>http</code>前端协议转后端某个端口的<code>http</code>协议呢？</p>
-<p>经过思考，只得借用<code>nginx</code>转发实现，配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">upstream git.neox-inc.com &#123;</span><br><span class="line">        server ip:9180;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 80 default_server;</span><br><span class="line">        listen [::]:80 default_server;</span><br><span class="line"></span><br><span class="line">        server_name git.neox-inc.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://git.neox-inc.com;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>均衡器中监听配置图</p>
-<img src="/2020/01/15/Docker-搭建-Gitlab-服务/gitlab.png" class="[class names]" title="[width] [height] [阿里云负载均衡器截图 [均衡器配置]]">
-<h2 id="批量导入用户"><a href="#批量导入用户" class="headerlink" title="批量导入用户"></a>批量导入用户</h2><p>参考地址：<a href="https://www.jianshu.com/p/83b06525c946" target="_blank" rel="noopener">https://www.jianshu.com/p/83b06525c946</a></p>
-<h2 id="温馨提醒"><a href="#温馨提醒" class="headerlink" title="温馨提醒"></a>温馨提醒</h2><p>为了方便后期迁移<code>Gitlab</code>到别的服务器，强烈建议将数据目录配置<code>gitlab-data</code>数据目录，方便迁移（不远的3个月我就迁移过，甚是方便:-)）</p>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>docker-compose 卸载方式：</p>
-<ol>
-<li>删除对应的二进制文件</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
-<p>2.<code>pip</code>方式卸载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall docker-compose</span><br></pre></td></tr></table></figure>
-
         
       
     </div>

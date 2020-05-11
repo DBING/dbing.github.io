@@ -246,6 +246,84 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/05/09/Python-中正则应用/">Python 中正则应用</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-09
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Python/">Python</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>正则在线工具访问<a href="https://tool.oschina.net/regex#" target="_blank" rel="noopener">https://tool.oschina.net/regex#</a></p>
+<p>测试文本 <code>Hello，my phone number is 010-86432100 and email is abcdef@gmail.com, and my weisite is http://codingbing.com</code></p>
+<h2 id="Match-匹配"><a href="#Match-匹配" class="headerlink" title="Match 匹配"></a>Match 匹配</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">content = <span class="string">'Hello 123 4567 World_This is a Regex Demo'</span></span><br><span class="line"></span><br><span class="line">ret = re.match(<span class="string">'^Hello\s\d+\s\d&#123;4&#125;\s\w&#123;10&#125;'</span>,content)</span><br><span class="line"></span><br><span class="line">print(ret)</span><br><span class="line"><span class="comment"># 输出匹配的内容</span></span><br><span class="line">print(ret.group())</span><br><span class="line"><span class="comment"># 输出匹配的范围</span></span><br><span class="line">print(ret.span())</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">&lt;re.Match object; span=(<span class="number">0</span>, <span class="number">25</span>), match=<span class="string">'Hello 123 4567 World_This'</span>&gt;</span><br><span class="line">Hello <span class="number">123</span> <span class="number">4567</span> World_This</span><br><span class="line">(<span class="number">0</span>, <span class="number">25</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>group()</code> 方法输出匹配内容</li>
+<li><code>span()</code> 方法输出匹配的范围</li>
+</ul>
+<h2 id="提取匹配结果"><a href="#提取匹配结果" class="headerlink" title="提取匹配结果"></a>提取匹配结果</h2><p>使用 <code>()</code> 括号，将想提取的子字符串括起来，根据第几个<code>()</code>的索引，使用 <code>group()</code> 方法，即可提取结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">content = <span class="string">'Hello 123 4567 World_This is a Regex Demo'</span></span><br><span class="line">ret = re.match(<span class="string">'^Hello\s\d+\s(\d&#123;4&#125;)\s\w&#123;10&#125;'</span>,content)</span><br><span class="line">print(ret)</span><br><span class="line"><span class="comment"># 输出匹配的内容</span></span><br><span class="line">print(ret.group(<span class="number">1</span>))</span><br><span class="line"><span class="comment"># 输出匹配的范围</span></span><br><span class="line">print(ret.span())</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">&lt;re.Match object; span=(<span class="number">0</span>, <span class="number">25</span>), match=<span class="string">'Hello 123 4567 World_This'</span>&gt;</span><br><span class="line"><span class="number">4567</span></span><br><span class="line">(<span class="number">0</span>, <span class="number">25</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="万能匹配符"><a href="#万能匹配符" class="headerlink" title="万能匹配符"></a>万能匹配符</h2><p>出现空白符就写 <code>\s</code>，出现数字就用 <code>\d</code>，这样工作量非常大，可以使用 <code>.*</code> 万能匹配符号匹配减少工作量，</p>
+<ul>
+<li><code>.</code> 可以匹配任意字符（除换行符）</li>
+<li><code>*</code>匹配前面的字符无限次</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">content = <span class="string">'Hello 1234567 World_This is a Regex Demo'</span></span><br><span class="line"><span class="comment"># ret = re.match('^Hello(.*)Demo$', content)</span></span><br><span class="line">ret = re.match(<span class="string">'^He.*(\d+).*Demo$'</span>,content)</span><br><span class="line"><span class="comment"># 输出匹配的内容</span></span><br><span class="line">print(ret.group(<span class="number">1</span>))</span><br><span class="line"><span class="comment"># 输出匹配的范围</span></span><br><span class="line">print(ret.span())</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">&lt;re.Match object; span=(<span class="number">0</span>, <span class="number">40</span>), match=<span class="string">'Hello 1234567 World_This is a Regex Demo'</span>&gt;</span><br><span class="line"><span class="number">7</span></span><br><span class="line">(<span class="number">0</span>, <span class="number">40</span>)</span><br></pre></td></tr></table></figure>
+<p>在贪婪模式下 <code>.*</code> 会匹配尽可能多的字符，<code>.*</code> 后面是 <code>\d+</code>，是至少一个数字，因此<code>.*</code>把前面的<code>123456</code>给匹配走了，剩下一个数字<code>7</code>留给了<code>\d+</code></p>
+<p>非贪婪匹配 <code>.*?</code> 代替 <code>.*</code> 写法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">content = <span class="string">'Hello 1234567 World_This is a Regex Demo'</span></span><br><span class="line">ret = re.match(<span class="string">'^He.*?(\d+).*Demo$'</span>,content)</span><br><span class="line">print(ret.group(<span class="number">1</span>))</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">&lt;re.Match object; span=(<span class="number">0</span>, <span class="number">40</span>), match=<span class="string">'Hello 1234567 World_This is a Regex Demo'</span>&gt;</span><br><span class="line"><span class="number">1234567</span></span><br></pre></td></tr></table></figure>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">content = <span class="string">'''Hello 1234567 World_This </span></span><br><span class="line"><span class="string">is a Regex Demo'''</span></span><br><span class="line">result = re.match(<span class="string">'^He.*?(\d+).*?Demo$'</span>, content, re.S)</span><br><span class="line">print(result.group(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line"><span class="number">1234567</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>re.i</code> 使匹配对大小写不敏感</li>
+<li><code>re.L</code> 做本地化识别（locale-aware）匹配</li>
+<li><code>re.M</code> 多行匹配，影响 <code>^</code> 和 <code>$</code></li>
+<li><code>re.S</code> 使匹配包括换行在内的所有字符</li>
+<li><code>re.U</code> 根据 <code>Unicode</code>字符集解析字符。这个标志影响 <code>\w、\W、\b 和 \B</code></li>
+<li><code>re.X</code> 该标志可以提供更灵活的格式以便将正则表达式写的更易于理解</li>
+</ul>
+<h2 id="sub"><a href="#sub" class="headerlink" title="sub"></a>sub</h2><p>把一串文本中的所有数字都去掉</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">content = <span class="string">'Bs53ASssdf01FRBccw32'</span></span><br><span class="line">content = re.sub(<span class="string">'\d+'</span>,<span class="string">''</span>,content)</span><br><span class="line">print(content)</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">BsASssdfFRBccw</span><br></pre></td></tr></table></figure>
+<h2 id="compile"><a href="#compile" class="headerlink" title="compile"></a>compile</h2><p>将正则字符串编译成正则表达式对象，以便后面的匹配复用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">content1 = <span class="string">'2020-05-10 13:09:30'</span></span><br><span class="line">content2 = <span class="string">'2020-05-11 13:09:50'</span></span><br><span class="line">content3 = <span class="string">'2020-05-11 13:10:08'</span></span><br><span class="line"></span><br><span class="line">pattern = re.compile(<span class="string">'\d&#123;2&#125;:\d&#123;2&#125;:\d&#123;2&#125;'</span>)</span><br><span class="line">result1 = re.sub(pattern,<span class="string">''</span>,content1)</span><br><span class="line">result2 = re.sub(pattern,<span class="string">''</span>,content2)</span><br><span class="line">result3 = re.sub(pattern,<span class="string">''</span>,content3)</span><br><span class="line">print(result1,result2,result3)</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line"><span class="number">2020</span><span class="number">-05</span><span class="number">-10</span>  <span class="number">2020</span><span class="number">-05</span><span class="number">-11</span>  <span class="number">2020</span><span class="number">-05</span><span class="number">-11</span></span><br></pre></td></tr></table></figure>
+<p>The end!</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/05/07/PHP8-新功能/">PHP8 新功能</a>
         
       </h1>
@@ -769,65 +847,6 @@
 <li>在<code>main</code>里定义<code>Animal</code>类型变量<code>animal</code>，并分别赋值<code>Cat</code>和<code>Dog</code>，然后调用<code>cry()</code>方法</li>
 </ul>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">interface</span> &#123;</span><br><span class="line">    cry()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(cat Cat)</span> <span class="title">cry</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"I am Cat. 喵喵~"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Dog <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(dog Dog)</span> <span class="title">cry</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"I am Dog. 旺旺~"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  &#123;</span><br><span class="line">    <span class="keyword">var</span> animal Animal</span><br><span class="line">    animal = <span class="built_in">new</span>(Cat)</span><br><span class="line">    animal.cry()</span><br><span class="line"></span><br><span class="line">    animal = <span class="built_in">new</span>(Dog)</span><br><span class="line">    animal.cry()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">I am Cat. 喵喵~</span><br><span class="line">I am Dog. 旺旺~</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/05/04/Go-结构体/">Go-结构体</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-05-04
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Go/">Go</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>Go 语言中数组可以存储同一类型的数据，在结构体中我们可以定义不同的数据类型。</p>
-<p><strong>结构体</strong>：是由一系列具有相同类型或不同类型的数据构成的数据集合。</p>
-<h2 id="定义结构体"><a href="#定义结构体" class="headerlink" title="定义结构体"></a>定义结构体</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Books <span class="keyword">struct</span> &#123;</span><br><span class="line">    id     <span class="keyword">int</span></span><br><span class="line">    title  <span class="keyword">string</span></span><br><span class="line">    author <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 创建新结构体</span></span><br><span class="line">    fmt.Println(Books&#123;<span class="number">12345</span>, <span class="string">"Golang"</span>, <span class="string">"作者"</span>&#125;)</span><br><span class="line">    <span class="comment">// 也可以使用 key =&gt; value 格式，忽略的字段为 0 或空</span></span><br><span class="line">    fmt.Println(Books&#123;title: <span class="string">"Python"</span>&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">&#123;<span class="number">12345</span> Golang 作者&#125;</span><br><span class="line">&#123;<span class="number">0</span> Python &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="访问结构成员"><a href="#访问结构成员" class="headerlink" title="访问结构成员"></a>访问结构成员</h2><p>如果要访问结构体成员，需要使用点号 <code>.</code> 操作符，格式为：<code>结构体.成员名</code></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = Books&#123;&#125;</span><br><span class="line">book.title = <span class="string">"PHP"</span></span><br><span class="line">book.author = <span class="string">"This is Test"</span></span><br><span class="line">fmt.Println(book)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">&#123;<span class="number">0</span> PHP This is Test&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：在 Go 中，结构体属性如果允许外面访问，通常定义为首字母大写，比如再增加一个 subject 属性</p>
-</blockquote>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Books <span class="keyword">struct</span> &#123;</span><br><span class="line">    id     <span class="keyword">int</span></span><br><span class="line">    title  <span class="keyword">string</span></span><br><span class="line">    author <span class="keyword">string</span></span><br><span class="line">    Subject <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="结构体作为函数参数传递"><a href="#结构体作为函数参数传递" class="headerlink" title="结构体作为函数参数传递"></a>结构体作为函数参数传递</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printBook</span><span class="params">(book Books)</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"book title: %s\n"</span>, book.title)</span><br><span class="line">    fmt.Printf(<span class="string">"book author: %s\n"</span>, book.author)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> book = Books&#123;&#125;</span><br><span class="line">    book.title = <span class="string">"PHP"</span></span><br><span class="line">    book.author = <span class="string">"This is Test"</span></span><br><span class="line">    printBook(book)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">book title: PHP</span><br><span class="line">book author: This is Test</span><br></pre></td></tr></table></figure>
-<p>这种传递会将结构体拷贝一份，传值过去</p>
-<h2 id="结构体指针"><a href="#结构体指针" class="headerlink" title="结构体指针"></a>结构体指针</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printBook</span><span class="params">(book Books)</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"book title: %s\n"</span>, book.title)</span><br><span class="line">    fmt.Printf(<span class="string">"book author: %s\n"</span>, book.author)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">updateBook</span><span class="params">(b *Books, title <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    b.title = title</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> book = Books&#123;&#125;</span><br><span class="line">    book.title = <span class="string">"PHP"</span></span><br><span class="line">    book.author = <span class="string">"This is Test"</span></span><br><span class="line">    printBook(book)</span><br><span class="line">    fmt.Println(<span class="string">"---- updated ----"</span>)</span><br><span class="line">    updateBook(&amp;book, <span class="string">"C++"</span>)</span><br><span class="line">    printBook(book)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">book title: PHP</span><br><span class="line">book author: This is Test</span><br><span class="line">---- updated ----</span><br><span class="line">book title: C++</span><br><span class="line">book author: This is Test</span><br></pre></td></tr></table></figure>
-<p><code>*</code> 可以定义指向结构体的指针<br><code>&amp;</code> 获取指针地址</p>
 
         
       
