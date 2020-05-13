@@ -246,6 +246,203 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/05/04/Go-并发/">Go-并发</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-04
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Go/">Go</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>Go 语言支持并发，我们只需要通过 go 关键字来开启 goroutine 即可。</p>
+<p>goroutine 是轻量级线程，goroutine 的调度是由 Golang 运行时进行管理的。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">say</span><span class="params">(m <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        fmt.Printf(<span class="string">"Hello from goroutine %d\n"</span>, m)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">go</span> say(i)</span><br><span class="line">    &#125;</span><br><span class="line">    time.Sleep(time.Millisecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>换一种匿名函数写法</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span> <span class="params">(m <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">            <span class="keyword">for</span> &#123;</span><br><span class="line">                fmt.Printf(<span class="string">"Hello from goroutine %d\n"</span>, m)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;(i)</span><br><span class="line">    &#125;</span><br><span class="line">    time.Sleep(time.Millisecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>任何函数只需加上 <code>go</code> 就能送给调度器运行</li>
+<li>不需要在定义时区分是否是异步函数</li>
+<li>调度器在合适的点进行切换</li>
+<li>使用 <code>-race</code> 如：<code>go run -race goroutine.go</code> 来检测数据访问冲突</li>
+</ul>
+<p>goroutine 可能切换的点</p>
+<ul>
+<li><code>I/O, select</code></li>
+<li><code>channel</code></li>
+<li><code>runtime.Goshed()</code></li>
+<li>函数调用（有时）</li>
+<li>等待锁</li>
+</ul>
+<h2 id="Python-中协程"><a href="#Python-中协程" class="headerlink" title="Python 中协程"></a>Python 中协程</h2><ul>
+<li>使用 <code>yield</code> 关键字实现协程</li>
+<li>Python 3.5 加入了 <code>async def</code> 对协程原生支持</li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/05/04/Go-错误处理/">Go-错误处理</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-04
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Go/">Go</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">defer</span> fmt.Println(<span class="string">"Hi defer"</span>)</span><br><span class="line">fmt.Println(<span class="string">"abc"</span>)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">abc</span><br><span class="line">Hi <span class="keyword">defer</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">defer</span> fmt.Println(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">defer</span> fmt.Println(<span class="number">2</span>)</span><br><span class="line">fmt.Println(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">panic</span>(<span class="string">"error test"</span>)</span><br><span class="line">fmt.Println(<span class="number">4</span>)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="built_in">panic</span>: error test</span><br><span class="line"></span><br><span class="line">goroutine <span class="number">1</span> [running]:</span><br><span class="line">main.main()</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>确保调用在函数结束时发生</li>
+<li>参数在 <code>defer</code> 语句时计算</li>
+<li><code>defer</code> 列表为后进先出</li>
+</ul>
+<p>何时使用 <code>defer</code> 调用</p>
+<ul>
+<li><code>Open/Close</code></li>
+<li><code>Lock/Unlock</code></li>
+<li><code>PrintHeader/PrintFooter</code></li>
+</ul>
+<h2 id="recover"><a href="#recover" class="headerlink" title="recover"></a>recover</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    test()</span><br><span class="line">    fmt.Println(<span class="string">"Returned normally from test."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handRecover</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> r := <span class="built_in">recover</span>(); r != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(<span class="string">"Recovered in handRecover"</span>, r)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">defer</span> handRecover()</span><br><span class="line">    fmt.Println(<span class="string">"Calling g."</span>)</span><br><span class="line">    <span class="built_in">panic</span>(<span class="string">"ERROR"</span>)</span><br><span class="line">    fmt.Println(<span class="string">"Returned normally from test."</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">Calling g.</span><br><span class="line">Recovered in handRecover ERROR</span><br><span class="line">Returned normally from test.</span><br></pre></td></tr></table></figure>
+<h2 id="panic"><a href="#panic" class="headerlink" title="panic"></a>panic</h2><ul>
+<li>停止当前函数执行</li>
+<li>一直向上返回，执行每一层的 <code>defer</code></li>
+<li>如果没有遇见 <code>recover</code>，程序退出</li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li><code>panic</code> 抛出一个异常，等同于 <code>python</code> 的 <code>raise</code> 用法类似</li>
+<li><code>recover</code> 捕获异常，等同于 <code>python</code> 的 <code>except</code> 用法类似</li>
+<li><code>defer</code> 会延迟函数到其他函数之后完之后再执行，后面跟的是函数</li>
+</ul>
+<p>golang 的错误处理流程：</p>
+<ul>
+<li>当一个函数在执行过程中出现了异常或遇到 <code>panic()</code>，正常语句就会立即终止，然后执行 <code>defer</code> 语句，再报告异常信息，最后退出 <code>goroutine</code>。</li>
+<li>如果在 <code>defer</code> 中使用了 <code>recover()</code> 函数，则会捕获错误信息，使该错误信息终止报告。</li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/05/04/Go-接口/">Go-接口</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-04
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Go/">Go</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <p>Go 语言提供了另外一种数据类型即接口，它把所有的具有共性的方法定义在一起，任何其他类型只要实现了这些方法就是实现了这个接口。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
+<li>定义一个<code>Animal</code>接口，接口里有一个方法<code>cry</code></li>
+<li>分别定义<code>Cat struct</code>和<code>Dog struct</code></li>
+<li>在<code>main</code>里定义<code>Animal</code>类型变量<code>animal</code>，并分别赋值<code>Cat</code>和<code>Dog</code>，然后调用<code>cry()</code>方法</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">interface</span> &#123;</span><br><span class="line">    cry()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(cat Cat)</span> <span class="title">cry</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"I am Cat. 喵喵~"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Dog <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(dog Dog)</span> <span class="title">cry</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"I am Dog. 旺旺~"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  &#123;</span><br><span class="line">    <span class="keyword">var</span> animal Animal</span><br><span class="line">    animal = <span class="built_in">new</span>(Cat)</span><br><span class="line">    animal.cry()</span><br><span class="line"></span><br><span class="line">    animal = <span class="built_in">new</span>(Dog)</span><br><span class="line">    animal.cry()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">I am Cat. 喵喵~</span><br><span class="line">I am Dog. 旺旺~</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/05/04/Go-结构体/">Go-结构体</a>
         
       </h1>
@@ -645,164 +842,6 @@
 <p>接着使用 <code>pip3</code> 即可轻松地安装好 <code>requests</code> 库：<code>pip3 install requests</code></p>
           <div class="read-more">
             <a href="/2020/05/02/07-Requests-库的基本使用/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/05/02/Go-循环语句/">Go 循环语句</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-05-02
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Go/">Go</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>计算从 1 到 100 之和</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  &#123;</span><br><span class="line">    sum := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i&lt;=<span class="number">100</span>; i++&#123;</span><br><span class="line">        sum += i</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(sum)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line"><span class="number">5050</span></span><br></pre></td></tr></table></figure>
-          <div class="read-more">
-            <a href="/2020/05/02/Go-循环语句/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/05/02/Go-流程控制/">Go 流程控制</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-05-02
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Go/">Go</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><p>if 的条件里不需要括号，案例一</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bounded</span><span class="params">(v <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> v &gt; <span class="number">100</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">100</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> v &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> v</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(bounded(<span class="number">-1</span>))</span><br><span class="line">    fmt.Println(bounded(<span class="number">102</span>))</span><br><span class="line">    fmt.Println(bounded(<span class="number">90</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">100</span></span><br><span class="line"><span class="number">90</span></span><br></pre></td></tr></table></figure>
-          <div class="read-more">
-            <a href="/2020/05/02/Go-流程控制/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/05/02/Go-基础语法/">Go 基础语法</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-05-02
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Go/">Go</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>官网下载（Go 中文网）：<a href="https://go-zh.org/doc/install" target="_blank" rel="noopener">https://go-zh.org/doc/install</a></p>
-<p>开发 IDE：GoLand、VScode、liteIDE</p>
-<h2 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h2><p>历史传统</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fmt.Println(<span class="string">"Hello world"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <div class="read-more">
-            <a href="/2020/05/02/Go-基础语法/" class="read-more-link">阅读更多</a>
           </div>
         
       

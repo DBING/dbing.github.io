@@ -246,6 +246,190 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/03/18/不同语言系统下Accept-Language引发的小问题/">不同语言系统下Accept-Language引发的小问题</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-18
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/NeoX/">NeoX</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>不同语言环境下，浏览器请求头携带的<code>Accept-Language</code>值不一样的，导致的部分用户下默认显示「繁体中文」bug</p>
+<p>我的中文环境：<br><code>Accept-Language: en,zh-CN;q=0.9,zh;q=0.8</code></p>
+<p>同事的英文环境：<br><code>Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7,ru;q=0.6,ja;q=0.5,es;q=0.4,fr;q=0.3,de;q=0.2,mt;q=0.1,pl;q=0.1,lb;q=0.1</code></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>调整代码判断优先逻辑解决此问题，代码再此不贴出了。</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/13/CPU-上下文切换是什么意思上/">CPU 上下文切换是什么意思?</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-13
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="CPU-上下文"><a href="#CPU-上下文" class="headerlink" title="CPU 上下文"></a>CPU 上下文</h2><p>Linux 是一个多任务操作系统，它支持远大于 CPU 数量的任务同时运行。当然，这些任务实际上并不是真的在同时运行，而是因为系统在很短的时间内，将 CPU 轮流 分配给它们，每个任务运行前，CPU 都需要知道任务从哪里加载、又从哪里开始运行，而这些都是由系统事先帮它设置在 CPU 寄存器和程序计数器(Program Counter，PC)</p>
+<p>CPU 寄存器：是 CPU 内置的容量小、但速度极快的内存<br>程序计数器：是用来存储 CPU 正在执行的指令位置、或者即将执行的下一条指令位置。</p>
+<p>CPU 在运行任何任务前，必须的依赖环境也即是CPU 上下文。</p>
+<h2 id="CPU-上下文切换"><a href="#CPU-上下文切换" class="headerlink" title="CPU 上下文切换"></a>CPU 上下文切换</h2><p>CPU 上下文切换，就 是先把前一个任务的 CPU 上下文(也就是 CPU 寄存器和程序计数器)保存起来，然后加 载新任务的上下文到这些寄存器和程序计数器，最后再跳转到程序计数器所指的新位置， 运行新任务。</p>
+<p>根据任务的不同，CPU 上下文切换又可分为，进程上下文切换、线程上下文切换、中断上下文切换。</p>
+          <div class="read-more">
+            <a href="/2020/03/13/CPU-上下文切换是什么意思上/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/03/13/Anaconda-常用命令/">Anaconda 常用命令</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-13
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="Anaconda-是什么"><a href="#Anaconda-是什么" class="headerlink" title="Anaconda 是什么"></a>Anaconda 是什么</h2><blockquote>
+<p>Anaconda Enterprise supports your organization no matter the size, easily scaling from a single user on one laptop to thousands of machines. No headaches, no IT nightmares.</p>
+</blockquote>
+<h2 id="Anaconda-安装"><a href="#Anaconda-安装" class="headerlink" title="Anaconda 安装"></a>Anaconda 安装</h2><p>官方地址（mac端）：<a href="https://www.anaconda.com/distribution/#macos" target="_blank" rel="noopener">https://www.anaconda.com/distribution/#macos</a></p>
+<p>安装后，默认有一个<code>base</code>环境，如下图：</p>
+<img src="/2020/03/13/Anaconda-常用命令/install-conda.png" title="conda安装">
+<p>接下来可以使用提供的GUI工具，创建环境、安装各种所需包，同样亦可通过命令行来完成，下面演示命令行的方式。</p>
+<h2 id="案例操作记录"><a href="#案例操作记录" class="headerlink" title="案例操作记录"></a>案例操作记录</h2><p>这里我以为<code>mydemo</code>为例创建一个可运行python3+opencv的环境，下面以命令演示一下(GUI方式同样可以完成)。</p>
+<p>查看当前env环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜ ~ conda env list</span><br><span class="line"><span class="comment"># conda environments:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">base /Users/bing/opt/anaconda3</span><br><span class="line">learn-python /Users/bing/opt/anaconda3/envs/learn-python</span><br><span class="line">my-opencv /Users/bing/opt/anaconda3/envs/my-opencv</span><br></pre></td></tr></table></figure>
+<p>创建mydemo env环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜ ~ conda create --name mydemo</span><br><span class="line">Collecting package metadata (current_repodata.json): <span class="keyword">done</span></span><br><span class="line">Solving environment: <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>进入mydemo环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜ ~ conda activate mydemo</span><br><span class="line">(mydemo) ➜ ~</span><br></pre></td></tr></table></figure>
+<!---->
+<p>列出mydemo环境所有包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(mydemo) ➜ ~ conda list -n mydemo</span><br><span class="line"><span class="comment"># packages in environment at /Users/bing/opt/anaconda3/envs/mydemo:</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Name Version Build Channel</span></span><br></pre></td></tr></table></figure>
+<p>搜索限制版本的python包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(mydemo) ➜ ~ conda search <span class="string">'python&gt;=3'</span></span><br><span class="line">Loading channels: <span class="keyword">done</span></span><br><span class="line"><span class="comment"># Name Version Build Channel</span></span><br><span class="line">python 3.5.4 h4bd9b1b_18 pkgs/main</span><br><span class="line">python 3.5.4 h821eb87_14 pkgs/main</span><br><span class="line">python 3.5.4 h8f450c2_22 pkgs/main</span><br><span class="line">python 3.5.4 hb8880cc_19 pkgs/main</span><br><span class="line">python 3.5.4 hc167b69_27 pkgs/main</span><br><span class="line">python 3.5.4 hdd9bdb2_21 pkgs/main</span><br></pre></td></tr></table></figure>
+<p>为mydemo 环境安装指定版本的python包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(mydemo) ➜ ~ conda install -n mydemo python=3.7.6</span><br><span class="line">Collecting package metadata (current_repodata.json): <span class="keyword">done</span></span><br><span class="line">Solving environment: <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>注意：会询问提示是否安装相关依赖包，输入<code>y</code>，确认安装。</p>
+<p>为mydemo环境安装指定版本的py-opencv包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(mydemo) ➜ ~ conda install -n mydemo py-opencv=3.4.2</span><br><span class="line">Collecting package metadata (current_repodata.json): <span class="keyword">done</span></span><br><span class="line">Solving environment: <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建环境"><a href="#创建环境" class="headerlink" title="创建环境"></a>创建环境</h2><h3 id="查看全部环境"><a href="#查看全部环境" class="headerlink" title="查看全部环境"></a>查看全部环境</h3><p>conda env -h</p>
+<p>conda create –name your_env_name</p>
+<h3 id="创建制定python版本的环境"><a href="#创建制定python版本的环境" class="headerlink" title="创建制定python版本的环境"></a>创建制定python版本的环境</h3><p>conda create –name your_env_name python=2.7<br>conda create –name your_env_name python=3<br>conda create –name your_env_name python=3.5</p>
+<h3 id="创建包含某些包的环境"><a href="#创建包含某些包的环境" class="headerlink" title="创建包含某些包的环境"></a>创建包含某些包的环境</h3><p>conda create –name your_env_name numpy scipy</p>
+<h3 id="创建指定python版本下包含某些包的环境"><a href="#创建指定python版本下包含某些包的环境" class="headerlink" title="创建指定python版本下包含某些包的环境"></a>创建指定python版本下包含某些包的环境</h3><p>conda create –name your_env_name python=3.5 numpy scipy</p>
+<h3 id="列举当前所有环境"><a href="#列举当前所有环境" class="headerlink" title="列举当前所有环境"></a>列举当前所有环境</h3><p>conda info –envs<br>conda env list</p>
+<h3 id="进入某个环境"><a href="#进入某个环境" class="headerlink" title="进入某个环境"></a>进入某个环境</h3><p>activate  your_env_name</p>
+<h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><p>deactivate your_env_name</p>
+<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><p>conda create –name new_env_name –clone old_env_name </p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>conda remove –name your_env_name –all</p>
+<h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><h3 id="列举当前活跃环境下的所有包"><a href="#列举当前活跃环境下的所有包" class="headerlink" title="列举当前活跃环境下的所有包"></a>列举当前活跃环境下的所有包</h3><p>conda list</p>
+<h3 id="列举一个非当前活跃环境下的所有包"><a href="#列举一个非当前活跃环境下的所有包" class="headerlink" title="列举一个非当前活跃环境下的所有包"></a>列举一个非当前活跃环境下的所有包</h3><p>conda list -n your_env_name</p>
+<h3 id="为指定环境安装某个包"><a href="#为指定环境安装某个包" class="headerlink" title="为指定环境安装某个包"></a>为指定环境安装某个包</h3><p>conda install -n env_name package_name</p>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -n my-opencv pytorch=1.4.0 torchvision -c pytorch</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/03/11/2018-2019年-面试经历-上/">2018-2019年-面试经历-上</a>
         
       </h1>
@@ -668,179 +852,6 @@
           <blockquote>
 <p>待编写</p>
 </blockquote>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/26/Laravel-下如何设置允许前端跨域请求/">Laravel 下如何设置允许前端跨域请求</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-26
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="问题场景"><a href="#问题场景" class="headerlink" title="问题场景"></a>问题场景</h2><p>我司今日针对B端管理后台做<code>Dashboard</code>升级，采用新分离式开发方式，<code>Laravel</code>提供 API、<code>Vue</code>做视图，自然也遇到了老生常谈跨域问题。</p>
-<h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>出于安全原因，浏览器限制从脚本内发起的跨源HTTP请求。 例如，XMLHttpRequest和Fetch API遵循同源策略。 这意味着使用这些API的Web应用程序只能从加载应用程序的同一个域请求HTTP资源，除非响应报文包含了正确CORS响应头。</p>
-<blockquote><p>CORS：跨域资源共享(CORS) 是一种机制，他使用额外的HTTP头来告诉浏览器，让运行在一个origin(domain)上的WEB应用被准许访问来自不同源服务器上指定的资源。</p>
-</blockquote>
-<p>当一个资源从与该资源本身所在的服务器<em>不同的域</em>、<em>协议或端口</em>请求一个资源时，资源会发起一个跨域 HTTP 请求。</p>
-<p>比如，站点 <a href="http://domain-a.com" target="_blank" rel="noopener">http://domain-a.com</a> 的某 HTML 页面通过 <code>&lt;img&gt;</code> 的 src 请求 <a href="http://domain-b.com/image.jpg。" target="_blank" rel="noopener">http://domain-b.com/image.jpg。</a></p>
-<div style="width:440px;height:306px;"><img src="/2020/02/26/Laravel-下如何设置允许前端跨域请求/CORS_principle.png"></div>
-
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
-<li><p>针对<code>Laravel</code>框架下有现成扩展包可用，如：<a href="https://packagist.org/packages/barryvdh/laravel-cors" target="_blank" rel="noopener">barryvdh/laravel-cors</a>，使用方法自行阅读文档（亲测过）。</p>
-</li>
-<li><p>奈何自个公司<code>Laravel</code>框架版本是<code>5.3</code>，上面方法行不通，升级框架不是目前所要做的事情，弄明白原理后自行编写中间件也可以搞定，一句话总结：即需要在响应Header头<code>Access-Control-Allow-Origin:*</code>设置允许的域，这里的<code>*</code>表示允许所有域。</p>
-</li>
-</ol>
-<p>需要注意的是：如果客户端（浏览器）需要携带身份请求，那么也需要服务端在响应中将Header头<code>Access-Control-Allow-Credentials</code>字段设置为<code>true</code>，完整写法<code>Access-Control-Allow-Credentials: true</code>，重点来了（敲黑板划重点）此时的<code>Access-Control-Allow-Origin</code>就不能再设置为<code>*</code>了，必须指定具体的域，比如：<code>http://foo.example</code>，这个域一般是前端开发者本地的<code>http://localhost:9527</code></p>
-          <div class="read-more">
-            <a href="/2020/02/26/Laravel-下如何设置允许前端跨域请求/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/24/每日英语/">每日英语</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-24
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Reading/">Reading</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>以下将是自己每日所学英语，怕引起不适，故在首页省略展示。</p>
-          <div class="read-more">
-            <a href="/2020/02/24/每日英语/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/02/22/opencv-背景去除和更换/">opencv 背景去除和更换</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-22
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/OpenCV/">OpenCV</a>
-            
-          </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>上一个课题，已经实现手动标注后，已经可以在视频流中追踪到物体，<br>继续的研究，如何做到踢出背景干扰完成自动标注物体，这是目前想去实现的目标。终极目标是将摄像头捕捉到的视频流（单一背景色），剔除背景后自动画上标注框（最小矩形）</p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><img src="/2020/02/22/opencv-背景去除和更换/remove-background-example-two.jpg">
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><a href="https://www.learnopencv.com/applications-of-foreground-background-separation-with-semantic-segmentation/" target="_blank" rel="noopener">文章</a></p>
-<p><a href="https://github.com/spmallick/learnopencv/tree/master/app-seperation-semseg" target="_blank" rel="noopener">代码</a></p>
-<p>相关推荐文章:<br><a href="https://www.learnopencv.com/simple-background-estimation-in-videos-using-opencv-c-python/" target="_blank" rel="noopener">simple-background-estimation-in-videos-using-opencv-c-python</a><br><a href="https://www.learnopencv.com/pytorch-for-beginners-semantic-segmentation-using-torchvision/" target="_blank" rel="noopener">pytorch-for-beginners-semantic-segmentation-using-torchvision</a></p>
-<h2 id="采坑"><a href="#采坑" class="headerlink" title="采坑"></a>采坑</h2><p>Q1: from torchvision import models No module named ‘torchvision’</p>
-<p>A1: 如果出现这个错误，不用怀疑人生、不用质疑自己，认真检查自己开发环境是否安装了<code>torchvision</code>，如果确定安装了也不用慌，检查版本<code>pytorch</code>版本至少<code>1.4.0</code>,<code>torchvision</code>版本<code>0.5.0</code>，我的环境是使用的<code>Anaconda</code>，通过面板安装只能看到<code>1.3.0</code>版本，下面是我的安装命令，指定安装到<code>-n</code>是指定安装到<code>my-opencv</code>环境下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -n my-opencv pytorch=1.4.0 torchvision -c pytorch</span><br></pre></td></tr></table></figure>
-<p>查看版本:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">import torchvision</span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="comment"># cuda 是否开启</span></span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
-<p><a href="https://pytorch.org/get-started/locally/#mac-anaconda" target="_blank" rel="noopener">官方安装文档</a></p>
-<p><a href="https://pytorch.org/get-started/locally/#anaconda" target="_blank" rel="noopener">https://pytorch.org/get-started/locally/#anaconda</a></p>
-<hr>
-<p>Q2: AssertionError: Torch not compiled with CUDA enabled</p>
-<p>A2: Mac没有英伟达显卡，么有办法使用 <code>cuda</code>加速，可以使用<code>Cpu</code>，调整代码便可以继续愉快的玩耍，代码见<a href="https://github.com/spmallick/learnopencv/issues/346" target="_blank" rel="noopener">issue</a></p>
-<p>查看<code>torch</code>是否开启了<code>cuda</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import torch</span><br><span class="line">&gt;&gt;&gt; torch.__version__</span><br><span class="line"><span class="string">'1.4.0'</span></span><br><span class="line">&gt;&gt;&gt; torch.cuda.is_available()</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
 
         
       

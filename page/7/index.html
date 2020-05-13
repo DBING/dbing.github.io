@@ -246,6 +246,188 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2020/02/09/Hexo-docsify-添加-Gitalk/">Hexo docsify 添加 Gitalk</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-09
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="Gitalk"><a href="#Gitalk" class="headerlink" title="Gitalk"></a>Gitalk</h2><p><a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md" target="_blank" rel="noopener">官方地址</a></p>
+<p><a href="https://gitalk.github.io/" target="_blank" rel="noopener">体验地址</a></p>
+<blockquote>
+<p>为 Hexo 的 <code>even</code>主题添加<code>gitalk</code>评论系统</p>
+</blockquote>
+<h2 id="创建-gitalk-文件"><a href="#创建-gitalk-文件" class="headerlink" title="创建 gitalk 文件"></a>创建 gitalk 文件</h2><p>在<code>themes/even/layout/_script/_comments</code>目录下新增<code>gitalk.swig</code>文件，代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.comments &amp;&amp; theme.gitalk.enable %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for('js/src') &#125;&#125;/md5.min.js?v=&#123;&#123; theme.version &#125;&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        var gitalk = new Gitalk(&#123;</span></span><br><span class="line"><span class="undefined">          clientID: '&#123;&#123; theme.gitalk.clientID &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          clientSecret: '&#123;&#123; theme.gitalk.clientSecret &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          repo: '&#123;&#123; theme.gitalk.repo &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          owner: '&#123;&#123; theme.gitalk.owner &#125;&#125;',</span></span><br><span class="line"><span class="undefined">          admin: ['&#123;&#123; theme.gitalk.admin &#125;&#125;'],</span></span><br><span class="line"><span class="undefined">          id: md5(location.pathname),</span></span><br><span class="line"><span class="undefined">          distractionFreeMode: '&#123;&#123; theme.gitalk.distractionFreeMode &#125;&#125;'</span></span><br><span class="line"><span class="undefined">        &#125;)</span></span><br><span class="line"><span class="undefined">        gitalk.render('gitalk-container')</span></span><br><span class="line"><span class="undefined">       </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>为了解决「常见问题」中1，这里引用<code>md5.min.js</code>文件，然后将<code>id</code>，通过<code>md5</code>函数加密后再请求<code>github issue</code>API，<code>md5.min.js</code>文件我放在<code>themes/even/source/js/src/md5.min.js</code>目录，当然你也可以引入远程地址，<a href="https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js" target="_blank" rel="noopener">md5库地址</a></p>
+<h2 id="添加-gitalk-判断逻辑"><a href="#添加-gitalk-判断逻辑" class="headerlink" title="添加 gitalk 判断逻辑"></a>添加 gitalk 判断逻辑</h2><p><code>themes/even/layout/_partial/comments.swig</code>添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% elseif theme.gitalk.enable %&#125;</span><br><span class="line">    &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;  </span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<code>if elseif endif</code> 语法。</p>
+</blockquote>
+<h2 id="引入-gitalk"><a href="#引入-gitalk" class="headerlink" title="引入 gitalk"></a>引入 gitalk</h2><p>在<code>themes/even/layout/_script/comments.swig</code>文件中引入<code>gitalk.swig</code>文件，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.gitalk.enable %&#125;</span><br><span class="line">  &#123;% include &apos;_comments/gitalk.swig&apos; %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="配置-gitalk"><a href="#配置-gitalk" class="headerlink" title="配置 gitalk"></a>配置 gitalk</h2><p>配置<code>themes/even/_config.yml</code>中关于<code>gitalk</code>的配置，新增代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Gitalk</span><br><span class="line"># more info please open https://github.com/gitalk/gitalk</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  clientID: xxxxxxx</span><br><span class="line">  clientSecret: yyyyyyyyyyy</span><br><span class="line">  repo: &apos;dbing.github.io&apos;</span><br><span class="line">  owner: &apos;dbing&apos;</span><br><span class="line">  admin: &apos;dbing&apos;</span><br><span class="line">  distractionFreeMode: true</span><br></pre></td></tr></table></figure>
+<p>没有<code>clientID</code>和<code>clientSecret</code>，<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">点击申请</a>，配置完以上恭喜你，重新生产部署一下你的博客文章命令：<code>hexo g -d</code>，打开文章详情页看看是否多出了评论框 :)</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q1.Error: Validation Failed.</p>
+<p>解决方法：<a href="https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/issues/115#issuecomment-375954482</a></p>
+<p>打开<code>Network</code>看请求，多半是因为<code>github issues</code>接口错误，以上方案给出的很详细。</p>
+<p>Q2.Error: Issues are disabled for this repo</p>
+<p>解决方法：<a href="https://github.com/imsun/gitment/issues/125" target="_blank" rel="noopener">https://github.com/imsun/gitment/issues/125</a></p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/02/06/因PHP内存超出限制导致首页500/">因PHP内存超出限制导致首页500</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-06
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="现场"><a href="#现场" class="headerlink" title="现场"></a>现场</h2><p>事发后的某一段<code>log</code>日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[2020-02-06 14:09:20] production.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Allowed memory size of 134217728 bytes exhausted (tried to allocate 1191936 bytes) in /project-path/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Query/Builder.php:373</span><br><span class="line">Stack trace:</span><br><span class="line">#0 &#123;main&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2020/02/06/因PHP内存超出限制导致首页500/500.png" width="500">
+<h2 id="临时解决办法"><a href="#临时解决办法" class="headerlink" title="临时解决办法"></a>临时解决办法</h2><p>放开PHP内存限制，修改<code>php.ini</code>，中<code>memory_limit=-1</code>，然后重启，<code>php-fpm</code> 服务，<code>sudo service php7.1-fpm restart</code></p>
+<p>网站恢复访问后，排查首页代码，定位手改一处过大查询代码（前人遗留）。</p>
+<h2 id="问题代码"><a href="#问题代码" class="headerlink" title="问题代码"></a>问题代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据发布时间倒序获取新闻 首页用</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int $limit</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getNewsAtIndexPage</span><span class="params">($limit = <span class="number">5</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $newsList = [];</span><br><span class="line">    $rawNews = (<span class="keyword">new</span> Filter())-&gt;getEnableDisplay()-&gt;sortByPublishAt()-&gt;getNews();</span><br><span class="line">    <span class="keyword">foreach</span> ($rawNews <span class="keyword">as</span> $news) &#123;</span><br><span class="line">        $newsList[] = [</span><br><span class="line">            <span class="string">'url'</span>   =&gt; <span class="keyword">$this</span>-&gt;getNewsPublishURL($news[<span class="string">'type'</span>], $news[<span class="string">'_id'</span>],<span class="keyword">false</span>),</span><br><span class="line">            <span class="string">'title'</span> =&gt; $news[<span class="string">'title'</span>],</span><br><span class="line">            <span class="string">'cover'</span> =&gt; $news[<span class="string">'cover'</span>],</span><br><span class="line">            <span class="string">'publish_at'</span>=&gt; $news[<span class="string">'publish_at'</span>]</span><br><span class="line">        ];</span><br><span class="line">        <span class="keyword">if</span>(count($newsList) == $limit) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $newsList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getNews</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;model-&gt;get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="优化前后结果"><a href="#优化前后结果" class="headerlink" title="优化前后结果"></a>优化前后结果</h2><img src="/2020/02/06/因PHP内存超出限制导致首页500/1.png">
+<img src="/2020/02/06/因PHP内存超出限制导致首页500/2.png">
+<img src="/2020/02/06/因PHP内存超出限制导致首页500/code.png" title="code">
+<h2 id="好文推荐"><a href="#好文推荐" class="headerlink" title="好文推荐"></a>好文推荐</h2><ul>
+<li><a href="https://juejin.im/post/5aa7c5575188255589497de2" target="_blank" rel="noopener">PHP 内存泄漏分析定位</a></li>
+</ul>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/">因更换SSL证书安卓APP和CDN停止服务</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-06
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h2 id="现场"><a href="#现场" class="headerlink" title="现场"></a>现场</h2><ol>
+<li>网站样式图片全丢，通过<code>network</code>看到所有<code>css</code>、<code>js</code>、<code>image</code>，都指向到<code>static.shenjumiaosuan.com</code>，响应状态<code>502</code>，我们的静态资源使用的是七牛<code>CDN</code>服务，当日因我们的<code>ssl</code>年证书到期，已经更换为新证书。</li>
+</ol>
+<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/cdn.png" title="七牛CDN">
+<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/502.png" width="502">
+<ol start="2">
+<li>安卓开发者反馈，安卓客户端无法打开，所有<code>api</code>均无法正常请求，同时<code>ios</code>确是好的（是不是很惊喜、很意外）。后了解到安卓是需要中间证书。</li>
+</ol>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
+<li>静态CDN域<code>static.shenjumiaosuan.com</code>，通过项目<code>.env</code>配置切换到本站<code>www.shenjumiaosuan.com</code></li>
+<li>SSL证书紧急切换为之前旧证书</li>
+<li>重新下载新证书，并拼接上中间证书，重新上传</li>
+</ol>
+<h2 id="证书续期"><a href="#证书续期" class="headerlink" title="证书续期"></a>证书续期</h2><p>因我们的域名是在爱名网，故以下有在爱名网操作步骤：</p>
+<p>1、 缴费续期后通过openssl生成新的CSR。参考文档<a href="https://ssl.22.cn/Helper/Details/347（也可使用相关在线工具https://myssl.com/csr_create.html）。" target="_blank" rel="noopener">https://ssl.22.cn/Helper/Details/347（也可使用相关在线工具https://myssl.com/csr_create.html）。</a></p>
+<p>2、得到private.key和csr.pem后，将csr提交到爱名网，并将文件存档。</p>
+<p>3、域名续期进入审核状态，需要联系客服进行认证。认证流程中需要将对方给到的字符串解进行dns解析（@ TXT记录），等待审核通过后可以通过爱名网下载域名的crt签名。</p>
+<h2 id="生成证书"><a href="#生成证书" class="headerlink" title="生成证书"></a>生成证书</h2><p>将中间人证书补充到签发的证书中</p>
+<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/ssl.png">
+<p>因涉及公司隐私，暂不提供参考图。</p>
+<p>1、查找邮箱链接找到链接，进入后填写邮件标题中的订单号和邮箱进入后，点击request access</p>
+<p>2、通过邮件链接下载证书颁发机构的附加证书</p>
+<p>私钥部分：private.key<br>公钥部分：<br>拼装爱名网下载的crt+中间人crt，格式如下（检查空格回车）：</p>
+<img src="/2020/02/06/因更换SSL证书安卓APP和CDN停止服务/crt.png">
+<h2 id="上传证书"><a href="#上传证书" class="headerlink" title="上传证书"></a>上传证书</h2><p>阿里云lbs：<br>证书管理 &gt;&gt; 创建证书（上传非阿里云签发证书） &gt;&gt; 替换证书</p>
+<p>七牛云：<br>证书服务 &gt;&gt; 上传自有证书<br>CDN &gt;&gt; 域名管理 &gt;&gt; 配置 &gt;&gt; 更换证书</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>内部 wiki</p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2020/02/06/Python-入门指南/">Python 入门指南</a>
         
       </h1>
@@ -617,150 +799,6 @@
 <li><a href="https://fengooge.blogspot.com/2019/06/how-to-build-shadowsocks-with-google-cloud-platform.html" target="_blank" rel="noopener">https://fengooge.blogspot.com/2019/06/how-to-build-shadowsocks-with-google-cloud-platform.html</a></li>
 </ul>
 
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/01/21/快速搭建Jenkins/">快速搭建Jenkins</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-21
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>研究 Jenkins 一日，简结下结果</p>
-<ol>
-<li><p>利用 gitlab webhooks 配合 jenkins 完成测试服代码自动集成</p>
-</li>
-<li><p>通过 jenkins 发布指定分支或tag代码到生产服务器</p>
-</li>
-</ol>
-<p>对于<code>jenkins</code>的安装，因为环境不同，网络上也有一大把文章，对此先不做介绍。</p>
-<p>对于不会写<code>Jenkinsfile</code>以及不想花费过多时间就想把<code>jenkins</code>玩转，还是有难度的，研究时间有限也不愿意在这上面投入时间了，玩过了才方知感受。</p>
-<h2 id="采坑"><a href="#采坑" class="headerlink" title="采坑"></a>采坑</h2><ol>
-<li><code>jenkins</code>过滤空目录问题</li>
-</ol>
-<p>Send files or execute commands over SSH after the build runs 过滤空目录问题</p>
-<p>解决方式：-&gt;高级-&gt;Make empty dirs【打钩】此项<br>参考地址：<a href="http://ant.apache.org/manual/dirtasks.html#patterns" target="_blank" rel="noopener">http://ant.apache.org/manual/dirtasks.html#patterns</a></p>
-<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
-<li><a href="https://juejin.im/post/5dce6b3a5188254eed5b23a2#heading-4" target="_blank" rel="noopener">https://juejin.im/post/5dce6b3a5188254eed5b23a2#heading-4</a> </li>
-<li><a href="https://www.cnblogs.com/saysmy/p/8806975.html" target="_blank" rel="noopener">https://www.cnblogs.com/saysmy/p/8806975.html</a></li>
-<li><a href="https://yq.aliyun.com/articles/485296?spm=a2c4e.11153940.0.0.69de5f54y6etf3" target="_blank" rel="noopener">https://yq.aliyun.com/articles/485296?spm=a2c4e.11153940.0.0.69de5f54y6etf3</a></li>
-<li><a href="https://www.cloudcared.cn/2792.html" target="_blank" rel="noopener">https://www.cloudcared.cn/2792.html</a></li>
-</ul>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/01/20/Nginx-proxy-pass-upstream-resolver/">Nginx proxy_pass upstream resolver</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-20
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>总结很到位，还未有时间细细品味mark一下</p>
-<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
-<li><a href="https://www.jianshu.com/p/5caa48664da5" target="_blank" rel="noopener">https://www.jianshu.com/p/5caa48664da5</a></li>
-</ul>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2020/01/20/nohup-screen-tmux-远程会话保持/">nohup screen tmux 远程会话保持</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-20
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          
         
       
     </div>

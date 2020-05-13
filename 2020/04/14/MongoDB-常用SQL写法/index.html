@@ -266,7 +266,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#增"><span class="toc-text">增</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删"><span class="toc-text">删</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改"><span class="toc-text">改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查"><span class="toc-text">查</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#增"><span class="toc-text">增</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删"><span class="toc-text">删</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改"><span class="toc-text">改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查"><span class="toc-text">查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#统计"><span class="toc-text">统计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#去重统计"><span class="toc-text">去重统计</span></a></li></ol></li></ol>
     </div>
   </div>
 
@@ -278,6 +278,7 @@
 <li>查询某个字段是否存在</li>
 </ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># </span></span><br><span class="line">db.getCollection('test').find(&#123;name:&#123;$exists:false&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h2><h3 id="去重统计"><a href="#去重统计" class="headerlink" title="去重统计"></a>去重统计</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 统计在线房源的 parent_agent_id 数</span></span><br><span class="line">db.getCollection('room_sales').distinct("parent_agent_id",&#123;display_status:'01'&#125;).length</span><br></pre></td></tr></table></figure>
 
       
     </div>
